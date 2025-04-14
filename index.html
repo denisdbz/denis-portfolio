@@ -9,6 +9,17 @@
 </head>
 <body>
 
+  <!-- Barra de Navegação -->
+  <nav>
+    <ul class="navbar">
+      <li><a href="#about">Sobre</a></li>
+      <li><a href="#pentest-plays">Pentest Plays</a></li>
+      <li><a href="#portfolio-sections">Áreas</a></li>
+      <li><a href="#certifications">Certificações</a></li>
+      <li><a href="#contact">Contato</a></li>
+    </ul>
+  </nav>
+
   <!-- Botão GitHub -->
   <div class="github-link">
     <a href="https://github.com/denisdbz/denis-portfolio" target="_blank" class="button-github">🔗 Ver repositório no GitHub</a>
@@ -21,7 +32,8 @@
   </header>
 
   <!-- Descrição Pessoal -->
-  <section class="about">
+  <section class="about" id="about">
+    <h2>Sobre Mim</h2>
     <p>Sou um profissional de qualidade de software com mais de 12 anos de experiência...</p>
     <p>Tenho domínio em ferramentas e tecnologias como:</p>
     <ul>
@@ -31,7 +43,7 @@
   </section>
 
   <!-- Pentest Plays -->
-  <section class="pentest-plays">
+  <section class="pentest-plays" id="pentest-plays">
     <h2>🧪 Pentest Plays</h2>
 
     <!-- Play 01 -->
@@ -45,4 +57,41 @@
     <div class="play">
       <h3>Play 02 — Hydra vs DVWA</h3>
       <p>Força bruta automatizada usando <strong>Hydra</strong>...</p>
-      <a href
+      <a href="pentest-lab/play-02-hydra-dvwa/report.html" class="btn">📄 Ver Relatório</a>
+    </div>
+    <!-- Adicionar mais plays conforme necessário -->
+  </section>
+
+  <!-- Áreas do Portfólio -->
+  <section class="portfolio-sections" id="portfolio-sections">
+    <h2>🎯 Áreas deste Portfólio</h2>
+    <table>
+      <tr>
+        <td><code>about/</code></td>
+        <td>Apresentação mais detalhada, formação, certificados</td>
+      </tr>
+      <!-- mais áreas aqui -->
+    </table>
+  </section>
+
+  <!-- Certificações -->
+  <section class="certifications" id="certifications">
+    <h3>📚 Certificações & Cursos</h3>
+    <ul>
+      <li>Curso de Pentest com Kali Linux – [Em andamento]</li>
+      <!-- mais certificações aqui -->
+    </ul>
+  </section>
+
+  <!-- Contato -->
+  <section class="contact" id="contact">
+    <h3>📫 Contato</h3>
+    <ul>
+      <li>Email: denis.qa.eng@gmail.com</li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/">linkedin.com/in/denis-oliveira-santos</a></li>
+      <!-- mais contatos aqui -->
+    </ul>
+  </section>
+
+</body>
+</html>
