@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="generator" content="pandoc" />
-  <title>Denis Oliveira Santos - QA e Pentest</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Play 01 - Nmap Recon</title>
+  <link rel="stylesheet" href="../../style.css">
+  <style>
+    /* Estilo para o card */
+    .card {
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 15px 0;
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .card .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .card .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Play 01 — Nmap Recon</h1>
+    <p>Este play realiza um escaneamento com <code>nmap</code> contra o ambiente DVWA, identificando portas abertas e serviços disponíveis.</p>
 
-  <!-- Botão GitHub -->
-  <div class="github-link">
-    <a href="https://github.com/denisdbz/denis-portfolio" target="_blank" class="button-github">🔗 Ver repositório no GitHub</a>
-  </div>
-
-  <!-- Cabeçalho -->
-  <header>
-    <h1>Denis Oliveira Santos</h1>
-    <p><strong>Senior QA Engineer | Iniciando carreira em Pentest</strong></p>
-  </header>
-
-  <!-- Descrição Pessoal -->
-  <section class="about">
-    <p>Sou um profissional de qualidade de software com mais de 12 anos de experiência...</p>
-    <p>Tenho domínio em ferramentas e tecnologias como:</p>
-    <ul>
-      <li><strong>Automação de Testes:</strong> Cypress, Java, Playwright...</li>
-      <!-- mais itens aqui -->
-    </ul>
-  </section>
-
-  <!-- GIF Demonstrativo (inclusão de GIF) -->
-  <section class="gif-demo">
-    <h3>Exemplo de Automação (Cypress)</h3>
-    <img src="cypress-demo.gif" alt="Demonstração de Teste com Cypress" />
-  </section>
-
-  <!-- Pentest Plays -->
-  <section class="pentest-plays">
-    <h2>🧪 Pentest Plays</h2>
-
-    <!-- Play 01 -->
-    <div class="play">
-      <h3>Play 01 — Nmap Recon</h3>
-      <p>Este play realiza um escaneamento com <code>nmap</code>...</p>
-      <a href="pentest-lab/play-01-nmap-recon/index.html" class="btn">Ver Play</a>
+    <!-- Card: Objetivo -->
+    <div class="card">
+      <h3>🎯 Objetivo</h3>
+      <p>Executar um reconhecimento automatizado usando Nmap, gerando um relatório com as portas e serviços detectados.</p>
     </div>
 
-    <!-- Play 02 -->
-    <div class="play">
-      <h
+    <!-- Card: Execução -->
+    <div class="card">
+      <h3>🚀 Execução</h3>
+      <pre><code>./run-nmap.sh</code></pre>
+    </div>
+
+    <!-- Card: Relatório -->
+    <div class="card">
+      <h3>📄 Relatório</h3>
+      <ul>
+        <li><a href="report.html" target="_blank" class="btn">Relatório HTML</a></li>
+        <li><a href="result.txt" target="_blank" class="btn">Saída do_
