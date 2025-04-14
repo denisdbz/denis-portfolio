@@ -65,3 +65,16 @@ h1, h2, h3 {
 .play-button:hover {
   background-color: #00c853;
 }
+.button-github {
+  background-color: #24292e;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.button-github:hover {
+  background-color: #0366d6;
+}
