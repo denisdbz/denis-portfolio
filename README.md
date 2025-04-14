@@ -4,7 +4,7 @@
 
 Sou um profissional de qualidade de software com mais de 12 anos de experiência, especialista em automação de testes e com forte atuação em ambientes ágeis. Atualmente, estou expandindo minha carreira para a área de segurança ofensiva (pentest), com foco em testes de invasão, redes, aplicações web e ambientes dockerizados.
 
-Tenho domínio em ferramentas e tecnologias como:
+Tenho sólido domínio em ferramentas e tecnologias como:
 
 - **Automação de Testes:** Cypress, Java + Playwright, Ruby + Cucumber + Capybara
 - **CI/CD:** GitHub Actions, GitLab CI
