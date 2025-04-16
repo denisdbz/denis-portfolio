@@ -1,99 +1,25 @@
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #121212;
-  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 20px;
 }
-
 header {
-  background: #1f1f1f;
-  padding: 2rem;
+  background: #333;
+  color: #fff;
+  padding: 10px;
   text-align: center;
-  border-bottom: 2px solid #444;
 }
-
-nav a {
-  margin: 0 1rem;
-  color: #f0f0f0;
-  text-decoration: none;
+.play-controls {
+  margin-bottom: 20px;
 }
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-.section-title {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.play-card {
-  background: #1e1e1e;
-  border: 1px solid #444;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 800px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-}
-
-.play-card img {
-  max-width: 100%;
-  border-radius: 5px;
-  border: 1px solid #444;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  background-color: #00bcd4;
-  color: #000;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.btn:hover {
-  background-color: #0097a7;
-}
-
-button.run-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 18px;
+.play-controls button {
   margin: 5px;
+  padding: 10px;
+  font-size: 16px;
   cursor: pointer;
-  font-weight: bold;
-  border-radius: 6px;
-  transition: background-color 0.3s;
 }
-
-button.run-btn:hover {
-  background-color: #45a049;
-}
-
-.loader {
-  display: none;
-  margin: 10px 0;
-  font-style: italic;
-  color: #888;
-}
-
-
-footer {
-  background: #1f1f1f;
-  padding: 1rem;
-  text-align: center;
-  border-top: 2px solid #444;
-  font-size: 0.9rem;
-}
-
-/* Responsivo */
-@media (max-width: 600px) {
-  .play-card {
-    margin: 1rem;
-    padding: 1rem;
-  }
+#output-area {
+  margin-top: 20px;
 }

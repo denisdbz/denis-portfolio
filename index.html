@@ -1,138 +1,65 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denis Oliveira Santos — Portfólio Técnico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio Denis</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Denis Oliveira Santos</h1>
-    <p>Portfólio Técnico — Qualidade de Software & Pentest</p>
-    <nav>
-      <a href="#plays">Plays</a>
-      <a href="#sobre">Sobre Mim</a>
-      <a href="#contato">Contato</a>
-    </nav>
+    <h1>Portfólio Técnico - Denis Oliveira Santos</h1>
   </header>
 
   <main>
-    <section id="plays">
-      <h2 class="section-title">Pentest Plays</h2>
+    <section>
+      <h2>Pentest Plays</h2>
 
-<h2>Executar Testes</h2>
-<button class="run-btn" onclick="runPlay('/scripts/run-all-plays.sh', 'output-todos')">Executar Todos os Plays</button>
-<span id="output-todos-loader" class="loader">Executando todos os testes...</span>
-<div id="output-todos"></div>
-
-<hr>
-
-<h3>Executar Individualmente</h3>
-
-<!-- Play 01 -->
-<button class="run-btn" onclick="runPlay('/plays/play-01-nmap-recon/run.sh', 'output-play01')">Executar Play 01 — Nmap</button>
-<span id="output-play01-loader" class="loader">Executando Play 01...</span>
-<div id="output-play01"></div>
-
-<!-- Play 02 -->
-<button class="run-btn" onclick="runPlay('/plays/play-02-hydra-dvwa/run.sh', 'output-play02')">Executar Play 02 — Hydra</button>
-<span id="output-play02-loader" class="loader">Executando Play 02...</span>
-<div id="output-play02"></div>
-
-<!-- Play 03 -->
-<button class="run-btn" onclick="runPlay('/plays/play-03-sqlmap-dvwa/run.sh', 'output-play03')">Executar Play 03 — SQLMap</button>
-<span id="output-play03-loader" class="loader">Executando Play 03...</span>
-<div id="output-play03"></div>
-
-
-
-      <!-- Play 01 -->
-      <div class="play-card">
-        <h2>Play 01 — Nmap Recon</h2>
-        <p>Este play executa uma varredura Nmap automatizada. Gera um relatório HTML com as portas abertas e serviços identificados.</p>
-        <img src="plays/play-01-nmap/demo.gif" alt="Demonstração do Nmap" />
-        <br /><br />
-        <a href="plays/play-01-nmap/index.html" class="btn">Ver Play</a>
+      <div class="play-controls">
+        <button onclick="executarTeste('todos')">▶️ Executar Todos os Testes</button>
+        <button onclick="executarTeste('play-01')">▶️ Executar Play 01 - Nmap</button>
+        <button onclick="executarTeste('play-02')">▶️ Executar Play 02 - Hydra</button>
+        <button onclick="executarTeste('play-03')">▶️ Executar Play 03 - SQLMap</button>
       </div>
 
-      <!-- Play 02 -->
-      <div class="play-card">
-        <h2>Play 02 — Hydra vs DVWA</h2>
-        <p>Este play executa um ataque de força bruta no login da DVWA usando o Hydra, gerando um relatório HTML com os resultados.</p>
-        <img src="plays/play-02-hydra-dvwa/demo.gif" alt="Demonstração do Hydra" />
-        <br /><br />
-        <a href="plays/play-02-hydra-dvwa/index.html" class="btn">Ver Play</a>
+      <div id="output-area">
+        <div id="loading" style="display:none;">
+          <p>⏳ Executando testes... aguarde.</p>
+          <img src="https://i.gifer.com/YCZH.gif" width="100" />
+        </div>
+        <iframe id="relatorio" style="width:100%; height:600px; display:none; border:1px solid #ccc;"></iframe>
       </div>
-
-      <!-- Play 03 -->
-      <div class="play-card">
-        <h2>Play 03 — SQLMap vs DVWA</h2>
-        <p>Este play executa um ataque de SQL Injection na DVWA usando o sqlmap. Relatórios são gerados automaticamente.</p>
-        <img src="plays/play-03-sqlmap-dvwa/demo.gif" alt="Demonstração do SQLMap" />
-        <br /><br />
-        <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn">Ver Play</a>
-      </div>
-    </section>
-
-<section id="execucao">
-  <h2 class="section-title">Executar Todos os Testes</h2>
-  <p>Clique no botão abaixo para executar todos os testes em seu terminal local (é necessário rodar o script <code>executar_todos_os_tests.sh</code> manualmente).</p>
-  <button class="btn" onclick="mostrarLoading()">Executar</button>
-  <p id="loading" style="display:none; color:#00e676;">Executando testes... Aguarde.</p>
-</section>
-
-<script>
-function mostrarLoading() {
-  document.getElementById("loading").style.display = "block";
-  setTimeout(() => {
-    document.getElementById("loading").innerText = "✅ Execução concluída! Verifique os relatórios nos diretórios dos plays.";
-  }, 4000);
-}
-</script>
-
-    <!-- Sobre Mim -->
-    <section id="sobre">
-      <h2 class="section-title">Sobre Mim</h2>
-      <p>Sou Denis Oliveira Santos, apaixonado por tecnologia, qualidade de software e cibersegurança. Aqui apresento experimentos e automações voltadas à área de QA e Pentest.</p>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato">
-      <h2 class="section-title">Entre em Contato</h2>
-      <p>Você pode me encontrar via:</p>
-      <ul>
-        <li>Email: <a href="mailto:seu-email@exemplo.com">seu-email@exemplo.com</a></li>
-        <li>GitHub: <a href="https://github.com/denisdbz" target="_blank">github.com/denisdbz</a></li>
-      </ul>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Denis Oliveira Santos</p>
-  </footer>
+  <script>
+    function executarTeste(play) {
+      const loading = document.getElementById("loading");
+      const relatorio = document.getElementById("relatorio");
+      loading.style.display = "block";
+      relatorio.style.display = "none";
 
-<script>
-  function runPlay(scriptPath, outputId) {
-    const loader = document.getElementById(outputId + '-loader');
-    const output = document.getElementById(outputId);
-    loader.style.display = 'inline';
-    output.innerHTML = '';
+      setTimeout(() => {
+        loading.style.display = "none";
+        relatorio.style.display = "block";
 
-    fetch(scriptPath)
-      .then(res => res.text())
-      .then(data => {
-        loader.style.display = 'none';
-        output.innerHTML = `<pre>${data}</pre>`;
-      })
-      .catch(err => {
-        loader.style.display = 'none';
-        output.innerHTML = `<pre>Erro: ${err}</pre>`;
-      });
-  }
-</script>
-
-
+        switch(play) {
+          case 'play-01':
+            relatorio.src = "plays/play-01-nmap-recon/relatorio.html";
+            break;
+          case 'play-02':
+            relatorio.src = "plays/play-02-hydra-dvwa/relatorio.html";
+            break;
+          case 'play-03':
+            relatorio.src = "plays/play-03-sqlmap-dvwa/relatorio.html";
+            break;
+          case 'todos':
+          default:
+            relatorio.src = "report.html";
+        }
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
-
