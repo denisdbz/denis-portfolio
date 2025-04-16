@@ -1,1 +1,110 @@
-<html><body><h1>Denis Portfolio - Home</h1></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Denis Portfolio</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #00ffcc;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .play-card {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .play-card:hover {
+      transform: scale(1.02);
+    }
+
+    .play-card h2 {
+      color: #00ffe1;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00ccaa;
+    }
+
+    img {
+      max-width: 100%;
+      border: 1px solid #333;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Denis Portfolio</h1>
+  </header>
+
+  <div class="container">
+
+    <div class="play-card">
+      <h2>Play 01 — Nmap Recon</h2>
+      <p>Este play realiza uma varredura de rede com o <code>nmap</code> e salva os resultados em um relatório HTML automaticamente.</p>
+      <img src="plays/play-01-nmap-recon/demo.gif" alt="Demonstração do Nmap Recon">
+      <br><br>
+      <a href="plays/play-01-nmap-recon/index.html" class="btn">Ver Play</a>
+    </div>
+
+    <div class="play-card">
+      <h2>Play 02 — Hydra vs DVWA</h2>
+      <p>Este play usa o <code>hydra</code> para realizar um ataque de força bruta contra o formulário de login do DVWA.</p>
+      <img src="plays/play-02-hydra-dvwa/demo.gif" alt="Demonstração do Hydra">
+      <br><br>
+      <a href="plays/play-02-hydra-dvwa/index.html" class="btn">Ver Play</a>
+    </div>
+
+    <div class="play-card">
+      <h2>Play 03 — SQLMap vs DVWA</h2>
+      <p>Este play executa automaticamente um ataque de SQL Injection na DVWA usando o <code>sqlmap</code>. O script detecta as vulnerabilidades e gera relatórios em HTML.</p>
+      <img src="plays/play-03-sqlmap-dvwa/demo.gif" alt="Demonstração do SQLMap">
+      <br><br>
+      <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn">Ver Play</a>
+    </div>
+
+  </div>
+</body>
+</html>
