@@ -1,75 +1,55 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio Técnico - Denis Oliveira Santos</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="matrix-background"></div>
   <header>
-    <h1>Portfólio Técnico - Denis Oliveira Santos</h1>
-    <nav>
-      <a href="#sobre">Sobre Mim</a>
-      <a href="#plays">Pentest Plays</a>
-      <a href="#contato">Contato</a>
-    </nav>
+    <h1 class="matrix-title">Portfólio Técnico</h1>
+    <p class="subtitulo">Denis Oliveira Santos</p>
   </header>
-  <main>
-    <section id="sobre">
-      <h2>Sobre Mim</h2>
-      <p>Sou QA e entusiasta de Pentest. Neste portfólio apresento testes automatizados e simulações de ataques a ambientes controlados.</p>
-    </section>
 
-    <section id="plays">
-      <h2>Pentest Plays</h2>
-      <div class="play">
-        <h3>Play 01 - Nmap Recon</h3>
-        <button onclick="executarTeste('play-01')">Executar</button>
-        <div class="relatorio" id="relatorio-play-01"></div>
-      </div>
-      <div class="play">
-        <h3>Play 02 - Hydra vs DVWA</h3>
-        <button onclick="executarTeste('play-02')">Executar</button>
-        <div class="relatorio" id="relatorio-play-02"></div>
-      </div>
-      <div class="play">
-        <h3>Play 03 - SQLMap vs DVWA</h3>
-        <button onclick="executarTeste('play-03')">Executar</button>
-        <div class="relatorio" id="relatorio-play-03"></div>
-      </div>
-      <button class="executar-todos" onclick="executarTodos()">Executar Todos os Testes</button>
-    </section>
+  <section class="play">
+    <h2>Play 01 - Nmap Recon</h2>
+    <button class="run-btn" onclick="simularExecucao('relatorio-nmap')">Executar</button>
+    <div class="loading" id="loading-nmap">Executando...</div>
+    <iframe id="relatorio-nmap" src="plays/play-01-nmap-recon/report.html"></iframe>
+  </section>
 
-    <section id="contato">
-  <h3>Entre em Contato</h3>
-  <p><i class="fas fa-envelope"></i> Email: <a href="mailto:dns.qa.eng@gmail.com">dns.qa.eng@gmail.com</a></p>
-  <p><i class="fas fa-phone-alt"></i> Celular: <a href="tel:+5511978118097">+55 11 97811-8097</a></p>
-  <p><i class="fab fa-github"></i> GitHub: <a href="https://github.com/denisdbz" target="_blank">GitHub</a></p>
-  <p><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a></p>
-</section>
-  </div>
-  <script src="matrix.js"></script>
+  <section class="play">
+    <h2>Play 02 - Hydra vs DVWA</h2>
+    <button class="run-btn" onclick="simularExecucao('relatorio-hydra')">Executar</button>
+    <div class="loading" id="loading-hydra">Executando...</div>
+    <iframe id="relatorio-hydra" src="plays/play-02-hydra-dvwa/report.html"></iframe>
+  </section>
+
+  <section class="play">
+    <h2>Play 03 - SQLMap vs DVWA</h2>
+    <button class="run-btn" onclick="simularExecucao('relatorio-sqlmap')">Executar</button>
+    <div class="loading" id="loading-sqlmap">Executando...</div>
+    <iframe id="relatorio-sqlmap" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
+  </section>
+
+  <section class="contato">
+    <h2>Entre em Contato</h2>
+    <p>Email: denis@example.com</p>
+    <p>GitHub: <a href="https://github.com/denisdbz" target="_blank">github.com/denisdbz</a></p>
+  </section>
+
   <script>
-    function mostrarRelatorio(id) {
-      document.querySelectorAll('.relatorio').forEach(r => r.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
+    function simularExecucao(idIframe) {
+      const loading = document.getElementById("loading-" + idIframe.split("-")[1]);
+      const iframe = document.getElementById(idIframe);
+      iframe.style.display = "none";
+      loading.style.display = "block";
+
+      setTimeout(() => {
+        loading.style.display = "none";
+        iframe.style.display = "block";
+      }, 2500);
     }
   </script>
-      <h2>Entre em Contato</h2>
-      <p>Email: denis@example.com</p>
-      <p>GitHub: <a href="https://github.com/denisdbz" target="_blank">denisdbz</a></p>
-    </section>
-  </main>
-
-  <script src="scripts.js"></script>
 </body>
 </html>
