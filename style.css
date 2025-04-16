@@ -1,25 +1,96 @@
-
+/* Estilo do Body */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  padding: 20px;
+  background-color: #000;
+  color: #00ff00;
+  font-family: 'Arial', sans-serif;
 }
+
+/* Cabeçalho e navegação */
 header {
-  background: #333;
-  color: #fff;
+  background-color: #111;
   padding: 10px;
-  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
-.play-controls {
-  margin-bottom: 20px;
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
-.play-controls button {
-  margin: 5px;
-  padding: 10px;
-  font-size: 16px;
+
+header nav ul li {
+  margin: 0 20px;
+}
+
+header nav ul li a {
+  color: #00ff00;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Seções */
+section {
+  padding: 20px;
+  margin-top: 80px;
+}
+
+button {
+  background-color: #222;
+  color: #00ff00;
+  padding: 10px 20px;
+  border: 2px solid #00ff00;
+  margin: 10px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
-#output-area {
+
+button:hover {
+  background-color: #00ff00;
+  color: #222;
+}
+
+.report {
+  background-color: #333;
+  padding: 20px;
+  margin: 10px 0;
+  border: 1px solid #00ff00;
+}
+
+/* Barra de Carregamento */
+#loadingBar {
+  width: 100%;
+  background-color: #222;
   margin-top: 20px;
+}
+
+#progress {
+  height: 5px;
+  background-color: #00ff00;
+  transition: width 1s;
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+section {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
 }

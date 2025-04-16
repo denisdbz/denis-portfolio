@@ -1,37 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfólio Denis</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio Técnico</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Cabeçalho com navegação -->
   <header>
-    <h1>Portfólio Técnico - Denis Oliveira Santos</h1>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre Mim</a></li>
+        <li><a href="#contato">Contato</a></li>
+        <li><a href="#tests">Tests</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <section>
-      <h2>Pentest Plays</h2>
+  <!-- Seção "Sobre Mim" -->
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>Texto sobre sua trajetória, habilidades, e o que você está buscando em sua carreira.</p>
+  </section>
 
-      <div class="play-controls">
-        <button onclick="executarTeste('todos')">▶️ Executar Todos os Testes</button>
-        <button onclick="executarTeste('play-01')">▶️ Executar Play 01 - Nmap</button>
-        <button onclick="executarTeste('play-02')">▶️ Executar Play 02 - Hydra</button>
-        <button onclick="executarTeste('play-03')">▶️ Executar Play 03 - SQLMap</button>
-      </div>
+  <!-- Seção "Contato" -->
+  <section id="contato">
+    <h2>Entre em Contato</h2>
+    <p>Email: denis@example.com</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/denis">linkedin.com/in/denis</a></p>
+  </section>
 
-      <div id="output-area">
-        <div id="loading" style="display:none;">
-          <p>⏳ Executando testes... aguarde.</p>
-          <img src="https://i.gifer.com/YCZH.gif" width="100" />
-        </div>
-        <iframe id="relatorio" style="width:100%; height:600px; display:none; border:1px solid #ccc;"></iframe>
-      </div>
-    </section>
-  </main>
-<script src="script.js"></script>
+  <!-- Seção de Testes -->
+  <section id="tests">
+    <h2>Testes de Pentest</h2>
+
+    <button id="runTest01">Executar Teste 1 (Nmap Recon)</button>
+    <button id="runTest02">Executar Teste 2 (Hydra vs DVWA)</button>
+    <button id="runTest03">Executar Teste 3 (SQLMap vs DVWA)</button>
+    <button id="runAllTests">Executar Todos os Testes</button>
+
+    <!-- Barra de Carregamento -->
+    <div id="loadingBar" style="display:none;">
+      <div id="progress" style="width: 0%; height: 5px; background-color: #00ff00;"></div>
+    </div>
+
+    <!-- Relatórios dos Testes -->
+    <div id="reports">
+      <div id="reportTest01" class="report"></div>
+      <div id="reportTest02" class="report"></div>
+      <div id="reportTest03" class="report"></div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
