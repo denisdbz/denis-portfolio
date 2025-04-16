@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 
 
@@ -7,71 +8,45 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio Técnico - Denis Oliveira Santos</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
-
-  <div class="container">
-    <header>
-      <h1>Portfólio Técnico</h1>
-      <h2>Denis Oliveira Santos</h2>
-    </header>
-
+  <div class="matrix-background"></div>
+  <header>
+    <h1>Portfólio Técnico - Denis Oliveira Santos</h1>
     <nav>
-      <a href="#plays">🧪 Plays</a>
-      <a href="#sobre">📁 Sobre Mim</a>
-      <a href="#contato">📨 Contato</a>
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#plays">Pentest Plays</a>
+      <a href="#contato">Contato</a>
     </nav>
-
-    <section id="plays">
-      <h3>Execução de Testes Automatizados</h3>
-
-      <div class="play-card">
-        <h4>Play 01 - Nmap Recon</h4>
-        <button class="run-btn" onclick="mostrarRelatorio('relatorio-nmap')">
-          ▶️ Executar Teste
-        </button>
-        <div class="relatorio" id="relatorio-nmap">
-          <iframe src="plays/play-01-nmap-recon/relatorio.html"></iframe>
-        </div>
-      </div>
-
-      <div class="play-card">
-        <h4>Play 02 - Hydra vs DVWA</h4>
-        <button class="run-btn" onclick="mostrarRelatorio('relatorio-hydra')">
-          ▶️ Executar Teste
-        </button>
-        <div class="relatorio" id="relatorio-hydra">
-          <iframe src="plays/play-02-hydra-dvwa/relatorio.html"></iframe>
-        </div>
-      </div>
-
-      <div class="play-card">
-        <h4>Play 03 - SQLMap vs DVWA</h4>
-        <button class="run-btn" onclick="mostrarRelatorio('relatorio-sqlmap')">
-          ▶️ Executar Teste
-        </button>
-        <div class="relatorio" id="relatorio-sqlmap">
-          <iframe src="plays/play-03-sqlmap-dvwa/relatorio.html"></iframe>
-        </div>
-      </div>
-
-      <div class="play-card">
-        <h4>Executar Todos</h4>
-        <button class="run-btn" onclick="mostrarRelatorio('relatorio-geral')">
-          🎯 Executar Todos os Testes
-        </button>
-        <div class="relatorio" id="relatorio-geral">
-          <iframe src="relatorio-completo.html"></iframe>
-        </div>
-      </div>
+  </header>
+  <main>
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Sou QA e entusiasta de Pentest. Neste portfólio apresento testes automatizados e simulações de ataques a ambientes controlados.</p>
     </section>
 
-    <section id="sobre">
-      <h3>Sobre Mim</h3>
-      <p>Sou Denis Oliveira Santos, apaixonado por segurança da informação, testes automatizados e hacking ético. Desenvolvi este portfólio para demonstrar habilidades práticas em pentest e QA.</p>
+    <section id="plays">
+      <h2>Pentest Plays</h2>
+      <div class="play">
+        <h3>Play 01 - Nmap Recon</h3>
+        <button onclick="executarTeste('play-01')">Executar</button>
+        <div class="relatorio" id="relatorio-play-01"></div>
+      </div>
+      <div class="play">
+        <h3>Play 02 - Hydra vs DVWA</h3>
+        <button onclick="executarTeste('play-02')">Executar</button>
+        <div class="relatorio" id="relatorio-play-02"></div>
+      </div>
+      <div class="play">
+        <h3>Play 03 - SQLMap vs DVWA</h3>
+        <button onclick="executarTeste('play-03')">Executar</button>
+        <div class="relatorio" id="relatorio-play-03"></div>
+      </div>
+      <button class="executar-todos" onclick="executarTodos()">Executar Todos os Testes</button>
     </section>
 
     <section id="contato">
@@ -89,5 +64,12 @@
       document.getElementById(id).style.display = 'block';
     }
   </script>
+      <h2>Entre em Contato</h2>
+      <p>Email: denis@example.com</p>
+      <p>GitHub: <a href="https://github.com/denisdbz" target="_blank">denisdbz</a></p>
+    </section>
+  </main>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
