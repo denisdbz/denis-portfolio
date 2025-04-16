@@ -1,52 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denis Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio Técnico - Denis Oliveira</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Denis' Portfolio</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">Sobre Mim</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header>
+    <h1>Portfólio Técnico - Denis Oliveira</h1>
+    <nav>
+      <a href="#plays">Plays</a>
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#contato">Entre em Contato</a>
+    </nav>
+  </header>
 
-    <section class="plays">
-      <div class="play" id="play01">
-        <button id="runTest01">Executar Teste 1</button>
-        <div id="reportTest01" class="report"></div>
-      </div>
-      <div class="play" id="play02">
-        <button id="runTest02">Executar Teste 2</button>
-        <div id="reportTest02" class="report"></div>
-      </div>
-      <div class="play" id="play03">
-        <button id="runTest03">Executar Teste 3</button>
-        <div id="reportTest03" class="report"></div>
-      </div>
-      <button id="runAllTests">Executar Todos os Testes</button>
-    </section>
+  <section id="plays">
+    <h2>Plays de Pentest</h2>
 
-    <div id="loadingBar" class="loading-bar">
-      <div id="progress"></div>
+    <!-- Play 01 -->
+    <div class="play-card">
+      <h3>Play 01 - Nmap Recon</h3>
+      <img src="plays/play-01-nmap-recon/demo.gif" alt="Demo Nmap" />
+      <button onclick="executarPlay('01')">Executar Play 01</button>
+      <div id="relatorio-play-01" class="relatorio-container"></div>
     </div>
 
-    <section id="about">
-      <h2>Sobre Mim</h2>
-      <p>Texto sobre você...</p>
-    </section>
+    <!-- Play 02 -->
+    <div class="play-card">
+      <h3>Play 02 - Hydra vs DVWA</h3>
+      <img src="plays/play-02-hydra-dvwa/demo.gif" alt="Demo Hydra" />
+      <button onclick="executarPlay('02')">Executar Play 02</button>
+      <div id="relatorio-play-02" class="relatorio-container"></div>
+    </div>
 
-    <section id="contact">
-      <h2>Contato</h2>
-      <p>Formas de entrar em contato...</p>
-    </section>
+    <!-- Play 03 -->
+    <div class="play-card">
+      <h3>Play 03 - SQLMap vs DVWA</h3>
+      <img src="plays/play-03-sqlmap-dvwa/demo.gif" alt="Demo SQLMap" />
+      <button onclick="executarPlay('03')">Executar Play 03</button>
+      <div id="relatorio-play-03" class="relatorio-container"></div>
+    </div>
+
+    <!-- Executar Todos -->
+    <div class="play-card">
+      <h3>Executar Todos os Plays</h3>
+      <button onclick="executarTodos()">Executar Todos</button>
+      <div id="relatorio-todos" class="relatorio-container"></div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>Sou Denis Oliveira, apaixonado por qualidade de software e segurança. Este portfólio demonstra habilidades práticas em automação de testes e pentest.</p>
+  </section>
+
+  <section id="contato">
+    <h2>Entre em Contato</h2>
+    <p>Email: denis@example.com</p>
+    <p>GitHub: <a href="https://github.com/denisdbz" target="_blank">github.com/denisdbz</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Denis Oliveira</p>
+  </footer>
+
+  <div id="loading" class="loading hidden">
+    <img src="assets/hacker-loading.gif" alt="Loading hacker style..." />
+    <p>Executando testes...</p>
   </div>
 
   <script src="script.js"></script>
