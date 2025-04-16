@@ -32,34 +32,6 @@
       </div>
     </section>
   </main>
-
-  <script>
-    function executarTeste(play) {
-      const loading = document.getElementById("loading");
-      const relatorio = document.getElementById("relatorio");
-      loading.style.display = "block";
-      relatorio.style.display = "none";
-
-      setTimeout(() => {
-        loading.style.display = "none";
-        relatorio.style.display = "block";
-
-        switch(play) {
-          case 'play-01':
-            relatorio.src = "plays/play-01-nmap-recon/relatorio.html";
-            break;
-          case 'play-02':
-            relatorio.src = "plays/play-02-hydra-dvwa/relatorio.html";
-            break;
-          case 'play-03':
-            relatorio.src = "plays/play-03-sqlmap-dvwa/relatorio.html";
-            break;
-          case 'todos':
-          default:
-            relatorio.src = "report.html";
-        }
-      }, 2000);
-    }
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
