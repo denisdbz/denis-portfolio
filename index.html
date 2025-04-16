@@ -2,93 +2,109 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denis Oliveira Santos</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Denis Portfolio</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #00ffcc;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .play-card {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .play-card:hover {
+      transform: scale(1.02);
+    }
+
+    .play-card h2 {
+      color: #00ffe1;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00ccaa;
+    }
+
+    img {
+      max-width: 100%;
+      border: 1px solid #333;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="container">
-      <h1>👨‍💻 Denis Oliveira Santos</h1>
-      <p><strong>Senior QA Engineer | Iniciando em Pentest | Automação, Docker, Segurança, Performance</strong></p>
-      <a href="https://github.com/denisdbz/denis-portfolio" target="_blank" class="btn-outline">🔗 Ver repositório no GitHub</a>
-    </div>
+  <header>
+    <h1>Denis Portfolio</h1>
   </header>
 
-  <main class="container">
-    <section class="intro">
-      <p>Sou um profissional de qualidade de software com mais de 12 anos de experiência, especialista em automação de testes e com forte atuação em ambientes ágeis. Atualmente, estou expandindo minha carreira para a área de segurança ofensiva (pentest), com foco em testes de invasão, redes, aplicações web e ambientes dockerizados.</p>
+  <div class="container">
 
-      <ul>
-        <li><strong>Automação:</strong> Cypress, Playwright, Cucumber</li>
-        <li><strong>CI/CD:</strong> GitHub Actions, GitLab CI</li>
-        <li><strong>APIs:</strong> Postman, RestAssured, Insomnia</li>
-        <li><strong>Segurança:</strong> Kali Linux, Nmap, SQLMap, Hydra, Burp Suite</li>
-        <li><strong>Virtualização:</strong> Docker, VirtualBox</li>
-      </ul>
-    </section>
+    <div class="play-card">
+      <h2>Play 01 — Nmap Recon</h2>
+      <p>Este play realiza uma varredura de rede com o <code>nmap</code> e salva os resultados em um relatório HTML automaticamente.</p>
+      <img src="plays/play-01-nmap-recon/demo.gif" alt="Demonstração do Nmap Recon">
+      <br><br>
+      <a href="plays/play-01-nmap-recon/index.html" class="btn">Ver Play</a>
+    </div>
 
-    <section>
-      <h2>🧪 Pentest Plays</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Play 01 — Nmap Recon</h3>
-          <p>Escaneamento automatizado com <code>nmap</code> no DVWA.</p>
-          <a href="plays/play-01-nmap/index.html" class="btn">Ver Play</a>
-        </div>
+    <div class="play-card">
+      <h2>Play 02 — Hydra vs DVWA</h2>
+      <p>Este play usa o <code>hydra</code> para realizar um ataque de força bruta contra o formulário de login do DVWA.</p>
+      <img src="plays/play-02-hydra-dvwa/demo.gif" alt="Demonstração do Hydra">
+      <br><br>
+      <a href="plays/play-02-hydra-dvwa/index.html" class="btn">Ver Play</a>
+    </div>
 
-        <div class="card">
-          <h3>Play 02 — Hydra vs DVWA</h3>
-          <p>Força bruta com <code>hydra</code> contra o login do DVWA.</p>
-          <a href="plays/play-02-hydra-dvwa/report.html" target="_blank" class="btn">Ver Relatório</a>
-        </div>
+    <div class="play-card">
+      <h2>Play 03 — SQLMap vs DVWA</h2>
+      <p>Este play executa automaticamente um ataque de SQL Injection na DVWA usando o <code>sqlmap</code>. O script detecta as vulnerabilidades e gera relatórios em HTML.</p>
+      <img src="plays/play-03-sqlmap-dvwa/demo.gif" alt="Demonstração do SQLMap">
+      <br><br>
+      <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn">Ver Play</a>
+    </div>
 
-        <div class="card">
-          <h3>Play 03 — SQLMap vs DVWA</h3>
-          <p>SQL Injection automatizado com <code>sqlmap</code>.</p>
-          <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn">Ver Play</a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>🎯 Áreas do Portfólio</h2>
-      <table>
-        <thead>
-          <tr><th>Seção</th><th>Conteúdo</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><code>about/</code></td><td>Apresentação detalhada, formação</td></tr>
-          <tr><td><code>pentest-lab/</code></td><td>Relatórios e evidências de ataques</td></tr>
-          <tr><td><code>automated-tests/</code></td><td>Exemplos reais de automação</td></tr>
-          <tr><td><code>docker-projects/</code></td><td>Ambientes dockerizados</td></tr>
-          <tr><td><code>scripts-utilitarios/</code></td><td>Scripts úteis e utilitários</td></tr>
-          <tr><td><code>posts/</code></td><td>Tutoriais e aprendizados</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>📚 Certificações & Cursos</h2>
-      <ul>
-        <li>Pentest com Kali Linux – [Em andamento]</li>
-        <li>Cypress Avançado – [Udemy]</li>
-        <li>Docker para QA – [Udemy]</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>📫 Contato</h2>
-      <ul>
-        <li>Email: denis.qa.eng@gmail.com</li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/">/in/denis-oliveira-santos</a></li>
-        <li>GitHub: <a href="https://github.com/denisdbz">github.com/denisdbz</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>© 2025 Denis Oliveira Santos • Portfólio Técnico</p>
-  </footer>
+  </div>
 </body>
 </html>
