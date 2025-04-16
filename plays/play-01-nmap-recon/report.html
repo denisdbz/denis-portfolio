@@ -1,1 +1,34 @@
-<html><body><h2>Sample Report</h2></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório Nmap</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+    }
+    h1 {
+      border-bottom: 1px solid #00ff00;
+    }
+    pre {
+      background-color: #111;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Relatório - Nmap Recon</h1>
+  <pre>
+Host: 192.168.1.1 (router)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+80/tcp  open  http
+443/tcp open  https
+  </pre>
+</body>
+</html>
