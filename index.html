@@ -21,6 +21,32 @@
     <section id="plays">
       <h2 class="section-title">Pentest Plays</h2>
 
+<h2>Executar Testes</h2>
+<button class="run-btn" onclick="runPlay('/scripts/run-all-plays.sh', 'output-todos')">Executar Todos os Plays</button>
+<span id="output-todos-loader" class="loader">Executando todos os testes...</span>
+<div id="output-todos"></div>
+
+<hr>
+
+<h3>Executar Individualmente</h3>
+
+<!-- Play 01 -->
+<button class="run-btn" onclick="runPlay('/plays/play-01-nmap-recon/run.sh', 'output-play01')">Executar Play 01 — Nmap</button>
+<span id="output-play01-loader" class="loader">Executando Play 01...</span>
+<div id="output-play01"></div>
+
+<!-- Play 02 -->
+<button class="run-btn" onclick="runPlay('/plays/play-02-hydra-dvwa/run.sh', 'output-play02')">Executar Play 02 — Hydra</button>
+<span id="output-play02-loader" class="loader">Executando Play 02...</span>
+<div id="output-play02"></div>
+
+<!-- Play 03 -->
+<button class="run-btn" onclick="runPlay('/plays/play-03-sqlmap-dvwa/run.sh', 'output-play03')">Executar Play 03 — SQLMap</button>
+<span id="output-play03-loader" class="loader">Executando Play 03...</span>
+<div id="output-play03"></div>
+
+
+
       <!-- Play 01 -->
       <div class="play-card">
         <h2>Play 01 — Nmap Recon</h2>
@@ -85,6 +111,28 @@ function mostrarLoading() {
   <footer>
     <p>&copy; 2025 Denis Oliveira Santos</p>
   </footer>
+
+<script>
+  function runPlay(scriptPath, outputId) {
+    const loader = document.getElementById(outputId + '-loader');
+    const output = document.getElementById(outputId);
+    loader.style.display = 'inline';
+    output.innerHTML = '';
+
+    fetch(scriptPath)
+      .then(res => res.text())
+      .then(data => {
+        loader.style.display = 'none';
+        output.innerHTML = `<pre>${data}</pre>`;
+      })
+      .catch(err => {
+        loader.style.display = 'none';
+        output.innerHTML = `<pre>Erro: ${err}</pre>`;
+      });
+  }
+</script>
+
+
 </body>
 </html>
 

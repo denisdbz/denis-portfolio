@@ -2,16 +2,31 @@
 
 echo "[*] Executando todos os plays..."
 
-# Executa o Play 01
-cd plays/play-01-nmap
-./run.sh
+# Play 01 — Nmap Recon
+if [ -d "plays/play-01-nmap-recon" ]; then
+  cd plays/play-01-nmap-recon
+  ./run.sh
+  cd ../..
+else
+  echo "[!] play-01-nmap-recon não encontrado!"
+fi
 
-# Executa o Play 02
-cd ../play-02-hydra-dvwa
-./run.sh
+# Play 02 — Hydra vs DVWA
+if [ -d "plays/play-02-hydra-dvwa" ]; then
+  cd plays/play-02-hydra-dvwa
+  ./run.sh
+  cd ../..
+else
+  echo "[!] play-02-hydra-dvwa não encontrado!"
+fi
 
-# Executa o Play 03
-cd ../play-03-sqlmap-dvwa
-./run.sh
+# Play 03 — SQLMap vs DVWA
+if [ -d "plays/play-03-sqlmap-dvwa" ]; then
+  cd plays/play-03-sqlmap-dvwa
+  ./run.sh
+  cd ../..
+else
+  echo "[!] play-03-sqlmap-dvwa não encontrado!"
+fi
 
-echo "[*] Todos os testes executados com sucesso!"
+echo "[*] Todos os testes executados."
