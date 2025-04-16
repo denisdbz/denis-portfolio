@@ -1,76 +1,88 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfólio Técnico - Denis Oliveira</title>
+  <title>Portfólio Técnico - Denis Oliveira Santos</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Portfólio Técnico - Denis Oliveira</h1>
+  <canvas id="matrixCanvas"></canvas>
+
+  <div class="container">
+    <header>
+      <h1>Portfólio Técnico</h1>
+      <h2>Denis Oliveira Santos</h2>
+    </header>
+
     <nav>
-      <a href="#plays">Plays</a>
-      <a href="#sobre">Sobre Mim</a>
-      <a href="#contato">Entre em Contato</a>
+      <a href="#plays">🧪 Plays</a>
+      <a href="#sobre">📁 Sobre Mim</a>
+      <a href="#contato">📨 Contato</a>
     </nav>
-  </header>
 
-  <section id="plays">
-    <h2>Plays de Pentest</h2>
+    <section id="plays">
+      <h3>Execução de Testes Automatizados</h3>
 
-    <!-- Play 01 -->
-    <div class="play-card">
-      <h3>Play 01 - Nmap Recon</h3>
-      <img src="plays/play-01-nmap-recon/demo.gif" alt="Demo Nmap" />
-      <button onclick="executarPlay('01')">Executar Play 01</button>
-      <div id="relatorio-play-01" class="relatorio-container"></div>
-    </div>
+      <div class="play-card">
+        <h4>Play 01 - Nmap Recon</h4>
+        <button class="run-btn" onclick="mostrarRelatorio('relatorio-nmap')">
+          ▶️ Executar Teste
+        </button>
+        <div class="relatorio" id="relatorio-nmap">
+          <iframe src="plays/play-01-nmap-recon/relatorio.html"></iframe>
+        </div>
+      </div>
 
-    <!-- Play 02 -->
-    <div class="play-card">
-      <h3>Play 02 - Hydra vs DVWA</h3>
-      <img src="plays/play-02-hydra-dvwa/demo.gif" alt="Demo Hydra" />
-      <button onclick="executarPlay('02')">Executar Play 02</button>
-      <div id="relatorio-play-02" class="relatorio-container"></div>
-    </div>
+      <div class="play-card">
+        <h4>Play 02 - Hydra vs DVWA</h4>
+        <button class="run-btn" onclick="mostrarRelatorio('relatorio-hydra')">
+          ▶️ Executar Teste
+        </button>
+        <div class="relatorio" id="relatorio-hydra">
+          <iframe src="plays/play-02-hydra-dvwa/relatorio.html"></iframe>
+        </div>
+      </div>
 
-    <!-- Play 03 -->
-    <div class="play-card">
-      <h3>Play 03 - SQLMap vs DVWA</h3>
-      <img src="plays/play-03-sqlmap-dvwa/demo.gif" alt="Demo SQLMap" />
-      <button onclick="executarPlay('03')">Executar Play 03</button>
-      <div id="relatorio-play-03" class="relatorio-container"></div>
-    </div>
+      <div class="play-card">
+        <h4>Play 03 - SQLMap vs DVWA</h4>
+        <button class="run-btn" onclick="mostrarRelatorio('relatorio-sqlmap')">
+          ▶️ Executar Teste
+        </button>
+        <div class="relatorio" id="relatorio-sqlmap">
+          <iframe src="plays/play-03-sqlmap-dvwa/relatorio.html"></iframe>
+        </div>
+      </div>
 
-    <!-- Executar Todos -->
-    <div class="play-card">
-      <h3>Executar Todos os Plays</h3>
-      <button onclick="executarTodos()">Executar Todos</button>
-      <div id="relatorio-todos" class="relatorio-container"></div>
-    </div>
-  </section>
+      <div class="play-card">
+        <h4>Executar Todos</h4>
+        <button class="run-btn" onclick="mostrarRelatorio('relatorio-geral')">
+          🎯 Executar Todos os Testes
+        </button>
+        <div class="relatorio" id="relatorio-geral">
+          <iframe src="relatorio-completo.html"></iframe>
+        </div>
+      </div>
+    </section>
 
-  <section id="sobre">
-    <h2>Sobre Mim</h2>
-    <p>Sou Denis Oliveira, apaixonado por qualidade de software e segurança. Este portfólio demonstra habilidades práticas em automação de testes e pentest.</p>
-  </section>
+    <section id="sobre">
+      <h3>Sobre Mim</h3>
+      <p>Sou Denis Oliveira Santos, apaixonado por segurança da informação, testes automatizados e hacking ético. Desenvolvi este portfólio para demonstrar habilidades práticas em pentest e QA.</p>
+    </section>
 
-  <section id="contato">
-    <h2>Entre em Contato</h2>
-    <p>Email: denis@example.com</p>
-    <p>GitHub: <a href="https://github.com/denisdbz" target="_blank">github.com/denisdbz</a></p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Denis Oliveira</p>
-  </footer>
-
-  <div id="loading" class="loading hidden">
-    <img src="assets/hacker-loading.gif" alt="Loading hacker style..." />
-    <p>Executando testes...</p>
+    <section id="contato">
+      <h3>Entre em Contato</h3>
+      <p>📧 denis@example.com</p>
+      <p>🌐 <a href="https://github.com/denisdbz" target="_blank">GitHub</a></p>
+    </section>
   </div>
 
-  <script src="script.js"></script>
+  <script src="matrix.js"></script>
+  <script>
+    function mostrarRelatorio(id) {
+      document.querySelectorAll('.relatorio').forEach(r => r.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
