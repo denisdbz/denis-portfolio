@@ -1,4 +1,3 @@
-// Funções para atualizar a barra de carregamento e mostrar os resultados
 function updateProgressBar(percent) {
   const progress = document.getElementById('progress');
   progress.style.width = percent + '%';
@@ -7,9 +6,9 @@ function updateProgressBar(percent) {
 function showReport(testId, content) {
   const report = document.getElementById(testId);
   report.innerHTML = content;
+  report.style.display = 'block';
 }
 
-// Função para simular execução de um teste
 function executeTest(testName, testId) {
   document.getElementById('loadingBar').style.display = 'block';
   let progress = 0;
@@ -18,13 +17,12 @@ function executeTest(testName, testId) {
     updateProgressBar(progress);
     if (progress >= 100) {
       clearInterval(interval);
-      showReport(testId, `<h3>Resultado do ${testName}</h3><p>Test completed successfully!</p>`);
+      showReport(testId, `<h3>Resultado do ${testName}</h3><p>Teste concluído com sucesso!</p>`);
       document.getElementById('loadingBar').style.display = 'none';
     }
   }, 500);
 }
 
-// Eventos dos Botões
 document.getElementById('runTest01').addEventListener('click', () => {
   executeTest('Teste 1 (Nmap Recon)', 'reportTest01');
 });

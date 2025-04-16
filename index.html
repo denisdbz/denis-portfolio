@@ -1,58 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio Técnico</title>
+  <title>Denis Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Denis' Portfolio</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">Sobre Mim</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- Cabeçalho com navegação -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#sobre">Sobre Mim</a></li>
-        <li><a href="#contato">Contato</a></li>
-        <li><a href="#tests">Tests</a></li>
-      </ul>
-    </nav>
-  </header>
+    <section class="plays">
+      <div class="play" id="play01">
+        <button id="runTest01">Executar Teste 1</button>
+        <div id="reportTest01" class="report"></div>
+      </div>
+      <div class="play" id="play02">
+        <button id="runTest02">Executar Teste 2</button>
+        <div id="reportTest02" class="report"></div>
+      </div>
+      <div class="play" id="play03">
+        <button id="runTest03">Executar Teste 3</button>
+        <div id="reportTest03" class="report"></div>
+      </div>
+      <button id="runAllTests">Executar Todos os Testes</button>
+    </section>
 
-  <!-- Seção "Sobre Mim" -->
-  <section id="sobre">
-    <h2>Sobre Mim</h2>
-    <p>Texto sobre sua trajetória, habilidades, e o que você está buscando em sua carreira.</p>
-  </section>
-
-  <!-- Seção "Contato" -->
-  <section id="contato">
-    <h2>Entre em Contato</h2>
-    <p>Email: denis@example.com</p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/denis">linkedin.com/in/denis</a></p>
-  </section>
-
-  <!-- Seção de Testes -->
-  <section id="tests">
-    <h2>Testes de Pentest</h2>
-
-    <button id="runTest01">Executar Teste 1 (Nmap Recon)</button>
-    <button id="runTest02">Executar Teste 2 (Hydra vs DVWA)</button>
-    <button id="runTest03">Executar Teste 3 (SQLMap vs DVWA)</button>
-    <button id="runAllTests">Executar Todos os Testes</button>
-
-    <!-- Barra de Carregamento -->
-    <div id="loadingBar" style="display:none;">
-      <div id="progress" style="width: 0%; height: 5px; background-color: #00ff00;"></div>
+    <div id="loadingBar" class="loading-bar">
+      <div id="progress"></div>
     </div>
 
-    <!-- Relatórios dos Testes -->
-    <div id="reports">
-      <div id="reportTest01" class="report"></div>
-      <div id="reportTest02" class="report"></div>
-      <div id="reportTest03" class="report"></div>
-    </div>
-  </section>
+    <section id="about">
+      <h2>Sobre Mim</h2>
+      <p>Texto sobre você...</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contato</h2>
+      <p>Formas de entrar em contato...</p>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>

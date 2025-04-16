@@ -1,96 +1,103 @@
-/* Estilo do Body */
+/* Geral */
 body {
-  background-color: #000;
-  color: #00ff00;
+  background-color: #121212;
+  color: #00ff00; /* Verde */
   font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Cabeçalho e navegação */
+/* Container principal */
+.container {
+  padding: 20px;
+}
+
+/* Cabeçalho */
 header {
-  background-color: #111;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-header nav ul {
-  list-style: none;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
 }
 
-header nav ul li {
-  margin: 0 20px;
+header h1 {
+  margin: 0;
+  font-size: 2rem;
 }
 
-header nav ul li a {
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 15px;
+}
+
+nav a {
   color: #00ff00;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 /* Seções */
 section {
-  padding: 20px;
-  margin-top: 80px;
+  margin-top: 20px;
 }
 
+/* Botões */
 button {
-  background-color: #222;
-  color: #00ff00;
+  background-color: #00ff00;
+  color: #121212;
   padding: 10px 20px;
-  border: 2px solid #00ff00;
-  margin: 10px;
-  border-radius: 5px;
+  border: none;
   cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #00ff00;
-  color: #222;
+  background-color: #00cc00;
 }
 
-.report {
-  background-color: #333;
-  padding: 20px;
-  margin: 10px 0;
-  border: 1px solid #00ff00;
-}
-
-/* Barra de Carregamento */
-#loadingBar {
+/* Barra de carregamento */
+.loading-bar {
   width: 100%;
-  background-color: #222;
+  background-color: #444;
+  display: none;
   margin-top: 20px;
 }
 
 #progress {
-  height: 5px;
+  height: 10px;
   background-color: #00ff00;
-  transition: width 1s;
+  width: 0%;
+  transition: width 0.5s ease;
 }
 
-/* Animações suaves */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Relatórios */
+.report {
+  margin-top: 20px;
+  background-color: #333;
+  padding: 15px;
+  display: none;
+  border-radius: 5px;
 }
 
-section {
-  animation: fadeIn 1s ease-in-out;
+.play {
+  margin-bottom: 20px;
 }
 
-/* Responsividade */
-@media screen and (max-width: 768px) {
+h2, h3 {
+  color: #00ff00;
+}
+
+/* Dark mode (se necessário) */
+@media (prefers-color-scheme: dark) {
   body {
-    padding: 10px;
-  }
-
-  button {
-    width: 100%;
-    margin: 5px 0;
+    background-color: #121212;
+    color: #00ff00;
   }
 }
