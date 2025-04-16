@@ -2,64 +2,88 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfólio Técnico - Denis Oliveira Santos</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+  <canvas id="matrix"></canvas>
 
   <header>
-    <h1 class="matrix-title">Portfólio Técnico</h1>
-    <p class="subtitulo">Denis Oliveira Santos</p>
+    <h1>Portfólio Técnico - Denis Oliveira Santos</h1>
+    <div class="rix">
+      <img src="https://media.tenor.com/Y2LFBlBIKW0AAAAi/matrix-code.gif" alt="Rix" />
+    </div>
+    <nav>
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#plays">Pentest Plays</a>
+      <a href="#contato">Entre em Contato</a>
+    </nav>
   </header>
 
-  <!-- Seções Play -->
-  <section class="play">
-    <h2>Play 01 - Nmap Recon</h2>
-    <button class="run-btn" onclick="simularExecucao('relatorio-nmap')">Executar</button>
-    <div class="loading" id="loading-nmap">Executando...</div>
-    <iframe id="relatorio-nmap" src="plays/play-01-nmap-recon/report.html"></iframe>
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>Sou apaixonado por tecnologia, com foco em Qualidade de Software e Pentest. Este portfólio mostra um pouco do que venho explorando.</p>
   </section>
 
-  <section class="play">
-    <h2>Play 02 - Hydra vs DVWA</h2>
-    <button class="run-btn" onclick="simularExecucao('relatorio-hydra')">Executar</button>
-    <div class="loading" id="loading-hydra">Executando...</div>
-    <iframe id="relatorio-hydra" src="plays/play-02-hydra-dvwa/report.html"></iframe>
+  <section id="plays">
+    <h2>Pentest Plays</h2>
+
+    <!-- PLAY 01 -->
+    <div class="play">
+      <h3>Play 01 - Nmap Recon</h3>
+      <button onclick="executarTeste('nmap')">Executar</button>
+      <div id="resultado-nmap" class="relatorio"></div>
+    </div>
+
+    <!-- PLAY 02 -->
+    <div class="play">
+      <h3>Play 02 - Hydra vs DVWA</h3>
+      <button onclick="executarTeste('hydra')">Executar</button>
+      <div id="resultado-hydra" class="relatorio"></div>
+    </div>
+
+    <!-- PLAY 03 -->
+    <div class="play">
+      <h3>Play 03 - SQLMap vs DVWA</h3>
+      <button onclick="executarTeste('sqlmap')">Executar</button>
+      <div id="resultado-sqlmap" class="relatorio"></div>
+    </div>
+
+    <!-- EXECUTAR TODOS -->
+    <div class="play">
+      <h3>Executar Todos os Testes</h3>
+      <button onclick="executarTodos()">Executar Todos</button>
+    </div>
   </section>
 
-  <section class="play">
-    <h2>Play 03 - SQLMap vs DVWA</h2>
-    <button class="run-btn" onclick="simularExecucao('relatorio-sqlmap')">Executar</button>
-    <div class="loading" id="loading-sqlmap">Executando...</div>
-    <iframe id="relatorio-sqlmap" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
-  </section>
-
-  <!-- Seção de Contato -->
-  <section class="contato">
+  <section id="contato">
     <h2>Entre em Contato</h2>
-    <p>
-      📧 <a href="mailto:dns.qa.eng@gmail.com">dns.qa.eng@gmail.com</a><br>
-      📱 <a href="tel:+5511978118097">+55 11 97811-8097</a><br>
-      💼 <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953" target="_blank">LinkedIn</a><br>
-      💻 <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-    </p>
+    <ul>
+      <li><a href="mailto:seuemail@example.com">Email</a></li>
+      <li><a href="https://github.com/denisdbz" target="_blank">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/seu-linkedin" target="_blank">LinkedIn</a></li>
+    </ul>
   </section>
 
-  <!-- Scripts -->
+  <script src="matrix.js"></script>
   <script>
-    function simularExecucao(idIframe) {
-      const loading = document.getElementById("loading-" + idIframe.split("-")[1]);
-      const iframe = document.getElementById(idIframe);
-      iframe.style.display = "none";
-      loading.style.display = "block";
-
+    function executarTeste(nome) {
+      const div = document.getElementById(`resultado-${nome}`);
+      div.innerHTML = '<img src="https://media.tenor.com/Y2LFBlBIKW0AAAAi/matrix-code.gif" alt="Executando..." class="gif-loading" />';
       setTimeout(() => {
-        loading.style.display = "none";
-        iframe.style.display = "block";
-      }, 2500);
+        fetch(`plays/play-0${nome === 'nmap' ? '1' : nome === 'hydra' ? '2' : '3'}-${nome}-dvwa/index.html`)
+          .then(r => r.text())
+          .then(html => div.innerHTML = html)
+          .catch(() => div.innerHTML = "<p>Erro ao carregar o relatório.</p>");
+      }, 1000);
+    }
+
+    function executarTodos() {
+      executarTeste('nmap');
+      executarTeste('hydra');
+      executarTeste('sqlmap');
     }
   </script>
-  <script src="matrix.js"></script>
 </body>
 </html>

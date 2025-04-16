@@ -1,29 +1,112 @@
-/* Estilo para o canvas do efeito Matrix */
-.matrix-canvas {
+body {
+  background-color: black;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+canvas#matrix {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: -1;
-  background: black;
 }
 
-/* Estilo para o corpo da página */
-body {
+header {
+  text-align: center;
+  padding: 30px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+header h1 {
   margin: 0;
-  padding: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-size: 2em;
   color: #00ff00;
-  background: transparent;
 }
 
-/* Estilo para os elementos principais */
-header, section {
-  position: relative;
-  z-index: 1;
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #00ff00;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.rix {
+  margin-top: 10px;
+}
+
+.rix img {
+  width: 60px;
+  height: auto;
+}
+
+section {
+  padding: 40px 20px;
+}
+
+.play {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.6); /* Transparência para ver o efeito Matrix ao fundo */
-  margin: 20px;
+  margin: 20px auto;
+  max-width: 800px;
   border-radius: 10px;
+}
+
+.play h3 {
+  margin-top: 0;
+}
+
+button {
+  background-color: #003300;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: #005500;
+}
+
+.relatorio {
+  margin-top: 20px;
+  background-color: black;
+  border: 1px dashed #00ff00;
+  padding: 10px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li a {
+  color: #00ff00;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}
+
+.gif-loading {
+  width: 100px;
+  display: block;
+  margin: 10px auto;
 }
