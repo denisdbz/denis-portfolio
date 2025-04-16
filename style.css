@@ -1,13 +1,4 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: Arial, sans-serif;
-  background: black;
-  color: #00ff00;
-  overflow-x: hidden;
-}
-
+/* Estilo para o canvas do efeito Matrix */
 .matrix-canvas {
   position: fixed;
   top: 0;
@@ -18,33 +9,21 @@ body, html {
   background: black;
 }
 
-header, section, .contato {
+/* Estilo para o corpo da página */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  color: #00ff00;
+  background: transparent;
+}
+
+/* Estilo para os elementos principais */
+header, section {
   position: relative;
   z-index: 1;
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.6); /* leve transparência */
-  margin: 1rem;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6); /* Transparência para ver o efeito Matrix ao fundo */
+  margin: 20px;
   border-radius: 10px;
-}
-
-.run-btn {
-  background-color: #00ff00;
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-  margin-top: 10px;
-}
-
-.loading {
-  display: none;
-  font-style: italic;
-  margin-top: 10px;
 }

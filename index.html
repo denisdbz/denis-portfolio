@@ -13,6 +13,7 @@
     <p class="subtitulo">Denis Oliveira Santos</p>
   </header>
 
+  <!-- Seções Play -->
   <section class="play">
     <h2>Play 01 - Nmap Recon</h2>
     <button class="run-btn" onclick="simularExecucao('relatorio-nmap')">Executar</button>
@@ -34,6 +35,7 @@
     <iframe id="relatorio-sqlmap" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
   </section>
 
+  <!-- Seção de Contato -->
   <section class="contato">
     <h2>Entre em Contato</h2>
     <p>
@@ -44,6 +46,7 @@
     </p>
   </section>
 
+  <!-- Scripts -->
   <script>
     function simularExecucao(idIframe) {
       const loading = document.getElementById("loading-" + idIframe.split("-")[1]);
