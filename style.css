@@ -1,103 +1,121 @@
-/* Estilo Geral */
+/* Reset e fonte base */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
   margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #111;
+  color: #f4f4f4;
+  line-height: 1.6;
   padding: 20px;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 20px;
+h1, h2, h3 {
+  color: #00ffae;
 }
 
-h1.title {
-  font-size: 36px;
-  color: #444;
-}
-
-button, .button-github {
-  background-color: #008CBA;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+a {
+  color: #00c7ff;
   text-decoration: none;
 }
 
-button:hover, .button-github:hover {
-  background-color: #007B9A;
+a:hover {
+  text-decoration: underline;
 }
 
-.play-card {
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
+.container {
+  max-width: 960px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* Botão GitHub */
+.button-github {
+  background-color: #24292e;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
   margin-bottom: 20px;
 }
 
-.play-card h3 {
-  margin-top: 0;
+.button-github:hover {
+  background-color: #444;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
+/* Cards de play */
+.pentest-plays {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.play-card {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 8px #000;
+  transition: transform 0.2s ease;
+}
+
+.play-card:hover {
+  transform: scale(1.02);
+}
+
+.play-button, .btn {
+  display: inline-block;
+  background-color: #00ffae;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 8px;
   margin-top: 10px;
+  font-weight: bold;
+}
+
+.play-button:hover, .btn:hover {
+  background-color: #00d198;
+}
+
+/* Tabela responsiva */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #222;
+  color: #00ffae;
 }
 
 /* Responsividade */
-
-/* Para telas grandes (desktop) */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1200px;
-  }
-  .play-card {
-    width: 30%;
-    display: inline-block;
-    margin-right: 2%;
-  }
-  .play-card:last-child {
-    margin-right: 0;
-  }
-}
-
-/* Para telas médias (tablets) */
-@media (max-width: 1024px) {
-  .container {
-    padding: 10px;
-  }
-  .play-card {
-    width: 48%;
-    margin: 10px 1%;
-  }
-}
-
-/* Para telas pequenas (celulares) */
-@media (max-width: 600px) {
-  .container {
-    padding: 5px;
-  }
-  .title {
-    font-size: 24px;
-  }
-  .play-card {
-    width: 100%;
-    margin: 10px 0;
-  }
+@media (min-width: 600px) {
   .pentest-plays {
-    display: block;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (min-width: 900px) {
+  .pentest-plays {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Imagens */
+img {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+/* Certificações e Contato */
+ul {
+  list-style-type: square;
+  padding-left: 20px;
 }
