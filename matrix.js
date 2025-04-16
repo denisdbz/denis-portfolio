@@ -1,31 +1,28 @@
-const canvas = document.getElementById("matrix");
+const canvas = document.getElementById("matrixCanvas");
 const ctx = canvas.getContext("2d");
 
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-let columns = canvas.width / 20;
-let drops = [];
-
-for (let x = 0; x < columns; x++)
-  drops[x] = 1;
+const letters = "0123456789ABCDEF";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array.from({ length: columns }, () => 1);
 
 function draw() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = "#0F0";
-  ctx.font = "20px monospace";
+  ctx.font = fontSize + "px monospace";
 
-  for (let i = 0; i < drops.length; i++) {
-    let text = String.fromCharCode(0x30A0 + Math.random() * 96);
-    ctx.fillText(text, i * 20, drops[i] * 20);
+  drops.forEach((y, i) => {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    const x = i * fontSize;
+    ctx.fillText(text, x, y * fontSize);
 
-    if (drops[i] * 20 > canvas.height && Math.random() > 0.975)
-      drops[i] = 0;
-
-    drops[i]++;
-  }
+    drops[i] = y * fontSize > canvas.height && Math.random() > 0.975 ? 0 : y + 1;
+  });
 }
 
 setInterval(draw, 33);

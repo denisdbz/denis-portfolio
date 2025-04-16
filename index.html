@@ -5,84 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfólio Técnico - Denis Oliveira Santos</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="matrix.js"></script>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-
+  <canvas id="matrixCanvas"></canvas>
   <header>
     <h1>Portfólio Técnico - Denis Oliveira Santos</h1>
-    <div class="rix">
-      <img src="https://media.tenor.com/Y2LFBlBIKW0AAAAi/matrix-code.gif" alt="Rix" />
-    </div>
     <nav>
-      <a href="#sobre">Sobre Mim</a>
-      <a href="#plays">Pentest Plays</a>
+      <a href="#play01">Play 01 - Nmap Recon</a>
+      <a href="#play02">Play 02 - Hydra DVWA</a>
+      <a href="#play03">Play 03 - SQLMap</a>
       <a href="#contato">Entre em Contato</a>
     </nav>
   </header>
 
-  <section id="sobre">
-    <h2>Sobre Mim</h2>
-    <p>Sou apaixonado por tecnologia, com foco em Qualidade de Software e Pentest. Este portfólio mostra um pouco do que venho explorando.</p>
-  </section>
+  <main>
+    <section id="play01">
+      <h2>Play 01 - Nmap Recon</h2>
+      <button onclick="toggleReport('report-nmap')">Ver Relatório</button>
+      <div id="report-nmap" class="report">
+        <iframe src="plays/play-01-nmap-recon/relatorio-nmap.html"></iframe>
+      </div>
+    </section>
 
-  <section id="plays">
-    <h2>Pentest Plays</h2>
+    <section id="play02">
+      <h2>Play 02 - Hydra DVWA</h2>
+      <button onclick="toggleReport('report-hydra')">Ver Relatório</button>
+      <div id="report-hydra" class="report">
+        <iframe src="plays/play-02-hydra-dvwa/relatorio-hydra.html"></iframe>
+      </div>
+    </section>
 
-    <!-- PLAY 01 -->
-    <div class="play">
-      <h3>Play 01 - Nmap Recon</h3>
-      <button onclick="executarTeste('nmap')">Executar</button>
-      <div id="resultado-nmap" class="relatorio"></div>
-    </div>
+    <section id="play03">
+      <h2>Play 03 - SQLMap DVWA</h2>
+      <button onclick="toggleReport('report-sqlmap')">Ver Relatório</button>
+      <div id="report-sqlmap" class="report">
+        <iframe src="plays/play-03-sqlmap-dvwa/relatorio-sqlmap.html"></iframe>
+      </div>
+    </section>
 
-    <!-- PLAY 02 -->
-    <div class="play">
-      <h3>Play 02 - Hydra vs DVWA</h3>
-      <button onclick="executarTeste('hydra')">Executar</button>
-      <div id="resultado-hydra" class="relatorio"></div>
-    </div>
+    <section id="contato">
+      <h2>Entre em Contato</h2>
+      <p>Email: <a href="mailto:denis@example.com">denis@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/denisdbz" target="_blank">denisdbz</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/denis" target="_blank">/in/denis</a></p>
+    </section>
+  </main>
 
-    <!-- PLAY 03 -->
-    <div class="play">
-      <h3>Play 03 - SQLMap vs DVWA</h3>
-      <button onclick="executarTeste('sqlmap')">Executar</button>
-      <div id="resultado-sqlmap" class="relatorio"></div>
-    </div>
-
-    <!-- EXECUTAR TODOS -->
-    <div class="play">
-      <h3>Executar Todos os Testes</h3>
-      <button onclick="executarTodos()">Executar Todos</button>
-    </div>
-  </section>
-
-  <section id="contato">
-    <h2>Entre em Contato</h2>
-    <ul>
-      <li><a href="mailto:seuemail@example.com">Email</a></li>
-      <li><a href="https://github.com/denisdbz" target="_blank">GitHub</a></li>
-      <li><a href="https://linkedin.com/in/seu-linkedin" target="_blank">LinkedIn</a></li>
-    </ul>
-  </section>
-
-  <script src="matrix.js"></script>
   <script>
-    function executarTeste(nome) {
-      const div = document.getElementById(`resultado-${nome}`);
-      div.innerHTML = '<img src="https://media.tenor.com/Y2LFBlBIKW0AAAAi/matrix-code.gif" alt="Executando..." class="gif-loading" />';
-      setTimeout(() => {
-        fetch(`plays/play-0${nome === 'nmap' ? '1' : nome === 'hydra' ? '2' : '3'}-${nome}-dvwa/index.html`)
-          .then(r => r.text())
-          .then(html => div.innerHTML = html)
-          .catch(() => div.innerHTML = "<p>Erro ao carregar o relatório.</p>");
-      }, 1000);
-    }
-
-    function executarTodos() {
-      executarTeste('nmap');
-      executarTeste('hydra');
-      executarTeste('sqlmap');
+    function toggleReport(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
     }
   </script>
 </body>
