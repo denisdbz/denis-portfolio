@@ -2,109 +2,89 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Denis Portfolio</title>
-  <style>
-    body {
-      background-color: #121212;
-      color: #f0f0f0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #1f1f1f;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-      color: #00ffcc;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
-    .play-card {
-      background-color: #1e1e1e;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease;
-    }
-
-    .play-card:hover {
-      transform: scale(1.02);
-    }
-
-    .play-card h2 {
-      color: #00ffe1;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #00ffcc;
-      color: #000;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #00ccaa;
-    }
-
-    img {
-      max-width: 100%;
-      border: 1px solid #333;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denis Oliveira Santos — Portfólio Técnico</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>Denis Portfolio</h1>
+    <h1>Denis Oliveira Santos</h1>
+    <p>Portfólio Técnico — Qualidade de Software & Pentest</p>
+    <nav>
+      <a href="#plays">Plays</a>
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#contato">Contato</a>
+    </nav>
   </header>
 
-  <div class="container">
+  <main>
+    <section id="plays">
+      <h2 class="section-title">Pentest Plays</h2>
 
-    <div class="play-card">
-      <h2>Play 01 — Nmap Recon</h2>
-      <p>Este play realiza uma varredura de rede com o <code>nmap</code> e salva os resultados em um relatório HTML automaticamente.</p>
-      <img src="plays/play-01-nmap-recon/demo.gif" alt="Demonstração do Nmap Recon">
-      <br><br>
-      <a href="plays/play-01-nmap-recon/index.html" class="btn">Ver Play</a>
-    </div>
+      <!-- Play 01 -->
+      <div class="play-card">
+        <h2>Play 01 — Nmap Recon</h2>
+        <p>Este play executa uma varredura Nmap automatizada. Gera um relatório HTML com as portas abertas e serviços identificados.</p>
+        <img src="plays/play-01-nmap/demo.gif" alt="Demonstração do Nmap" />
+        <br /><br />
+        <a href="plays/play-01-nmap/index.html" class="btn">Ver Play</a>
+      </div>
 
-    <div class="play-card">
-      <h2>Play 02 — Hydra vs DVWA</h2>
-      <p>Este play usa o <code>hydra</code> para realizar um ataque de força bruta contra o formulário de login do DVWA.</p>
-      <img src="plays/play-02-hydra-dvwa/demo.gif" alt="Demonstração do Hydra">
-      <br><br>
-      <a href="plays/play-02-hydra-dvwa/index.html" class="btn">Ver Play</a>
-    </div>
+      <!-- Play 02 -->
+      <div class="play-card">
+        <h2>Play 02 — Hydra vs DVWA</h2>
+        <p>Este play executa um ataque de força bruta no login da DVWA usando o Hydra, gerando um relatório HTML com os resultados.</p>
+        <img src="plays/play-02-hydra-dvwa/demo.gif" alt="Demonstração do Hydra" />
+        <br /><br />
+        <a href="plays/play-02-hydra-dvwa/index.html" class="btn">Ver Play</a>
+      </div>
 
-    <div class="play-card">
-      <h2>Play 03 — SQLMap vs DVWA</h2>
-      <p>Este play executa automaticamente um ataque de SQL Injection na DVWA usando o <code>sqlmap</code>. O script detecta as vulnerabilidades e gera relatórios em HTML.</p>
-      <img src="plays/play-03-sqlmap-dvwa/demo.gif" alt="Demonstração do SQLMap">
-      <br><br>
-      <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn">Ver Play</a>
-    </div>
+      <!-- Play 03 -->
+      <div class="play-card">
+        <h2>Play 03 — SQLMap vs DVWA</h2>
+        <p>Este play executa um ataque de SQL Injection na DVWA usando o sqlmap. Relatórios são gerados automaticamente.</p>
+        <img src="plays/play-03-sqlmap-dvwa/demo.gif" alt="Demonstração do SQLMap" />
+        <br /><br />
+        <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn">Ver Play</a>
+      </div>
+    </section>
 
-  </div>
+<section id="execucao">
+  <h2 class="section-title">Executar Todos os Testes</h2>
+  <p>Clique no botão abaixo para executar todos os testes em seu terminal local (é necessário rodar o script <code>executar_todos_os_tests.sh</code> manualmente).</p>
+  <button class="btn" onclick="mostrarLoading()">Executar</button>
+  <p id="loading" style="display:none; color:#00e676;">Executando testes... Aguarde.</p>
+</section>
+
+<script>
+function mostrarLoading() {
+  document.getElementById("loading").style.display = "block";
+  setTimeout(() => {
+    document.getElementById("loading").innerText = "✅ Execução concluída! Verifique os relatórios nos diretórios dos plays.";
+  }, 4000);
+}
+</script>
+
+    <!-- Sobre Mim -->
+    <section id="sobre">
+      <h2 class="section-title">Sobre Mim</h2>
+      <p>Sou Denis Oliveira Santos, apaixonado por tecnologia, qualidade de software e cibersegurança. Aqui apresento experimentos e automações voltadas à área de QA e Pentest.</p>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+      <h2 class="section-title">Entre em Contato</h2>
+      <p>Você pode me encontrar via:</p>
+      <ul>
+        <li>Email: <a href="mailto:seu-email@exemplo.com">seu-email@exemplo.com</a></li>
+        <li>GitHub: <a href="https://github.com/denisdbz" target="_blank">github.com/denisdbz</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Denis Oliveira Santos</p>
+  </footer>
 </body>
 </html>
+

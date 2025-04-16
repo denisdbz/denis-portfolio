@@ -1,121 +1,75 @@
-/* Reset e fonte base */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #111;
-  color: #f4f4f4;
-  line-height: 1.6;
-  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  color: #f0f0f0;
 }
 
-h1, h2, h3 {
-  color: #00ffae;
+header {
+  background: #1f1f1f;
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 2px solid #444;
 }
 
-a {
-  color: #00c7ff;
+nav a {
+  margin: 0 1rem;
+  color: #f0f0f0;
   text-decoration: none;
 }
 
-a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
-.container {
-  max-width: 960px;
-  margin: auto;
-  padding: 0 20px;
-}
-
-/* Botão GitHub */
-.button-github {
-  background-color: #24292e;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-.button-github:hover {
-  background-color: #444;
-}
-
-/* Cards de play */
-.pentest-plays {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+.section-title {
+  text-align: center;
+  margin-top: 3rem;
 }
 
 .play-card {
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 0 8px #000;
-  transition: transform 0.2s ease;
+  background: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
-.play-card:hover {
-  transform: scale(1.02);
-}
-
-.play-button, .btn {
-  display: inline-block;
-  background-color: #00ffae;
-  color: black;
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.play-button:hover, .btn:hover {
-  background-color: #00d198;
-}
-
-/* Tabela responsiva */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  border: 1px solid #333;
-  padding: 12px;
-  text-align: left;
-}
-
-th {
-  background-color: #222;
-  color: #00ffae;
-}
-
-/* Responsividade */
-@media (min-width: 600px) {
-  .pentest-plays {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  .pentest-plays {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Imagens */
-img {
+.play-card img {
   max-width: 100%;
-  border-radius: 6px;
+  border-radius: 5px;
+  border: 1px solid #444;
 }
 
-/* Certificações e Contato */
-ul {
-  list-style-type: square;
-  padding-left: 20px;
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  background-color: #00bcd4;
+  color: #000;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #0097a7;
+}
+
+footer {
+  background: #1f1f1f;
+  padding: 1rem;
+  text-align: center;
+  border-top: 2px solid #444;
+  font-size: 0.9rem;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .play-card {
+    margin: 1rem;
+    padding: 1rem;
+  }
 }
