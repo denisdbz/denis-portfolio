@@ -1,0 +1,35 @@
+name: Cypress Tests
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'cypress/**'
+      - 'Dockerfile'
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar testes Cypress
+        run: |
+          npx cypress run
+
+      - name: Salvar resultados
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-report
+          path: cypress/reports/html/

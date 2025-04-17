@@ -4,17 +4,32 @@ const ctx = canvas.getContext('2d');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-let letters = Array(256).join(1).split('');
+const katakana = 'アァイィウヴエカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン';
+const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const nums = '0123456789';
 
-function drawMatrix() {
+const alphabet = katakana + latin + nums;
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array.from({ length: columns }).fill(1);
+
+function draw() {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
   ctx.fillStyle = '#0F0';
-  letters.forEach((y_pos, index) => {
-    const text = String.fromCharCode(3e4 + Math.random() * 33);
-    const x_pos = index * 10;
-    ctx.fillText(text, x_pos, y_pos);
-    letters[index] = y_pos > 758 + Math.random() * 1e4 ? 0 : y_pos + 10;
-  });
+  ctx.font = fontSize + 'px monospace';
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+
+    drops[i]++;
+  }
 }
-setInterval(drawMatrix, 33);
+
+setInterval(draw, 33);
