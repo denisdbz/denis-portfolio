@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Relatório Nmap</title>
-  <style>
-    body {
-      background-color: black;
-      color: #00ff00;
-      font-family: monospace;
-      padding: 1rem;
-    }
-    h1 {
-      color: #0f0;
-      border-bottom: 1px solid #0f0;
-    }
-    pre {
-      background-color: #111;
-      padding: 1rem;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Relatório - Nmap Recon</title>
+  <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-  <h1>Relatório Nmap</h1>
-  <pre>
-PORT     STATE SERVICE
-22/tcp   open  ssh
-80/tcp   open  http
-443/tcp  open  https
-  </pre>
+  <div class="report-container">
+    <h1>Relatório do Teste - Nmap Recon</h1>
+    <p>Este é o relatório gerado após a execução do teste de varredura de rede com o Nmap. O objetivo deste teste é identificar hosts ativos e serviços em execução na rede local.</p>
+    
+    <!-- Exemplo de um resultado de scan -->
+    <pre>
+      Nmap scan report for 192.168.1.1
+      Host is up (0.0023s latency).
+      Not shown: 998 filtered ports
+      PORT     STATE SERVICE
+      22/tcp   open  ssh
+      80/tcp   open  http
+    </pre>
+
+    <p>O relatório mostra os hosts e serviços detectados durante a varredura. Aqui, vemos que a máquina 192.168.1.1 possui os serviços SSH (porta 22) e HTTP (porta 80) abertos.</p>
+  </div>
 </body>
 </html>
