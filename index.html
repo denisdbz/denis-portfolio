@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Portfólio Técnico - Denis Oliveira Santos</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="matrix.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
+  <!-- Canvas para a animação do Matrix -->
+  <canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+
   <header>
-    <h1>Portfólio Técnico - Denis Oliveira Santos</h1>
-    <nav>
-      <a href="#play01">Play 01 - Nmap Recon</a>
-      <a href="#play02">Play 02 - Hydra DVWA</a>
-      <a href="#play03">Play 03 - SQLMap</a>
-      <a href="#contato">Entre em Contato</a>
-    </nav>
+    <h1 class="matrix-title">Portfólio Técnico</h1>
+    <p class="subtitulo">Denis Oliveira Santos</p>
   </header>
 
-  <main>
-    <section id="play01">
-      <h2>Play 01 - Nmap Recon</h2>
-      <button onclick="toggleReport('report-nmap')">Ver Relatório</button>
-      <div id="report-nmap" class="report">
-        <iframe src="plays/play-01-nmap-recon/relatorio-nmap.html"></iframe>
-      </div>
-    </section>
+  <!-- Teste Play 01 - Nmap Recon -->
+  <section class="play">
+    <h2>Play 01 - Nmap Recon</h2>
+    <button class="run-btn" onclick="simularExecucao('relatorio-nmap')">Executar</button>
+    <div class="loading" id="loading-nmap">Executando...</div>
+    <iframe id="relatorio-nmap" src="plays/play-01-nmap-recon/report.html"></iframe>
+  </section>
 
-    <section id="play02">
-      <h2>Play 02 - Hydra DVWA</h2>
-      <button onclick="toggleReport('report-hydra')">Ver Relatório</button>
-      <div id="report-hydra" class="report">
-        <iframe src="plays/play-02-hydra-dvwa/relatorio-hydra.html"></iframe>
-      </div>
-    </section>
+  <!-- Teste Play 02 - Hydra vs DVWA -->
+  <section class="play">
+    <h2>Play 02 - Hydra vs DVWA</h2>
+    <button class="run-btn" onclick="simularExecucao('relatorio-hydra')">Executar</button>
+    <div class="loading" id="loading-hydra">Executando...</div>
+    <iframe id="relatorio-hydra" src="plays/play-02-hydra-dvwa/report.html"></iframe>
+  </section>
 
-    <section id="play03">
-      <h2>Play 03 - SQLMap DVWA</h2>
-      <button onclick="toggleReport('report-sqlmap')">Ver Relatório</button>
-      <div id="report-sqlmap" class="report">
-        <iframe src="plays/play-03-sqlmap-dvwa/relatorio-sqlmap.html"></iframe>
-      </div>
-    </section>
+  <!-- Teste Play 03 - SQLMap vs DVWA -->
+  <section class="play">
+    <h2>Play 03 - SQLMap vs DVWA</h2>
+    <button class="run-btn" onclick="simularExecucao('relatorio-sqlmap')">Executar</button>
+    <div class="loading" id="loading-sqlmap">Executando...</div>
+    <iframe id="relatorio-sqlmap" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
+  </section>
 
-    <section id="contato">
-      <h2>Entre em Contato</h2>
-      <p>Email: <a href="mailto:denis@example.com">denis@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/denisdbz" target="_blank">denisdbz</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/denis" target="_blank">/in/denis</a></p>
-    </section>
-  </main>
+  <!-- Seção de Contato -->
+  <section class="contato">
+    <h2>Entre em Contato</h2>
+    <p>
+      📧 <a href="mailto:denis@example.com">denis@example.com</a><br>
+      💼 <a href="https://www.linkedin.com/in/denis-oliveira-santos" target="_blank">LinkedIn</a><br>
+      💻 <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
+    </p>
+  </section>
 
+  <!-- Script para execução dos testes -->
   <script>
-    function toggleReport(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
+    function simularExecucao(idIframe) {
+      const loading = document.getElementById("loading-" + idIframe.split("-")[1]);
+      const iframe = document.getElementById(idIframe);
+      iframe.style.display = "none";
+      loading.style.display = "block";
+
+      setTimeout(() => {
+        loading.style.display = "none";
+        iframe.style.display = "block";
+      }, 2500); // Simula o tempo de execução do teste
     }
   </script>
+
+  <!-- Script da animação do Matrix -->
+  <script src="matrix.js"></script>
 </body>
 </html>
