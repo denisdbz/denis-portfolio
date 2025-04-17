@@ -1,37 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Relatório SQLMap</title>
-  <link rel="stylesheet" href="../../style.css"> 
- <style>
-    body {
-      background-color: black;
-      color: #00ff00;
-      font-family: monospace;
-      padding: 1rem;
-    }
-    h1 {
-      color: #0f0;
-      border-bottom: 1px solid #0f0;
-    }
-    pre {
-      background-color: #111;
-      padding: 1rem;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-  <h1>Relatório SQLMap</h1>
-  <pre>
-sqlmap identified the following injection point(s) with a total of 1 HTTP(s) request:
----
-Parameter: id (GET)
-Type: boolean-based blind
-Title: AND boolean-based blind - WHERE or HAVING clause
-Payload: id=1 AND 1=1
-  </pre>
+  <div class="report-container">
+    <h2>Relatório SQLMap</h2>
+    <pre class="report-output">
+Banco de dados vulnerável detectado: dvwa
+Tabelas extraídas: users, logins
+Colunas em 'users': id, username, password
+Exploração bem-sucedida!
+    </pre>
+  </div>
 </body>
 </html>
