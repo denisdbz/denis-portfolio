@@ -9,44 +9,49 @@
   <!-- Canvas para a animação do Matrix -->
   <canvas id="matrixCanvas" class="matrix-canvas"></canvas>
 
-  <header>
-    <h1 class="matrix-title">Portfólio Técnico</h1>
-    <p class="subtitulo">Denis Oliveira Santos</p>
-  </header>
+  <!-- Conteúdo principal -->
+  <div class="content">
 
-  <!-- Teste Play 01 - Nmap Recon -->
-  <section class="play">
-    <h2>Play 01 - Nmap Recon</h2>
-    <button class="run-btn" onclick="simularExecucao('relatorio-nmap')">Executar</button>
-    <div class="loading" id="loading-nmap">Executando...</div>
-    <iframe id="relatorio-nmap" src="plays/play-01-nmap-recon/report.html"></iframe>
-  </section>
+    <header>
+      <h1 class="matrix-title">Portfólio Técnico</h1>
+      <p class="subtitulo">Denis Oliveira Santos</p>
+    </header>
 
-  <!-- Teste Play 02 - Hydra vs DVWA -->
-  <section class="play">
-    <h2>Play 02 - Hydra vs DVWA</h2>
-    <button class="run-btn" onclick="simularExecucao('relatorio-hydra')">Executar</button>
-    <div class="loading" id="loading-hydra">Executando...</div>
-    <iframe id="relatorio-hydra" src="plays/play-02-hydra-dvwa/report.html"></iframe>
-  </section>
+    <!-- Teste Play 01 - Nmap Recon -->
+    <section class="play">
+      <h2>Play 01 - Nmap Recon</h2>
+      <button class="run-btn" onclick="simularExecucao('relatorio-nmap')">Executar</button>
+      <div class="loading" id="loading-nmap">Executando...</div>
+      <iframe id="relatorio-nmap" src="plays/play-01-nmap-recon/report.html"></iframe>
+    </section>
 
-  <!-- Teste Play 03 - SQLMap vs DVWA -->
-  <section class="play">
-    <h2>Play 03 - SQLMap vs DVWA</h2>
-    <button class="run-btn" onclick="simularExecucao('relatorio-sqlmap')">Executar</button>
-    <div class="loading" id="loading-sqlmap">Executando...</div>
-    <iframe id="relatorio-sqlmap" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
-  </section>
+    <!-- Teste Play 02 - Hydra vs DVWA -->
+    <section class="play">
+      <h2>Play 02 - Hydra vs DVWA</h2>
+      <button class="run-btn" onclick="simularExecucao('relatorio-hydra')">Executar</button>
+      <div class="loading" id="loading-hydra">Executando...</div>
+      <iframe id="relatorio-hydra" src="plays/play-02-hydra-dvwa/report.html"></iframe>
+    </section>
 
-  <!-- Seção de Contato -->
-  <section class="contato">
-    <h2>Entre em Contato</h2>
-    <p>
-      📧 <a href="mailto:denis@example.com">denis@example.com</a><br>
-      💼 <a href="https://www.linkedin.com/in/denis-oliveira-santos" target="_blank">LinkedIn</a><br>
-      💻 <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-    </p>
-  </section>
+    <!-- Teste Play 03 - SQLMap vs DVWA -->
+    <section class="play">
+      <h2>Play 03 - SQLMap vs DVWA</h2>
+      <button class="run-btn" onclick="simularExecucao('relatorio-sqlmap')">Executar</button>
+      <div class="loading" id="loading-sqlmap">Executando...</div>
+      <iframe id="relatorio-sqlmap" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section class="contato">
+      <h2>Entre em Contato</h2>
+      <p>
+        📧 <a href="mailto:denis@example.com">denis@example.com</a><br>
+        💼 <a href="https://www.linkedin.com/in/denis-oliveira-santos" target="_blank">LinkedIn</a><br>
+        💻 <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
+      </p>
+    </section>
+
+  </div> <!-- Fim do conteúdo principal -->
 
   <!-- Script para execução dos testes -->
   <script>
