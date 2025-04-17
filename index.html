@@ -1,35 +1,84 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Denis | Portfólio Técnico</title>
+  <title>Portfólio Técnico - Denis</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="matrix"></canvas>
+  <canvas id="matrixCanvas"></canvas>
 
-  <div class="container">
-    <h1 class="titulo">Denis | Portfólio Técnico</h1>
-    <p class="descricao">
-      Profissional de QA e Pentest com foco em qualidade, segurança e automação.
-    </p>
+  <header>
+    <h1>Portfólio Técnico - Denis</h1>
+    <nav>
+      <ul>
+        <li><a href="#sobre">Sobre Mim</a></li>
+        <li><a href="#plays">Pentest & QA Plays</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <h2 class="subtitulo">Pentest & QA Plays</h2>
-    <ul class="lista-plays">
-      <li><a href="plays/play-01-nmap-recon/index.html">Play 01 - Nmap Recon</a></li>
-      <li><a href="plays/play-02-hydra-dvwa/index.html">Play 02 - Hydra vs DVWA</a></li>
-      <li><a href="plays/play-03-sqlmap-dvwa/index.html">Play 03 - SQLMap vs DVWA</a></li>
-      <li><a href="plays/play-04-cypress/index.html">Play 04 - Teste Cypress</a></li>
-      <li><a href="plays/play-05-api/report.html">Play 05 - Testes de API</a></li>
-      <li><a href="plays/play-05-mobile/index.html">Play 06 - Testes Mobile</a></li>
-      <li><a href="plays/play-06-carga/index.html">Play 07 - Teste de Carga</a></li>
-    </ul>
+  <main>
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Sou Denis, apaixonado por tecnologia, especializado em Qualidade de Software e Segurança da Informação. Domino ferramentas como Cypress, Nmap, Hydra, SQLMap e ambientes Linux voltados para automação e pentest. Este portfólio reúne demonstrações práticas de minhas habilidades técnicas em ação.</p>
+    </section>
 
-    <footer class="rodape">
-      <p>© 2025 Denis | Portfólio Técnico</p>
-    </footer>
-  </div>
+    <section id="plays">
+      <h2>Pentest & QA Plays</h2>
+
+      <!-- Play 01 -->
+      <div class="play">
+        <h3>Play 01: Nmap Recon</h3>
+        <p>Mapeamento de rede usando Nmap com geração de relatório HTML automatizado.</p>
+        <a href="plays/play-01-nmap-recon/index.html" class="btn" target="_blank">Ver Relatório</a>
+      </div>
+
+      <!-- Play 02 -->
+      <div class="play">
+        <h3>Play 02: Hydra vs DVWA</h3>
+        <p>Força bruta em login do DVWA com Hydra, usando dicionário e relatório visual.</p>
+        <a href="plays/play-02-hydra-dvwa/index.html" class="btn" target="_blank">Ver Relatório</a>
+      </div>
+
+      <!-- Play 03 -->
+      <div class="play">
+        <h3>Play 03: SQLMap vs DVWA</h3>
+        <p>Detecção e exploração de vulnerabilidades SQLi no DVWA com SQLMap.</p>
+        <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn" target="_blank">Ver Relatório</a>
+      </div>
+
+      <!-- Play 04 -->
+      <div class="play">
+        <h3>Play 04: Cypress - Teste Automatizado</h3>
+        <p>Execução de testes automatizados E2E com Cypress. Inclui relatório e gravação em GIF.</p>
+        <a href="plays/play-04-cypress/index.html" class="btn" target="_blank">Ver Relatório</a>
+      </div>
+
+      <!-- Projeto Avaliação QA -->
+      <div class="play">
+        <h3>Projeto: Avaliação QA Automação</h3>
+        <p>Projeto real de automação com Cypress. Inclui testes automatizados, relatório e repositório público.</p>
+        <a href="https://github.com/denisdbz/avaliacao-qa-automacao" class="btn" target="_blank">Ver Repositório</a>
+        <a href="plays/play-05-avaliacao-qa/index.html" class="btn" target="_blank">Ver Relatório</a>
+      </div>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <ul>
+        <li>Email: <a href="mailto:denis.seuemail@exemplo.com">denis.seuemail@exemplo.com</a></li>
+        <li>GitHub: <a href="https://github.com/denisdbz" target="_blank">github.com/denisdbz</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/seulinkedin" target="_blank">linkedin.com/in/seulinkedin</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Denis - Portfólio Técnico. Todos os direitos reservados.</p>
+  </footer>
 
   <script src="matrix.js"></script>
 </body>
