@@ -1,1 +1,36 @@
-<html><body><h2>Sample Report</h2></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Relatório SQLMap</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 1rem;
+    }
+    h1 {
+      color: #0f0;
+      border-bottom: 1px solid #0f0;
+    }
+    pre {
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Relatório SQLMap</h1>
+  <pre>
+sqlmap identified the following injection point(s) with a total of 1 HTTP(s) request:
+---
+Parameter: id (GET)
+Type: boolean-based blind
+Title: AND boolean-based blind - WHERE or HAVING clause
+Payload: id=1 AND 1=1
+  </pre>
+</body>
+</html>
