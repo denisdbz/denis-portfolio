@@ -1,84 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio Técnico - Denis Oliveira Santos</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Brandon+Grotesque&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Canvas para a animação do Matrix -->
-  <canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+  <canvas id="matrixCanvas"></canvas>
+  <div class="container">
+    <h1>Portfólio Técnico</h1>
+    <p class="sobre-mim">Sou Denis Oliveira Santos, profissional apaixonado por qualidade de software e segurança da informação. Domino testes automatizados com Cypress, estratégias de QA e pentests utilizando Kali Linux, com foco em resultados consistentes e melhoria contínua.</p>
+    
+    <div class="projeto">
+      <h2>Avaliação QA Automação</h2>
+      <p>Projeto de automação de testes com Cypress.</p>
+      <a href="https://github.com/denisdbz/avaliacao-qa-automacao.git" target="_blank">Ver no GitHub</a>
+    </div>
 
-  <!-- Conteúdo principal -->
-  <div class="content">
+    <div class="executar-testes">
+      <button onclick="executarTestes()">Executar Todos os Testes</button>
+      <p id="loading" style="display: none;">Executando... <span class="blink">█</span></p>
+    </div>
 
-    <header>
-      <h1 class="matrix-title">Portfólio Técnico</h1>
-      <p class="subtitulo">Denis Oliveira Santos</p>
-    </header>
-
-    <!-- Seção Sobre Mim -->
-    <section class="sobre-mim">
-      <h2>Sobre Mim</h2>
-      <p>Profissional apaixonado por tecnologia, com experiência em testes de segurança (Pentest) e automação de testes utilizando ferramentas como Cypress. Comprometido com a qualidade e segurança de aplicações, busco constantemente aprimorar minhas habilidades e contribuir para projetos desafiadores.</p>
-    </section>
-
-    <!-- Teste Play 01 - Nmap Recon -->
-    <section class="play">
-      <h2>Play 01 - Nmap Recon</h2>
-      <p>Este teste realiza uma varredura de rede utilizando o Nmap para identificar hosts ativos e serviços em execução na rede local.</p>
-      <button class="run-btn" onclick="simularExecucao('relatorio-nmap')">Executar</button>
-      <div class="loading" id="loading-nmap">Executando...</div>
-      <iframe id="relatorio-nmap" src="plays/play-01-nmap-recon/report.html"></iframe>
-    </section>
-
-    <!-- Teste Play 02 - Hydra vs DVWA -->
-    <section class="play">
-      <h2>Play 02 - Hydra vs DVWA</h2>
-      <p>Este teste utiliza o Hydra para realizar um ataque de força bruta a um formulário de login vulnerável, no DVWA (Damn Vulnerable Web Application).</p>
-      <button class="run-btn" onclick="simularExecucao('relatorio-hydra')">Executar</button>
-      <div class="loading" id="loading-hydra">Executando...</div>
-      <iframe id="relatorio-hydra" src="plays/play-02-hydra-dvwa/report.html"></iframe>
-    </section>
-
-    <!-- Teste Play 03 - SQLMap vs DVWA -->
-    <section class="play">
-      <h2>Play 03 - SQLMap vs DVWA</h2>
-      <p>Este teste utiliza o SQLMap para identificar e explorar vulnerabilidades de SQL Injection em uma aplicação web vulnerável, o DVWA.</p>
-      <button class="run-btn" onclick="simularExecucao('relatorio-sqlmap')">Executar</button>
-      <div class="loading" id="loading-sqlmap">Executando...</div>
-      <iframe id="relatorio-sqlmap" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
-    </section>
-
-    <!-- Seção de Contato -->
-    <section class="contato">
-      <h2>Entre em Contato</h2>
-      <p>
-        📧 <a href="mailto:dns.qa.eng@gmail.com">dns.qa.eng@gmail.com</a><br>
-        💼 <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a><br>
-        💻 <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-      </p>
-    </section>
-
-  </div> <!-- Fim do conteúdo principal -->
-
-  <!-- Script para execução dos testes -->
+    <iframe id="report-frame" src="" style="display:none;"></iframe>
+  </div>
+  <script src="matrix.js"></script>
   <script>
-    function simularExecucao(idIframe) {
-      const loading = document.getElementById("loading-" + idIframe.split("-")[1]);
-      const iframe = document.getElementById(idIframe);
-      iframe.style.display = "none";
-      loading.style.display = "block";
-
+    function executarTestes() {
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('report-frame').style.display = 'none';
       setTimeout(() => {
-        loading.style.display = "none";
-        iframe.style.display = "block";
-      }, 2500); // Simula o tempo de execução do teste
+        document.getElementById('report-frame').src = 'relatorios/relatorio-cypress.html';
+        document.getElementById('report-frame').style.display = 'block';
+        document.getElementById('loading').style.display = 'none';
+      }, 3000);
     }
   </script>
-
-  <!-- Script da animação do Matrix -->
-  <script src="matrix.js"></script>
 </body>
 </html>
