@@ -1,40 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio Técnico - Denis Oliveira Santos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio Técnico - Denis Oliveira</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
-  <div class="container">
-    <h1>Portfólio Técnico</h1>
-    <p class="sobre-mim">Sou Denis Oliveira Santos, profissional apaixonado por qualidade de software e segurança da informação. Domino testes automatizados com Cypress, estratégias de QA e pentests utilizando Kali Linux, com foco em resultados consistentes e melhoria contínua.</p>
-    
-    <div class="projeto">
-      <h2>Avaliação QA Automação</h2>
-      <p>Projeto de automação de testes com Cypress.</p>
-      <a href="https://github.com/denisdbz/avaliacao-qa-automacao.git" target="_blank">Ver no GitHub</a>
-    </div>
+  <canvas id="matrix"></canvas>
 
-    <div class="executar-testes">
-      <button onclick="executarTestes()">Executar Todos os Testes</button>
-      <p id="loading" style="display: none;">Executando... <span class="blink">█</span></p>
-    </div>
+  <header>
+    <h1>Denis Oliveira</h1>
+    <p class="sobre">Sou especialista em qualidade de software e segurança ofensiva, com projetos práticos em automação e pentest. Transformo código em garantia de valor e segurança. Veja abaixo minhas provas técnicas reais!</p>
+  </header>
 
-    <iframe id="report-frame" src="" style="display:none;"></iframe>
-  </div>
+  <main>
+    <!-- PROJETOS -->
+    <section class="card">
+      <h2>Play 01 - Nmap Recon</h2>
+      <button onclick="executarPlay('plays/play-01-nmap-recon/run.sh', 'relatorio01')">Executar Teste</button>
+      <iframe id="relatorio01" src="plays/play-01-nmap-recon/report.html"></iframe>
+    </section>
+
+    <section class="card">
+      <h2>Play 02 - Hydra vs DVWA</h2>
+      <button onclick="executarPlay('plays/play-02-hydra-dvwa/run.sh', 'relatorio02')">Executar Teste</button>
+      <iframe id="relatorio02" src="plays/play-02-hydra-dvwa/report.html"></iframe>
+    </section>
+
+    <section class="card">
+      <h2>Play 03 - SQLMap vs DVWA</h2>
+      <button onclick="executarPlay('plays/play-03-sqlmap-dvwa/run.sh', 'relatorio03')">Executar Teste</button>
+      <iframe id="relatorio03" src="plays/play-03-sqlmap-dvwa/report.html"></iframe>
+    </section>
+
+    <section class="card">
+      <h2>Play 04 - Cypress Test</h2>
+      <a class="btn" href="https://github.com/denisdbz/avaliacao-qa-automacao" target="_blank">Ver Projeto no GitHub</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contato: <a href="mailto:denis@exemplo.com">denis@exemplo.com</a></p>
+    <p><a href="https://github.com/denisdbz" target="_blank">GitHub</a> | <a href="https://linkedin.com/in/denisdbz" target="_blank">LinkedIn</a></p>
+  </footer>
+
   <script src="matrix.js"></script>
   <script>
-    function executarTestes() {
-      document.getElementById('loading').style.display = 'block';
-      document.getElementById('report-frame').style.display = 'none';
-      setTimeout(() => {
-        document.getElementById('report-frame').src = 'relatorios/relatorio-cypress.html';
-        document.getElementById('report-frame').style.display = 'block';
-        document.getElementById('loading').style.display = 'none';
-      }, 3000);
+    function executarPlay(scriptPath, relatorioId) {
+      const iframe = document.getElementById(relatorioId);
+      iframe.src = scriptPath + '?executado=true';
+      alert("Este botão é ilustrativo. Execução real requer backend.");
     }
   </script>
 </body>
