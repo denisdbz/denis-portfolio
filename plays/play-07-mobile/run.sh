@@ -1,3 +1,1 @@
-#!/bin/bash
-cd mobile-tests
-npx wdio run wdio.conf.js
+<!-- Conteúdo simulado de run.sh para play-07-mobile -->

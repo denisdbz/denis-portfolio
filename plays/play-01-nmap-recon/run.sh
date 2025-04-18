@@ -1,2 +1,3 @@
-#!/bin/bash\necho 'Executando Nmap...'
-nmap -sS 192.168.1.1
+#!/bin/bash
+nmap -sV -oN report.txt 172.20.0.2
+xsltproc report.txt -o relatorio.html

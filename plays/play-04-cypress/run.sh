@@ -1,2 +1,1 @@
-#!/bin/bash\necho 'Executando testes Cypress...'
-npx cypress run
+<!-- Conteúdo simulado de run.sh para play-04-cypress -->

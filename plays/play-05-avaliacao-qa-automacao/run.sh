@@ -1,2 +1,1 @@
-#!/bin/bash
-echo "Executando play-05-avaliacao-qa-automacao..."
+<!-- Conteúdo simulado de run.sh para play-05-avaliacao-qa-automacao -->

@@ -1,26 +1,13 @@
-
 body {
-  background-color: black;
-  color: white;
   font-family: monospace;
+  background: black;
+  color: lime;
   padding: 20px;
 }
 button {
-  background-color: lime;
-  border: none;
+  background: #0f0;
   color: black;
-  padding: 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
-a {
-  color: lime;
-  font-weight: bold;
-}
-.terminal {
-  background-color: #111;
-  color: lime;
-  padding: 10px;
-  margin-top: 20px;
-  border: 1px solid lime;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
 }

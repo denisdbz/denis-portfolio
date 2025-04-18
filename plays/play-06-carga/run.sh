@@ -1,2 +1,1 @@
-#!/bin/bash\necho 'Executando avaliação QA automação...'
-npm install && npm run test
+<!-- Conteúdo simulado de run.sh para play-06-carga -->

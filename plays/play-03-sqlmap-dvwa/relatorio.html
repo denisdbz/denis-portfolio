@@ -1,1 +1,16 @@
-<h2>Relatório SQLMap</h2><p>Vulnerabilidade SQL detectada em: id parâmetro.<br>Dump da tabela: users</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório SQLMap</title>
+</head>
+<body>
+  <h2>Resultado do SQLMap</h2>
+  <pre>
+sqlmap identified the following injection point(s) with a total of 22 HTTP(s) requests:
+Parameter: id (GET)
+    Type: boolean-based blind
+    Payload: id=1' AND 1=1-- 
+  </pre>
+</body>
+</html>
