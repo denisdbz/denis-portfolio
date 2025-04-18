@@ -1,29 +1,17 @@
-window.onload = function() {
-    const canvas = document.createElement('canvas');
-    canvas.id = 'matrix';
-    document.body.appendChild(canvas);
-    const ctx = canvas.getContext('2d');
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    let cols = canvas.width / 20;
-    let ypos = Array(cols).fill(0);
-
-    function draw() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#0F0';
-        ctx.font = '20px monospace';
-        
-        for (let i = 0; i < ypos.length; i++) {
-            let text = String.fromCharCode(Math.random() * 128);
-            ctx.fillText(text, i * 20, ypos[i] * 20);
-            if (ypos[i] * 20 > canvas.height && Math.random() > 0.975) {
-                ypos[i] = 0;
-            }
-            ypos[i]++;
-        }
-    }
-
-    setInterval(draw, 50);
+const canvas = document.getElementById('matrixCanvas');
+const ctx = canvas.getContext('2d');
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+const letters = Array(256).join("1").split("");
+let draw = () => {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#0F0";
+  letters.map((y_pos, index) => {
+    const text = String.fromCharCode(3e4 + Math.random() * 33);
+    const x_pos = index * 10;
+    ctx.fillText(text, x_pos, y_pos);
+    letters[index] = y_pos > 758 + Math.random() * 1e4 ? 0 : y_pos + 10;
+  });
 };
+setInterval(draw, 33);
