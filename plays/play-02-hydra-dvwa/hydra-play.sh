@@ -1,1 +1,0 @@
-Conteúdo de exemplo para hydra-play.sh

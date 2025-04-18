@@ -1,1 +1,0 @@
-<!-- Conteúdo de exemplo para script.sh em avaliacao-qa-automacao -->
