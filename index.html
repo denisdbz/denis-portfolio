@@ -1,85 +1,28 @@
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio Técnico - Denis</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="simulate-run.js" defer></script>
 </head>
 <body>
-  <canvas id="matrixCanvas"></canvas>
-
-  <header>
+  <div class="container">
     <h1>Portfólio Técnico - Denis</h1>
-    <nav>
-      <ul>
-        <li><a href="#sobre">Sobre Mim</a></li>
-        <li><a href="#plays">Pentest & QA Plays</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section id="sobre">
-      <h2>Sobre Mim</h2>
-      <p>Sou Denis, apaixonado por tecnologia, especializado em Qualidade de Software e Segurança da Informação. Domino ferramentas como Cypress, Nmap, Hydra, SQLMap e ambientes Linux voltados para automação e pentest. Este portfólio reúne demonstrações práticas de minhas habilidades técnicas em ação.</p>
-    </section>
-
-    <section id="plays">
-      <h2>Pentest & QA Plays</h2>
-
-      <!-- Play 01 -->
-      <div class="play">
-        <h3>Play 01: Nmap Recon</h3>
-        <p>Mapeamento de rede usando Nmap com geração de relatório HTML automatizado.</p>
-        <a href="plays/play-01-nmap-recon/index.html" class="btn" target="_blank">Ver Relatório</a>
+    <div class="plays">
+      <div class="card">
+        <h2>Play 01 - Nmap Recon</h2>
+        <p>Scanner de portas usando Nmap.</p>
+        <button onclick="simulateRun('plays/play-01-nmap-recon/index.html')">Ver Relatório</button>
       </div>
-
-      <!-- Play 02 -->
-      <div class="play">
-        <h3>Play 02: Hydra vs DVWA</h3>
-        <p>Força bruta em login do DVWA com Hydra, usando dicionário e relatório visual.</p>
-        <a href="plays/play-02-hydra-dvwa/index.html" class="btn" target="_blank">Ver Relatório</a>
+      <div class="card">
+        <h2>Play 02 - Hydra vs DVWA</h2>
+        <p>Força bruta com Hydra no DVWA.</p>
+        <button onclick="simulateRun('plays/play-02-hydra-dvwa/index.html')">Ver Relatório</button>
       </div>
-
-      <!-- Play 03 -->
-      <div class="play">
-        <h3>Play 03: SQLMap vs DVWA</h3>
-        <p>Detecção e exploração de vulnerabilidades SQLi no DVWA com SQLMap.</p>
-        <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn" target="_blank">Ver Relatório</a>
-      </div>
-
-      <!-- Play 04 -->
-      <div class="play">
-        <h3>Play 04: Cypress - Teste Automatizado</h3>
-        <p>Execução de testes automatizados E2E com Cypress. Inclui relatório e gravação em GIF.</p>
-        <a href="plays/play-04-cypress/index.html" class="btn" target="_blank">Ver Relatório</a>
-      </div>
-
-      <!-- Projeto Avaliação QA -->
-      <div class="play">
-        <h3>Projeto: Avaliação QA Automação</h3>
-        <p>Projeto real de automação com Cypress. Inclui testes automatizados, relatório e repositório público.</p>
-        <a href="https://github.com/denisdbz/avaliacao-qa-automacao" class="btn" target="_blank">Ver Repositório</a>
-        <a href="plays/play-05-avaliacao-qa/index.html" class="btn" target="_blank">Ver Relatório</a>
-      </div>
-    </section>
-
-    <section id="contato">
-      <h2>Contato</h2>
-      <ul>
-        <li>Email: <a href="mailto:dns.qa.eng@gmail.com" target="_blank">dns.qa.eng@gmail.com</a></li>
-        <li>GitHub: <a href="https://github.com/denisdbz" target="_blank">github.com/denisdbz</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">linkedin.com/in/denis-oliveira-santos-99a83953/</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Denis - Portfólio Técnico. Todos os direitos reservados.</p>
-  </footer>
-
-  <script src="matrix.js"></script>
+    </div>
+  </div>
 </body>
 </html>
