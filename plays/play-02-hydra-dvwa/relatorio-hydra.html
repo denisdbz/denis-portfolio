@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Relatório Hydra</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 1rem;
+    }
+    h1 {
+      color: #0f0;
+      border-bottom: 1px solid #0f0;
+    }
+    pre {
+      background-color: #111;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Relatório Hydra</h1>
+  <pre>
+[DATA] attacking http-post-form "/dvwa/login.php:user=^USER^&pass=^PASS^:Login failed"
+[STATUS] 200 - Login success for user: admin, password: password123
+  </pre>
+</body>
+</html>

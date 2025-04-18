@@ -1,0 +1,1 @@
+Conteúdo de exemplo para sqlmap-play.sh
