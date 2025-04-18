@@ -1,46 +1,70 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Denis Oliveira Santos | Portfólio Técnico</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="matrix.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Técnico</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="matrix.js" defer></script>
 </head>
 <body>
-  <canvas id="matrix-canvas"></canvas>
-  <main>
+    <div id="matrix-background"></div>
     <header>
-      <h1>Portfólio Técnico | Denis Oliveira Santos</h1>
-      <p>Explorando Qualidade de Software, Automação e Pentest com estilo Matrix ⚡</p>
+        <nav>
+            <ul>
+                <li><a href="#play-01">Play 01 - Nmap</a></li>
+                <li><a href="#play-02">Play 02 - Hydra</a></li>
+                <li><a href="#play-03">Play 03 - SQLMap</a></li>
+                <li><a href="#play-04">Play 04 - Cypress</a></li>
+                <li><a href="#play-05">Play 05 - API</a></li>
+                <li><a href="#play-06">Play 06 - Carga</a></li>
+                <li><a href="#play-07">Play 07 - Mobile</a></li>
+            </ul>
+        </nav>
     </header>
-    <section class="play" id="play01">
-      <h2>Play 01 - Nmap Recon</h2>
-      <button onclick="runPlay('play-01-nmap-recon')">Executar</button>
-      <a href="play-01-nmap-recon/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play02">
-      <h2>Play 02 - Hydra vs DVWA</h2>
-      <button onclick="runPlay('play-02-hydra-dvwa')">Executar</button>
-      <a href="play-02-hydra-dvwa/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play03">
-      <h2>Play 03 - SQLMap vs DVWA</h2>
-      <button onclick="runPlay('play-03-sqlmap-dvwa')">Executar</button>
-      <a href="play-03-sqlmap-dvwa/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play04">
-      <h2>Play 04 - Teste Automatizado com Cypress</h2>
-      <button onclick="runPlay('play-04-cypress')">Executar</button>
-      <a href="play-04-cypress/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play05">
-      <h2>Play 05 - Projeto Avaliação QA Automação</h2>
-      <button onclick="runPlay('play-05-avaliacao-qa-automacao')">Executar</button>
-      <a href="play-05-avaliacao-qa-automacao/report.html" target="_blank">Ver Relatório</a>
-    </section>
-  </main>
-  <script src="simulate-run.js"></script>
+
+    <main>
+        <section id="play-01">
+            <h2>Play 01 - Nmap Recon</h2>
+            <button onclick="startPlay('nmap-play')">Executar</button>
+            <div id="nmap-report"></div>
+        </section>
+        <section id="play-02">
+            <h2>Play 02 - Hydra vs DVWA</h2>
+            <button onclick="startPlay('hydra-play')">Executar</button>
+            <div id="hydra-report"></div>
+        </section>
+        <section id="play-03">
+            <h2>Play 03 - SQLMap vs DVWA</h2>
+            <button onclick="startPlay('sqlmap-play')">Executar</button>
+            <div id="sqlmap-report"></div>
+        </section>
+        <section id="play-04">
+            <h2>Play 04 - Cypress</h2>
+            <button onclick="startPlay('cypress-play')">Executar</button>
+            <div id="cypress-report"></div>
+        </section>
+        <section id="play-05">
+            <h2>Play 05 - API</h2>
+            <button onclick="startPlay('api-play')">Executar</button>
+            <div id="api-report"></div>
+        </section>
+        <section id="play-06">
+            <h2>Play 06 - Carga</h2>
+            <button onclick="startPlay('carga-play')">Executar</button>
+            <div id="carga-report"></div>
+        </section>
+        <section id="play-07">
+            <h2>Play 07 - Mobile</h2>
+            <button onclick="startPlay('mobile-play')">Executar</button>
+            <div id="mobile-report"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 - Denis</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
