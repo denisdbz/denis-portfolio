@@ -1,0 +1,1 @@
+<!-- Conteúdo de exemplo para matrix.js em assets -->
