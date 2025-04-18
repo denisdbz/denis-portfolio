@@ -1,32 +1,37 @@
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
+window.onload = function() {
+  var canvas = document.getElementById("matrix");
+  var ctx = canvas.getContext("2d");
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+  var columns = canvas.width = window.innerWidth;
+  var rows = canvas.height = window.innerHeight;
 
-const letters = '01';
-const fontSize = 14;
-const columns = canvas.width / fontSize;
+  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%".split("");
+  var fontSize = 10;
+  var chars = [];
 
-const drops = Array(Math.floor(columns)).fill(1);
-
-function draw() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = '#0F0';
-  ctx.font = fontSize + 'px monospace';
-
-  for (let i = 0; i < drops.length; i++) {
-    const text = letters[Math.floor(Math.random() * letters.length)];
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-      drops[i] = 0;
-    }
-
-    drops[i]++;
+  // Preencher a matriz com letras
+  for (var i = 0; i < columns; i++) {
+    chars[i] = 0;
   }
-}
 
-setInterval(draw, 33);
+  function drawMatrix() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#0F0";  // Cor verde
+    ctx.font = fontSize + "px monospace";
+
+    for (var i = 0; i < chars.length; i++) {
+      var text = letters[Math.floor(Math.random() * letters.length)];
+      ctx.fillText(text, i * fontSize, chars[i] * fontSize);
+
+      if (chars[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        chars[i] = 0;
+      }
+      
+      chars[i]++;
+    }
+  }
+
+  setInterval(drawMatrix, 33);
+}
