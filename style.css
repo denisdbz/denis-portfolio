@@ -1,30 +1,57 @@
-
-body {
+body, html {
   margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: 'Courier New', Courier, monospace;
-  background-color: black;
   color: white;
+  background: black;
+  overflow-x: hidden;
 }
-canvas {
+
+canvas#matrix {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
 }
-main {
-  padding: 2rem;
+
+.container {
+  padding: 20px;
 }
-h1, h2 {
-  color: #00ff00;
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
 }
-button {
-  background: black;
-  color: #00ff00;
-  border: 1px solid #00ff00;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin-right: 1rem;
+
+header .logo {
+  width: 100px;
+  margin-bottom: 10px;
 }
-.play {
-  margin-bottom: 2rem;
+
+.play-card {
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #0f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.play-card h2 {
+  margin-top: 0;
+}
+
+.play-card a.btn {
+  background: #0f0;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.play-card a.btn:hover {
+  background: #0a0;
+  color: white;
 }

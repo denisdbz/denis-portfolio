@@ -1,46 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Denis Oliveira Santos | Portfólio Técnico</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio Técnico — Denis</title>
+  <link rel="stylesheet" href="style.css">
   <script src="matrix.js" defer></script>
 </head>
 <body>
-  <canvas id="matrix-canvas"></canvas>
-  <main>
+  <canvas id="matrix"></canvas>
+  <div class="container">
     <header>
-      <h1>Portfólio Técnico | Denis Oliveira Santos</h1>
-      <p>Explorando Qualidade de Software, Automação e Pentest com estilo ⚡</p>
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <h1>Portfólio Técnico — Denis</h1>
+      <p>Exploração de ferramentas de testes de segurança e automação.</p>
     </header>
-    <section class="play" id="play01">
-      <h2>Play 01 - Nmap Recon</h2>
-      <button onclick="runPlay('play-01-nmap-recon')">Executar</button>
-      <a href="play-01-nmap-recon/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play02">
-      <h2>Play 02 - Hydra vs DVWA</h2>
-      <button onclick="runPlay('play-02-hydra-dvwa')">Executar</button>
-      <a href="play-02-hydra-dvwa/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play03">
-      <h2>Play 03 - SQLMap vs DVWA</h2>
-      <button onclick="runPlay('play-03-sqlmap-dvwa')">Executar</button>
-      <a href="play-03-sqlmap-dvwa/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play04">
-      <h2>Play 04 - Teste Automatizado com Cypress</h2>
-      <button onclick="runPlay('play-04-cypress')">Executar</button>
-      <a href="play-04-cypress/report.html" target="_blank">Ver Relatório</a>
-    </section>
-    <section class="play" id="play05">
-      <h2>Play 05 - Projeto Avaliação QA Automação</h2>
-      <button onclick="runPlay('play-05-avaliacao-qa-automacao')">Executar</button>
-      <a href="play-05-avaliacao-qa-automacao/report.html" target="_blank">Ver Relatório</a>
-    </section>
-  </main>
-  <script src="simulate-run.js"></script>
+
+    <main>
+      <!-- Cards dos plays -->
+      <div class="play-card">
+        <h2>Play 01 — Nmap Recon</h2>
+        <p>Varredura de portas e serviços com Nmap.</p>
+        <a href="plays/play-01-nmap-recon/index.html" class="btn">Ver Play</a>
+      </div>
+
+      <div class="play-card">
+        <h2>Play 02 — Hydra vs DVWA</h2>
+        <p>Ataque de força bruta com Hydra na DVWA.</p>
+        <a href="plays/play-02-hydra-dvwa/index.html" class="btn">Ver Play</a>
+      </div>
+
+      <div class="play-card">
+        <h2>Play 03 — SQLMap vs DVWA</h2>
+        <p>Ataque de SQL Injection automatizado com sqlmap.</p>
+        <a href="plays/play-03-sqlmap-dvwa/index.html" class="btn">Ver Play</a>
+      </div>
+
+      <div class="play-card">
+        <h2>Play 04 — Cypress</h2>
+        <p>Testes automatizados com Cypress para aplicações web.</p>
+        <a href="plays/play-04-cypress/index.html" class="btn">Ver Play</a>
+      </div>
+
+      <div class="play-card">
+        <h2>Play 05 — Avaliação QA Automação</h2>
+        <p>Scripts automatizados para avaliação técnica de QA.</p>
+        <a href="plays/play-05-avaliacao-qa-automacao/report.html" class="btn">Ver Relatório</a>
+      </div>
+
+      <div class="play-card">
+        <h2>Play 06 — Teste de Carga</h2>
+        <p>Simulação de carga e performance.</p>
+        <a href="plays/play-06-carga/index.html" class="btn">Ver Play</a>
+      </div>
+
+      <div class="play-card">
+        <h2>Play 07 — Mobile Automation</h2>
+        <p>Automação de testes mobile com Appium.</p>
+        <a href="plays/play-07-mobile/report.html" class="btn">Ver Relatório</a>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
