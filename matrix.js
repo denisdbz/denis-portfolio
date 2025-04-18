@@ -2,8 +2,12 @@ window.onload = function() {
   var canvas = document.getElementById("matrix");
   var ctx = canvas.getContext("2d");
 
-  var columns = canvas.width = window.innerWidth;
-  var rows = canvas.height = window.innerHeight;
+  // Ajustar tamanho do canvas para cobrir toda a tela
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  var columns = canvas.width / 10;
+  var rows = canvas.height / 10;
 
   var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%".split("");
   var fontSize = 10;
