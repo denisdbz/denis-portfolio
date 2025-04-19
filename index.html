@@ -11,7 +11,44 @@
   <canvas id="matrix"></canvas>
   <div class="container">
     <header>
-<img src="assets/logo.png" alt="Logo" class="logo">
+
+      <!-- Logo SVG animado -->
+      <svg class="logo" width="280" height="80" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          .text {
+            fill: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 24px;
+            animation: flicker 2s infinite;
+          }
+
+          .icon {
+            fill: #00ff00;
+            animation: pulse 1.5s infinite;
+          }
+
+          @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+          }
+
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+          }
+        </style>
+
+        <!-- Ícone de terminal -->
+        <g transform="translate(10,20)">
+          <rect class="icon" x="0" y="0" width="60" height="60" rx="8"/>
+          <polyline class="icon" points="15,30 25,20 35,30" stroke="#000" stroke-width="3" fill="none" />
+          <line class="icon" x1="25" y1="35" x2="40" y2="35" stroke="#000" stroke-width="3" />
+        </g>
+
+        <!-- Texto -->
+        <text x="80" y="50" class="text">Denis | QA & Pentest</text>
+      </svg>
+
       <h1>Portfólio Técnico — Denis</h1>
       <p>Exploração de ferramentas de testes de segurança e automação.</p>
     </header>
