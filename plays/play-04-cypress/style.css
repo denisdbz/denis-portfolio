@@ -1,1 +1,15 @@
-<!-- Conteúdo simulado de style.css para play-04-cypress -->
+
+body {
+  background-color: black;
+  color: #0f0;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}

@@ -1,1 +1,3 @@
-<!-- Conteúdo simulado de run.sh para play-04-cypress -->
+#!/bin/bash
+echo "Executando testes Cypress reais com Docker..."
+docker-compose up --build --abort-on-container-exit

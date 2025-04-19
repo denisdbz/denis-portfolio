@@ -1,1 +1,21 @@
-<!-- Conteúdo simulado de index.html para play-06-carga -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Play 06 — Teste de Carga</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="simulate-run.js" defer></script>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <div class="container">
+    <h1>Play 06 — Teste de Carga com Artillery</h1>
+    <p>Este teste executa um teste de carga utilizando o Artillery contra uma API Node.js local, gerando relatórios em HTML ao final.</p>
+    <button onclick="executarTeste()">Executar Teste</button>
+    <div id="output">
+      <iframe id="relatorioFrame" src="relatorio.html"></iframe>
+    </div>
+    <a href="report.html" class="btn">Ver Relatório Completo</a>
+  </div>
+</body>
+</html>

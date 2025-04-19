@@ -1,1 +1,5 @@
-<!-- Conteúdo simulado de simulate-run.js para play-04-cypress -->
+
+function executarTeste() {
+  const iframe = document.getElementById('resultado');
+  iframe.src = 'relatorio.html?run=' + new Date().getTime();
+}
