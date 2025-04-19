@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <title>Play 06 — Teste de Carga</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="simulate-run.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="matrix"></canvas>
-  <div class="container">
-    <h1>Play 06 — Teste de Carga com Artillery</h1>
-    <p>Este teste executa um teste de carga utilizando o Artillery contra uma API Node.js local, gerando relatórios em HTML ao final.</p>
+  <div class="content">
+    <h1>Play 06 — Teste de Carga com Apache Benchmark</h1>
+    <p>Este play realiza um teste de carga utilizando o <code>ab</code> (Apache Benchmark) contra um serviço local, simulando múltiplas requisições e medindo o desempenho.</p>
     <button onclick="executarTeste()">Executar Teste</button>
-    <div id="output">
-      <iframe id="relatorioFrame" src="relatorio.html"></iframe>
-    </div>
-    <a href="report.html" class="btn">Ver Relatório Completo</a>
+    <iframe id="relatorio-frame" src="relatorio.html"></iframe>
   </div>
+  <script src="simulate-run.js"></script>
 </body>
 </html>
