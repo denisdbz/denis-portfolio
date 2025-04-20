@@ -1,16 +1,19 @@
-function executarTeste() {
-  const resultado = document.getElementById("resultado");
-  resultado.innerText = "Executando o ataque com Hydra...";
-
-  fetch("./run.sh")
-    .then(() => {
-      fetch("relatorio.html")
-        .then((res) => res.text())
-        .then((html) => {
-          resultado.innerHTML = "Teste concluído. <a href='relatorio.html' target='_blank'>Clique aqui para ver o relatório</a>";
-        });
+function executarTeste(playId) {
+  // Envia uma requisição POST para a API Flask para executar o play
+  fetch(`/api/exec/${playId}`, {
+    method: 'POST',
+  })
+    .then(response => response.json())  // Aguarda a resposta em JSON
+    .then(data => {
+      // Se a execução foi bem-sucedida
+      if (data.mensagem) {
+        document.getElementById('resultado').innerHTML = `<p>${data.mensagem}</p>`;
+      } else {
+        document.getElementById('resultado').innerHTML = `<p>Erro: ${data.erro}</p>`;
+      }
     })
-    .catch((err) => {
-      resultado.innerText = "Erro ao executar o teste: " + err;
+    .catch(error => {
+      // Se houver erro ao fazer a requisição
+      document.getElementById('resultado').innerHTML = `<p>Erro na execução: ${error}</p>`;
     });
 }
