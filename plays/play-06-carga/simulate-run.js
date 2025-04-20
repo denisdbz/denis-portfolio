@@ -1,0 +1,1 @@
+function runTest() { alert('Teste executado com sucesso!'); }
