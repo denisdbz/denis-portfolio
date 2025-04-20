@@ -1,3 +1,4 @@
+export PATH=$PATH:/usr/bin/
 #!/bin/bash
 
 TARGET="127.0.0.1"
