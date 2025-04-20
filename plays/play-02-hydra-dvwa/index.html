@@ -7,15 +7,16 @@
   <script src="simulate-run.js" defer></script>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  <div class="content">
+  <div class="container">
     <h1>Play 02 — Hydra vs DVWA</h1>
-    <p>Este teste automatiza um ataque de força bruta usando Hydra contra o DVWA. O relatório do ataque é gerado em HTML e pode ser visualizado logo após a execução.</p>
-    <button onclick="executarTeste()">Executar Teste</button>
-    <div id="resultado" class="resultado-teste"></div>
-    <br />
-    <a href="relatorio.html" target="_blank" class="btn">Ver Relatório</a>
-    <a href="report.html" target="_blank" class="btn">Relatório Detalhado</a>
+    <p>Este play demonstra o uso do Hydra para testar a robustez de autenticação da aplicação DVWA via força bruta.</p>
+
+    <button onclick="executarTeste('play-02-hydra-dvwa')">▶️ Executar Teste</button>
+
+    <div id="resultado" style="margin-top: 20px;"></div>
+
+    <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
+    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
   </div>
 </body>
 </html>

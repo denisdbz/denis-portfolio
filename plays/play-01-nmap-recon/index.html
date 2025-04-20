@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Play 01 - Nmap Recon</title>
+  <title>Play 01 — Nmap Recon</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="simulate-run.js" defer></script>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
   <div class="container">
     <h1>Play 01 — Nmap Recon</h1>
-    <p>Este play realiza uma varredura utilizando o <code>nmap</code> em um alvo configurado no Docker. O resultado é exibido abaixo e também pode ser regenerado ao rodar novamente.</p>
-    <button onclick="executarTeste()">Executar Teste</button>
-    <iframe id="relatorio" src="relatorio.html" frameborder="0"></iframe>
+    <p>Este play executa uma varredura com Nmap para identificar portas abertas e serviços disponíveis em um alvo.</p>
+
+    <button onclick="executarTeste('play-01-nmap-recon')">▶️ Executar Teste</button>
+
+    <div id="resultado" style="margin-top: 20px;"></div>
+
+    <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
+    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
   </div>
-  <script src="simulate-run.js"></script>
 </body>
 </html>

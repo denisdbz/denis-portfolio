@@ -1,17 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Relatório - Nmap</title>
+  <title>Relatório - Nmap Recon</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: monospace;
+      padding: 30px;
+      font-size: 14px;
+    }
+
+    .relatorio-container {
+      background-color: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px #00ff00;
+    }
+
+    h1, h2 {
+      color: #00ff00;
+    }
+
+    pre {
+      background-color: #000;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #00ff00;
+      color: #000;
+      padding: 10px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #0f0;
+    }
+  </style>
 </head>
 <body>
-  <div class="report-container">
-    <h2>Relatório do Nmap</h2>
+  <div class="relatorio-container">
+    <h1>Relatório de Execução — Nmap Recon</h1>
+    <p>Este relatório exibe os resultados do teste automatizado executado com <strong>Nmap</strong> para varredura de portas e serviços.</p>
+
+    <h2>Saída do Comando:</h2>
     <pre>
-Starting Nmap 7.95 ( https://nmap.org ) at 2025-04-19 16:49 -03
-Nmap done: 0 IP addresses (0 hosts up) scanned in 0.27 seconds
+[+] Iniciando varredura...
+PORT     STATE SERVICE
+22/tcp   open  ssh
+80/tcp   open  http
+443/tcp  open  https
     </pre>
+
+    <a class="btn" href="index.html">← Voltar ao Play</a>
   </div>
 </body>
 </html>
