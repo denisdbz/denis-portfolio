@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGET="dvwa.local"
+TARGET="127.0.0.1"
 OUTPUT="relatorio.html"
 
 echo "Executando Nmap em $TARGET..."
