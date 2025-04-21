@@ -1,11 +1,14 @@
 name: Cypress Tests
 
 on:
-  workflow_dispatch:
   push:
     paths:
-      - 'cypress/**'
-      - 'Dockerfile'
+      - '**.py'
+      - '**.js'
+      - '**.html'
+      - '**.yml'
+      - '**/cypress/**'
+  workflow_dispatch:
 
 jobs:
   cypress-tests:
@@ -15,24 +18,26 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v3
 
-      - name: Configurar Node.js
+      - name: Configura Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 20
 
-      - name: Instalar dependências
+      - name: Configura Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instala dependências Python
+        run: pip install -r requirements.txt
+
+      - name: Instala dependências Node
         run: npm install
 
-      - name: Rodar testes Cypress
+      - name: Sobe servidor Flask em segundo plano
         run: |
-          npx cypress run
+          nohup python app.py &
+          sleep 5
 
-      - name: Garantir diretório de relatórios
-        run: mkdir -p cypress/reports/html/
-
-      - name: Salvar resultados
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-report
-          path: cypress/reports/html/
+      - name: Roda Cypress
+        run: npx cypress run
