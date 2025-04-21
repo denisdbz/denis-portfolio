@@ -27,7 +27,7 @@ jobs:
         run: |
           npx cypress run
 
-      - name: Garantir diretório de relatório
+      - name: Garantir diretório de relatórios
         run: mkdir -p cypress/reports/html/
 
       - name: Salvar resultados
