@@ -1,5 +1,5 @@
-export PATH=$PATH:/usr/bin/
 #!/bin/bash
+export PATH=$PATH:/usr/bin/
 
 TARGET="127.0.0.1"
 OUTPUT="relatorio.html"
