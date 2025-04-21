@@ -27,9 +27,12 @@ jobs:
         run: |
           npx cypress run
 
+      - name: Garantir diretório de relatório
+        run: mkdir -p cypress/reports/html/
+
       - name: Salvar resultados
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: cypress-report
           path: cypress/reports/html/
