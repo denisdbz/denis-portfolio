@@ -6,6 +6,7 @@ on:
     paths:
       - 'cypress/**'
       - 'Dockerfile'
+      - '.github/workflows/run-cypress.yml'
 
 jobs:
   cypress-tests:
@@ -13,25 +14,33 @@ jobs:
 
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.6.0
 
       - name: Configurar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.9.1
         with:
           node-version: '18'
 
       - name: Instalar dependências
         run: npm install
 
-      - name: Garantir diretório de relatório
-        run: mkdir -p cypress/reports/html/
+      - name: Garantir permissões do Cypress
+        run: chmod +x ./node_modules/.bin/cypress
+
+      - name: Iniciar servidor local (caso necessário)
+        run: |
+          nohup npm start &  # Altere conforme seu comando de start
+          sleep 10           # Espera o servidor iniciar
 
       - name: Rodar testes Cypress
         run: npx cypress run
 
+      - name: Garantir diretório do relatório
+        run: mkdir -p cypress/reports/html/
+
       - name: Salvar resultados
         if: always()
-        uses: actions/upload-artifact@v3@c59a59d8d5e65c49ab5ce6d02f4b4520c43154f9
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: cypress-report
           path: cypress/reports/html/
