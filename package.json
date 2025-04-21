@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "cypress:run": "npx cypress run"
+  },
   "devDependencies": {
     "@wdio/cli": "^9.12.6",
     "@wdio/local-runner": "^9.12.6",
