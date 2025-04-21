@@ -6,7 +6,6 @@ on:
     paths:
       - 'cypress/**'
       - 'Dockerfile'
-      - '.github/workflows/run-cypress.yml'
 
 jobs:
   cypress-tests:
@@ -22,20 +21,17 @@ jobs:
           node-version: '18'
 
       - name: Instalar dependências
-        run: npm ci
+        run: npm install
 
-      - name: Dar permissão para Cypress
-        run: chmod +x ./node_modules/.bin/cypress
+      - name: Garantir diretório de relatório
+        run: mkdir -p cypress/reports/html/
 
       - name: Rodar testes Cypress
-        run: npm run cypress:run
-
-      - name: Criar diretório de relatórios (caso não exista)
-        run: mkdir -p cypress/reports/html/
+        run: npx cypress run
 
       - name: Salvar resultados
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3@c59a59d8d5e65c49ab5ce6d02f4b4520c43154f9
         with:
           name: cypress-report
           path: cypress/reports/html/
