@@ -3,20 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <title>Play 07 — Mobile Automation</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="simulate-run.js" defer></script>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    .output-box {
+      background-color: #111;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Play 07 — Mobile Automation</h1>
     <p>Este play utiliza Appium para automação de testes em dispositivos móveis, validando a usabilidade e funcionalidades de apps.</p>
 
-    <button onclick="executarTeste('play-07-mobile')">▶️ Executar Teste</button>
-
-    <div id="resultado" style="margin-top: 20px;"></div>
+    <button class="btn" onclick="executarTeste()">▶️ Executar Teste</button>
+    <div id="output" class="output-box" style="display:none;">
+      Teste automatizado mobile simulado com sucesso usando Appium.
+    </div>
 
     <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
     <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
   </div>
+
+  <script>
+    function executarTeste() {
+      document.getElementById('output').style.display = 'block';
+    }
+  </script>
 </body>
 </html>

@@ -1,19 +1,33 @@
+const API_BASE_URL = 'https://web-production-4124.up.railway.app'; // URL pública da API
+
 function executarTeste(playId) {
-  // Envia uma requisição POST para a API Flask para executar o play
-  fetch(`/api/exec/${playId}`, {
+  // Caso especial para o Play 01 (Nmap Recon)
+  if (playId === 'play-01-nmap-recon') {
+    fetch('run.sh')
+      .then(() => setTimeout(() => {
+        document.getElementById('relatorioFrame').src = 'relatorio.html?' + new Date().getTime();
+      }, 2000));
+    return;
+  }
+
+  // Outros plays: comunicação com API Flask
+  fetch(`${API_BASE_URL}/api/exec/${playId}`, {
     method: 'POST',
   })
-    .then(response => response.json())  // Aguarda a resposta em JSON
+    .then(response => response.json())
     .then(data => {
-      // Se a execução foi bem-sucedida
+      const resultado = document.getElementById('resultado');
+      if (!resultado) return;
       if (data.mensagem) {
-        document.getElementById('resultado').innerHTML = `<p>${data.mensagem}</p>`;
+        resultado.innerHTML = `<p>${data.mensagem}</p>`;
       } else {
-        document.getElementById('resultado').innerHTML = `<p>Erro: ${data.erro}</p>`;
+        resultado.innerHTML = `<p>Erro: ${data.erro}</p>`;
       }
     })
     .catch(error => {
-      // Se houver erro ao fazer a requisição
-      document.getElementById('resultado').innerHTML = `<p>Erro na execução: ${error}</p>`;
+      const resultado = document.getElementById('resultado');
+      if (resultado) {
+        resultado.innerHTML = `<p>Erro na execução: ${error}</p>`;
+      }
     });
 }

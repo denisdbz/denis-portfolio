@@ -3,20 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <title>Play 06 — Teste de Carga</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="simulate-run.js" defer></script>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    .output-box {
+      background-color: #111;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Play 06 — Teste de Carga</h1>
     <p>Este play simula um teste de carga para avaliar o desempenho de uma aplicação sob alta demanda de usuários.</p>
 
-    <button onclick="executarTeste('play-06-carga')">▶️ Executar Teste</button>
-
-    <div id="resultado" style="margin-top: 20px;"></div>
+    <button class="btn" onclick="executarTeste()">▶️ Executar Teste</button>
+    <div id="output" class="output-box" style="display:none;">
+      Teste de carga simulado com sucesso. Nenhum gargalo encontrado.
+    </div>
 
     <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
     <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
   </div>
+
+  <script>
+    function executarTeste() {
+      document.getElementById('output').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
