@@ -6,6 +6,7 @@
   <title>Denis Oliveira - Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css" />
   <script src="matrix.js" defer></script>
+  <script src="https://kit.fontawesome.com/4e2c9b899e.js" crossorigin="anonymous"></script>
   <style>
     .tooltip {
       position: relative;
@@ -54,6 +55,22 @@
       margin-right: 6px;
     }
 
+    .play-button {
+      background-color: transparent;
+      border: 1px solid #0f0;
+      color: #0f0;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: monospace;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .play-button:hover {
+      background-color: #0f0;
+      color: #000;
+    }
+
     footer {
       margin-top: 50px;
       text-align: center;
@@ -61,7 +78,6 @@
       color: #0f0;
     }
   </style>
-  <script src="https://kit.fontawesome.com/4e2c9b899e.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <canvas id="matrix"></canvas>
@@ -98,10 +114,12 @@
         </g>
         <text x="80" y="50" class="text">Denis | QA & Pentest</text>
       </svg>
+
       <h1>Denis Oliveira - Portfólio Profissional</h1>
       <p id="sobre-mim">
         Profissional apaixonado por Qualidade de Software e Segurança da Informação, com forte atuação em <strong>testes automatizados</strong>, <strong>pentest</strong> e <strong>devSecOps</strong>. Busco sempre unir performance, segurança e usabilidade em minhas entregas. Este portfólio demonstra minha capacidade técnica por meio de desafios reais.
       </p>
+
       <div class="contact-icons">
         <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
         <a href="mailto:denis.qae.hack@gmail.com"><i class="fas fa-envelope"></i>E-mail</a>
@@ -111,7 +129,25 @@
     </header>
 
     <main>
-      <!-- Seus cards de Plays continuam aqui... -->
+      <section id="aviso">
+        <p style="text-align:center; color: #aaa; margin-bottom: 30px;">
+          <em>💻 Todos os testes abaixo são <strong>executados em tempo real</strong> e utilizam uma API real hospedada na Railway.</em>
+        </p>
+      </section>
+
+      <section id="plays">
+        <h2 style="color: #0f0; text-align: center; margin-bottom: 20px;">Testes em Destaque</h2>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+          <a href="play-01/index.html" class="play-button">Play 01 - Nmap Recon</a>
+          <a href="play-02/index.html" class="play-button">Play 02 - Teste de API com Postman</a>
+          <a href="play-03/index.html" class="play-button">Play 03 - SQL Injection Test</a>
+          <a href="play-04/index.html" class="play-button">Play 04 - Teste de Carga com JMeter</a>
+          <a href="play-05/index.html" class="play-button">Play 05 - Validação de Header HTTP</a>
+          <a href="play-06/index.html" class="play-button">Play 06 - Análise de Logs de Segurança</a>
+          <a href="play-07/index.html" class="play-button">Play 07 - Scanner de Vulnerabilidades</a>
+        </div>
+      </section>
     </main>
 
     <footer>
