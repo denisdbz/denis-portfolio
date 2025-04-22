@@ -1,8 +1,13 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory, render_template
 import subprocess
 import os
 
 app = Flask(__name__)
+
+# Página inicial
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 # Servir o HTML do Play
 @app.route("/play/<play_id>")
@@ -34,8 +39,3 @@ def executar_play(play_id):
 # Rodar o app
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-@app.route("/")
-def home():
-    return render_template("index.html")

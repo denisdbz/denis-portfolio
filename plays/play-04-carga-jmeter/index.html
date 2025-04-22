@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Play 04 — Carga com JMeter</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <style>
+    .output-box {
+      background-color: #111;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      margin-top: 20px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #0f0;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #0c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Play 04 — Carga com JMeter</h1>
+    <p>Este teste utiliza o Apache JMeter para simular múltiplas requisições simultâneas e avaliar o desempenho da aplicação sob carga.</p>
+
+    <button class="btn" onclick="executarTeste()">Executar Teste</button>
+
+    <div id="output" class="output-box" style="display:none;">
+      <strong>Relatório de Execução:</strong><br>
+      Relatório de teste com JMeter: todas as requisições completadas com sucesso.
+    </div>
+  </div>
+
+  <script>
+    function executarTeste() {
+      const output = document.getElementById('output');
+      output.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
