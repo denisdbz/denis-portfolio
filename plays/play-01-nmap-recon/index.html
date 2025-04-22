@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Play 01 - Nmap Recon</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Play 01 — Nmap Recon</title>
+  <link rel="stylesheet" href="../../style.css">
+  <script defer src="runScript.js"></script>
 </head>
 <body>
-  <h1>Play 01 — Nmap Recon</h1>
-  <button onclick="window.location.href='relatorio.html'">Ver o Play</button>
+  <div class="container card">
+    <h1>Play 01 — Nmap Recon</h1>
+    <p>Varredura de portas e serviços usando <strong>Nmap</strong> para reconhecimento de rede.</p>
+
+    <button class="btn" onclick="executarTeste('play-01-nmap-recon')">Executar Teste</button>
+
+    <h2>Evidência Técnica</h2>
+    <p>Saída resumida do <code>nmap</code> destacando portas abertas:</p>
+    <img src="img/nmap_scan.png" alt="Resultado Nmap">
+
+    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
+
+    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+  </div>
 </body>
 </html>

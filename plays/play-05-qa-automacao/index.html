@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Play 05 — Avaliação QA Automatizada</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Play 05 — Avaliação QA Automatizada</title>
+  <link rel="stylesheet" href="../../style.css">
+  <script defer src="runScript.js"></script>
 </head>
 <body>
-    <h1>Play 05 — Avaliação QA Automatizada</h1>
-    <div class="descricao">
-        Este teste executa uma bateria de verificações funcionais automatizadas utilizando um script customizado de QA, focado em consistência e fluxo de navegação.
-    </div>
-    <button onclick="executarTeste()">Executar Teste</button>
-    <div class="resultado" id="resultado"></div>
+  <div class="container card">
+    <h1>Play 05 — Avaliação QA Automatizada</h1>
+    <p>Execução de uma bateria de verificações funcionais via script de QA customizado.</p>
 
-    <h2>Evidência Técnica</h2>
-    <p>Saída do terminal com os resultados da execução do script QA automatizado:</p>
-    <img src="evidencias/qa_avaliacao.png" alt="Avaliação QA automatizada" class="evidencia-img"/>
+    <button class="btn" onclick="executarTeste('play-05-qa-automacao')">Executar Teste</button>
 
-    <script>
-        function executarTeste() {
-            fetch("https://web-production-4124.up.railway.app/play05")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("resultado").innerText = data;
-                })
-                .catch(error => {
-                    document.getElementById("resultado").innerText = "Erro ao executar o teste.";
-                });
-        }
-    </script>
+    <h2>Evidência Técnica</h2>
+    <p>Console com o resumo dos cenários pass/fail:</p>
+    <img src="img/qa_auto.png" alt="Avaliação QA automatizada">
+
+    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
+
+    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+  </div>
 </body>
 </html>

@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Play 03 — SQLmap em DVWA</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Play 03 — SQLMap em DVWA</title>
+  <link rel="stylesheet" href="../../style.css">
+  <script defer src="runScript.js"></script>
 </head>
 <body>
-    <h1>Play 03 — SQLmap em DVWA</h1>
-    <div class="descricao">
-        Este teste automatiza a identificação de vulnerabilidades de injeção SQL no DVWA usando o SQLmap, ferramenta especializada para esse tipo de ataque.
-    </div>
-    <button onclick="executarTeste()">Executar Teste</button>
-    <div class="resultado" id="resultado"></div>
+  <div class="container card">
+    <h1>Play 03 — SQLMap em DVWA</h1>
+    <p>Detecção e exploração automática de SQL Injection utilizando <strong>SQLMap</strong> na DVWA.</p>
 
-    <h2>Evidência Técnica</h2>
-    <p>Execução do SQLmap detectando vulnerabilidade e extraindo informações:</p>
-    <img src="evidencias/sqlmap_dvwa.png" alt="Execução do SQLmap no DVWA" class="evidencia-img"/>
+    <button class="btn" onclick="executarTeste('play-03-sqlmap-dvwa')">Executar Teste</button>
 
-    <script>
-        function executarTeste() {
-            fetch("https://web-production-4124.up.railway.app/play03")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("resultado").innerText = data;
-                })
-                .catch(error => {
-                    document.getElementById("resultado").innerText = "Erro ao executar o teste.";
-                });
-        }
-    </script>
+    <h2>Evidência Técnica</h2>
+    <p>Trecho do log do SQLMap identificando a vulnerabilidade e extraindo dados:</p>
+    <img src="img/sqlmap_dvwa.png" alt="Execução do SQLMap no DVWA">
+
+    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
+
+    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+  </div>
 </body>
 </html>
