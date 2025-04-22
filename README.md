@@ -1,38 +1,91 @@
-# 🧠 Denis Oliveira — Portfólio Profissional
+# 💼 Denis Oliveira — Portfólio Profissional de QA & Pentest
 
-**Bem-vindo ao meu portfólio técnico de Qualidade de Software e Segurança da Informação.**  
-Aqui você encontrará uma coleção de testes reais, funcionais e automatizados, com foco em:
+Seja muito bem-vindo ao meu portfólio técnico! Este projeto reúne **plays reais**, executáveis diretamente do navegador, demonstrando minha atuação em **Qualidade de Software**, **Testes Automatizados**, **Pentest**, **CI/CD** e **DevSecOps**.
 
-- ✅ **Testes Funcionais Automatizados**
-- 🔍 **Pentests e Exploração de Vulnerabilidades**
-- ⚙️ **Execução real de scripts via interface web**
-- ☁️ **Deploy com CI/CD e API hospedada na Railway**
+## 🔍 Sobre o Projeto
+
+Este portfólio foi desenvolvido com foco em acessibilidade, clareza técnica e praticidade para o avaliador. Os testes aqui não são fictícios: **são scripts reais que interagem com ambientes configurados para cada situação**, e exibem os resultados dinamicamente na tela. Hospedado no GitHub Pages, com backend em Flask na Railway.
 
 ---
 
-## 🧪 Projetos (Plays)
+## 🧪 Estrutura dos Plays
 
-Cada **Play** representa um teste técnico real e executável.  
-A execução pode ser feita diretamente no navegador via API Flask hospedada na Railway, ou localmente.
+Cada *play* representa um cenário real de teste ou pentest. Eles estão organizados da seguinte forma:
 
-| Nº | Play                                 | Descrição |
-|----|--------------------------------------|-----------|
-| 01 | [Nmap Recon](./plays/play-01-nmap-recon)                 | Varredura de portas usando Nmap |
-| 02 | [Hydra em DVWA](./plays/play-02-hydra-dvwa)              | Ataque de força-bruta em login web |
-| 03 | [SQLMap em DVWA](./plays/play-03-sqlmap-dvwa)            | Detecção automatizada de SQLi |
-| 04 | [Carga com JMeter](./plays/play-04-jmeter-loadtest)      | Teste de carga e estresse |
-| 05 | [Avaliação QA Automatizada](./plays/play-05-qa-automacao)| Verificações funcionais em lote |
-| 06 | [Carga Bash Script](./plays/play-06-carga-bash)          | Stress-test com múltiplas requisições |
-| 07 | [Testes Mobile com ADB](./plays/play-07-mobile-tests)    | Automação de app Android via terminal |
+| Play | Nome                            | Descrição |
+|------|----------------------------------|-----------|
+| 01   | Nmap Recon                       | Varredura de portas e serviços |
+| 02   | Hydra em DVWA                   | Força-bruta em login |
+| 03   | SQLMap em DVWA                  | SQL Injection automatizada |
+| 04   | Carga com JMeter                | Simulação de carga |
+| 05   | Avaliação QA Automatizada       | Testes de API REST simulando processo real |
+| 06   | Carga com Bash Script           | Stress test shell |
+| 07   | Testes Mobile com Appium        | Automação mobile Android |
 
 ---
 
-## 💻 Execução Local
+## 🚀 Execução dos Testes
 
-Para rodar os testes via navegador em ambiente local:
+Os testes são acionados por botões visíveis no site. O botão "▶️ Executar Teste" dispara um request para a API Flask (Railway), que roda o script correspondente e retorna o resultado **em tempo real**.
 
-1. Clone o repositório:
+```bash
+POST /api/exec/play-01-nmap-recon
+```
 
-   ```bash
-   git clone https://github.com/denisdbz/denis-portfolio.git
-   cd denis-portfolio
+A resposta (output, erro, status) é exibida na tela.
+
+---
+
+## 📂 Estrutura
+
+```
+denis-portfolio/
+├── app.py
+├── index.html
+├── style.css
+├── simulate-run.js
+├── plays/
+│   ├── play-01-nmap-recon/
+│   ├── play-02-hydra-dvwa/
+│   └── ...
+├── assets/
+│   └── img/ (imagens de evidência)
+```
+
+---
+
+## ⚙️ Tecnologias Usadas
+
+- **Flask** (API backend)
+- **Shell Script**
+- **JMeter**
+- **Appium**
+- **HTML/CSS/JS Vanilla**
+- **GitHub Pages** + **Railway**
+- **CI/CD via GitHub Actions**
+
+---
+
+## 🧾 Como Rodar Localmente
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+
+Acesse: [http://127.0.0.1:5000/play/play-01-nmap-recon](http://127.0.0.1:5000/play/play-01-nmap-recon)
+
+---
+
+## 💬 Contato
+
+- 🔗 [LinkedIn](https://www.linkedin.com/in/denis-oliveira-santos-99a83953/)
+- 📬 Email: denis.qae.hack@gmail.com
+- 💬 WhatsApp: 11 97811‑8097
+- 🐙 [GitHub](https://github.com/denisdbz)
+
+---
+
+**© 2025 - Denis Oliveira. Todos os direitos reservados.**
