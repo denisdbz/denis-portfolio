@@ -2,23 +2,19 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 05 — Avaliação QA Automatizada</title>
   <link rel="stylesheet" href="../../style.css" />
+  <script src="../../runScript.js" defer></script>
 </head>
 <body>
-  <div class="play-container">
+  <div class="container">
     <h1>Play 05 — Avaliação QA Automatizada</h1>
-    <p>Este play executa uma avaliação técnica automatizada com validações de respostas e status codes.</p>
+    <p>Este play executa um conjunto de scripts de automação para avaliação técnica em QA.</p>
 
-    <img src="../../assets/img/qa_auto.png" alt="Evidência QA" class="evidencia-img"/>
-
-    <button onclick="executarTeste('play-05-qa-automacao')" class="btn">▶️ Executar Teste</button>
-    <pre id="output" class="output-box" style="display:none;"></pre>
-
-    <a href="../../index.html" class="btn">⬅️ Voltar ao Início</a>
+    <button onclick="executarTeste('play-05-qa-automacao')">▶️ Executar Teste</button>
+    <div id="resultado" class="output-box" style="display:none;"></div>
+    <img src="../../assets/img/qa_auto.png" alt="Evidência da Avaliação QA" class="evidencia" />
+    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
   </div>
-
-  <script src="../../runScript.js"></script>
 </body>
 </html>

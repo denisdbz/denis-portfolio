@@ -2,23 +2,22 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 01 — Nmap Recon</title>
   <link rel="stylesheet" href="../../style.css" />
+  <script src="../../runScript.js" defer></script>
 </head>
 <body>
-  <div class="play-container">
+  <div class="container">
     <h1>Play 01 — Nmap Recon</h1>
-    <p>Este play executa uma varredura de portas usando Nmap para identificar serviços expostos.</p>
+    <p>Este play realiza uma varredura de portas e serviços em um host remoto para detectar ativos na rede.</p>
 
-    <img src="../../assets/img/nmap_scan.png" alt="Evidência Nmap" class="evidencia-img"/>
+    <button onclick="executarTeste('play-01-nmap-recon')">▶️ Executar Teste</button>
 
-    <button onclick="executarTeste('play-01-nmap-recon')" class="btn">▶️ Executar Teste</button>
-    <pre id="output" class="output-box" style="display:none;"></pre>
+    <div id="resultado" class="output-box" style="display:none;"></div>
 
-    <a href="../../index.html" class="btn">⬅️ Voltar ao Início</a>
+    <img src="../../assets/img/nmap_scan.png" alt="Evidência do Nmap" class="evidencia" />
+
+    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
   </div>
-
-  <script src="../../runScript.js"></script>
 </body>
 </html>
