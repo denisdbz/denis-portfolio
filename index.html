@@ -2,66 +2,112 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfólio Técnico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Denis Oliveira - Portfólio Profissional</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="matrix.js" defer></script>
+  <script src="https://kit.fontawesome.com/4e2c9b899e.js" crossorigin="anonymous"></script>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d0d0d;
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      max-width: 500px;
-      width: 100%;
-    }
-
-    li {
-      margin: 1rem 0;
-      background: #1a1a1a;
-      padding: 1rem;
-      border-radius: 10px;
-      transition: background 0.3s;
-    }
-
-    li:hover {
-      background: #2b2b2b;
-    }
-
-    a {
-      text-decoration: none;
-      color: #00c3ff;
-      font-size: 1.1rem;
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: help;
+      color: #0f0;
       font-weight: bold;
+      margin-left: 5px;
     }
-
-    a:hover {
-      color: #ffffff;
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      width: 220px;
+      background-color: #222;
+      color: #fff;
+      text-align: left;
+      border-radius: 6px;
+      padding: 6px 10px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 12px;
+    }
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+    .contact-icons a {
+      margin-right: 15px;
+      color: #0f0;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .contact-icons a:hover {
+      text-decoration: underline;
+    }
+    .contact-icons i {
+      margin-right: 6px;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 14px;
+      color: #0f0;
     }
   </style>
 </head>
 <body>
-  <h1>Portfólio Técnico</h1>
-  <ul>
-    <li><a href="plays/play-01-nmap-recon/index.html">Play 01 — Nmap Recon</a></li>
-    <li><a href="plays/play-02-hydra-dvwa/index.html">Play 02 — Hydra em DVWA</a></li>
-    <li><a href="plays/play-03-sqlmap-dvwa/index.html">Play 03 — SQLmap em DVWA</a></li>
-    <li><a href="plays/play-04-carga-jmeter/index.html">Play 04 — Teste de Carga com JMeter</a></li>
-    <li><a href="plays/play-05-avaliacao-qa-automacao/index.html">Play 05 — Avaliação QA Automatizada</a></li>
-    <li><a href="plays/play-06-carga/index.html">Play 06 — Teste de Carga com Bash</a></li>
-    <li><a href="plays/play-07-mobile/index.html">Play 07 — Teste em Aplicação Mobile</a></li>
-  </ul>
+  <canvas id="matrix"></canvas>
+  <div class="container">
+    <header>
+      <svg class="logo" width="280" height="80" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          .text {
+            fill: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 24px;
+            animation: flicker 2s infinite;
+          }
+          .icon {
+            fill: #00ff00;
+            animation: pulse 1.5s infinite;
+          }
+          @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+          }
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+          }
+        </style>
+        <g transform="translate(10,20)">
+          <rect class="icon" x="0" y="0" width="60" height="60" rx="8"/>
+          <polyline class="icon" points="15,30 25,20 35,30" stroke="#000" stroke-width="3" fill="none" />
+          <line class="icon" x1="25" y1="35" x2="40" y2="35" stroke="#000" stroke-width="3" />
+        </g>
+        <text x="80" y="50" class="text">Denis | QA & Pentest</text>
+      </svg>
+      <h1>Denis Oliveira - Portfólio Profissional</h1>
+      <p id="sobre-mim">
+        Profissional apaixonado por Qualidade de Software e Segurança da Informação, com forte atuação em <strong>testes automatizados</strong>, <strong>pentest</strong> e <strong>devSecOps</strong>. Busco sempre unir performance, segurança e usabilidade em minhas entregas. Este portfólio demonstra minha capacidade técnica por meio de desafios reais.
+      </p>
+      <div class="contact-icons">
+        <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+        <a href="mailto:denis.qae.hack@gmail.com"><i class="fas fa-envelope"></i>E-mail</a>
+        <a href="https://wa.me/5511978118097" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+        <a href="https://github.com/denisdbz" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Cards dos plays vão aqui -->
+    </main>
+
+    <footer>
+      &copy; 2025 - Denis Oliveira. Todos os direitos reservados.
+    </footer>
+  </div>
 </body>
 </html>

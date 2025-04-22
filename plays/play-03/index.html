@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Play 03 — SQLMap vs DVWA</title>
-  <link rel="stylesheet" href="../../style.css" />
-  <style>
-    .output-box {
-      background-color: #111;
-      color: #0f0;
-      padding: 15px;
-      border-radius: 8px;
-      font-family: monospace;
-      white-space: pre-wrap;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Play 03 — SQLmap em DVWA</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Play 03 — SQLMap vs DVWA</h1>
-    <p>Este play utiliza o SQLMap para detectar e explorar automaticamente vulnerabilidades de SQL Injection na DVWA.</p>
-
-    <button class="btn" onclick="executarTeste()">▶️ Executar Teste</button>
-    <div id="output" class="output-box" style="display:none;">
-      SQL Injection detectado com sucesso via SQLMap.
+    <h1>Play 03 — SQLmap em DVWA</h1>
+    <div class="descricao">
+        Este teste automatiza a identificação de vulnerabilidades de injeção SQL no DVWA usando o SQLmap, ferramenta especializada para esse tipo de ataque.
     </div>
+    <button onclick="executarTeste()">Executar Teste</button>
+    <div class="resultado" id="resultado"></div>
 
-    <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
-    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
-  </div>
+    <h2>Evidência Técnica</h2>
+    <p>Execução do SQLmap detectando vulnerabilidade e extraindo informações:</p>
+    <img src="evidencias/sqlmap_dvwa.png" alt="Execução do SQLmap no DVWA" class="evidencia-img"/>
 
-  <script>
-    function executarTeste() {
-      document.getElementById('output').style.display = 'block';
-    }
-  </script>
+    <script>
+        function executarTeste() {
+            fetch("https://web-production-4124.up.railway.app/play03")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("resultado").innerText = data;
+                })
+                .catch(error => {
+                    document.getElementById("resultado").innerText = "Erro ao executar o teste.";
+                });
+        }
+    </script>
 </body>
 </html>

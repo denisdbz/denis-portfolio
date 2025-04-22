@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Play 05 — Avaliação QA Automação</title>
-  <link rel="stylesheet" href="../../style.css" />
-  <style>
-    .output-box {
-      background-color: #111;
-      color: #0f0;
-      padding: 15px;
-      border-radius: 8px;
-      font-family: monospace;
-      white-space: pre-wrap;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Play 05 — Avaliação QA Automatizada</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Play 05 — Avaliação QA Automação</h1>
-    <p>Este play realiza uma avaliação técnica automatizada para QA, incluindo execução de scripts e validações.</p>
-
-    <button class="btn" onclick="executarTeste()">▶️ Executar Teste</button>
-    <div id="output" class="output-box" style="display:none;">
-      Avaliação QA finalizada: todos os testes executados com sucesso.
+    <h1>Play 05 — Avaliação QA Automatizada</h1>
+    <div class="descricao">
+        Este teste executa uma bateria de verificações funcionais automatizadas utilizando um script customizado de QA, focado em consistência e fluxo de navegação.
     </div>
+    <button onclick="executarTeste()">Executar Teste</button>
+    <div class="resultado" id="resultado"></div>
 
-    <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
-    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
-  </div>
+    <h2>Evidência Técnica</h2>
+    <p>Saída do terminal com os resultados da execução do script QA automatizado:</p>
+    <img src="evidencias/qa_avaliacao.png" alt="Avaliação QA automatizada" class="evidencia-img"/>
 
-  <script>
-    function executarTeste() {
-      document.getElementById('output').style.display = 'block';
-    }
-  </script>
+    <script>
+        function executarTeste() {
+            fetch("https://web-production-4124.up.railway.app/play05")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("resultado").innerText = data;
+                })
+                .catch(error => {
+                    document.getElementById("resultado").innerText = "Erro ao executar o teste.";
+                });
+        }
+    </script>
 </body>
 </html>
