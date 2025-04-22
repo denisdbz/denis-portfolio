@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 03 — SQLMap em DVWA</title>
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
-  <main>
+  <div class="play-container">
     <h1>Play 03 — SQLMap em DVWA</h1>
-    <p class="desc">Este teste automatiza a identificação de vulnerabilidades de injeção SQL no DVWA usando o <strong>SQLMap</strong>, ferramenta especializada para esse tipo de ataque.</p>
+    <p>Este play executa um ataque automatizado com SQLMap para detectar e explorar vulnerabilidades de SQL Injection na DVWA.</p>
 
-    <button class="btn" onclick="executarTeste()">Executar Teste</button>
+    <img src="../../assets/img/sqlmap_dvwa.png" alt="Evidência SQLMap" class="evidencia-img"/>
 
-    <h2 class="evidencia">🧾 Evidência Técnica</h2>
-    <p>Execução do SQLMap detectando vulnerabilidade e extraindo informações:</p>
-    <img src="../../assets/img/sqlmap_dvwa.png" alt="Execução do SQLMap no DVWA">
+    <button onclick="executarTeste('play-03-sqlmap-dvwa')" class="btn">▶️ Executar Teste</button>
+    <pre id="output" class="output-box" style="display:none;"></pre>
 
-    <p class="warning">⚠️ Execute localmente (python app.py) ou na Railway para rodar o teste.</p>
-    <p><a class="voltar" href="../../index.html">← Voltar ao início</a></p>
-  </main>
-  <script>
-    function executarTeste() {
-      fetch("https://web-production-4124.up.railway.app/play03")
-        .then(response => response.text())
-        .then(data => alert("Resultado:\n" + data))
-        .catch(() => alert("Erro ao executar o teste."));
-    }
-  </script>
+    <a href="../../index.html" class="btn">⬅️ Voltar ao Início</a>
+  </div>
+
+  <script src="../../runScript.js"></script>
 </body>
 </html>

@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 05 — Avaliação QA Automatizada</title>
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
-  <main>
+  <div class="play-container">
     <h1>Play 05 — Avaliação QA Automatizada</h1>
-    <p class="desc">Este teste executa uma bateria de verificações funcionais automatizadas utilizando um script customizado de QA, focado em consistência e fluxo de navegação.</p>
+    <p>Este play executa uma avaliação técnica automatizada com validações de respostas e status codes.</p>
 
-    <button class="btn" onclick="executarTeste()">Executar Teste</button>
+    <img src="../../assets/img/qa_auto.png" alt="Evidência QA" class="evidencia-img"/>
 
-    <h2 class="evidencia">🧾 Evidência Técnica</h2>
-    <p>Saída do terminal com os resultados da execução do script QA automatizado:</p>
-    <img src="../../assets/img/qa_auto.png" alt="Avaliação QA automatizada">
+    <button onclick="executarTeste('play-05-qa-automacao')" class="btn">▶️ Executar Teste</button>
+    <pre id="output" class="output-box" style="display:none;"></pre>
 
-    <p class="warning">⚠️ Execute localmente (python app.py) ou na Railway para rodar o teste.</p>
-    <p><a class="voltar" href="../../index.html">← Voltar ao início</a></p>
-  </main>
-  <script>
-    function executarTeste() {
-      fetch("https://web-production-4124.up.railway.app/play05")
-        .then(response => response.text())
-        .then(data => alert("Resultado:\n" + data))
-        .catch(() => alert("Erro ao executar o teste."));
-    }
-  </script>
+    <a href="../../index.html" class="btn">⬅️ Voltar ao Início</a>
+  </div>
+
+  <script src="../../runScript.js"></script>
 </body>
 </html>
