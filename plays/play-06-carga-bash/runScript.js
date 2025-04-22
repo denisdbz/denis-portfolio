@@ -1,18 +1,15 @@
-/* runScript.js
-   Envia POST para o backend (Flask no Railway) e mostra a saída no <div id="resultado">
-*/
-const BACKEND = "https://web-production-4124.up.railway.app";   // ajuste se mudar o domínio
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("runBtn").addEventListener("click", async () => {
+    const play = document.body.getAttribute("data-play");
+    const responseDiv = document.getElementById("response");
+    responseDiv.textContent = "Executando teste...";
 
-function executarTeste(playId) {
-  fetch(`${BACKEND}/api/exec/${playId}`, { method: "POST" })
-    .then(resp => resp.json())
-    .then(data => {
-      const out = document.getElementById("resultado");
-      if (data.stdout)        out.textContent = data.stdout;       // saída normal
-      else if (data.mensagem) out.textContent = data.mensagem;     // mensagem customizada
-      else                    out.textContent = `Erro: ${data.erro || "Falha ao executar"}`;
-    })
-    .catch(err => {
-      document.getElementById("resultado").textContent = `Erro de rede: ${err}`;
-    });
-}
+    try {
+      const res = await fetch(`https://web-production-4124.up.railway.app/${play}`);
+      const data = await res.text();
+      responseDiv.innerHTML = `<pre>${data}</pre>`;
+    } catch (err) {
+      responseDiv.innerHTML = `<span style="color:red;">Erro ao executar o teste.<br>${err}</span>`;
+    }
+  });
+});

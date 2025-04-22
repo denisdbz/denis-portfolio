@@ -1,35 +1,38 @@
-# Portfólio Técnico — Denis
+# 🧠 Denis Oliveira — Portfólio Profissional
 
-Este projeto é um portfólio técnico interativo com execução real de testes de segurança e qualidade.
+**Bem-vindo ao meu portfólio técnico de Qualidade de Software e Segurança da Informação.**  
+Aqui você encontrará uma coleção de testes reais, funcionais e automatizados, com foco em:
 
-## ✅ O que está incluído
+- ✅ **Testes Funcionais Automatizados**
+- 🔍 **Pentests e Exploração de Vulnerabilidades**
+- ⚙️ **Execução real de scripts via interface web**
+- ☁️ **Deploy com CI/CD e API hospedada na Railway**
 
-- Testes automatizados reais (Nmap, SQLMap, Hydra, etc)
-- Geração de relatórios HTML por play
-- Botões que executam os testes e mostram os relatórios
-- Visual estilo Matrix e explicações leigas para cada teste
+---
 
-## 🚀 Como rodar localmente
+## 🧪 Projetos (Plays)
 
-```bash
-pip install flask
-python app.py
-```
+Cada **Play** representa um teste técnico real e executável.  
+A execução pode ser feita diretamente no navegador via API Flask hospedada na Railway, ou localmente.
 
-Acesse no navegador:
-```
-http://localhost:5000
-```
+| Nº | Play                                 | Descrição |
+|----|--------------------------------------|-----------|
+| 01 | [Nmap Recon](./plays/play-01-nmap-recon)                 | Varredura de portas usando Nmap |
+| 02 | [Hydra em DVWA](./plays/play-02-hydra-dvwa)              | Ataque de força-bruta em login web |
+| 03 | [SQLMap em DVWA](./plays/play-03-sqlmap-dvwa)            | Detecção automatizada de SQLi |
+| 04 | [Carga com JMeter](./plays/play-04-jmeter-loadtest)      | Teste de carga e estresse |
+| 05 | [Avaliação QA Automatizada](./plays/play-05-qa-automacao)| Verificações funcionais em lote |
+| 06 | [Carga Bash Script](./plays/play-06-carga-bash)          | Stress-test com múltiplas requisições |
+| 07 | [Testes Mobile com ADB](./plays/play-07-mobile-tests)    | Automação de app Android via terminal |
 
-## ☁️ Como hospedar no Railway
+---
 
-1. Suba esse repositório no GitHub
-2. Acesse https://railway.app
-3. Crie um projeto → Deploy from GitHub → Escolha este repositório
-4. Railway detectará o `Procfile` e criará a URL pública
+## 💻 Execução Local
 
-## 🧪 Executar todos os testes de uma vez
+Para rodar os testes via navegador em ambiente local:
 
-```bash
-./executar_todos_os_tests.sh
-```
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/denisdbz/denis-portfolio.git
+   cd denis-portfolio

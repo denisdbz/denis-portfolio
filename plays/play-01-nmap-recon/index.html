@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Play 01 — Nmap Recon</title>
-  <link rel="stylesheet" href="../../style.css" />
-  <script>
-    function executarTeste() {
-      fetch("/api/exec/play-01-nmap-recon", { method: "POST" })
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById("saida").textContent = data.stdout || data.erro || "Erro desconhecido.";
-          document.getElementById("output").style.display = "block";
-        });
-    }
-  </script>
-  <style>
-    .output-box {
-      background-color: #111;
-      color: #0f0;
-      padding: 15px;
-      border-radius: 8px;
-      font-family: monospace;
-      white-space: pre-wrap;
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-  <div class="container">
+  <main>
     <h1>Play 01 — Nmap Recon</h1>
-    <p>Realiza varredura de portas e serviços com Nmap para reconhecer dispositivos na rede.</p>
-    <button class="btn" onclick="executarTeste()">▶️ Executar Teste</button>
-    <div id="output" class="output-box" style="display:none;"><pre id="saida"></pre></div>
-    <p><strong>Evidência:</strong><br><img src="evidencia.png" width="100%" alt="evidência do teste" /></p>
-    <p><a href="../../index.html" class="btn">⬅️ Voltar</a></p>
-  </div>
+    <p class="desc">Varredura de portas e serviços para reconhecimento de rede com <strong>Nmap</strong>.</p>
+
+    <button class="btn" onclick="executarTeste()">Executar Teste</button>
+
+    <h2 class="evidencia">🧾 Evidência Técnica</h2>
+    <p>Execução real do Nmap listando portas abertas no host de destino:</p>
+    <img src="../../assets/img/nmap_scan.png" alt="Execução Nmap">
+
+    <p class="warning">⚠️ Execute localmente (python app.py) ou na Railway para rodar o teste.</p>
+    <p><a class="voltar" href="../../index.html">← Voltar ao início</a></p>
+  </main>
+  <script>
+    function executarTeste() {
+      fetch("https://web-production-4124.up.railway.app/play01")
+        .then(response => response.text())
+        .then(data => alert("Resultado:\n" + data))
+        .catch(() => alert("Erro ao executar o teste."));
+    }
+  </script>
 </body>
 </html>

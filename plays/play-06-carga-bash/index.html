@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Play 06 — Carga Bash</title>
-  <link rel="stylesheet" href="../../style.css" />
-  <script src="../../simulate-run.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Play 06 — Carga Bash Script</title>
+  <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Play 06 — Carga Bash</h1>
-    <p>Stress HTTP com <code>curl</code> em paralelo para medir latência.</p>
+  <main>
+    <h1>Play 06 — Carga Bash Script</h1>
+    <p class="desc">Teste simples de carga utilizando shell script e comando <code>curl</code> para simular múltiplas requisições HTTP em paralelo.</p>
 
-    <button class="btn" onclick="executarTeste('play-06-carga-bash')">Executar Teste</button>
+    <button class="btn" onclick="executarTeste()">Executar Teste</button>
 
-    <h2>Evidência Técnica</h2>
-    <img src="../../assets/img/bash_load.png" alt="Carga bash" class="evidence-img">
+    <h2 class="evidencia">🧾 Evidência Técnica</h2>
+    <p>Captura do terminal mostrando múltiplos processos <code>curl</code> sendo executados:</p>
+    <img src="../../assets/img/bash_load.png" alt="Teste de carga com Bash">
 
-    <div id="resultado"></div>
-    <p><a href="../../index.html">← Voltar ao início</a></p>
-  </div>
+    <p class="warning">⚠️ Execute localmente (python app.py) ou na Railway para rodar o teste.</p>
+    <p><a class="voltar" href="../../index.html">← Voltar ao início</a></p>
+  </main>
+  <script>
+    function executarTeste() {
+      fetch("https://web-production-4124.up.railway.app/play06")
+        .then(response => response.text())
+        .then(data => alert("Resultado:\n" + data))
+        .catch(() => alert("Erro ao executar o teste."));
+    }
+  </script>
 </body>
 </html>
