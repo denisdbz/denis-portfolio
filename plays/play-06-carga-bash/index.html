@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Play 06 — Teste de Carga com Bash</title>
-  <link rel="stylesheet" href="../../style.css">
-  <script defer src="runScript.js"></script>
+  <meta charset="UTF-8" />
+  <title>Play 06 — Carga Bash</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="../../simulate-run.js" defer></script>
 </head>
 <body>
-  <div class="container card">
-    <h1>Play 06 — Teste de Carga com Bash</h1>
-    <p>Script <code>curl</code> em paralelo simulando múltiplas requisições HTTP para medir latência.</p>
+  <div class="container">
+    <h1>Play 06 — Carga Bash</h1>
+    <p>Stress HTTP com <code>curl</code> em paralelo para medir latência.</p>
 
     <button class="btn" onclick="executarTeste('play-06-carga-bash')">Executar Teste</button>
 
-    <h2>Evidência Técnica</h2>
-    <p>Terminal exibindo vários processos <code>curl</code> ativos:</p>
-    <img src="img/bash_load.png" alt="Teste de carga com Bash">
+    <h2>Evidência Técnica</h2>
+    <img src="../../assets/img/bash_load.png" alt="Carga bash" class="evidence-img">
 
-    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
-
-    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+    <div id="resultado"></div>
+    <p><a href="../../index.html">← Voltar ao início</a></p>
   </div>
 </body>
 </html>

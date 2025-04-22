@@ -1,33 +1,28 @@
-const API_BASE_URL = 'https://web-production-4124.up.railway.app'; // URL pública da API
-
+/**
+ * Executa o run.sh do Play escolhido.
+ * Em GitHub Pages a API não existe, então mostramos aviso
+ * e evitamos o erro 405.
+ */
 function executarTeste(playId) {
-  // Caso especial para o Play 01 (Nmap Recon)
-  if (playId === 'play-01-nmap-recon') {
-    fetch('run.sh')
-      .then(() => setTimeout(() => {
-        document.getElementById('relatorioFrame').src = 'relatorio.html?' + new Date().getTime();
-      }, 2000));
+  const host = window.location.hostname;
+  const isPages = host.endsWith("github.io");
+
+  if (isPages) {
+    document.getElementById("resultado").innerHTML =
+      '<p style="color:#f33">⚠️ Execute localmente (python app.py) ou na Railway para rodar o teste.</p>';
     return;
   }
 
-  // Outros plays: comunicação com API Flask
-  fetch(`${API_BASE_URL}/api/exec/${playId}`, {
-    method: 'POST',
-  })
-    .then(response => response.json())
-    .then(data => {
-      const resultado = document.getElementById('resultado');
-      if (!resultado) return;
-      if (data.mensagem) {
-        resultado.innerHTML = `<p>${data.mensagem}</p>`;
-      } else {
-        resultado.innerHTML = `<p>Erro: ${data.erro}</p>`;
-      }
+  fetch(`/api/exec/${playId}`, { method: "POST" })
+    .then((r) => r.json())
+    .then((d) => {
+      const out = document.getElementById("resultado");
+      if (d.stdout) out.innerHTML = `<pre>${d.stdout}</pre>`;
+      else if (d.mensagem) out.textContent = d.mensagem;
+      else out.innerHTML = `<p>Erro: ${d.erro || "desconhecido"}</p>`;
     })
-    .catch(error => {
-      const resultado = document.getElementById('resultado');
-      if (resultado) {
-        resultado.innerHTML = `<p>Erro na execução: ${error}</p>`;
-      }
+    .catch((e) => {
+      document.getElementById("resultado").innerHTML =
+        `<p style="color:#f33">Erro de rede: ${e}</p>`;
     });
 }

@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Play 02 — Hydra em DVWA</title>
-  <link rel="stylesheet" href="../../style.css">
-  <script defer src="runScript.js"></script>
+  <meta charset="UTF-8" />
+  <title>Play 02 — Hydra em DVWA</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="../../simulate-run.js" defer></script>
 </head>
 <body>
-  <div class="container card">
-    <h1>Play 02 — Hydra em DVWA</h1>
-    <p>Ataque de força bruta automatizado usando <strong>Hydra</strong> contra o módulo de login da DVWA.</p>
+  <div class="container">
+    <h1>Play 02 — Hydra em DVWA</h1>
+    <p>Força bruta de login na DVWA utilizando <strong>Hydra</strong>.</p>
 
     <button class="btn" onclick="executarTeste('play-02-hydra-dvwa')">Executar Teste</button>
 
-    <h2>Evidência Técnica</h2>
-    <p>Captura de tela mostrando o Hydra encontrando credenciais válidas:</p>
-    <img src="img/hydra_login.png" alt="Execução do Hydra no DVWA">
+    <h2>Evidência Técnica</h2>
+    <img src="../../assets/img/hydra_login.png" alt="Execução Hydra" class="evidence-img">
 
-    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
-
-    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+    <div id="resultado"></div>
+    <p><a href="../../index.html">← Voltar ao início</a></p>
   </div>
 </body>
 </html>

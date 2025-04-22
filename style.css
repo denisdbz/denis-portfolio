@@ -1,73 +1,58 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Courier New', Courier, monospace;
-  color: white;
-  background: black;
-  overflow-x: hidden;
+/* === TIPOGRAFIA MATRIX === */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* === RESET & BASE === */
+* { margin:0; padding:0; box-sizing:border-box; }
+body{
+  background:#000; color:#0f0;
+  font-family:'Share Tech Mono', monospace;
+  min-height:100vh;
+  line-height:1.5;
 }
 
-canvas#matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+/* ====== HOME (index.html) ====== */
+header, main, footer{
+  width:90%; max-width:980px; margin:auto;
+  text-align:center;
 }
 
-.container {
-  padding: 20px;
-}
+header h1{font-size:32px;margin:40px 0 15px;}
+header p{margin-bottom:25px;}
 
-header {
-  text-align: center;
-  margin-bottom: 40px;
+.contact-icons a{
+  color:#0f0; margin:0 12px; text-decoration:none;
 }
+.contact-icons a:hover{text-decoration:underline;}
 
-header .logo {
-  width: 100px;
-  margin-bottom: 10px;
+.play-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:28px; margin-top:35px;
 }
-
-.logo {
-  width: 280px;
-  margin-bottom: 10px;
+.card{
+  background:#111; border:2px solid #00ff00;
+  border-radius:8px; padding:22px 18px; text-align:left;
+  transition:.25s transform;
 }
-
-.play-card {
-  background: rgba(0, 255, 0, 0.1);
-  border: 1px solid #0f0;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+.card:hover{transform:translateY(-6px);}
+.card h3{color:#0f0;margin-bottom:10px;font-size:18px;}
+.card p{color:#ccc;margin-bottom:18px;font-size:14px;}
+.card .btn{
+  background:#00ff00;color:#000;padding:8px 16px;
+  border:none;border-radius:4px;font-weight:bold;text-decoration:none;
 }
+.card .btn:hover{background:#0c0;}
 
-.play-card h2 {
-  margin-top: 0;
+/* ====== PLAYS ====== */
+.container{width:90%;max-width:900px;margin:40px auto;}
+.evidence-img{
+  max-width:100%;border:1px solid #0f0;border-radius:6px;margin:18px 0;
 }
+#resultado{margin-top:18px;white-space:pre-wrap;}
 
-.play-card a.btn {
-  background: #0f0;
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 4px;
-  margin-top: 10px;
-}
-
-.play-card a.btn:hover {
-  background: #0a0;
-  color: white;
-}
-
-#sobre-mim {
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-h2 {
-  margin-top: 1px; /* Reduza esse valor conforme necessário */
+/* ====== RESPONSIVO ====== */
+@media(max-width:540px){
+  header h1{font-size:24px;}
+  .card{padding:18px 14px;}
+  .card h3{font-size:16px;}
 }

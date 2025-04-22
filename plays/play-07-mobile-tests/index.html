@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Play 07 — Teste em Aplicação Mobile</title>
-  <link rel="stylesheet" href="../../style.css">
-  <script defer src="runScript.js"></script>
+  <meta charset="UTF-8" />
+  <title>Play 07 — Teste Mobile</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="../../simulate-run.js" defer></script>
 </head>
 <body>
-  <div class="container card">
-    <h1>Play 07 — Teste em Aplicação Mobile</h1>
-    <p>Teste funcional automático em app Android via comandos <strong>ADB</strong>, simulando interações de usuário.</p>
+  <div class="container">
+    <h1>Play 07 — Teste Mobile</h1>
+    <p>Automação de interações em app Android via <strong>ADB</strong>.</p>
 
     <button class="btn" onclick="executarTeste('play-07-mobile-tests')">Executar Teste</button>
 
-    <h2>Evidência Técnica</h2>
-    <p>Screenshot do terminal com comandos ADB executados:</p>
-    <img src="img/mobile_adb.png" alt="Teste mobile com ADB">
+    <h2>Evidência Técnica</h2>
+    <img src="../../assets/img/mobile_adb.png" alt="Teste mobile" class="evidence-img">
 
-    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
-
-    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+    <div id="resultado"></div>
+    <p><a href="../../index.html">← Voltar ao início</a></p>
   </div>
 </body>
 </html>

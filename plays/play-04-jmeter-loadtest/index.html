@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Play 04 — Teste de Carga com JMeter</title>
-  <link rel="stylesheet" href="../../style.css">
-  <script defer src="runScript.js"></script>
+  <meta charset="UTF-8" />
+  <title>Play 04 — JMeter Load Test</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="../../simulate-run.js" defer></script>
 </head>
 <body>
-  <div class="container card">
-    <h1>Play 04 — Teste de Carga com JMeter</h1>
-    <p>Simulação de múltiplos usuários simultâneos usando <strong>Apache JMeter</strong> para avaliar desempenho.</p>
+  <div class="container">
+    <h1>Play 04 — JMeter Load Test</h1>
+    <p>Simulação de múltiplos usuários simultâneos usando <strong>Apache JMeter</strong>.</p>
 
     <button class="btn" onclick="executarTeste('play-04-jmeter-loadtest')">Executar Teste</button>
 
-    <h2>Evidência Técnica</h2>
-    <p>Gráfico de throughput extraído do JMeter:</p>
-    <img src="img/jmeter_test.png" alt="Resultado do teste de carga com JMeter">
+    <h2>Evidência Técnica</h2>
+    <img src="../../assets/img/jmeter_test.png" alt="Execução JMeter" class="evidence-img">
 
-    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
-
-    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+    <div id="resultado"></div>
+    <p><a href="../../index.html">← Voltar ao início</a></p>
   </div>
 </body>
 </html>

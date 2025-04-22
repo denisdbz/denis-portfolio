@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Play 03 — SQLMap em DVWA</title>
-  <link rel="stylesheet" href="../../style.css">
-  <script defer src="runScript.js"></script>
+  <meta charset="UTF-8" />
+  <title>Play 03 — SQLMap em DVWA</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="../../simulate-run.js" defer></script>
 </head>
 <body>
-  <div class="container card">
-    <h1>Play 03 — SQLMap em DVWA</h1>
-    <p>Detecção e exploração automática de SQL Injection utilizando <strong>SQLMap</strong> na DVWA.</p>
+  <div class="container">
+    <h1>Play 03 — SQLMap em DVWA</h1>
+    <p>Exploita SQL Injection automaticamente com <strong>SQLMap</strong>.</p>
 
     <button class="btn" onclick="executarTeste('play-03-sqlmap-dvwa')">Executar Teste</button>
 
-    <h2>Evidência Técnica</h2>
-    <p>Trecho do log do SQLMap identificando a vulnerabilidade e extraindo dados:</p>
-    <img src="img/sqlmap_dvwa.png" alt="Execução do SQLMap no DVWA">
+    <h2>Evidência Técnica</h2>
+    <img src="../../assets/img/sqlmap_dvwa.png" alt="Execução SQLMap" class="evidence-img">
 
-    <pre id="resultado">Saída do teste aparecerá aqui…</pre>
-
-    <p><a class="btn-link" href="../../index.html">⬅ Voltar ao início</a></p>
+    <div id="resultado"></div>
+    <p><a href="../../index.html">← Voltar ao início</a></p>
   </div>
 </body>
 </html>
