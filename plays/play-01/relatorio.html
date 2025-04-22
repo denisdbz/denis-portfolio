@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Relatório - Nmap</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Relatório - Nmap Recon</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="report-container">
-    <h2>Relatório do Nmap</h2>
+  <h1>Play 01 — Nmap Recon</h1>
+  <section class="output">
+    <h2>Resultado da Execução</h2>
     <pre>
-Starting Nmap 7.95 ( https://nmap.org ) at 2025-04-21 00:37 -03
-Nmap scan report for localhost (127.0.0.1)
-Host is up (0.000010s latency).
-Not shown: 998 closed tcp ports (reset)
 PORT     STATE SERVICE
+22/tcp   open  ssh
 80/tcp   open  http
-5000/tcp open  upnp
-
-Nmap done: 1 IP address (1 host up) scanned in 0.20 seconds
     </pre>
-  </div>
+  </section>
+
+  <section class="evidencia">
+    <h2>Evidência Técnica</h2>
+    <img src="../../relatorios/nmap_output.png" alt="Evidência do teste Nmap">
+    <p>Imagem capturada durante execução real do Nmap contra o alvo configurado.</p>
+  </section>
+
+  <button onclick="window.location.href='index.html'">Voltar</button>
 </body>
 </html>
