@@ -2,112 +2,155 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denis Oliveira - Portfólio Profissional</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="matrix.js" defer></script>
-  <script src="https://kit.fontawesome.com/4e2c9b899e.js" crossorigin="anonymous"></script>
   <style>
-    .tooltip {
-      position: relative;
-      display: inline-block;
-      cursor: help;
-      color: #0f0;
-      font-weight: bold;
-      margin-left: 5px;
-    }
-    .tooltip .tooltip-text {
-      visibility: hidden;
-      width: 220px;
-      background-color: #222;
+    body {
+      background-color: #000;
       color: #fff;
-      text-align: left;
-      border-radius: 6px;
-      padding: 6px 10px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      font-size: 12px;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
-    .tooltip:hover .tooltip-text {
-      visibility: visible;
-      opacity: 1;
+
+    header {
+      padding: 3rem 1rem 1rem;
     }
-    .contact-icons a {
-      margin-right: 15px;
-      color: #0f0;
-      font-weight: bold;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.5;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links a {
+      color: #00ff00;
       text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s ease;
     }
-    .contact-icons a:hover {
+
+    .contact-links a:hover {
+      transform: scale(1.1);
       text-decoration: underline;
     }
-    .contact-icons i {
-      margin-right: 6px;
+
+    .play-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      padding: 1rem;
     }
+
+    .card {
+      background-color: #111;
+      border: 1px solid #00ff00;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 250px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #00ff00;
+      font-weight: bold;
+      display: block;
+      margin-top: 1rem;
+    }
+
     footer {
-      margin-top: 50px;
-      text-align: center;
-      font-size: 14px;
-      color: #0f0;
+      margin-top: 3rem;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #00ff00;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  <div class="container">
-    <header>
-      <svg class="logo" width="280" height="80" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
-        <style>
-          .text {
-            fill: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 24px;
-            animation: flicker 2s infinite;
-          }
-          .icon {
-            fill: #00ff00;
-            animation: pulse 1.5s infinite;
-          }
-          @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-          }
-          @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-          }
-        </style>
-        <g transform="translate(10,20)">
-          <rect class="icon" x="0" y="0" width="60" height="60" rx="8"/>
-          <polyline class="icon" points="15,30 25,20 35,30" stroke="#000" stroke-width="3" fill="none" />
-          <line class="icon" x1="25" y1="35" x2="40" y2="35" stroke="#000" stroke-width="3" />
-        </g>
-        <text x="80" y="50" class="text">Denis | QA & Pentest</text>
-      </svg>
-      <h1>Denis Oliveira - Portfólio Profissional</h1>
-      <p id="sobre-mim">
-        Profissional apaixonado por Qualidade de Software e Segurança da Informação, com forte atuação em <strong>testes automatizados</strong>, <strong>pentest</strong> e <strong>devSecOps</strong>. Busco sempre unir performance, segurança e usabilidade em minhas entregas. Este portfólio demonstra minha capacidade técnica por meio de desafios reais.
-      </p>
-      <div class="contact-icons">
-        <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
-        <a href="mailto:denis.qae.hack@gmail.com"><i class="fas fa-envelope"></i>E-mail</a>
-        <a href="https://wa.me/5511978118097" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
-        <a href="https://github.com/denisdbz" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+  <header>
+    <h1>Denis Oliveira - Portfólio Profissional</h1>
+    <p>Profissional apaixonado por Qualidade de Software e Segurança da Informação, com forte atuação em <strong>testes automatizados</strong>, <strong>pentest</strong> e <strong>devSecOps</strong>. Busco sempre unir performance, segurança e usabilidade em minhas entregas. Este portfólio demonstra minha capacidade técnica por meio de desafios reais.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
+      <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
+      <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
+      <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="play-cards">
+      <div class="card">
+        <h3>Play 01</h3>
+        <p>Nmap Recon</p>
+        <a href="plays/play-01-nmap-recon/">Ver Play</a>
       </div>
-    </header>
+      <div class="card">
+        <h3>Play 02</h3>
+        <p>Hydra em DVWA</p>
+        <a href="plays/play-02-hydra-dvwa/">Ver Play</a>
+      </div>
+      <div class="card">
+        <h3>Play 03</h3>
+        <p>SQLMap em DVWA</p>
+        <a href="plays/play-03-sqlmap-dvwa/">Ver Play</a>
+      </div>
+      <div class="card">
+        <h3>Play 04</h3>
+        <p>Teste de Carga com JMeter</p>
+        <a href="plays/play-04-jmeter/">Ver Play</a>
+      </div>
+      <div class="card">
+        <h3>Play 05</h3>
+        <p>Avaliação QA Automatizada</p>
+        <a href="plays/play-05-qa-automatizada/">Ver Play</a>
+      </div>
+      <div class="card">
+        <h3>Play 06</h3>
+        <p>Teste de Carga com Bash</p>
+        <a href="plays/play-06-carga-bash/">Ver Play</a>
+      </div>
+      <div class="card">
+        <h3>Play 07</h3>
+        <p>Teste em Aplicação Mobile</p>
+        <a href="plays/play-07-mobile/">Ver Play</a>
+      </div>
+    </section>
+  </main>
 
-    <main>
-      <!-- Cards dos plays vão aqui -->
-    </main>
-
-    <footer>
-      &copy; 2025 - Denis Oliveira. Todos os direitos reservados.
-    </footer>
-  </div>
+  <footer>
+    © 2025 - Denis Oliveira. Todos os direitos reservados.
+  </footer>
 </body>
 </html>

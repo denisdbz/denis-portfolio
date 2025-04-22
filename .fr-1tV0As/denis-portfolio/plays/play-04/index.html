@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Play 04 — Teste de Carga com JMeter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Play 04 — Teste de Carga com JMeter</h1>
+    <div class="descricao">
+        Teste de carga executado usando Apache JMeter contra um endpoint de autenticação, simulando múltiplos usuários simultâneos.
+    </div>
+    <button onclick="executarTeste()">Executar Teste</button>
+    <div class="resultado" id="resultado"></div>
+
+    <h2>Evidência Técnica</h2>
+    <p>Captura de tela da interface do JMeter com resultados do teste de carga:</p>
+    <img src="evidencias/jmeter_test.png" alt="Resultado do teste de carga com JMeter" class="evidencia-img"/>
+
+    <script>
+        function executarTeste() {
+            fetch("https://web-production-4124.up.railway.app/play04")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("resultado").innerText = data;
+                })
+                .catch(error => {
+                    document.getElementById("resultado").innerText = "Erro ao executar o teste.";
+                });
+        }
+    </script>
+</body>
+</html>
