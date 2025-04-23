@@ -1,41 +1,37 @@
-const API_URL = 'https://web-production-c891.up.railway.app'; // URL centralizada
+document.addEventListener('DOMContentLoaded', () => {
+  const executarBtn = document.getElementById('executar-teste');
+  const resultadoBox = document.getElementById('resultado');
+  const barraProgresso = document.getElementById('barra-progresso');
 
-function executarTeste(play) {
-  const resultadoBox = document.getElementById("resultado");
-  resultadoBox.style.display = "block";
-  resultadoBox.innerHTML = `
-    <div class="progress neon-bar">
-      <div class="progress-bar" id="barra"></div>
-    </div>
-    <p><em>Executando teste...</em></p>
-  `;
+  executarBtn.addEventListener('click', async () => {
+    resultadoBox.style.display = 'block';
+    resultadoBox.innerHTML = `<em>Executando teste...</em>`;
+    barraProgresso.style.width = '100%';
 
-  const barra = document.getElementById("barra");
-  let progresso = 0;
-  const intervalo = setInterval(() => {
-    progresso += 1;
-    barra.style.width = `${progresso}%`;
-    if (progresso >= 100) clearInterval(intervalo);
-  }, 50);
+    const urlParts = window.location.pathname.split('/');
+    const playFolder = urlParts.find(part => part.startsWith('play-'));
+    const play = playFolder?.replace('/index.html', '');
 
-  fetch(`${API_URL}/${play}`, {
-    method: 'POST'
-  })
-    .then(resposta => resposta.json())
-    .then(dados => {
-      clearInterval(intervalo);
+    try {
+      const resposta = await fetch(`https://web-production-c891.up.railway.app/${play}`, {
+        method: 'POST'
+      });
+
+      const dados = await resposta.json();
+
       if (dados.stdout || dados.stderr) {
         resultadoBox.innerHTML = `
-          <pre><strong>Saída:</strong>\n${dados.stdout}</pre>
-          <pre><strong>Erros:</strong>\n${dados.stderr}</pre>
-          <pre><strong>Status:</strong> ${dados.code}</pre>
+          <strong>Saída:</strong><pre>${dados.stdout}</pre>
+          <strong>Erros:</strong><pre>${dados.stderr}</pre>
+          <strong>Status:</strong> ${dados.code}
         `;
       } else {
         resultadoBox.innerHTML = `<pre>${JSON.stringify(dados, null, 2)}</pre>`;
       }
-    })
-    .catch(erro => {
-      clearInterval(intervalo);
-      resultadoBox.innerHTML = `<p style="color:red;"><strong>Erro:</strong> ${erro}</p>`;
-    });
-}
+    } catch (erro) {
+      resultadoBox.innerHTML = `<span style="color: red;"><strong>Erro:</strong> ${erro}</span>`;
+    } finally {
+      barraProgresso.style.width = '0%';
+    }
+  });
+});
