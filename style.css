@@ -18,11 +18,17 @@ a {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
   padding: 1rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .card {
@@ -30,29 +36,52 @@ a {
   padding: 1rem;
   background-color: #111;
   border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  margin: auto;
+  width: 300px;
+  box-sizing: border-box;
+  transition: transform 0.3s;
 }
 
-button {
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.card a {
   background-color: lime;
   color: black;
-  border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
   font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
+  display: inline-block;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.card a:hover {
+  background-color: #0c0;
+}
 
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contacts a {
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
   .card {
-    width: 30%;
+    width: 90%;
   }
 }
