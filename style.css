@@ -128,3 +128,23 @@ img.evidencia {
     font-size: .9rem;
   }
 }
+
+/* Layout responsivo para desktop */
+@media (min-width: 768px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: start;
+    margin: 2rem auto;
+    max-width: 1100px;
+  }
+
+  .card {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
