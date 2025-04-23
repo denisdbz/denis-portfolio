@@ -3,7 +3,7 @@ FROM python:3.11-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update &&     apt-get install -y     nmap     hydra     openjdk-11-jre-headless     curl     wget     bash     git     unzip     && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update &&     apt-get install -y     hydra     curl     wget     bash     git     unzip     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
