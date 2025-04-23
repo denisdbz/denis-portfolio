@@ -3,9 +3,9 @@ async function executarTeste(play) {
   resultado.textContent = "Executando teste...";
 
   try {
-const resposta = await fetch(`https://web-production-c891.up.railway.app/${play}`, {
-  method: "POST",
-});
+    const resposta = await fetch(`https://web-production-c891.up.railway.app/${play}`, {
+      method: "POST",
+    });
 
     const dados = await resposta.json();
     resultado.textContent = `Código de saída: ${dados.code}\n\nSaída:\n${dados.stdout}\n\nErros:\n${dados.stderr}`;

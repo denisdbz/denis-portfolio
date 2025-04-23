@@ -1,55 +1,41 @@
-body.neon-dark {
-  background-color: #0d0d0d;
-  color: #39ff14;
-  font-family: 'Courier New', Courier, monospace;
-  padding: 20px;
-  margin: 0;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-h1, h2, h3 {
-  color: #39ff14;
-}
-
-button {
-  background-color: #39ff14;
-  border: none;
-  color: black;
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 6px;
-  box-shadow: 0 0 10px #39ff14;
-}
-
-button:hover {
-  background-color: #2ecc71;
-}
-
-pre {
+body {
   background-color: #111;
   color: #0f0;
+  font-family: monospace;
+  padding: 20px;
+  text-align: center;
+}
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+button {
+  background-color: lime;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0f0;
+}
+pre {
+  background-color: #000;
   padding: 10px;
-  margin-top: 15px;
+  border: 2px solid lime;
+  text-align: left;
   overflow-x: auto;
   white-space: pre-wrap;
-  border-left: 4px solid #39ff14;
 }
-
-.screenshot {
-  width: 100%;
-  border: 1px solid #39ff14;
-  margin-top: 15px;
-}
-
-a.voltar {
-  display: inline-block;
+img {
   margin-top: 20px;
-  color: #39ff14;
+  max-width: 100%;
+}
+.voltar {
+  display: block;
+  margin-top: 15px;
+  color: #0ff;
   text-decoration: underline;
 }

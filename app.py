@@ -1,10 +1,8 @@
 from flask import Flask, jsonify, request, send_from_directory, render_template_string
-from flask_cors import CORS
 import subprocess
 import os
 
 app = Flask(__name__)
-CORS(app)  # Libera CORS para permitir requisições do frontend no GitHub Pages
 
 @app.route("/")
 def home():
@@ -27,7 +25,7 @@ def executar_script(rel_path):
     if not os.path.exists(abs_path):
         return jsonify({"erro": f"Script {rel_path} não encontrado"}), 404
     try:
-        os.chmod(abs_path, 0o755)
+        os.chmod(abs_path, 0o755)  # Garante permissão
         resultado = subprocess.run(["bash", abs_path], capture_output=True, text=True, timeout=60)
         return jsonify({
             "stdout": resultado.stdout,
