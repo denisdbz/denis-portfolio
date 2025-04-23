@@ -2,21 +2,20 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Play 03 — SQLMap em DVWA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play 03 - SQLMap DVWA</title>
   <link rel="stylesheet" href="../../style.css" />
-  <script src="../../runScript.js" defer></script>
 </head>
-<body>
+<body class="neon-dark">
   <div class="container">
-    <h1>Play 03 — SQLMap em DVWA</h1>
-    <p>Este play automatiza a detecção de SQL Injection usando o SQLMap.</p>
-
-    <button class="btn" onclick="executarTeste('play-03-sqlmap-dvwa')">▶️ Executar Teste</button>
-
-    <div id="resultado" class="output-box" style="display:none;"></div>
-
-    <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
-    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
+    <h1>Play 03 - SQLMap com DVWA</h1>
+    <p>Este play realiza uma injeção SQL automatizada usando SQLMap.</p>
+    <button onclick="executarTeste('play03')">Executar Teste</button>
+    <pre id="resultado"></pre>
+    <h3>Evidência Técnica:</h3>
+    <img src="../../resultados/play03.png" alt="Injeção SQL com SQLMap" class="screenshot"/>
+    <a href="../../index.html" class="voltar">Voltar ao início</a>
   </div>
+  <script src="../../runScript.js"></script>
 </body>
 </html>

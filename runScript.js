@@ -1,20 +1,15 @@
-async function executarTeste(playId) {
-  const resultado = document.getElementById('resultado');
-  resultado.style.display = 'block';
-  resultado.innerHTML = '⏳ Executando o teste...';
+async function executarTeste(play) {
+  const resultado = document.getElementById("resultado");
+  resultado.textContent = "Executando teste...";
 
   try {
-    const resposta = await fetch(`https://web-production-4124.up.railway.app/api/exec/${playId}`, {
-      method: 'POST',
+    const resposta = await fetch(`https://web-production-4124.up.railway.app/${play}`, {
+      method: "POST",
     });
 
-    if (!resposta.ok) {
-      throw new Error(`Erro HTTP: ${resposta.status}`);
-    }
-
     const dados = await resposta.json();
-    resultado.innerHTML = `<pre>${dados.resultado}</pre>`;
+    resultado.textContent = `Código de saída: ${dados.code}\n\nSaída:\n${dados.stdout}\n\nErros:\n${dados.stderr}`;
   } catch (erro) {
-    resultado.innerHTML = `<span style="color: red;">⚠️ Erro na requisição: ${erro.message}</span>`;
+    resultado.textContent = "Erro ao executar o teste:\n" + erro;
   }
 }

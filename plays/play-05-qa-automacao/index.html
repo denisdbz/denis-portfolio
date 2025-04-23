@@ -2,24 +2,20 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Play 05 — Avaliação QA Automatizada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play 05 - QA Automação</title>
   <link rel="stylesheet" href="../../style.css" />
-  <script src="../../runScript.js" defer></script>
 </head>
-<body>
+<body class="neon-dark">
   <div class="container">
-    <h1>Play 05 — Avaliação QA Automatizada</h1>
-    <p>Executa scripts de testes funcionais completos em API REST, verificando status codes e respostas.</p>
-
-    <button onclick="executarTeste('play-05-qa-automacao')">▶️ Executar Teste</button>
-
-    <div id="resultado" class="output-box" style="display:none;"></div>
-
-    <h2>Evidência Técnica</h2>
-    <img src="../../assets/img/qa_auto.png" alt="Evidência QA Automação" class="evidencia">
-
-    <p><a href="relatorio.html" class="btn">📄 Ver Relatório</a></p>
-    <p><a href="../../index.html" class="btn">⬅️ Voltar ao Início</a></p>
+    <h1>Play 05 - Teste Automatizado de API</h1>
+    <p>Este teste realiza validações automatizadas em uma API REST.</p>
+    <button onclick="executarTeste('play05')">Executar Teste</button>
+    <pre id="resultado"></pre>
+    <h3>Evidência Técnica:</h3>
+    <img src="../../resultados/play05.png" alt="Automação de testes" class="screenshot"/>
+    <a href="../../index.html" class="voltar">Voltar ao início</a>
   </div>
+  <script src="../../runScript.js"></script>
 </body>
 </html>

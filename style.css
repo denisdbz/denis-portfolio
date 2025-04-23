@@ -1,55 +1,55 @@
-body {
-  background-color: #111;
-  color: #00ff90;
+body.neon-dark {
+  background-color: #0d0d0d;
+  color: #39ff14;
   font-family: 'Courier New', Courier, monospace;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-header {
-  padding: 2rem;
-  border-bottom: 1px solid #00ff90;
-}
-
-.social-icons a {
-  margin: 0 10px;
-  color: #00ff90;
-  font-size: 1.5rem;
-}
-
-section {
-  padding: 1rem 2rem;
-  text-align: left;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.card {
-  background-color: #222;
-  border: 2px solid #00ff90;
-  border-radius: 10px;
-  margin: 10px;
   padding: 20px;
-  width: 250px;
-  text-decoration: none;
-  color: #00ff90;
-  transition: transform 0.2s;
+  margin: 0;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  background-color: #1a1a1a;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-footer {
-  margin-top: 2rem;
-  padding: 1rem;
-  border-top: 1px solid #00ff90;
-  font-size: 0.9rem;
+h1, h2, h3 {
+  color: #39ff14;
+}
+
+button {
+  background-color: #39ff14;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #39ff14;
+}
+
+button:hover {
+  background-color: #2ecc71;
+}
+
+pre {
+  background-color: #111;
+  color: #0f0;
+  padding: 10px;
+  margin-top: 15px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  border-left: 4px solid #39ff14;
+}
+
+.screenshot {
+  width: 100%;
+  border: 1px solid #39ff14;
+  margin-top: 15px;
+}
+
+a.voltar {
+  display: inline-block;
+  margin-top: 20px;
+  color: #39ff14;
+  text-decoration: underline;
 }
