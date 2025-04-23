@@ -1,109 +1,99 @@
-body {
-  background-color: black;
-  color: lime;
+body.neon-dark {
+  background-color: #000;
+  color: #0f0;
   font-family: 'Courier New', monospace;
-  text-align: center;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
-h1, h2, h3 {
-  font-weight: bold;
-  color: lime;
+h1 {
+  font-size: 2rem;
+  margin-top: 1rem;
 }
 
-a {
-  color: lime;
+nav {
+  margin: 1rem 0;
+}
+
+nav a {
+  margin: 0 0.5rem;
+  color: #00ff00;
   text-decoration: none;
+  font-weight: bold;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 1rem;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
 }
 
 .card {
-  border: 2px solid lime;
-  padding: 1rem;
   background-color: #111;
-  border-radius: 10px;
-  width: 300px;
-  box-sizing: border-box;
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
+  border: 2px solid #0f0;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 10px #0f0;
 }
 
 .card h2 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .card p {
   font-size: 0.9rem;
-  color: #ccc;
-  margin-bottom: 1rem;
 }
 
 .card a {
-  background-color: lime;
-  color: black;
-  padding: 0.4rem 1rem;
-  border-radius: 6px;
-  font-weight: bold;
   display: inline-block;
+  margin-top: 1rem;
+  background-color: #0f0;
+  color: #000;
+  padding: 0.4rem 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s;
 }
 
 .card a:hover {
-  background-color: #0c0;
-}
-
-.contacts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.contacts a {
-  font-weight: bold;
-}
-
-@media (max-width: 600px) {
-  .card {
-    width: 90%;
-  }
+  background-color: #00cc00;
 }
 
 /* Barra de progresso */
-.barra-container {
-  width: 100%;
+#progresso {
+  width: 90%;
   height: 10px;
-  background-color: #222;
+  background-color: #111;
   border: 1px solid #0f0;
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
+  margin: 20px auto;
+  display: none;
 }
 
-.barra {
+#barra {
   height: 100%;
-  width: 100%;
   background-color: #0f0;
-  animation: loading 2s infinite linear;
+  width: 0%;
+  animation: carregando 2s linear forwards;
 }
 
-@keyframes loading {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+@keyframes carregando {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Responsividade extra */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  .cards-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
 }
