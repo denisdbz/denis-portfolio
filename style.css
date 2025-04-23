@@ -1,150 +1,99 @@
 body {
   margin: 0;
-  background: #000;
-  color: #0f0;
   font-family: 'Courier New', monospace;
+  background-color: #000;
+  color: #0f0;
+}
+
+h1, h2 {
   text-align: center;
 }
 
-header {
-  padding: 3rem 1rem 1rem;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-h1 {
-  font-size: 2.4rem;
-  margin: 0 0 .5rem;
+.highlight {
+  color: #00ff00;
 }
 
-p.desc {
-  max-width: 720px;
-  margin: 0 auto 2rem;
-  line-height: 1.5;
+.descricao {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.contacts {
+.contatos {
   display: flex;
   justify-content: center;
-  gap: 1.2rem;
   flex-wrap: wrap;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.contacts a {
-  color: #0f0;
+.contatos a {
+  color: #00f;
   text-decoration: none;
   font-weight: bold;
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  padding: 1rem;
+  justify-content: center;
 }
 
 .card {
-  background: #111;
-  border: 1px solid #0f0;
+  border: 2px solid #00ff00;
   border-radius: 10px;
-  padding: 1.2rem;
-  width: 260px;
-  transition: .3s;
+  padding: 1.5rem;
+  background-color: #111;
+  text-align: center;
+  transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-}
-
-.card h2 {
-  margin: .2rem 0 1rem;
-  font-size: 1.1rem;
-}
-
-.card p {
-  color: #ccc;
-  font-size: .9rem;
-  line-height: 1.4;
-  margin: 0 0 1rem;
+  box-shadow: 0 0 20px #00ff00;
 }
 
 .btn {
   display: inline-block;
-  background: #0f0;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #00ff00;
   color: #000;
-  padding: .4rem 1rem;
-  border-radius: 6px;
   font-weight: bold;
+  border-radius: 5px;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  background: #0c0;
-}
-
-footer {
-  margin: 3rem 0 1rem;
-  font-size: .8rem;
-  color: #0f0;
-}
-
-.output-box {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background: #111;
-  color: #0f0;
-  border: 1px solid #0f0;
-  border-radius: 10px;
-  white-space: pre-wrap;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-img.evidencia {
-  max-width: 90%;
-  border: 1px solid #0f0;
-  border-radius: 10px;
-  margin-top: 1.2rem;
-  display: none;
+  background-color: #00cc00;
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-  .card {
-    width: 90%;
-  }
-
-  .contacts {
+@media screen and (max-width: 600px) {
+  .contatos {
     flex-direction: column;
     align-items: center;
   }
 
-  h1 {
-    font-size: 2rem;
-  }
-
-  .btn {
-    font-size: .9rem;
-  }
-}
-
-/* Layout responsivo para desktop */
-@media (min-width: 768px) {
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: start;
-    margin: 2rem auto;
-    max-width: 1100px;
+  .contatos a {
+    display: inline-block;
+    background: #111;
+    padding: 0.5rem 1rem;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
   }
 
   .card {
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    font-size: 0.95rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
   }
 }
