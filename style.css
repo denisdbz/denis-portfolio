@@ -1,99 +1,146 @@
-body {
+/* Estilo geral */
+body.neon-dark {
   margin: 0;
+  padding: 0;
   font-family: 'Courier New', monospace;
   background-color: #000;
   color: #0f0;
 }
 
-h1, h2 {
-  text-align: center;
-}
-
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: auto;
   padding: 2rem;
-}
-
-.highlight {
-  color: #00ff00;
-}
-
-.descricao {
   text-align: center;
-  margin-bottom: 1rem;
 }
 
+/* Cabeçalhos */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Descrição da home */
+.descricao {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+/* Contatos */
 .contatos {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
 }
 
 .contatos a {
-  color: #00f;
-  text-decoration: none;
+  color: #0f0;
   font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #0f0;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  transition: 0.3s;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+.contatos a:hover {
+  background: #0f0;
+  color: #000;
+}
+
+/* Grid da home */
+.plays-grid {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 1.5rem;
 }
 
 .card {
-  border: 2px solid #00ff00;
-  border-radius: 10px;
-  padding: 1.5rem;
   background-color: #111;
-  text-align: center;
-  transition: 0.3s;
+  border: 1px solid #0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 260px;
+  transition: transform 0.3s;
+  text-align: left;
 }
 
 .card:hover {
-  box-shadow: 0 0 20px #00ff00;
+  transform: translateY(-5px);
 }
 
-.btn {
+.card h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+/* Botão principal */
+.btn,
+.neon-btn {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #00ff00;
+  background-color: #0f0;
   color: #000;
   font-weight: bold;
-  border-radius: 5px;
+  padding: 0.6rem 1.2rem;
   text-decoration: none;
+  border-radius: 8px;
   transition: 0.3s;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
 }
 
-.btn:hover {
-  background-color: #00cc00;
+.btn:hover,
+.neon-btn:hover {
+  box-shadow: 0 0 12px #0f0, 0 0 20px #0f0;
+  background-color: #0c0;
+}
+
+/* Caixa de saída */
+.output-box {
+  background-color: #111;
+  color: #0f0;
+  border: 1px solid #0f0;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  white-space: pre-wrap;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+/* Imagens de evidência */
+img {
+  max-width: 100%;
+  margin-top: 1rem;
+  border: 1px solid #0f0;
+  border-radius: 6px;
 }
 
 /* Responsividade */
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+
   .contatos {
     flex-direction: column;
     align-items: center;
-  }
-
-  .contatos a {
-    display: inline-block;
-    background: #111;
-    padding: 0.5rem 1rem;
-    border: 1px solid #00ff00;
-    border-radius: 5px;
-  }
-
-  .card {
-    font-size: 0.95rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
   }
 }
