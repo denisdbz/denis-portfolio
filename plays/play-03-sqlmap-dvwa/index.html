@@ -9,11 +9,12 @@
 <body class="neon-dark">
   <div class="container">
     <h1>Play 03 — SQLMap em DVWA</h1>
-    <p>Este teste detecta e explora SQL Injection de forma automatizada com SQLMap.</p>
-    <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+    <p>Exploração de SQL Injection</p>
+    <button id="executarBtn" class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+    <div id="progresso" class="output-box" style="display:none;">Executando...</div>
     <div id="resultado" class="output-box" style="display:none;"></div>
     <h2>Evidência Técnica</h2>
-    <img src="../../assets/img/sqlmap_dvwa.png" alt="SQLMap no DVWA" />
+    <img src="../../assets/img/sqlmap_dvwa.png" alt="Evidência Play 03" />
   </div>
   <script src="../../runScript.js"></script>
 </body>

@@ -1,28 +1,25 @@
-async function executarTeste() {
-  const resultadoBox = document.getElementById("resultado");
-  resultadoBox.style.display = "block";
-  resultadoBox.innerHTML = "<em>Executando teste...</em>";
+function executarTeste() {
+  const progresso = document.getElementById("progresso");
+  const resultado = document.getElementById("resultado");
 
-  const partes = window.location.pathname.split("/");
-  const play = partes[partes.length - 2];
+  progresso.style.display = "block";
+  resultado.style.display = "none";
+  progresso.textContent = "Executando...";
 
-  try {
-    const resposta = await fetch(`https://web-production-c891.up.railway.app/${play}`, {
-      method: 'POST'
-    });
-
-    const dados = await resposta.json();
-
-    if (dados.stdout || dados.stderr) {
-      resultadoBox.innerHTML = `
-        <strong>Saída:</strong><pre>${dados.stdout}</pre>
-        <strong>Erros:</strong><pre>${dados.stderr}</pre>
-        <strong>Status:</strong> ${dados.code}
+  fetch("https://web-production-4124.up.railway.app/play01", { method: "POST" })
+    .then(res => res.json())
+    .then(data => {
+      progresso.style.display = "none";
+      resultado.style.display = "block";
+      resultado.innerHTML = `
+        <strong>Status:</strong> ${data.code}<br>
+        <strong>Saída:</strong><pre>${data.stdout || "Sem saída."}</pre>
+        <strong>Erros:</strong><pre>${data.stderr || "Sem erros."}</pre>
       `;
-    } else {
-      resultadoBox.innerHTML = `<pre>${JSON.stringify(dados, null, 2)}</pre>`;
-    }
-  } catch (erro) {
-    resultadoBox.innerHTML = `<strong>Erro:</strong> ${erro}`;
-  }
+    })
+    .catch(err => {
+      progresso.style.display = "none";
+      resultado.style.display = "block";
+      resultado.innerHTML = `<strong>Erro:</strong><pre>${err}</pre>`;
+    });
 }

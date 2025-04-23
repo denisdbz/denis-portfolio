@@ -1,146 +1,42 @@
-/* Estilo geral */
-body.neon-dark {
-  margin: 0;
-  padding: 0;
-  font-family: 'Courier New', monospace;
+body {
   background-color: #000;
+  color: #fff;
+  font-family: monospace;
+  padding: 20px;
+  margin: 0;
+}
+h1, h2 {
   color: #0f0;
 }
-
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: auto;
-  padding: 2rem;
-  text-align: center;
+  padding: 20px;
 }
-
-/* Cabeçalhos */
-h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-h2 {
-  font-size: 1.4rem;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Descrição da home */
-.descricao {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 2rem;
-}
-
-/* Contatos */
-.contatos {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-  margin-bottom: 2.5rem;
-}
-
-.contatos a {
-  color: #0f0;
-  font-weight: bold;
-  text-decoration: none;
-  border: 1px solid #0f0;
-  border-radius: 6px;
-  padding: 0.4rem 0.8rem;
-  transition: 0.3s;
-}
-
-.contatos a:hover {
-  background: #0f0;
-  color: #000;
-}
-
-/* Grid da home */
-.plays-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.card {
-  background-color: #111;
-  border: 1px solid #0f0;
-  border-radius: 10px;
-  padding: 1rem;
-  width: 260px;
-  transition: transform 0.3s;
-  text-align: left;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h2 {
-  margin-top: 0;
-  font-size: 1.1rem;
-}
-
-.card p {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin-bottom: 1rem;
-}
-
-/* Botão principal */
-.btn,
-.neon-btn {
-  display: inline-block;
-  background-color: #0f0;
-  color: #000;
-  font-weight: bold;
-  padding: 0.6rem 1.2rem;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
-  cursor: pointer;
-  border: none;
-  font-size: 1rem;
-}
-
-.btn:hover,
-.neon-btn:hover {
-  box-shadow: 0 0 12px #0f0, 0 0 20px #0f0;
-  background-color: #0c0;
-}
-
-/* Caixa de saída */
 .output-box {
   background-color: #111;
-  color: #0f0;
-  border: 1px solid #0f0;
-  padding: 1rem;
+  padding: 1em;
   border-radius: 8px;
-  margin-top: 1.5rem;
+  margin-top: 20px;
   white-space: pre-wrap;
-  text-align: left;
-  font-size: 0.9rem;
 }
-
-/* Imagens de evidência */
 img {
   max-width: 100%;
-  margin-top: 1rem;
+  margin-top: 10px;
   border: 1px solid #0f0;
-  border-radius: 6px;
+  border-radius: 8px;
 }
-
-/* Responsividade */
-@media (max-width: 600px) {
-  .card {
-    width: 90%;
-  }
-
-  .contatos {
-    flex-direction: column;
-    align-items: center;
-  }
+button {
+  background-color: #0f0;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: #0a0;
 }
