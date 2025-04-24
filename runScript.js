@@ -1,49 +1,33 @@
+/* runScript.js (execução com log + barra) */
 const botao = document.querySelector("button");
 const saida = document.getElementById("saida");
 const erro = document.getElementById("erro");
 const status = document.getElementById("status");
-const barra = document.getElementById("progresso");
+const barra = document.getElementById("barra");
 
-async function executarTeste(play) {
-  saida.textContent = "";
+async function executarTeste() {
+  saida.innerHTML = "";
   erro.textContent = "";
-  status.textContent = "";
-  barra.style.width = "0%";
-  barra.parentElement.style.display = "block";
+  status.textContent = "Iniciando...";
+  barra.style.width = "10%";
+  barra.classList.remove("hidden");
 
   botao.disabled = true;
-  botao.style.opacity = 0.5;
   botao.innerText = "Executando...";
-
-  const endpoint = `https://web-production-c891.up.railway.app/${play}`;
-
   try {
-    const resposta = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      }
+    const resposta = await fetch("https://denis-backend.railway.app/nmap", {
+      method: "POST"
     });
-
     const dados = await resposta.json();
-
     if (dados.stdout) {
-      const linhas = dados.stdout.split("\\n");
-      for (let i = 0; i < linhas.length; i++) {
-        saida.textContent += linhas[i] + "\\n";
-        barra.style.width = `${Math.min(100, (i + 1) * 100 / linhas.length)}%`;
-        await new Promise(resolve => setTimeout(resolve, 50));
-      }
+      saida.innerHTML = `<pre>${dados.stdout}</pre>`;
+      status.textContent = "Concluído";
+      barra.style.width = "100%";
     }
-
-    if (dados.stderr) erro.textContent = dados.stderr;
-    if (dados.status) status.textContent = "Status: " + dados.status;
-
-  } catch (err) {
-    erro.textContent = "Erro: " + err;
+  } catch (e) {
+    erro.textContent = "Erro ao executar o teste.";
+    status.textContent = "Erro";
   }
-
   botao.disabled = false;
-  botao.style.opacity = 1;
   botao.innerText = "Executar Teste";
 }

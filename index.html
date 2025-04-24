@@ -1,38 +1,41 @@
+<!-- index.html (trecho da home corrigida) -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Denis Oliveira • Portfólio QA & Pentest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/4e2c9b899e.js" crossorigin="anonymous"></script>
 </head>
 <body class="neon-dark">
-  <header>
-    <img src="assets/logo-animado-denis.svg" alt="Logo Denis" style="max-height: 80px; margin-bottom: 1rem;" />
-    <h1>Denis Oliveira — Portfólio Profissional</h1>
-    <p class="desc">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
-    <div class="contacts">
-      <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="mailto:denis.qae.hack@gmail.com"><i class="fas fa-envelope"></i> E‑mail</a>
-      <a href="https://wa.me/5511978118097" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="https://github.com/denisdbz" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  <header class="hero">
+    <div class="logo-box">
+      <span class="logo">&gt;_</span> Denis | QA & Pentest
     </div>
   </header>
 
-  <section class="sobre">
-    <h2>Sobre Mim</h2>
-    <p>Engenheiro de Qualidade com 12+ anos de experiência em QA, testes automatizados e segurança da informação. Especializado em ferramentas como Cypress, Appium, JMeter, Jenkins e Kali Linux. Foco em qualidade contínua, automação, CI/CD e cultura DevSecOps.</p>
-    <a class="btn" href="assets/curriculo-denis.pdf" target="_blank">📄 Baixar Currículo</a>
-  </section>
+  <main class="container">
+    <h1>Denis Oliveira — Portfólio Profissional</h1>
+    <p>Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
+    <p>
+      <a href="#" class="link">LinkedIn</a>
+      <a href="#" class="link">E-mail</a>
+      <a href="#" class="link">WhatsApp</a>
+      <a href="#" class="link">GitHub</a>
+    </p>
 
-  <main class="grid">
-    <!-- Plays 01 a 07 -->
-    <div class="card">
-      <h2>Play 01 — Nmap Recon</h2>
-      <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-      <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
-    </div>
+    <section class="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Engenheiro de Qualidade com 12+ anos de experiência em QA, testes automatizados e segurança da informação. Especializado em ferramentas como Cypress, Appium, JMeter, Jenkins e Kali Linux. Foco em qualidade contínua, automação, CI/CD e cultura DevSecOps.</p>
+      <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Play 01 — Nmap Recon</h3>
+        <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
+        <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
+      </div>
 
     <div class="card">
       <h2>Play 02 — Hydra em DVWA</h2>
