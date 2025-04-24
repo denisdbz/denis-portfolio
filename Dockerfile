@@ -5,9 +5,13 @@ FROM python:3.10-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Instala dependências necessárias
-RUN apt-get update && apt-get install -y \
-    bash curl jq nikto git k6 \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y bash curl jq git && \
+    apt-get install -y perl libnet-ssleay-perl openssl libauthen-pam-perl libio-pty-perl && \
+    apt-get install -y nikto && \
+    curl -s https://packagecloud.io/install/repositories/loadimpact/k6/script.deb.sh | bash && \
+    apt-get install -y k6 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Cria diretório do app
 WORKDIR /app
