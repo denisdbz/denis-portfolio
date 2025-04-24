@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Play 02 — Hydra em DVWA</title>
-  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../style.css">
+  <script src="../../runScript.js" defer></script>
 </head>
-<body class="neon-dark">
-  <div class="container">
-    <h1>Play 02 — Hydra em DVWA</h1>
-    <p>Este teste simula um ataque de força bruta usando o Hydra em um formulário do DVWA.</p>
-    <button class="btn neon-btn" onclick="executarTeste('play-02-hydra-dvwa')">Executar Teste</button>
-    <div id="resultado" class="output-box" style="display:none;"></div>
-    <h2>Evidência Técnica</h2>
-    <img src="../../assets/img/hydra_login.png" alt="Ataque Hydra em DVWA" />
-  </div>
-  <script src="../../runScript.js"></script>
+<body>
+  <h1>Play 02 — Hydra em DVWA</h1>
+  <p>Este teste simula um ataque de força bruta usando o Hydra em um formulário do DVWA.</p>
+
+  <button onclick="executarTeste('play-02-hydra-dvwa')">Executar Teste</button>
+
+  <div id="output" class="output"></div>
+
+  <h2>Evidência Técnica</h2>
+  <img src="../../assets/img/hydra_login.png" alt="Ataque Hydra em DVWA">
 </body>
 </html>
