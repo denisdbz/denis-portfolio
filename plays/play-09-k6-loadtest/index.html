@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play 09 — k6 Load Test</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body class="neon-dark">
+  <div class="container">
+    <h1>Play 09 — Carga com k6</h1>
+    <p>Teste de performance simulando usuários acessando a aplicação com k6.</p>
+    <button class="btn neon-btn" onclick="executarTeste('play-09-k6-loadtest')">Executar Teste</button>
+    <div id="resultado" class="output-box" style="display:none;"></div>
+
+    <div class="progress-container" style="display:none; margin-top: 10px;">
+      <div id="progresso" style="height: 10px; background-color: lime; width: 0%; transition: width 0.3s;"></div>
+    </div>
+
+    <div id="saida" class="terminal-output"></div>
+    <div id="erro" class="error-output"></div>
+    <div id="status" class="status-output"></div>
+
+    <h2>Evidência Técnica</h2>
+    <img src="/denis-portfolio/assets/img/k6_load.png" alt="Resultado k6" />
+  </div>
+  <script src="../../runScript.js"></script>
+</body>
+</html>

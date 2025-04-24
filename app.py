@@ -8,7 +8,10 @@ CORS(app)
 
 @app.route('/')
 def index():
-    return jsonify({"status": "API no ar!", "mensagem": "Use os endpoints /play01 a /play07 via POST para executar os testes."})
+    return jsonify({
+        "status": "API no ar!",
+        "mensagem": "Use os endpoints /play-01-nmap-recon até /play-10-api-validation via POST."
+    })
 
 def executar_script(rel_path):
     abs_path = os.path.join(os.getcwd(), rel_path)
@@ -20,7 +23,7 @@ def executar_script(rel_path):
         return jsonify({
             "stdout": resultado.stdout,
             "stderr": resultado.stderr,
-            "code": resultado.returncode
+            "status": resultado.returncode
         })
     except Exception as e:
         return jsonify({"erro": str(e)}), 500

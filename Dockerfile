@@ -1,32 +1,28 @@
-# Imagem base um pouco mais completa para evitar erros de dependência
-FROM python:3.11
+# Imagem base com bash + utilitários
+FROM python:3.10-slim
 
 # Evita prompts interativos
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Atualiza repositórios e instala ferramentas
-RUN apt-get update && \
-    apt-get install -y \
-    nmap \
-    hydra \
-    curl \
-    wget \
-    bash \
-    git \
-    unzip \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Instala dependências necessárias
+RUN apt-get update && apt-get install -y \
+    bash curl jq nikto git k6 \
+    && rm -rf /var/lib/apt/lists/*
 
-# Cria diretório da aplicação
+# Cria diretório do app
 WORKDIR /app
 
-# Copia os arquivos do projeto para dentro do container
+# Copia todos os arquivos pro container
 COPY . .
 
-# Instala as dependências Python
+# Instala dependências Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe a porta usada pelo Gunicorn
-EXPOSE 8080
+# Permissões para execução dos scripts
+RUN chmod +x plays/*/run.sh || true
 
-# Comando padrão
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+# Porta para a Railway
+EXPOSE 5000
+
+# Comando de inicialização
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]

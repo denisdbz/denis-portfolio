@@ -6,26 +6,10 @@
   <title>Denis Oliveira • Portfólio QA & Pentest</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/4e2c9b899e.js" crossorigin="anonymous"></script>
-  <style>
-    body{margin:0;background:#000;color:#0f0;font-family:"Courier New",monospace;text-align:center}
-    header{padding:3rem 1rem 1rem}
-    h1{font-size:2.4rem;margin:0 0 .5rem}
-    p.desc{max-width:720px;margin:0 auto 2rem;line-height:1.5}
-    .contacts{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-bottom:2rem}
-    .contacts a{color:#0f0;text-decoration:none;font-weight:bold}
-    .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;padding:1rem}
-    .card{background:#111;border:1px solid #0f0;border-radius:10px;padding:1.2rem;width:260px;transition:.3s}
-    .card:hover{transform:translateY(-5px)}
-    .card h2{margin:.2rem 0 1rem;font-size:1.1rem}
-    .card p{color:#ccc;font-size:.9rem;line-height:1.4;margin:0 0 1rem}
-    .btn{display:inline-block;background:#0f0;color:#000;padding:.4rem 1rem;border-radius:6px;font-weight:bold;text-decoration:none}
-    .btn:hover{background:#0c0}
-    footer{margin:3rem 0 1rem;font-size:.8rem;color:#0f0}
-    @media(max-width:600px){.card{width:90%}}
-  </style>
 </head>
-<body>
+<body class="neon-dark">
   <header>
+    <img src="assets/logo-animado-denis.svg" alt="Logo Denis" style="max-height: 80px; margin-bottom: 1rem;" />
     <h1>Denis Oliveira — Portfólio Profissional</h1>
     <p class="desc">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
     <div class="contacts">
@@ -36,52 +20,78 @@
     </div>
   </header>
 
+  <section class="sobre">
+    <h2>Sobre Mim</h2>
+    <p>Engenheiro de Qualidade com 12+ anos de experiência em QA, testes automatizados e segurança da informação. Especializado em ferramentas como Cypress, Appium, JMeter, Jenkins e Kali Linux. Foco em qualidade contínua, automação, CI/CD e cultura DevSecOps.</p>
+    <a class="btn" href="assets/curriculo-denis.pdf" target="_blank">📄 Baixar Currículo</a>
+  </section>
+
   <main class="grid">
+    <!-- Plays 01 a 07 -->
     <div class="card">
-      <h2>Play 01 — Nmap Recon</h2>
+      <h2>Play 01 — Nmap Recon</h2>
       <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-      <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
+      <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
     </div>
 
     <div class="card">
-      <h2>Play 02 — Hydra em DVWA</h2>
+      <h2>Play 02 — Hydra em DVWA</h2>
       <p>Ataque de força‑bruta em formulário de login da DVWA.</p>
-      <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
+      <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
     </div>
 
     <div class="card">
-      <h2>Play 03 — SQLMap em DVWA</h2>
-      <p>Detecção e exploração automatizada de SQL Injection.</p>
-      <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
+      <h2>Play 03 — SQLMap em DVWA</h2>
+      <p>Detecção e exploração automatizada de SQL Injection.</p>
+      <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
     </div>
 
     <div class="card">
-      <h2>Play 04 — Carga com JMeter</h2>
+      <h2>Play 04 — Carga com JMeter</h2>
       <p>Simula múltiplos usuários e mede desempenho sob estresse.</p>
-      <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
+      <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
     </div>
 
     <div class="card">
-      <h2>Play 05 — Avaliação QA Automatizada</h2>
-      <p>Fluxo funcional completo validando status codes e respostas.</p>
-      <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
+      <h2>Play 05 — Avaliação QA Automatizada</h2>
+      <p>Fluxo funcional completo validando status codes e respostas.</p>
+      <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
     </div>
 
     <div class="card">
-      <h2>Play 06 — Carga Bash Script</h2>
+      <h2>Play 06 — Carga Bash Script</h2>
       <p>Stress‑test em shell disparando requisições paralelas.</p>
-      <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
+      <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
     </div>
 
     <div class="card">
-      <h2>Play 07 — Testes Mobile</h2>
+      <h2>Play 07 — Testes Mobile</h2>
       <p>Execução de cenários automatizados em app Android.</p>
-      <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
+      <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
+    </div>
+
+    <!-- Novos Plays 08 a 10 -->
+    <div class="card">
+      <h2>Play 08 — Nikto Web Scan</h2>
+      <p>Varredura de vulnerabilidades em aplicações web com Nikto.</p>
+      <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
+    </div>
+
+    <div class="card">
+      <h2>Play 09 — Carga com k6</h2>
+      <p>Simulação moderna de usuários para medir performance com k6.</p>
+      <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
+    </div>
+
+    <div class="card">
+      <h2>Play 10 — API com Curl + jq</h2>
+      <p>Validação automatizada de APIs REST com parsing de JSON.</p>
+      <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
     </div>
   </main>
 
   <footer>
-    <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
+    <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
     <p><em>Este portfólio executa testes reais com backend hospedado na <strong>Railway</strong>.</em></p>
   </footer>
 </body>

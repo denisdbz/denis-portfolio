@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play 10 — Validação de API</title>
+  <link rel="stylesheet" href="../../style.css" />
+</head>
+<body class="neon-dark">
+  <div class="container">
+    <h1>Play 10 — API REST com Curl</h1>
+    <p>Validação automatizada de resposta JSON da API pública JSONPlaceholder.</p>
+    <button class="btn neon-btn" onclick="executarTeste('play-10-api-validation')">Executar Teste</button>
+    <div id="resultado" class="output-box" style="display:none;"></div>
+
+    <div class="progress-container" style="display:none; margin-top: 10px;">
+      <div id="progresso" style="height: 10px; background-color: lime; width: 0%; transition: width 0.3s;"></div>
+    </div>
+
+    <div id="saida" class="terminal-output"></div>
+    <div id="erro" class="error-output"></div>
+    <div id="status" class="status-output"></div>
+
+    <h2>Evidência Técnica</h2>
+    <img src="/denis-portfolio/assets/img/api_result.png" alt="Resposta da API" />
+  </div>
+  <script src="../../runScript.js"></script>
+</body>
+</html>
