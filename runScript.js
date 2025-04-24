@@ -1,25 +1,18 @@
-function executarTeste() {
-  const progresso = document.getElementById("progresso");
-  const resultado = document.getElementById("resultado");
+async function executarTeste() {
+  const resultadoDiv = document.getElementById("resultado");
+  if (resultadoDiv) {
+    resultadoDiv.style.display = "block";
+    resultadoDiv.innerHTML = "<pre><code>Executando teste...</code></pre>";
+  }
 
-  progresso.style.display = "block";
-  resultado.style.display = "none";
-  progresso.textContent = "Executando...";
+  const playPath = window.location.pathname.split("/")[2];
+  const endpoint = `https://web-production-c891.up.railway.app/${playPath}`;
 
-  fetch("https://web-production-4124.up.railway.app/play01", { method: "POST" })
-    .then(res => res.json())
-    .then(data => {
-      progresso.style.display = "none";
-      resultado.style.display = "block";
-      resultado.innerHTML = `
-        <strong>Status:</strong> ${data.code}<br>
-        <strong>Saída:</strong><pre>${data.stdout || "Sem saída."}</pre>
-        <strong>Erros:</strong><pre>${data.stderr || "Sem erros."}</pre>
-      `;
-    })
-    .catch(err => {
-      progresso.style.display = "none";
-      resultado.style.display = "block";
-      resultado.innerHTML = `<strong>Erro:</strong><pre>${err}</pre>`;
-    });
+  try {
+    const response = await fetch(endpoint, { method: "POST" });
+    const data = await response.text();
+    resultadoDiv.innerHTML = `<pre><code>${data}</code></pre>`;
+  } catch (error) {
+    resultadoDiv.innerHTML = `<pre><code>Erro:\n${error}</code></pre>`;
+  }
 }
