@@ -1,52 +1,22 @@
-k<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 04 — JMeter Load Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Play 04 — JMeter LoadTest</title>
   <link rel="stylesheet" href="../../style.css" />
+  <script src="../../simulate-run.js" defer></script>
 </head>
 <body class="neon-dark">
-  <main class="container">
-    <h1>Play 04 — JMeter Load Test</h1>
-    <p>Executa um teste de carga com Apache JMeter simulando múltiplos acessos simultâneos.</p>
-    
-    <button class="btn" onclick="executarTeste()">Executar Teste</button>
-    <a href="../../index.html" class="btn" style="margin-left: 1rem;">Voltar</a>
+  <h1>Play 04 — JMeter LoadTest</h1>
+  <p>Simulação de múltiplos usuários enviando requisições usando JMeter CLI.</p>
+  <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+  <a id="voltar-btn" class="btn neon-btn" href="../">← Voltar</a>
 
-    <div id="barraProgresso" class="output-box" style="display:none; margin-top: 1rem;">
-      <progress id="progresso" value="0" max="100" style="width:100%;"></progress>
-    </div>
-
-    <div id="resultado" class="output-box" style="display:none; margin-top: 1rem;">
-      <pre id="logs"></pre>
-    </div>
-  </main>
-
-  <script>
-    function executarTeste() {
-      const resultadoDiv = document.getElementById('resultado');
-      const logsPre = document.getElementById('logs');
-      const barra = document.getElementById('barraProgresso');
-      const progresso = document.getElementById('progresso');
-
-      resultadoDiv.style.display = 'block';
-      barra.style.display = 'block';
-      progresso.value = 0;
-      logsPre.innerHTML = '';
-
-      const eventSource = new EventSource('/executar/play-04-jmeter-loadtest');
-      eventSource.onmessage = function(event) {
-        logsPre.innerHTML += event.data + '\\n';
-        progresso.value += 10;
-        if (progresso.value >= 100) progresso.value = 100;
-      };
-      eventSource.onerror = function() {
-        eventSource.close();
-        progresso.value = 100;
-      };
-    }
-  </script>
+  <div class="output-box" id="resultado" style="display:none;"></div>
+  <h2>Logs de execução</h2>
+  <div class="output-box" id="logs"></div>
+  <h2>Progresso do teste</h2>
+  <div id="barra" class="progress-bar hidden"></div>
 </body>
 </html>
-

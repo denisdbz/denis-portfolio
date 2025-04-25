@@ -1,10 +1,8 @@
 #!/bin/bash
-echo "[INFO] Iniciando teste de injeção SQL com SQLMap..."
+echo "[INFO] Iniciando Play 03 — SQLMap em DVWA"
+TARGET="http://localhost:80/dvwa/vulnerable.php?id=1"
+REPORT="sqlmap-report.html"
 
-TARGET="http://localhost/vulnerable.php?id=1"
-OUTPUT="report.html"
+sqlmap -u "$TARGET" --batch --risk=3 --level=5 --random-agent --html-report="$REPORT"
 
-sqlmap -u "$TARGET" --batch --risk=3 --level=5 --random-agent --output-dir=output-sqlmap
-sqlmap -u "$TARGET" --batch --risk=3 --level=5 --random-agent --html-report="$OUTPUT"
-
-echo "[SUCESSO] Teste finalizado. Relatório salvo em $OUTPUT"
+echo "[SUCESSO] Teste concluído. Relatório: $REPORT"

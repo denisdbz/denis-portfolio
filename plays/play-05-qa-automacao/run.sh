@@ -1,6 +1,10 @@
 #!/bin/bash
-echo "[INFO] Rodando testes Cypress..."
+echo "[INFO] Iniciando Play 05 — QA Automação"
 
-npx cypress run --spec "cypress/e2e/home.cy.js" --reporter mochawesome
+npx cypress run --spec "cypress/e2e/home.cy.js" --browser chrome --reporter mochawesome
 
-echo "[SUCESSO] Teste finalizado. Relatório gerado na pasta cypress/reports."
+if [ $? -eq 0 ]; then
+  echo "[SUCESSO] Relatório Cypress gerado em cypress/reports"
+else
+  echo "[ERRO] Falha nos testes Cypress"
+fi

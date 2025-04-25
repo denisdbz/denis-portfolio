@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Play 09 - Carga com k6</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play 09 — K6 LoadTest</title>
+  <link rel="stylesheet" href="../../style.css"/>
+  <script src="../../simulate-run.js" defer></script>
 </head>
-<body>
-  <h1>Play 09 - Carga com k6</h1>
-  <button onclick="executarTeste()">Executar Teste</button>
-  <div id="log"></div>
-  <script src="simulate-run.js"></script>
+<body class="neon-dark">
+  <h1>Play 09 — K6 LoadTest</h1>
+  <p>Testa carga em endpoint REST usando k6.</p>
+  <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+  <a id="voltar-btn" class="btn neon-btn" href="../">← Voltar</a>
+
+  <div class="output-box" id="resultado" style="display:none;"></div>
+  <h2>Logs de execução</h2>
+  <div class="output-box" id="logs"></div>
+  <h2>Progresso do teste</h2>
+  <div id="barra" class="progress-bar hidden"></div>
 </body>
 </html>

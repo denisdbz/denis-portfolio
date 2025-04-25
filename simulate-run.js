@@ -1,17 +1,19 @@
 // simulate-run.js
 function executarTeste() {
-  const resultadoDiv = document.getElementById('resultado');
-  const progresso = document.getElementById('barraProgresso');
-  const logOutput = document.getElementById('log-output');
-  const voltarBtn = document.getElementById('voltar-btn');
+  const resultado = document.getElementById('resultado');
+  const barra = document.getElementById('barra');
+  const logs = document.getElementById('logs');
+  const voltar = document.getElementById('voltar-btn');
 
-  resultadoDiv.style.display = 'block';
-  progresso.style.width = '0%';
-  progresso.style.backgroundColor = '#00ffcc';
-  logOutput.innerHTML = '';
-  voltarBtn.style.display = 'none';
+  // Reset
+  resultado.style.display = 'none';
+  barra.style.width = '0%';
+  barra.classList.remove('hidden');
+  logs.innerHTML = '';
+  voltar.style.display = 'none';
 
-  const logs = [
+  // Simulação passo a passo
+  const steps = [
     '[INFO] Iniciando o teste...',
     '[INFO] Carregando configurações...',
     '[INFO] Executando comandos...',
@@ -19,17 +21,15 @@ function executarTeste() {
     '[INFO] Finalizando...',
     '[SUCESSO] Teste concluído com sucesso!'
   ];
-
   let i = 0;
-
-  const intervalo = setInterval(() => {
-    if (i < logs.length) {
-      logOutput.innerHTML += `<div>${logs[i]}</div>`;
-      progresso.style.width = `${((i + 1) / logs.length) * 100}%`;
-      i++;
-    } else {
-      clearInterval(intervalo);
-      voltarBtn.style.display = 'inline-block';
+  const interval = setInterval(() => {
+    logs.innerHTML += `<div>${steps[i]}</div>`;
+    barra.style.width = `${((i + 1) / steps.length) * 100}%`;
+    i++;
+    if (i >= steps.length) {
+      clearInterval(interval);
+      resultado.style.display = 'block';
+      voltar.style.display = 'inline-block';
     }
-  }, 1000);
+  }, 800);
 }
