@@ -1,4 +1,11 @@
-#!/bin/bash
-echo "Executando Nmap no alvo..."
-nmap -sS -Pn 192.168.0.1 > resultado.txt
-echo "Relatório gerado em resultado.txt"
+K#!/bin/bash
+echo "[INFO] Iniciando varredura com Nmap..."
+
+TARGET="scanme.nmap.org"
+OUTPUT="report.html"
+
+nmap -A -T4 $TARGET -oX output.xml
+xsltproc output.xml -o $OUTPUT
+
+echo "[SUCESSO] Varredura concluída. Relatório salvo em $OUTPUT"
+

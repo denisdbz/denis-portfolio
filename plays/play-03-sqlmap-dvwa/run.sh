@@ -1,23 +1,10 @@
 #!/bin/bash
+echo "[INFO] Iniciando teste de injeção SQL com SQLMap..."
 
-echo "Executando SQLMap..."
+TARGET="http://localhost/vulnerable.php?id=1"
+OUTPUT="report.html"
 
-# Comando SQLMap real para testar vulnerabilidades
-sqlmap -u "http://target.com/vulnerable?id=1" --batch --risk=3 --level=5 -o -t 10 --output-dir=./ --format=HTML
+sqlmap -u "$TARGET" --batch --risk=3 --level=5 --random-agent --output-dir=output-sqlmap
+sqlmap -u "$TARGET" --batch --risk=3 --level=5 --random-agent --html-report="$OUTPUT"
 
-# Gerando relatório em HTML
-cat <<EOF > relatorio.html
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Relatório SQLMap</title>
-</head>
-<body>
-  <h2>Resultado SQLMap</h2>
-  <pre>
-$(cat ./output-dir/sqlmap-report.html)
-  </pre>
-</body>
-</html>
-EOF
+echo "[SUCESSO] Teste finalizado. Relatório salvo em $OUTPUT"

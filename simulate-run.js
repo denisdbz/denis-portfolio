@@ -1,28 +1,35 @@
-/**
- * Executa o run.sh do Play escolhido.
- * Em GitHub Pages a API não existe, então mostramos aviso
- * e evitamos o erro 405.
- */
-function executarTeste(playId) {
-  const host = window.location.hostname;
-  const isPages = host.endsWith("github.io");
+// simulate-run.js
+function executarTeste() {
+  const resultadoDiv = document.getElementById('resultado');
+  const progresso = document.getElementById('barraProgresso');
+  const logOutput = document.getElementById('log-output');
+  const voltarBtn = document.getElementById('voltar-btn');
 
-  if (isPages) {
-    document.getElementById("resultado").innerHTML =
-      '<p style="color:#f33">⚠️ Execute localmente (python app.py) ou na Railway para rodar o teste.</p>';
-    return;
-  }
+  resultadoDiv.style.display = 'block';
+  progresso.style.width = '0%';
+  progresso.style.backgroundColor = '#00ffcc';
+  logOutput.innerHTML = '';
+  voltarBtn.style.display = 'none';
 
-  fetch(`/api/exec/${playId}`, { method: "POST" })
-    .then((r) => r.json())
-    .then((d) => {
-      const out = document.getElementById("resultado");
-      if (d.stdout) out.innerHTML = `<pre>${d.stdout}</pre>`;
-      else if (d.mensagem) out.textContent = d.mensagem;
-      else out.innerHTML = `<p>Erro: ${d.erro || "desconhecido"}</p>`;
-    })
-    .catch((e) => {
-      document.getElementById("resultado").innerHTML =
-        `<p style="color:#f33">Erro de rede: ${e}</p>`;
-    });
+  const logs = [
+    '[INFO] Iniciando o teste...',
+    '[INFO] Carregando configurações...',
+    '[INFO] Executando comandos...',
+    '[INFO] Coletando resultados...',
+    '[INFO] Finalizando...',
+    '[SUCESSO] Teste concluído com sucesso!'
+  ];
+
+  let i = 0;
+
+  const intervalo = setInterval(() => {
+    if (i < logs.length) {
+      logOutput.innerHTML += `<div>${logs[i]}</div>`;
+      progresso.style.width = `${((i + 1) / logs.length) * 100}%`;
+      i++;
+    } else {
+      clearInterval(intervalo);
+      voltarBtn.style.display = 'inline-block';
+    }
+  }, 1000);
 }

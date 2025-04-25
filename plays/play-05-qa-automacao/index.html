@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Play 05 — Avaliação QA Automatizada</title>
-  <link rel="stylesheet" href="../../style.css" />
+  <meta charset="UTF-8">
+  <title>Play 05 - Avaliação QA Automação</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="neon-dark">
-  <div class="container">
-    <h1>Play 05 — Avaliação QA Automatizada</h1>
-    <p>Automação de testes de APIs com validações de status code e resposta.</p>
-    <button class="btn neon-btn" onclick="executarTeste('play-05-qa-automacao')">Executar Teste</button>
-    <div id="resultado" class="output-box" style="display:none;"></div>
-
-<div id="saida"></div>
-<div id="erro"></div>
-<div id="status"></div>
-
-
-    <h2>Evidência Técnica</h2>
-    <img src="../../assets/img/qa_auto.png" alt="Teste Automatizado QA" />
-  </div>
-  <script src="../../runScript.js"></script>
+<body>
+  <h1>Play 05 - Avaliação QA Automação</h1>
+  <button onclick="executarTeste()">Executar Teste</button>
+  <div id="log"></div>
+  <script src="simulate-run.js"></script>
 </body>
 </html>

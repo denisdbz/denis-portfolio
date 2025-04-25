@@ -1,26 +1,52 @@
-<!DOCTYPE html>
+k<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 04 — JMeter Load Test</title>
   <link rel="stylesheet" href="../../style.css" />
 </head>
 <body class="neon-dark">
-  <div class="container">
+  <main class="container">
     <h1>Play 04 — JMeter Load Test</h1>
-    <p>Simula múltiplos usuários acessando o sistema com Apache JMeter para testes de carga.</p>
-    <button class="btn neon-btn" onclick="executarTeste('play-04-jmeter-loadtest')">Executar Teste</button>
-    <div id="resultado" class="output-box" style="display:none;"></div>
+    <p>Executa um teste de carga com Apache JMeter simulando múltiplos acessos simultâneos.</p>
+    
+    <button class="btn" onclick="executarTeste()">Executar Teste</button>
+    <a href="../../index.html" class="btn" style="margin-left: 1rem;">Voltar</a>
 
-<div id="saida"></div>
-<div id="erro"></div>
-<div id="status"></div>
+    <div id="barraProgresso" class="output-box" style="display:none; margin-top: 1rem;">
+      <progress id="progresso" value="0" max="100" style="width:100%;"></progress>
+    </div>
 
+    <div id="resultado" class="output-box" style="display:none; margin-top: 1rem;">
+      <pre id="logs"></pre>
+    </div>
+  </main>
 
-    <h2>Evidência Técnica</h2>
-    <img src="../../assets/img/jmeter_test.png" alt="Teste de Carga com JMeter" />
-  </div>
-  <script src="../../runScript.js"></script>
+  <script>
+    function executarTeste() {
+      const resultadoDiv = document.getElementById('resultado');
+      const logsPre = document.getElementById('logs');
+      const barra = document.getElementById('barraProgresso');
+      const progresso = document.getElementById('progresso');
+
+      resultadoDiv.style.display = 'block';
+      barra.style.display = 'block';
+      progresso.value = 0;
+      logsPre.innerHTML = '';
+
+      const eventSource = new EventSource('/executar/play-04-jmeter-loadtest');
+      eventSource.onmessage = function(event) {
+        logsPre.innerHTML += event.data + '\\n';
+        progresso.value += 10;
+        if (progresso.value >= 100) progresso.value = 100;
+      };
+      eventSource.onerror = function() {
+        eventSource.close();
+        progresso.value = 100;
+      };
+    }
+  </script>
 </body>
 </html>
+
