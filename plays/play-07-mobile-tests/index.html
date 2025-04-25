@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 07 — Testes Mobile</title>
-  <link rel="stylesheet" href="../../style.css"/>
-  <script src="../../simulate-run.js" defer></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="simulate-run.js" defer></script>
 </head>
 <body class="neon-dark">
   <h1>Play 07 — Testes Mobile</h1>
-  <p>Automatiza cenários em Android via Appium e ADB.</p>
-  <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
-  <a id="voltar-btn" class="btn neon-btn" href="../">← Voltar</a>
+  <p>Execução de cenários automatizados em app Android via Appium.</p>
 
-  <div class="output-box" id="resultado" style="display:none;"></div>
-  <h2>Logs de execução</h2>
-  <div class="output-box" id="logs"></div>
-  <h2>Progresso do teste</h2>
-  <div id="barra" class="progress-bar hidden"></div>
+  <button id="btn" onclick="executarTeste()">Executar Teste</button>
+
+  <div id="barra" class="barra hidden">
+    <div id="progresso"></div>
+  </div>
+
+  <pre id="logs" class="output-box hidden"></pre>
+  
+  <div id="relatorio" class="output-box hidden"></div>
+
+  <a class="btn" href="../../index.html">← Voltar</a>
 </body>
 </html>
