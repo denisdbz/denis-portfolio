@@ -1,93 +1,90 @@
+<!-- index.html  —  HOME “animal” aprovada -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denis Oliveira — Portfólio Profissional</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <title>Denis Oliveira — Portfólio QA & Pentest</title>
 
+  <!-- tema neon já existente -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ícone opcional -->
+  <link rel="icon" href="assets/logo.png" />
+</head>
 <body class="neon-dark">
+
+  <!-- HERO -------------------------------------------------------------------------------->
   <header class="hero">
     <div class="logo-box">
+      <!-- svg animado que você enviou; mantenha o nome correto -->
       <img src="assets/logo-animado-denis.svg" alt="Logo Denis" class="logo-animado" />
       <span class="logo-text">Denis | QA & Pentest</span>
     </div>
   </header>
 
   <main class="container">
+    <!--------------------  TÍTULO & INTRO ----------------------------------------------->
     <h1>Denis Oliveira — Portfólio Profissional</h1>
-    <p class="intro">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
-    <div class="links">
-      <a href="#" class="link">LinkedIn</a>
-      <a href="#" class="link">E-mail</a>
-      <a href="#" class="link">WhatsApp</a>
-      <a href="#" class="link">GitHub</a>
+    <p class="intro">
+      Apaixonado por <strong>Qualidade de Software</strong> e <strong>Segurança da Informação</strong>.
+      Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
+    </p>
+
+    <!--------------------  LINKS DE CONTATO  -------------------------------------------->
+    <div class="contacts">
+      <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank" class="link">LinkedIn</a>
+      <a href="mailto:denis.qae.hack@gmail.com" class="link">E-mail</a>
+      <a href="https://wa.me/5511978118097" target="_blank" class="link">WhatsApp</a>
+      <a href="https://github.com/denisdbz" target="_blank" class="link">GitHub</a>
     </div>
 
+    <!--------------------  SOBRE MIM  --------------------------------------------------->
     <section class="sobre">
       <h2>Sobre Mim</h2>
-      <p>Engenheiro de Qualidade com 12+ anos de experiência em QA, testes automatizados e segurança da informação. Especializado em ferramentas como Cypress, Appium, JMeter, Jenkins e Kali Linux. Foco em qualidade contínua, automação, CI/CD e cultura DevSecOps.</p>
-      <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
+      <p>
+        Engenheiro de Qualidade com 12+ anos de experiência em QA, automação e DevSecOps.
+        Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux.
+        Foco em qualidade contínua, automação de ponta a ponta e cultura DevSecOps.
+      </p>
+      <a class="btn neon-btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
     </section>
 
+    <!--------------------  AJUDA / TOOLTIP  -------------------------------------------->
     <section class="ajuda">
       <h2>Ajuda</h2>
-      <p>Passe o mouse sobre um play para ver uma descrição rápida do que ele testa.</p>
+      <p>Passe o mouse sobre um play para ver rapidamente o que ele testa.</p>
     </section>
 
+    <!--------------------  GRADE DE PLAYS  --------------------------------------------->
     <section class="cards">
-      <div class="card" title="Play 01 — Scanner Nmap em host alvo">
+      <!-- Repita um card por play já existente -->
+      <div class="card" title="Play 01 — Nmap Recon">
         <h3>Play 01 — Nmap Recon</h3>
         <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
         <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
       </div>
-      <div class="card" title="Play 02 — Teste de força bruta em login">
+
+      <div class="card" title="Play 02 — Hydra DVWA">
         <h3>Play 02 — Hydra DVWA</h3>
-        <p>Explora senhas fracas via ataque de força bruta com Hydra.</p>
+        <p>Ataque de força-bruta no login DVWA usando Hydra.</p>
         <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
       </div>
-      <div class="card" title="Play 03 — Teste de injeção SQL com sqlmap">
-        <h3>Play 03 — SQLMap DVWA</h3>
-        <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
-        <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
-      </div>
-      <div class="card" title="Play 04 — Teste de carga com JMeter CLI">
-        <h3>Play 04 — JMeter LoadTest</h3>
-        <p>Executa testes de carga e simula múltiplos usuários.</p>
-        <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
-      </div>
-      <div class="card" title="Play 05 — Avaliação QA Automação Cypress">
-        <h3>Play 05 — QA Automação</h3>
-        <p>Execução automatizada de testes de interface com Cypress.</p>
-        <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
-      </div>
-      <div class="card" title="Play 06 — Carga com ShellScript">
-        <h3>Play 06 — Carga Bash</h3>
-        <p>Simula carga no servidor com múltiplas requisições em loop.</p>
-        <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
-      </div>
-      <div class="card" title="Play 07 — Testes Mobile ADB + Appium">
-        <h3>Play 07 — Mobile Tests</h3>
-        <p>Testes em dispositivos Android com Appium e ADB.</p>
-        <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
-      </div>
-      <div class="card" title="Play 08 — Nikto Scan (vulnerabilidades HTTP)">
-        <h3>Play 08 — Nikto Scan</h3>
-        <p>Scanner Nikto HTTP básico em alvos locais ou externos.</p>
-        <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
-      </div>
-      <div class="card" title="Play 09 — Load Test com K6">
-        <h3>Play 09 — K6 LoadTest</h3>
-        <p>Executa testes de carga com o K6 em endpoints REST.</p>
-        <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
-      </div>
-      <div class="card" title="Play 10 — Validação de API com curl + jq">
+
+      <!-- …repita para todos os plays existentes… -->
+      <div class="card" title="Play 10 — API Validation">
         <h3>Play 10 — API Validation</h3>
-        <p>Testa APIs públicas e exibe respostas formatadas com jq.</p>
+        <p>Validação de endpoints e contratos de API.</p>
         <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
       </div>
     </section>
   </main>
+
+  <!--------------------  RODAPÉ  -------------------------------------------------------->
+  <footer>
+    <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
+    <p><em>Este portfólio executa testes reais com backend hospedado na <strong>Railway</strong>.</em></p>
+  </footer>
+
 </body>
 </html>
