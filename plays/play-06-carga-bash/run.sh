@@ -1,9 +1,9 @@
-#!/bin/bash
-echo "[INFO] Iniciando Play 06 — Carga Bash"
 
-for i in {1..50}; do
-  echo "[LOG] Requisição $i"
-  curl -s http://localhost:8080 > /dev/null
+#!/usr/bin/env bash
+set -e
+echo "[INFO] Play 06 — Carga Bash"
+for i in $(seq 1 50); do
+  curl -s https://httpbin.org/get > /dev/null &
 done
-
-echo "[SUCESSO] Teste de carga finalizado."
+wait
+echo "[SUCESSO] Carga concluída"

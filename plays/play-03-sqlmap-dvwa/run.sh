@@ -1,8 +1,6 @@
-#!/bin/bash
-echo "[INFO] Iniciando Play 03 — SQLMap em DVWA"
-TARGET="http://localhost:80/dvwa/vulnerable.php?id=1"
-REPORT="sqlmap-report.html"
 
-sqlmap -u "$TARGET" --batch --risk=3 --level=5 --random-agent --html-report="$REPORT"
-
-echo "[SUCESSO] Teste concluído. Relatório: $REPORT"
+#!/usr/bin/env bash
+set -e
+echo "[INFO] Play 03 — SQLMap DVWA"
+sqlmap -u "http://dvwa.local/vulnerabilities/sqli/?id=1&Submit=Submit" --batch -o || true
+echo "[SUCESSO] SQLMap finalizado"
