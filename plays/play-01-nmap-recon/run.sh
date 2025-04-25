@@ -1,10 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# plays/play-01-nmap-recon/run.sh
+# -------------------------------
+# Varredura Nmap “TCP connect” (-sT) — não exige raw-socket
+# e dispensa a conversão XSLT para HTML (xsltproc).
+
+set -euo pipefail
+
 echo "[INFO] Iniciando Play 01 — Nmap Recon"
-TARGET="192.168.1.1"
-OUTPUT_XML="output.xml"
-OUTPUT_HTML="report.html"
 
-nmap $TARGET -oX $OUTPUT_XML
-xsltproc $OUTPUT_XML -o $OUTPUT_HTML
+# Alvo de demonstração (troque se quiser)
+ALVO="scanme.nmap.org"
 
-echo "[SUCESSO] Varredura finalizada. Relatório: $OUTPUT_HTML"
+# 1) varredura completa de portas usando -sT (evita “Operation not permitted”)
+# 2) saída normal em texto (output.txt)
+nmap -sT -p- -oN output.txt "$ALVO"
+
+echo "[SUCESSO] Varredura finalizada. Relatório salvo em output.txt"
