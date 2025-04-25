@@ -121,3 +121,19 @@ footer em{color:#00ffc8}
   white-space: pre-wrap;   /* mantém \n, mas permite quebrar linhas longas  */
   word-break: break-word;  /* se a palavra for gigante, quebra mesmo assim   */
 }
+
+/*  extras.css → acrescente ao final do style.css */
+#easter-modal.hidden{display:none}
+#easter-modal{
+  position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;background:rgba(0,0,0,.85);z-index:9999;color:#0f0;font-family:monospace;
+}
+#easter-modal input{
+  padding:.4rem .6rem;border:1px solid #0f0;background:#000;color:#0f0;border-radius:4px;
+}
+#easter-modal button{
+  margin-left:.5rem;padding:.4rem .8rem;background:#0f0;color:#000;font-weight:bold;border:none;border-radius:4px;cursor:pointer;
+}
+.easter-img{
+  position:fixed;bottom:1rem;right:1rem;max-width:320px;border:2px solid #0f0;border-radius:8px;box-shadow:0 0 12px #0f0,z-index:9999;
+}

@@ -122,6 +122,41 @@
     <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
     <p><em>Estes plays executam testes reais em um backend Flask hospedado na <strong>Railway</strong>.</em></p>
   </footer>
-<script src="konami-easter.js"></script>
+<!-- ─── EASTER-EGG (Konami Code + senha) ───────────────────────────── -->
+<!-- Modal escondido que pede a senha -->
+<div id="easter-modal" class="hidden">
+  <p>Digite a palavra-chave para desbloquear 💚</p>
+
+  <div style="margin-top:.5rem">
+    <input id="easter-key"
+           type="password"
+           placeholder="palavra-chave"
+           style="padding:.4rem .6rem;
+                  border:1px solid #0f0;
+                  background:#000;
+                  color:#0f0;
+                  border-radius:4px;">
+    <button id="easter-submit"
+            style="margin-left:.5rem;
+                   padding:.4rem .8rem;
+                   background:#0f0;
+                   color:#000;
+                   font-weight:bold;
+                   border:none;
+                   border-radius:4px;
+                   cursor:pointer;">
+      OK
+    </button>
+  </div>
+
+  <!-- Mensagem de erro (fica oculta até senha errada) -->
+  <p id="easter-erro"
+     class="hidden"
+     style="color:#f33;margin-top:.5rem;"></p>
+</div>
+
+<!-- Carrega o script que escuta a sequência ↑↑↓↓←→←→BA -->
+<script src="konami.js"></script>
+<!-- ─────────────────────────────────────────────────────────────────── -->
 </body>
 </html>
