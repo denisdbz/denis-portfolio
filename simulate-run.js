@@ -1,35 +1,53 @@
 // simulate-run.js
-function executarTeste() {
-  const resultado = document.getElementById('resultado');
-  const barra = document.getElementById('barra');
+/**
+ * Função genérica para disparar o teste do play desejado.
+ * Usa o backend em Flask (Railway) para executar o correspondente run.sh.
+ */
+async function executarTeste(playId) {
+  const button = document.getElementById('run-btn');
   const logs = document.getElementById('logs');
-  const voltar = document.getElementById('voltar-btn');
+  const progressContainer = document.getElementById('progress');
+  const bar = document.getElementById('bar');
 
-  // Reset
-  resultado.style.display = 'none';
-  barra.style.width = '0%';
-  barra.classList.remove('hidden');
-  logs.innerHTML = '';
-  voltar.style.display = 'none';
+  // Reset UI
+  logs.textContent = '';
+  progressContainer.classList.remove('hidden');
+  bar.style.width = '0%';
+  button.disabled = true;
+  button.textContent = 'Iniciando…';
 
-  // Simulação passo a passo
-  const steps = [
-    '[INFO] Iniciando o teste...',
-    '[INFO] Carregando configurações...',
-    '[INFO] Executando comandos...',
-    '[INFO] Coletando resultados...',
-    '[INFO] Finalizando...',
-    '[SUCESSO] Teste concluído com sucesso!'
-  ];
-  let i = 0;
-  const interval = setInterval(() => {
-    logs.innerHTML += `<div>${steps[i]}</div>`;
-    barra.style.width = `${((i + 1) / steps.length) * 100}%`;
-    i++;
-    if (i >= steps.length) {
-      clearInterval(interval);
-      resultado.style.display = 'block';
-      voltar.style.display = 'inline-block';
+  try {
+    // Dispara o endpoint no backend
+    const response = await fetch(`https://your-backend-url.up.railway.app/${playId}`, {
+      method: 'POST'
+    });
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let received = '';
+    let percentage = 0;
+
+    button.textContent = 'Executando…';
+
+    // Lê o stream de saída em tempo real
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      received += decoder.decode(value, { stream: true });
+      logs.textContent = received;
+
+      // Atualiza barra de progresso fictícia (simulação)
+      percentage = Math.min(100, percentage + 5);
+      bar.style.width = `${percentage}%`;
     }
-  }, 800);
+
+    // Finalização
+    bar.style.width = '100%';
+    button.textContent = 'Concluído';
+  } catch (err) {
+    logs.textContent = `❌ Erro: ${err.message}`;
+    button.textContent = 'Erro';
+  } finally {
+    button.disabled = false;
+  }
 }
