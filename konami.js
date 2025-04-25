@@ -3,7 +3,7 @@
 (() => {
   const secretKey = '01092024';          // palavra‑chave que desbloqueia o easter‑egg
   const audioSrc  = 'assets/easter/palpite.mp3';   // trilha
-  const imgSrc    = 'assets/easter/foto-casal.jpg';// foto secreta
+  const imgSrc    = 'assets/easter/foto-casal1.jpg';// foto secreta
   const imgSrc    = 'assets/easter/foto-casal2.jpg';// foto secreta2
 
   /* --- detector de Konami Code --- */
