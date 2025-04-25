@@ -1,26 +1,23 @@
+<!-- plays/play-01-nmap-recon/index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 01 — Nmap Recon</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="simulate-run.js" defer></script>
+  <link rel="stylesheet" href="../../style.css" />
 </head>
 <body class="neon-dark">
   <h1>Play 01 — Nmap Recon</h1>
-  <p>Varredura de portas e serviços utilizando Nmap.</p>
+  <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
 
-  <button id="btn" onclick="executarTeste()">Executar Teste</button>
+  <div id="barra" class="progress-bar hidden"></div>
+  <button class="btn neon-btn" onclick="executarTeste('play-01-nmap-recon')">
+    Executar Teste
+  </button>
+  <pre id="logs" class="output-box"></pre>
+  <a class="btn neon-btn" href="../../index.html">← Voltar</a>
 
-  <div id="barra" class="barra hidden">
-    <div id="progresso"></div>
-  </div>
-
-  <pre id="logs" class="output-box hidden"></pre>
-  
-  <div id="relatorio" class="output-box hidden"></div>
-
-  <a class="btn" href="../../index.html">← Voltar</a>
+  <script src="simulate-run.js" defer></script>
 </body>
 </html>
