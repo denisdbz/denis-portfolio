@@ -3,8 +3,12 @@
 (() => {
   const secretKey = '01092024';          // palavra‑chave que desbloqueia o easter‑egg
   const audioSrc  = 'assets/easter/palpite.mp3';   // trilha
-  const imgSrc    = 'assets/easter/foto-casal1.jpg';// foto secreta
-  const imgSrc    = 'assets/easter/foto-casal2.jpg';// foto secreta2
+  const fotos = [                        // Lista de fotos a serem exibidas
+    'assets/easter/foto1.jpg', 
+    'assets/easter/foto2.jpg',
+    'assets/easter/foto3.jpg',
+    'assets/easter/foto4.jpg'
+  ];
 
   /* --- detector de Konami Code --- */
   let buffer = [];
@@ -40,13 +44,20 @@
     };
   }
 
-  /* --- mostra foto + música --- */
+  /* --- mostra fotos + música --- */
   function ativarEasterEgg(){
-    // imagem
-    const img = new Image();
-    img.src = imgSrc;
-    img.className = 'easter-img';
-    document.body.appendChild(img);
+    const gallery = document.createElement('div');
+    gallery.className = 'easter-gallery';
+    
+    // Exibe todas as fotos
+    fotos.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.className = 'easter-img';
+      gallery.appendChild(img);
+    });
+
+    document.body.appendChild(gallery);
 
     // áudio
     const audio = new Audio(audioSrc);
@@ -54,9 +65,9 @@
     audio.play();
 
     // clique esconde tudo
-    img.addEventListener('click', () => {
+    gallery.addEventListener('click', () => {
       audio.pause();
-      img.remove();
+      gallery.remove();
     });
   }
 })();
