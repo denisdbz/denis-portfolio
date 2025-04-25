@@ -1,10 +1,7 @@
-
 #!/usr/bin/env bash
-set -e
-echo "[INFO] Play 05 — Cypress"
-if ! command -v xvfb-run &>/dev/null; then
+echo "[INFO] Play 05 – QA Automação"
+if command -v xvfb-run &> /dev/null; then
+  xvfb-run --auto-servernum --server-args="-screen 0 1280x720x24" npx cypress run
+else
   echo "[WARN] xvfb-run não disponível, execute localmente com GUI ou instale Xvfb"
-  exit 0
 fi
-xvfb-run --auto-servernum npx cypress run || true
-echo "[SUCESSO] Cypress concluído"
