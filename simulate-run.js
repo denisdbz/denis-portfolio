@@ -1,56 +1,52 @@
-// simulate-run.js (corrigido – substitua o arquivo inteiro por este)
-/**
- * Gatilho unificado para executar o play correto,
- * mostrar progress bar real e stream de logs/relatório.
- */
+/* simulate-run.js  */
 async function executarTeste(playId) {
-  const btn   = document.querySelector(`button[onclick*="${playId}"]`);
-  const bar   = document.getElementById('barra');
-  const fill  = document.getElementById('barra-fill') || bar?.firstElementChild;
-  const logs  = document.getElementById('logs');
+  // ─── 1. Descobrir URL do backend ──────────────────────────────────────────
+  const BACKEND =
+    window.BACKEND_URL                                  // var. de ambiente
+    || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)
+        ? "http://127.0.0.1:5000"                       // dev local
+        : "https://web-production-c891.up.railway.app"  // produção default
+       );
 
-  // Reset
-  btn.disabled = true;
-  btn.textContent = '⏳ Iniciando…';
-  bar?.classList.remove('hidden');
-  if (fill) fill.style.width = '0%';
-  if (logs) logs.innerHTML = '';
+  // ─── 2. Elementos de UI ──────────────────────────────────────────────────
+  const btn  = document.querySelector("button");
+  const bar  = document.getElementById("barra");
+  const fill = document.getElementById("barra-fill");
+  const logs = document.getElementById("logs");
+
+  btn.disabled   = true;
+  btn.textContent = "⏳ Iniciando…";
+  bar.classList.remove("hidden");
+  fill.style.width = "0%";
+  logs.textContent = "";
 
   try {
-    /* --- animação simples da barra durante o fetch --- */
+    /* --- anima progress bar enquanto faz o fetch --- */
     let pct = 0;
     const simInterval = setInterval(() => {
       pct = Math.min(90, pct + 10);
-      if (fill) fill.style.width = pct + '%';
+      fill.style.width = pct + "%";
     }, 250);
 
     /* --- requisição ao backend --- */
-    const resp = await fetch('https://web-production-c891.up.railway.app/executar', {
-      method : 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const resp = await fetch(`${BACKEND}/executar`, {
+      method : "POST",
+      headers: { "Content-Type": "application/json" },
       body   : JSON.stringify({ play: playId })
     });
 
     clearInterval(simInterval);
-    if (fill) fill.style.width = '100%';
+    fill.style.width = "100%";
 
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
 
-    /* --- exibe saída com quebras de linha --- */
     const data = await resp.json();
-    if (data.saida && logs) {
-      logs.innerHTML = data.saida
-        .replace(/&/g, '&amp;')   // escaping mínimo
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/\n/g, '<br>');
-    }
-
-    btn.textContent = '✅ Concluído';
-  } catch (err) {
-    if (logs) logs.textContent = `❌ ${err.message}`;
-    btn.textContent = '⚠️ Erro';
+    if (data.saida) logs.textContent = data.saida;
+    else if (data.erro) logs.textContent = data.erro;
+  } catch (e) {
+    logs.textContent = e.message || "Erro desconhecido";
   } finally {
-    btn.disabled = false;
+    btn.disabled   = false;
+    btn.textContent = "▶️ Executar Teste";
   }
 }
