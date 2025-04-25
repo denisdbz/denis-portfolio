@@ -1,52 +1,48 @@
-/**
- * simulate-run.js
- * Centralizado: faz POST JSON para /executar e exibe barra, logs, relatório.
- */
-async function executarTeste(playId) {
-  const btn = document.querySelector(`button[onclick*="${playId}"]`);
-  const progressBar = document.getElementById('barra');
-  const progressFill = document.getElementById('barra-fill');
-  const logsEl = document.getElementById('logs');
 
-  // Reset visual
+// simulate-run.js (raiz)
+async function executarTeste(playId) {
+  const btn = document.querySelector(`button[data-play="${playId}"]`) || document.querySelector(`button[onclick*="${playId}"]`);
+  const bar = document.getElementById('barra');
+  const fill = document.getElementById('barra-fill');
+  const logs = document.getElementById('logs');
+
   btn.disabled = true;
-  btn.textContent = '⏳ Executando...';
-  progressBar.classList.remove('hidden');
-  progressFill.style.width = '0%';
-  logsEl.textContent = '';
+  btn.textContent = '⏳ Iniciando…';
+  bar.classList.remove('hidden');
+  fill.style.width = '0%';
+  logs.textContent = '';
 
   try {
-    // Progress simulation
-    let pct = 0;
-    const simInterval = setInterval(() => {
-      pct = Math.min(90, pct + 10);
-      progressFill.style.width = pct + '%';
-    }, 200);
-
-    // Fetch JSON backend
     const resp = await fetch('https://web-production-c891.up.railway.app/executar', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type':'application/json'},
       body: JSON.stringify({play: playId})
     });
-    clearInterval(simInterval);
-    progressFill.style.width = '100%';
 
-    const data = await resp.json();
-    if (data.saida) {
-      logsEl.textContent = data.saida;
-    } else if (data.erro) {
-      logsEl.textContent = data.erro;
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let received=0, total=resp.headers.get('Content-Length')||0;
+    let buffer='';
+    btn.textContent='▶️ Executando…';
+
+    while(true){
+      const {done, value}=await reader.read();
+      if(done) break;
+      buffer += decoder.decode(value, {stream:true});
+      logs.textContent = buffer;
+      received += value.length;
+      if(total){
+        fill.style.width = Math.floor(received/total*100)+'%';
+      }
     }
-
-    btn.textContent = '✅ Concluído';
-  } catch (err) {
-    logsEl.textContent = `❌ ${err.message}`;
-    btn.textContent = '⚠️ Erro';
-  } finally {
-    btn.disabled = false;
+    fill.style.width='100%';
+    btn.textContent='✅ Concluído';
+  } catch(e){
+    logs.textContent='❌ '+e.message;
+    btn.textContent='⚠️ Erro';
+  } finally{
+    btn.disabled=false;
   }
 }
-
-// Expondo global
-window.executarTeste = executarTeste;
