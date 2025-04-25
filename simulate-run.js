@@ -1,53 +1,69 @@
 // simulate-run.js
 /**
- * Função genérica para disparar o teste do play desejado.
- * Usa o backend em Flask (Railway) para executar o correspondente run.sh.
+ * Gatilho unificado para executar o play correto,
+ * mostrar progress bar real e stream de logs/relatório.
  */
 async function executarTeste(playId) {
-  const button = document.getElementById('run-btn');
-  const logs = document.getElementById('logs');
-  const progressContainer = document.getElementById('progress');
-  const bar = document.getElementById('bar');
+  // Elementos fixos no HTML de cada play (idem aos seus layouts atuais)
+  const btn = document.querySelector('button[onclick*="' + playId + '"]');
+  const progressBar = document.getElementById('barra');      // container da barra
+  const progressFill = document.getElementById('barra-fill') // parte interna
+    || document.querySelector('#barra > div');              // fallback
+  const logsEl = document.getElementById('logs');           // where logs appear
 
-  // Reset UI
-  logs.textContent = '';
-  progressContainer.classList.remove('hidden');
-  bar.style.width = '0%';
-  button.disabled = true;
-  button.textContent = 'Iniciando…';
+  // Reset visual
+  btn.disabled = true;
+  btn.textContent = '⏳ Iniciando…';
+  if (progressBar) progressBar.classList.remove('hidden');
+  if (progressFill) progressFill.style.width = '0%';
+  if (logsEl) logsEl.textContent = '';
 
   try {
-    // Dispara o endpoint no backend
-    const response = await fetch(`https://your-backend-url.up.railway.app/${playId}`, {
-      method: 'POST'
-    });
+    // Dispara o POST para o seu backend Flask/Railway
+    const resp = await fetch(`https://seu-backend-url.up.railway.app/${playId}`, { method: 'POST' });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
 
-    const reader = response.body.getReader();
+    // Leitura em stream da resposta
+    const reader = resp.body.getReader();
     const decoder = new TextDecoder();
-    let received = '';
-    let percentage = 0;
+    let received = 0, total = 0, chunk;
+    const chunks = [];
 
-    button.textContent = 'Executando…';
+    btn.textContent = '▶️ Executando…';
 
-    // Lê o stream de saída em tempo real
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      received += decoder.decode(value, { stream: true });
-      logs.textContent = received;
+    // Se o header Content-Length existir, use para progress real
+    const lenHeader = resp.headers.get('Content-Length');
+    total = lenHeader ? parseInt(lenHeader, 10) : 0;
 
-      // Atualiza barra de progresso fictícia (simulação)
-      percentage = Math.min(100, percentage + 5);
-      bar.style.width = `${percentage}%`;
+    while (!(chunk = await reader.read()).done) {
+      const text = decoder.decode(chunk.value, { stream: true });
+      chunks.push(text);
+      received += chunk.value.length;
+
+      // Atualiza logs
+      logsEl.textContent = chunks.join('');
+
+      // Atualiza barra de progresso
+      if (total) {
+        const pct = Math.floor((received / total) * 100);
+        progressFill.style.width = pct + '%';
+      } else {
+        // se não tiver total, avança em step de 5%
+        const current = parseInt(progressFill.style.width, 10) || 0;
+        progressFill.style.width = Math.min(100, current + 5) + '%';
+      }
     }
 
-    // Finalização
-    bar.style.width = '100%';
-    button.textContent = 'Concluído';
+    // Depois de ler tudo, define 100%
+    progressFill.style.width = '100%';
+    btn.textContent = '✅ Concluído';
+
   } catch (err) {
-    logs.textContent = `❌ Erro: ${err.message}`;
-    button.textContent = 'Erro';
+    // Em caso de erro, mostra mensagem
+    logsEl.textContent = `❌ ${err.message}`;
+    btn.textContent = '⚠️ Erro';
   } finally {
-    button.disabled = false;
+    // Re-habilita botão
+    btn.disabled = false;
   }
 }
