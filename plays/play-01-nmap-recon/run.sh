@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
-# plays/play-01-nmap-recon/run.sh
-# -------------------------------
-# Varredura rápida e 100 % user-mode:
-#   • -Pn  → não envia ICMP/ARP (evita raw-socket)
-#   • -sT  → TCP connect scan
-#   • -p-  → todas as portas
-# Resultado fica em output.txt.
-
 set -euo pipefail
 
+TARGET="${1:-scanme.nmap.org}"
+OUT_DIR="$(dirname "$0")"
+RAW="$OUT_DIR/output.txt"
+
 echo "[INFO] Iniciando Play 01 — Nmap Recon"
+# -sT = TCP connect scan       -Pn = não faz ping (evita ICMP bloqueado)
+# -n  = sem DNS reverse        -oN = saída normal
+/usr/bin/nmap -sT -Pn -n -oN "$RAW" "$TARGET"
 
-ALVO="scanme.nmap.org"
-
-nmap -Pn -sT -p- -oN output.txt "$ALVO"
-
-echo "[SUCESSO] Varredura finalizada. Relatório salvo em output.txt"
+echo "[SUCESSO] Varredura finalizada. Relatório: $RAW"
+cat "$RAW"
