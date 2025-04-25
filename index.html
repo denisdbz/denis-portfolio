@@ -1,26 +1,26 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
+
+  <!-- CSS principal -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="neon-dark">
 
-  <!-- ===== HERO + LOGO =================================================== -->
+  <!-- ===== HERO + LOGO ================================================= -->
   <header class="hero">
     <div class="logo-box">
-      <!--  🔥  logo animado volta ao topo  -->
       <img src="assets/img/logo-animado-denis.svg"
            alt="Logo Denis | QA & Pentest"
            class="logo-animado" />
-      <span class="logo-text">Denis | QA &amp; Pentest</span>
+      <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
   </header>
 
-  <!-- ===== TÍTULO + INTRO =============================================== -->
+  <!-- ===== CONTEÚDO PRINCIPAL ========================================= -->
   <main class="container">
     <h1>Denis Oliveira — Portfólio Profissional</h1>
     <p class="intro">
@@ -28,90 +28,94 @@
       <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
     </p>
 
-    <!-- ===== LINKS RÁPIDOS ============================================== -->
-    <div class="links">
+    <!-- links rápidos -->
+    <nav class="links">
       <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
       <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
-      <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
-      <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-    </div>
+      <a href="https://wa.me/5511978118097"           target="_blank">WhatsApp</a>
+      <a href="https://github.com/denisdbz"            target="_blank">GitHub</a>
+    </nav>
 
-    <!-- ===== SOBRE MIM ================================================== -->
+    <!-- sobre mim -->
     <section class="sobre">
       <h2>Sobre Mim</h2>
       <p>
-        Engenheiro de Qualidade com 12+ anos de experiência em QA, testes automatizados e
-        segurança da informação. Especializado em ferramentas como Cypress, Appium, JMeter,
-        Jenkins e Kali Linux. Foco em qualidade contínua, automação, CI/CD e cultura DevSecOps.
+        Engenheiro de Qualidade com +12 anos de experiência em QA, automação de testes e
+        segurança. Especializado em Cypress, Appium, JMeter, Jenkins e Kali Linux.
+        Foco em qualidade contínua, CI/CD e cultura DevSecOps.
       </p>
       <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
     </section>
 
-    <!-- ===== AJUDA / TOOLTIP =========================================== -->
+    <!-- ajuda -->
     <section class="ajuda">
       <h2>Ajuda</h2>
       <p>Passe o mouse sobre um play para ver rapidamente o que ele testa.</p>
     </section>
 
-    <!-- ===== GRID DE PLAYS ============================================= -->
+    <!-- grid de plays -->
     <section class="cards">
-      <!-- Play 01 -->
+      <!-- linha 1 -->
       <div class="card" title="Play 01 — Scanner Nmap em host alvo">
         <h3>Play 01 — Nmap Recon</h3>
         <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
         <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
       </div>
-      <!-- Play 02 -->
+
       <div class="card" title="Play 02 — Força-bruta Hydra em DVWA">
         <h3>Play 02 — Hydra DVWA</h3>
         <p>Explora senhas fracas via ataque de força bruta com Hydra.</p>
         <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
       </div>
-      <!-- Play 03 -->
+
       <div class="card" title="Play 03 — SQLMap em DVWA">
         <h3>Play 03 — SQLMap DVWA</h3>
         <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
         <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
       </div>
 
-      <!-- Linha 2 -------------------------------------------------------- -->
+      <!-- linha 2 -->
       <div class="card" title="Play 04 — Teste de carga JMeter">
         <h3>Play 04 — JMeter LoadTest</h3>
         <p>Executa testes de carga e simula múltiplos usuários.</p>
         <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
       </div>
+
       <div class="card" title="Play 05 — Automação de interface com Cypress">
         <h3>Play 05 — QA Automação</h3>
         <p>Execução automatizada de testes de interface com Cypress.</p>
         <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
       </div>
+
       <div class="card" title="Play 06 — Carga Bash paralela">
         <h3>Play 06 — Carga Bash</h3>
-        <p>Simula carga no servidor com múltiplas requisições em loop.</p>
+        <p>Simula carga com múltiplas requisições em loop.</p>
         <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
       </div>
 
-      <!-- Linha 3 -------------------------------------------------------- -->
+      <!-- linha 3 -->
       <div class="card" title="Play 07 — Automação mobile Appium">
         <h3>Play 07 — Testes Mobile</h3>
         <p>Execução de cenários automatizados em app Android.</p>
         <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
       </div>
+
       <div class="card" title="Play 08 — Varredura Nikto">
         <h3>Play 08 — Nikto Scan</h3>
         <p>Varredura de vulnerabilidades web com Nikto.</p>
         <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
       </div>
+
       <div class="card" title="Play 09 — Carga k6">
         <h3>Play 09 — k6 LoadTest</h3>
         <p>Teste de performance de API com k6.</p>
         <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
       </div>
 
-      <!-- Linha 4 -------------------------------------------------------- -->
+      <!-- linha 4 -->
       <div class="card" title="Play 10 — Validação de API">
         <h3>Play 10 — API Validation</h3>
-        <p>Validação de endpoints e contratos de API.</p>
+        <p>Validação de endpoints e contratos REST.</p>
         <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
       </div>
     </section>
@@ -120,43 +124,33 @@
   <!-- ===== RODAPÉ ====================================================== -->
   <footer>
     <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
-    <p><em>Estes plays executam testes reais em um backend Flask hospedado na <strong>Railway</strong>.</em></p>
+    <p><em>Estes plays executam testes reais em um backend Flask hospedado na
+           <strong>Railway</strong>.</em></p>
   </footer>
-<!-- ─── EASTER-EGG (Konami Code + senha) ───────────────────────────── -->
-<!-- Modal escondido que pede a senha -->
-<div id="easter-modal" class="hidden">
-  <p>Digite a palavra-chave para desbloquear 💚</p>
 
-  <div style="margin-top:.5rem">
-    <input id="easter-key"
-           type="password"
-           placeholder="palavra-chave"
-           style="padding:.4rem .6rem;
-                  border:1px solid #0f0;
-                  background:#000;
-                  color:#0f0;
-                  border-radius:4px;">
-    <button id="easter-submit"
-            style="margin-left:.5rem;
-                   padding:.4rem .8rem;
-                   background:#0f0;
-                   color:#000;
-                   font-weight:bold;
-                   border:none;
-                   border-radius:4px;
-                   cursor:pointer;">
-      OK
-    </button>
+  <!-- ========== EASTER-EGG (Konami + palavra-chave) ===================== -->
+
+  <!-- Modal (senha) -->
+  <div id="easter-modal" class="hidden">
+    <p>Digite a palavra-chave para desbloquear 💚</p>
+
+    <div style="margin-top:.5rem">
+      <input id="easter-key" type="password" placeholder="palavra-chave"
+             style="padding:.4rem .6rem;border:1px solid #0f0;background:#000;
+                    color:#0f0;border-radius:4px;">
+      <button id="easter-submit"
+              style="margin-left:.5rem;padding:.4rem .8rem;background:#0f0;
+                     color:#000;font-weight:bold;border:none;border-radius:4px;
+                     cursor:pointer;">OK</button>
+    </div>
+
+    <p id="easter-erro" class="hidden" style="color:#f33;margin-top:.5rem;"></p>
   </div>
 
-  <!-- Mensagem de erro (fica oculta até senha errada) -->
-  <p id="easter-erro"
-     class="hidden"
-     style="color:#f33;margin-top:.5rem;"></p>
-</div>
+  <!-- Painel que receberá as fotos (criado/mostrado pelo JS) -->
+  <div id="easter-gallery" class="hidden"></div>
 
-<!-- Carrega o script que escuta a sequência ↑↑↓↓←→←→BA -->
-<script src="konami.js"></script>
-<!-- ─────────────────────────────────────────────────────────────────── -->
+  <!-- Script -->
+  <script src="konami.js"></script>
 </body>
 </html>
