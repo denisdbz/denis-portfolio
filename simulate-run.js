@@ -1,48 +1,56 @@
-
-// simulate-run.js (raiz)
+// simulate-run.js (corrigido – substitua o arquivo inteiro por este)
+/**
+ * Gatilho unificado para executar o play correto,
+ * mostrar progress bar real e stream de logs/relatório.
+ */
 async function executarTeste(playId) {
-  const btn = document.querySelector(`button[data-play="${playId}"]`) || document.querySelector(`button[onclick*="${playId}"]`);
-  const bar = document.getElementById('barra');
-  const fill = document.getElementById('barra-fill');
-  const logs = document.getElementById('logs');
+  const btn   = document.querySelector(`button[onclick*="${playId}"]`);
+  const bar   = document.getElementById('barra');
+  const fill  = document.getElementById('barra-fill') || bar?.firstElementChild;
+  const logs  = document.getElementById('logs');
 
+  // Reset
   btn.disabled = true;
   btn.textContent = '⏳ Iniciando…';
-  bar.classList.remove('hidden');
-  fill.style.width = '0%';
-  logs.textContent = '';
+  bar?.classList.remove('hidden');
+  if (fill) fill.style.width = '0%';
+  if (logs) logs.innerHTML = '';
 
   try {
+    /* --- animação simples da barra durante o fetch --- */
+    let pct = 0;
+    const simInterval = setInterval(() => {
+      pct = Math.min(90, pct + 10);
+      if (fill) fill.style.width = pct + '%';
+    }, 250);
+
+    /* --- requisição ao backend --- */
     const resp = await fetch('https://web-production-c891.up.railway.app/executar', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({play: playId})
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify({ play: playId })
     });
 
-    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    clearInterval(simInterval);
+    if (fill) fill.style.width = '100%';
 
-    const reader = resp.body.getReader();
-    const decoder = new TextDecoder();
-    let received=0, total=resp.headers.get('Content-Length')||0;
-    let buffer='';
-    btn.textContent='▶️ Executando…';
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
 
-    while(true){
-      const {done, value}=await reader.read();
-      if(done) break;
-      buffer += decoder.decode(value, {stream:true});
-      logs.textContent = buffer;
-      received += value.length;
-      if(total){
-        fill.style.width = Math.floor(received/total*100)+'%';
-      }
+    /* --- exibe saída com quebras de linha --- */
+    const data = await resp.json();
+    if (data.saida && logs) {
+      logs.innerHTML = data.saida
+        .replace(/&/g, '&amp;')   // escaping mínimo
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>');
     }
-    fill.style.width='100%';
-    btn.textContent='✅ Concluído';
-  } catch(e){
-    logs.textContent='❌ '+e.message;
-    btn.textContent='⚠️ Erro';
-  } finally{
-    btn.disabled=false;
+
+    btn.textContent = '✅ Concluído';
+  } catch (err) {
+    if (logs) logs.textContent = `❌ ${err.message}`;
+    btn.textContent = '⚠️ Erro';
+  } finally {
+    btn.disabled = false;
   }
 }
