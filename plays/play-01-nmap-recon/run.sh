@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TARGET="${1:-scanme.nmap.org}"
-OUT_DIR="$(dirname "$0")"
-RAW="$OUT_DIR/output.txt"
+TARGET="${1:-scanme.nmap.org}"        # host default
 
-echo "[INFO] Iniciando Play 01 — Nmap Recon"
-# -sT = TCP connect scan       -Pn = não faz ping (evita ICMP bloqueado)
-# -n  = sem DNS reverse        -oN = saída normal
-/usr/bin/nmap -sT -Pn -n -oN "$RAW" "$TARGET"
+echo "[INFO] Iniciando Play 01 — Nmap Recon (modo -sT)"
+# -sT  : TCP connect (100 % user-space, sem raw)
+# -Pn  : não faz ping/ICMP
+/usr/bin/nmap -sT -Pn "$TARGET"
 
-echo "[SUCESSO] Varredura finalizada. Relatório: $RAW"
-cat "$RAW"
+echo "[SUCESSO] Scan concluído."
