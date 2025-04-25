@@ -6,10 +6,10 @@
 async function executarTeste(playId) {
   // Elementos fixos no HTML de cada play (idem aos seus layouts atuais)
   const btn = document.querySelector('button[onclick*="' + playId + '"]');
-  const progressBar = document.getElementById('barra');      // container da barra
-  const progressFill = document.getElementById('barra-fill') // parte interna
-    || document.querySelector('#barra > div');              // fallback
-  const logsEl = document.getElementById('logs');           // where logs appear
+  const progressBar = document.getElementById('barra');        // container da barra
+  const progressFill = document.getElementById('barra-fill')   // parte interna
+    || document.querySelector('#barra > div');                // fallback
+  const logsEl = document.getElementById('logs');             // onde aparecem os logs
 
   // Reset visual
   btn.disabled = true;
@@ -67,3 +67,6 @@ async function executarTeste(playId) {
     btn.disabled = false;
   }
 }
+
+// Exponha globalmente para os onclick inline funcionarem
+window.executarTeste = executarTeste;
