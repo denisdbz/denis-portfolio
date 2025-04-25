@@ -1,9 +1,116 @@
+/* --------  RESET/CORE  ------------------ */
+body.neon-dark{
+  margin:0;
+  padding:0;
+  font-family:"JetBrains Mono","Courier New",monospace;
+  background:#000;
+  color:#77ffee;
+  text-align:center;
+}
+a{color:#77ffee;text-decoration:none}
+h1,h2,h3{margin:0 0 .8rem}
+h1{font-size:2.4rem}
+h2{font-size:1.8rem}
+h3{font-size:1.3rem;font-weight:600}
 
-/* neon-dark theme */
-body.neon-dark{margin:0;font-family:Courier New,monospace;background:#000;color:#8ff;text-align:center}
-.container{max-width:900px;margin:auto;padding:2rem}
-.progress-bar{width:100%;height:8px;background:#333;border-radius:4px;margin:1rem 0}
-.progress-bar.hidden{display:none}
-#barra-fill{height:100%;background:#0f0;width:0%;transition:width .3s}
-.btn,.neon-btn{display:inline-block;background:#0f0;color:#000;font-weight:bold;padding:.4rem 1rem;border-radius:6px;text-decoration:none;margin:.5rem}
-.output-box{background:#111;color:#8ff;border:1px solid #0f0;padding:1rem;border-radius:6px;white-space:pre-wrap;text-align:left;max-width:800px;margin:auto;overflow:auto}
+/* --------  HERO + LOGO  ----------------- */
+.hero{
+  padding:2rem 1rem .5rem;
+}
+.logo-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+}
+.logo-animado{
+  width:42px;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{filter:drop-shadow(0 0 4px #0f0)}
+  50%{filter:drop-shadow(0 0 14px #0f0)}
+}
+.logo-text{font-weight:700;text-transform:uppercase}
+
+/* --------  LINKS RÁPIDOS  ---------------- */
+.links{
+  display:flex;
+  justify-content:center;
+  gap:1.2rem;
+  flex-wrap:wrap;
+  margin-bottom:1.8rem;
+}
+.links a{font-weight:700;transition:.2s}
+.links a:hover{color:#0f0}
+
+/* --------  BOTÕES  ---------------------- */
+.btn,.neon-btn{
+  display:inline-block;
+  background:#00ffc8;
+  color:#000;
+  font-weight:700;
+  padding:.55rem 1.4rem;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  transition:.25s;
+}
+.btn:hover,.neon-btn:hover{
+  box-shadow:0 0 9px #00ffc8,0 0 14px #00ffc8;
+  transform:translateY(-2px);
+}
+
+/* --------  CARDS / GRID  ---------------- */
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:1.5rem;
+  padding:1rem 0 3rem;
+}
+.card{
+  width:260px;
+  background:#111;
+  border:1px solid #00ffc8;
+  border-radius:12px;
+  padding:1.2rem .9rem 1.8rem;
+  box-shadow:0 0 18px transparent;
+  transition:.3s;
+}
+.card:hover{
+  box-shadow:0 0 10px #00ffc8,0 0 18px #00ffc8;
+  transform:translateY(-4px);
+}
+.card p{font-size:.9rem;line-height:1.45}
+
+/* --------  PROGRESS BAR NOS PLAYS ------- */
+.progress-bar{
+  width:100%;
+  max-width:480px;
+  height:10px;
+  margin:1rem auto;
+  border:1px solid #00ffc8;
+  border-radius:6px;
+}
+#barra-fill{
+  width:0%;
+  height:100%;
+  background:#00ffc8;
+  border-radius:5px 0 0 5px;
+  transition:width .2s ease;
+}
+.hidden{display:none}
+
+/* --------  RODAPÉ  ---------------------- */
+footer{
+  margin:3rem 0 2rem;
+  font-size:.85rem;
+  color:#77ffee;
+}
+footer em{color:#00ffc8}
+
+/* --------  RESPONSIVO  ------------------ */
+@media(max-width:600px){
+  .card{width:90%}
+}
