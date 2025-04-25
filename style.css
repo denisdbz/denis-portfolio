@@ -114,3 +114,10 @@ footer em{color:#00ffc8}
 @media(max-width:600px){
   .card{width:90%}
 }
+
+/* style.css */
+.output-box {
+  /* …o que já há… */
+  white-space: pre-wrap;   /* mantém \n, mas permite quebrar linhas longas  */
+  word-break: break-word;  /* se a palavra for gigante, quebra mesmo assim   */
+}
