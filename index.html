@@ -14,6 +14,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Ajusta espaçamento após navbar fixa */
+    body.neon-dark main.container {
+      margin-top: 6rem;
+    }
+    /* Espaço extra antes da seção Sobre */
+    .sobre {
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body class="neon-dark">
 
@@ -21,7 +31,6 @@
   <nav class="navbar">
     <ul>
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#ajuda">Ajuda</a></li>
       <li><a href="#plays">Plays</a></li>
     </ul>
   </nav>
@@ -35,7 +44,7 @@
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
 
-    <!-- novo subtítulo animado -->
+    <!-- subtítulo animado -->
     <div class="subtitle">
       <span id="typed-subtitle"></span>
     </div>
@@ -61,20 +70,12 @@
     <section id="sobre" class="sobre">
       <h2>Sobre Mim</h2>
       <p>
-        Engenheiro de Qualidade com +12 anos de experiência em QA, automação de testes e
-        segurança da informação. Especializado em Cypress, Appium, JMeter, Jenkins e Kali Linux.
-        Foco em qualidade contínua, automação, CI/CD e cultura DevSecOps.
+        Engenheiro de Qualidade e Segurança da Informação com mais de 12 anos de experiência em QA, automação de testes e pentest. Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux, atuando com metodologias ágeis (Scrum/Kanban), integração contínua na AWS e cultura DevSecOps. Atualmente lidero projetos de automação robusta e segurança de APIs em cloud.
       </p>
       <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
     </section>
 
-    <!-- ===== AJUDA ====================================================== -->
-    <section id="ajuda" class="ajuda">
-      <h2>Ajuda</h2>
-      <p>Passe o mouse sobre um play para ver rapidamente o que ele testa.</p>
-    </section>
-
-    <!-- ===== GRID DE PLAYS ============================================= -->
+    <!-- ========== Grid de Plays ======================================== -->
     <section id="plays" class="cards">
       <!-- Play 01 -->
       <div class="card" title="Play 01 — Nmap Recon">
@@ -83,7 +84,6 @@
         <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
         <a class="btn" href="posts/play-01-nmap-recon.html">Por Dentro</a>
       </div>
-
       <!-- Play 02 -->
       <div class="card" title="Play 02 — Hydra DVWA">
         <h3>Play 02 — Hydra DVWA</h3>
@@ -91,7 +91,6 @@
         <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
         <a class="btn" href="posts/play-02-hydra-dvwa.html">Por Dentro</a>
       </div>
-
       <!-- Play 03 -->
       <div class="card" title="Play 03 — SQLMap DVWA">
         <h3>Play 03 — SQLMap DVWA</h3>
@@ -99,7 +98,6 @@
         <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
         <a class="btn" href="posts/play-03-sqlmap-dvwa.html">Por Dentro</a>
       </div>
-
       <!-- Play 04 -->
       <div class="card" title="Play 04 — JMeter LoadTest">
         <h3>Play 04 — JMeter LoadTest</h3>
@@ -107,7 +105,6 @@
         <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
         <a class="btn" href="posts/play-04-jmeter-loadtest.html">Por Dentro</a>
       </div>
-
       <!-- Play 05 -->
       <div class="card" title="Play 05 — QA Automação">
         <h3>Play 05 — QA Automação</h3>
@@ -115,7 +112,6 @@
         <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
         <a class="btn" href="posts/play-05-qa-automacao.html">Por Dentro</a>
       </div>
-
       <!-- Play 06 -->
       <div class="card" title="Play 06 — Carga Bash">
         <h3>Play 06 — Carga Bash</h3>
@@ -123,7 +119,6 @@
         <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
         <a class="btn" href="posts/play-06-carga-bash.html">Por Dentro</a>
       </div>
-
       <!-- Play 07 -->
       <div class="card" title="Play 07 — Testes Mobile">
         <h3>Play 07 — Testes Mobile</h3>
@@ -131,7 +126,6 @@
         <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
         <a class="btn" href="posts/play-07-mobile-tests.html">Por Dentro</a>
       </div>
-
       <!-- Play 08 -->
       <div class="card" title="Play 08 — Nikto Scan">
         <h3>Play 08 — Nikto Scan</h3>
@@ -139,7 +133,6 @@
         <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
         <a class="btn" href="posts/play-08-nikto-scan.html">Por Dentro</a>
       </div>
-
       <!-- Play 09 -->
       <div class="card" title="Play 09 — k6 LoadTest">
         <h3>Play 09 — k6 LoadTest</h3>
@@ -147,7 +140,6 @@
         <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
         <a class="btn" href="posts/play-09-k6-loadtest.html">Por Dentro</a>
       </div>
-
       <!-- Play 10 -->
       <div class="card" title="Play 10 — API Validation">
         <h3>Play 10 — API Validation</h3>
@@ -155,7 +147,6 @@
         <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
         <a class="btn" href="posts/play-10-api-validation.html">Por Dentro</a>
       </div>
-
       <!-- Play 11 -->
       <div class="card" title="Play 11 — XSS Scanner">
         <h3>Play 11 — XSS Scanner</h3>
@@ -163,15 +154,13 @@
         <a class="btn" href="plays/play-11-xss-scanner/">Ver o Play</a>
         <a class="btn" href="posts/play-11-xss-scanner.html">Por Dentro</a>
       </div>
-
       <!-- Play 12 -->
       <div class="card" title="Play 12 — CSRF Checker">
         <h3>Play 12 — CSRF Checker</h3>
         <p>Verifica falhas de Cross-Site Request Forgery.</p>
         <a class="btn" href="plays/play-12-csrf-checker/">Ver o Play</a>
-        <a class="btn" href="posts/play-12-csrf-checker.html">Por Dentro</a>
+        <a class="btn" href="posts	play-12-csrf-checker.html">Por Dentro</a>
       </div>
-
       <!-- Play 13 -->
       <div class="card" title="Play 13 — API Fuzzing">
         <h3>Play 13 — API Fuzzing</h3>
@@ -179,21 +168,19 @@
         <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
         <a class="btn" href="posts/play-13-api-fuzzing.html">Por Dentro</a>
       </div>
-
       <!-- Play 14 -->
       <div class="card" title="Play 14 — Dependency CVE Audit">
         <h3>Play 14 — Dependency CVE Audit</h3>
         <p>Avalia vulnerabilidades conhecidas em dependências.</p>
         <a class="btn" href="plays/play-14-dependency-cve-audit/">Ver o Play</a>
-        <a class="btn" href="posts/play-14-dependency-cve-audit.html">Por Dentro</a>
+        <a class="btn" href="posts	play-14-dependency-cve-audit.html">Por Dentro</a>
       </div>
-
       <!-- Play 15 -->
       <div class="card" title="Play 15 — SSL/TLS Health Check">
         <h3>Play 15 — SSL/TLS Health Check</h3>
         <p>Valida certificados e configurações de segurança TLS.</p>
-        <a class="btn" href="plays/play-15-ssl-tls-health-check/">Ver o Play</a>
-        <a class="btn" href="posts/play-15-ssl-tls-health-check.html">Por Dentro</a>
+        <a class="btn" href="plays	play-15-ssl-tls-health-check/">Ver o Play</a>
+        <a class="btn" href="posts	play-15-ssl-tls-health-check.html">Por Dentro</a>
       </div>
     </section>
   </main>
