@@ -12,102 +12,45 @@
   <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Ajusta espaçamento após navbar fixa */
+    /* Ajuste do container para navbar fixa */
     body.neon-dark main.container { margin-top: 6rem; }
-    /* Espaço extra antes das seções */
-    .sobre, .ajuda { margin-top: 2rem; }
-    /* Botão do easter egg no mobile */
+    /* Botões de modal */
+    .modal {
+      display: none; position: fixed; z-index: 2000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); overflow: auto;
+    }
+    .modal-content {
+      background: #111; margin: 5% auto; padding: 1.5rem;
+      border: 1px solid #00ffc8; border-radius: 8px;
+      width: 90%; max-width: 600px; color: #77ffee; text-align: left;
+    }
+    .close-btn { float: right; font-size: 1.2rem; cursor: pointer; color: #00ffc8; background: none; border: none; }
     #mobile-easter-btn {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      background: #00ffc8;
-      color: #000;
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      font-size: 1.5rem;
-      box-shadow: 0 0 6px #00ffc8;
-      cursor: pointer;
-      z-index: 10000;
-      display: none;
+      position: fixed; bottom: 1rem; right: 1rem;
+      background: #00ffc8; color: #000; border: none;
+      border-radius: 50%; width: 48px; height: 48px;
+      font-size: 1.5rem; box-shadow: 0 0 6px #00ffc8;
+      cursor: pointer; z-index:10000; display:none;
     }
-    @media (max-width: 768px) {
-      #mobile-easter-btn { display: block; }
-    }
+    @media(max-width:768px){ #mobile-easter-btn{ display:block; } }
   </style>
 </head>
-<body class="neon-dark">  <!-- ===== NAVBAR FIXA ============================================== -->  <nav class="navbar">
+<body class="neon-dark">  <!-- NAVBAR FIXA -->  <nav class="navbar">
     <ul>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#ajuda">Ajuda</a></li>
+      <li><a href="#" id="open-sobre">Sobre</a></li>
+      <li><a href="#" id="open-ajuda">Ajuda</a></li>
       <li><a href="#plays">Plays</a></li>
     </ul>
-  </nav>  <!-- ===== HERO + LOGO ================================================= -->  <header class="hero">
+  </nav>  <!-- HERO + LOGO -->  <header class="hero">
     <div class="logo-box">
       <img src="assets/img/logo-animado-denis.svg" alt="Logo Denis | QA & Pentest" class="logo-animado" />
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
-    <div class="subtitle">
-      <span id="typed-subtitle"></span>
-    </div>
-  </header>  <!-- ===== CONTEÚDO PRINCIPAL ========================================= -->  <main class="container">
+    <div class="subtitle"><span id="typed-subtitle"></span></div>
+  </header>  <!-- CONTEÚDO PRINCIPAL: CARDS -->  <main class="container">
     <h1>Denis Oliveira — Portfólio Profissional</h1>
-    <p class="intro">
-      Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
-      <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
-    </p><!-- ===== LINKS RÁPIDOS ============================================== -->
-<nav class="links">
-  <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
-  <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
-  <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
-  <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-</nav>
-
-<!-- ===== SOBRE MIM ================================================== -->
-<section id="sobre" class="sobre">
-  <h2>Sobre Mim</h2>
-  <p>
-    Engenheiro de Qualidade e Segurança da Informação com mais de 12 anos de experiência em QA, automação de testes e pentest. Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux, atuando com metodologias ágeis (Scrum/Kanban), integração contínua na AWS e cultura DevSecOps. Atualmente lidero projetos de automação robusta e segurança de APIs em cloud.
-  </p>
-  <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
-</section>
-
-<!-- ===== AJUDA ====================================================== -->
-<section id="ajuda" class="ajuda">
-  <h2>Ajuda</h2>
-  <p>Bem-vindo ao meu portfólio técnico! Este projeto reúne <strong>plays reais</strong>, scripts de teste e pentest que interagem diretamente com o backend Flask hospedado na Railway e são executados no navegador.</p>
-  <h3>Sobre o Projeto</h3>
-  <p>Desenvolvido com foco em acessibilidade, clareza técnica e praticidade para o avaliador. Hospedado no GitHub Pages com backend em Flask na Railway, demonstra minha atuação em Qualidade de Software, Testes Automatizados, Pentest, CI/CD e cultura DevSecOps.</p>
-  <h3>Como Funciona</h3>
-  <p>Os testes são acionados pelos botões em cada card:</p>
-  <ul>
-    <li><strong>Ver o Play:</strong> abre o ambiente de execução do script em tempo real.</li>
-    <li><strong>Por Dentro:</strong> apresenta passo a passo detalhado, com logs em tempo real e barra de progresso.</li>
-  </ul>
-  <h3>Ver Por Dentro</h3>
-  <p>Confira a documentação de cada play:</p>
-  <ul>
-    <li><strong>Play 01 — Nmap Recon:</strong> passo a passo de uso do Nmap, interpretação de resultados e geração de relatório HTML.</li>
-    <li><strong>Play 02 — Hydra DVWA:</strong> configuração de wordlists, execução de força-bruta e análise de resultados.</li>
-    <li><strong>Play 03 — SQLMap DVWA:</strong> detecção e exploração automatizada de SQL Injection.</li>
-    <li><strong>Play 04 — JMeter LoadTest:</strong> criação de Thread Groups, configuração de samplers e exportação de relatórios.</li>
-    <li><strong>Play 05 — QA Automação:</strong> estrutura de projetos em Cypress, escrita de testes e integração com CI/CD.</li>
-    <li><strong>Play 06 — Carga Bash:</strong> script em Bash para requisições paralelas e coleta de métricas.</li>
-    <li><strong>Play 07 — Testes Mobile:</strong> automação de apps Android com Appium e captura de screenshots.</li>
-    <li><strong>Play 08 — Nikto Scan:</strong> uso do scanner Nikto para identificação de vulnerabilidades web.</li>
-    <li><strong>Play 09 — k6 LoadTest:</strong> scripts em JS para testes de performance de API e análise de métricas.</li>
-    <li><strong>Play 10 — API Validation:</strong> validação de esquemas JSON/OpenAPI e geração de relatórios de contrato.</li>
-    <li><strong>Play 11 — XSS Scanner:</strong> varredura de parâmetros para Cross-Site Scripting e geração de relatório.</li>
-    <li><strong>Play 12 — CSRF Checker:</strong> verificação de proteção CSRF em endpoints sensíveis.</li>
-    <li><strong>Play 13 — API Fuzzing:</strong> envio de payloads malformados para descobrir falhas de entrada.</li>
-    <li><strong>Play 14 — Dependency CVE Audit:</strong> auditoria de dependências com OWASP Dependency-Check e identificação de CVEs.</li>
-    <li><strong>Play 15 — SSL/TLS Health Check:</strong> análise de protocolos e cipher suites, além de verificação de certificados.</li>
-  </ul>
-</section>
-
-<!-- ===== GRID DE PLAYS ============================================= -->
+    <p class="intro">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p><!-- GRID DE PLAYS -->
 <section id="plays" class="cards">
   <!-- Play 01 -->
   <div class="card" title="Play 01 — Nmap Recon">
@@ -196,8 +139,7 @@
   <!-- Play 13 -->
   <div class="card" title="Play 13 — API Fuzzing">
     <h3>Play 13 — API Fuzzing</h3>
-    <p>Geração de entradas aleatórias para testar APIs.
-    </p>
+    <p>Geração de entradas aleatórias para testar APIs.</p>
     <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
     <a class="btn" href="posts/play-13-api-fuzzing.html">Por Dentro</a>
   </div>
@@ -217,10 +159,27 @@
   </div>
 </section>
 
-  </main>  <!-- ===== RODAPÉ ====================================================== -->  <footer>
+  </main>  <!-- FOOTER -->  <footer>
     <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
     <p><em>Estes plays executam testes reais em um backend Flask hospedado na <strong>Railway</strong>.</em></p>
-  </footer>  <!-- ========== EASTER-EGG (Konami + senha) ============================ -->  <div id="easter-modal" class="hidden">
+  </footer>  <!-- MODAL SOBRE -->  <div id="modal-sobre" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="close-sobre">×</button>
+      <h2>Sobre Mim</h2>
+      <p>Engenheiro de Qualidade e Segurança da Informação com mais de 12 anos de experiência em QA, automação de testes e pentest. Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux, atuando com metodologias ágeis (Scrum/Kanban), integração contínua na AWS e cultura DevSecOps. Atualmente lidero projetos de automação robusta e segurança de APIs em cloud.</p>
+    </div>
+  </div>  <!-- MODAL AJUDA -->  <div id="modal-ajuda" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="close-ajuda">×</button>
+      <h2>Ajuda</h2>
+      <p>Bem-vindo ao meu portfólio técnico! Este projeto reúne <strong>plays reais</strong>, scripts de teste e pentest que interagem diretamente com o backend Flask hospedado na Railway e são executados no navegador.</p>
+      <h3>Como Funciona</h3>
+      <ul>
+        <li><strong>Ver o Play:</strong> abre o ambiente de execução do script em tempo real.</li>
+        <li><strong>Por Dentro:</strong> passo a passo detalhado com logs em tempo real e barra de progresso.</li>
+      </ul>
+    </div>
+  </div>  <!-- EASTER EGG -->  <div id="easter-modal" class="hidden">
     <p>Digite a palavra-chave para desbloquear 💚</p>
     <div style="margin-top:.5rem">
       <input id="easter-key" type="password" placeholder="palavra-chave">
@@ -229,34 +188,25 @@
     <p id="easter-erro" class="hidden"></p>
   </div>
   <div id="easter-gallery" class="hidden"></div>
-  <script src="konami.js"></script>  <!-- Botão de Easter Egg Mobile --><button id="mobile-easter-btn">🔍</button>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
+  <script src="konami.js"></script>
+  <button id="mobile-easter-btn">🔍</button>  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
       // Typed subtitle
-      const text = "QA • Pentest • DevSecOps";
-      const el   = document.getElementById("typed-subtitle");
-      let idx    = 0;
-      function type() {
-        if (idx <= text.length) {
-          el.textContent = text.slice(0, idx++);
-          setTimeout(type, 100);
-        }
-      }
-      type();
+      const text="QA • Pentest • DevSecOps", el=document.getElementById('typed-subtitle'); let i=0;
+      (function type(){ if(i<=text.length) el.textContent=text.slice(0,i++), setTimeout(type,100); })();
+      
+      // Modals
+      const openSobre=document.getElementById('open-sobre'), modalSobre=document.getElementById('modal-sobre'), closeSobre=document.getElementById('close-sobre');
+      openSobre.addEventListener('click', e=>{ e.preventDefault(); modalSobre.style.display='block'; });
+      closeSobre.addEventListener('click', ()=>modalSobre.style.display='none');
+      const openAjuda=document.getElementById('open-ajuda'), modalAjuda=document.getElementById('modal-ajuda'), closeAjuda=document.getElementById('close-ajuda');
+      openAjuda.addEventListener('click', e=>{ e.preventDefault(); modalAjuda.style.display='block'; });
+      closeAjuda.addEventListener('click', ()=>modalAjuda.style.display='none');
 
-      // Easter egg mobile logic
-      function isMobile() {
-        return /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
-      }
-      const btn = document.getElementById('mobile-easter-btn');
-      if (isMobile()) {
-        btn.addEventListener('click', () => {
-          document.getElementById('easter-modal').classList.remove('hidden');
-        });
-      } else {
-        btn.style.display = 'none';
-      }
+      // Easter egg mobile
+      function isMobile(){ return /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent); }
+      const btn=document.getElementById('mobile-easter-btn');
+      if(isMobile()) btn.addEventListener('click', ()=>document.getElementById('easter-modal').classList.remove('hidden')); else btn.style.display='none';
     });
   </script></body>
 </html>
