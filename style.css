@@ -137,3 +137,8 @@ footer em{color:#00ffc8}
 .easter-img{
   position:fixed;bottom:1rem;right:1rem;max-width:320px;border:2px solid #0f0;border-radius:8px;box-shadow:0 0 12px #0f0,z-index:9999;
 }
+
+/* Espaçamento extra entre botões dentro de cada card */
+.cards .card .btn + .btn {
+  margin-top: 0.5rem;
+}
