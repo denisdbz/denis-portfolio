@@ -25,7 +25,12 @@
            class="logo-animado" />
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
-  </header>
+
+  <!-- novo subtítulo animado -->
+  <div class="subtitle">
+    <span id="typed-subtitle"></span>
+  </div>
+</header>
 
   <!-- ===== CONTEÚDO PRINCIPAL ========================================= -->
   <main class="container">
@@ -201,5 +206,22 @@
   </div>
   <div id="easter-gallery" class="hidden"></div>
   <script src="konami.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const text = "QA • Pentest • DevSecOps";
+  const el   = document.getElementById("typed-subtitle");
+  let idx    = 0;
+
+  function type() {
+    if (idx <= text.length) {
+      el.textContent = text.slice(0, idx++);
+      setTimeout(type, 100);
+    }
+  }
+  type();
+});
+</script>
+
 </body>
 </html>

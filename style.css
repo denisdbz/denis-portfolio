@@ -142,3 +142,18 @@ footer em{color:#00ffc8}
 .cards .card .btn + .btn {
   margin-top: 0.5rem;
 }
+
+/* subtítulo sob o logo */
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  display: block;
+  /* herda cor e fonte do tema neon-dark */
+}
+
+/* opcional: cursor piscando */
+#typed-subtitle::after {
+  content: '|';
+  animation: blink 0.7s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
