@@ -1,7 +1,7 @@
 /* konami.js – Easter-egg com opt-in por palavra-chave */
 (() => {
   /* ================== CONFIGURAÇÃO ================== */
-  const secretKey = 'vagabunda';                  // senha
+  const secretKey = '01092024';                  // senha
   const audioSrc  = 'assets/easter/palpite.mp3'; // trilha
   const fotos = [                                // fotos na ordem
     'assets/easter/foto1.jpg',
