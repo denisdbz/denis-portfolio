@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXND4LYS8S"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    function gtag(){dataLayer.push(arguments);}    
+    gtag('js', new Date());    
     gtag('config', 'G-SXND4LYS8S');
-  </script>
-
-  <meta charset="UTF-8" />
+  </script>  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css" />
@@ -19,110 +16,163 @@
     body.neon-dark main.container {
       margin-top: 6rem;
     }
-    /* Espaço extra antes da seção Sobre e Ajuda */
-    .sobre, .ajuda {
+    /* Espaço extra antes da seção Sobre */
+    .sobre {
       margin-top: 2rem;
     }
   </style>
 </head>
-<body class="neon-dark">
-
-  <!-- ===== NAVBAR FIXA ============================================== -->
-  <nav class="navbar">
+<body class="neon-dark">  <!-- ===== NAVBAR FIXA ============================================== -->  <nav class="navbar">
     <ul>
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#ajuda">Ajuda</a></li>
       <li><a href="#plays">Plays</a></li>
     </ul>
-  </nav>
-
-  <!-- ===== HERO + LOGO ================================================= -->
-  <header class="hero">
+  </nav>  <!-- ===== HERO + LOGO ================================================= -->  <header class="hero">
     <div class="logo-box">
       <img src="assets/img/logo-animado-denis.svg"
            alt="Logo Denis | QA & Pentest"
            class="logo-animado" />
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
-
-    <!-- novo subtítulo animado -->
+    <!-- subtítulo animado -->
     <div class="subtitle">
       <span id="typed-subtitle"></span>
     </div>
-  </header>
-
-  <!-- ===== CONTEÚDO PRINCIPAL ========================================= -->
-  <main class="container">
+  </header>  <!-- ===== CONTEÚDO PRINCIPAL ========================================= -->  <main class="container">
     <h1>Denis Oliveira — Portfólio Profissional</h1>
     <p class="intro">
       Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
       <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
-    </p>
+    </p><!-- ===== LINKS RÁPIDOS ============================================== -->
+<nav class="links">
+  <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
+  <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
+  <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
+  <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
+</nav>
 
-    <!-- ===== LINKS RÁPIDOS ============================================== -->
-    <nav class="links">
-      <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
-      <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
-      <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
-      <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-    </nav>
+<!-- ===== SOBRE MIM ================================================== -->
+<section id="sobre" class="sobre">
+  <h2>Sobre Mim</h2>
+  <p>
+    Engenheiro de Qualidade e Segurança da Informação com mais de 12 anos de experiência em QA, automação de testes e pentest. Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux, atuando com metodologias ágeis (Scrum/Kanban), integração contínua na AWS e cultura DevSecOps. Atualmente lidero projetos de automação robusta e segurança de APIs em cloud.
+  </p>
+  <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
+</section>
 
-    <!-- ===== SOBRE MIM ================================================== -->
-    <section id="sobre" class="sobre">
-      <h2>Sobre Mim</h2>
-      <p>
-        Engenheiro de Qualidade e Segurança da Informação com mais de 12 anos de experiência em QA, automação de testes e pentest. Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux, atuando com metodologias ágeis (Scrum/Kanban), integração contínua na AWS e cultura DevSecOps. Atualmente lidero projetos de automação robusta e segurança de APIs em cloud.
-      </p>
-      <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
-    </section>
+<!-- ===== GRID DE PLAYS ============================================= -->
+<section id="plays" class="cards">
+  <!-- Play 01 -->
+  <div class="card" title="Play 01 — Nmap Recon">
+    <h3>Play 01 — Nmap Recon</h3>
+    <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
+    <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
+    <a class="btn" href="posts/play-01-nmap-recon.html">Por Dentro</a>
+  </div>
+  <!-- Play 02 -->
+  <div class="card" title="Play 02 — Hydra DVWA">
+    <h3>Play 02 — Hydra DVWA</h3>
+    <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
+    <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
+    <a class="btn" href="posts/play-02-hydra-dvwa.html">Por Dentro</a>
+  </div>
+  <!-- Play 03 -->
+  <div class="card" title="Play 03 — SQLMap DVWA">
+    <h3>Play 03 — SQLMap DVWA</h3>
+    <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
+    <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
+    <a class="btn" href="posts/play-03-sqlmap-dvwa.html">Por Dentro</a>
+  </div>
+  <!-- Play 04 -->
+  <div class="card" title="Play 04 — JMeter LoadTest">
+    <h3>Play 04 — JMeter LoadTest</h3>
+    <p>Executa testes de carga e simula múltiplos usuários.</p>
+    <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
+    <a class="btn" href="posts/play-04-jmeter-loadtest.html">Por Dentro</a>
+  </div>
+  <!-- Play 05 -->
+  <div class="card" title="Play 05 — QA Automação">
+    <h3>Play 05 — QA Automação</h3>
+    <p>Execução automatizada de testes de interface com Cypress.</p>
+    <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
+    <a class="btn" href="posts/play-05-qa-automacao.html">Por Dentro</a>
+  </div>
+  <!-- Play 06 -->
+  <div class="card" title="Play 06 — Carga Bash">
+    <h3>Play 06 — Carga Bash</h3>
+    <p>Simula carga com múltiplas requisições em loop via shell.</p>
+    <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
+    <a class="btn" href="posts/play-06-carga-bash.html">Por Dentro</a>
+  </div>
+  <!-- Play 07 -->
+  <div class="card" title="Play 07 — Testes Mobile">
+    <h3>Play 07 — Testes Mobile</h3>
+    <p>Execução de cenários automatizados em app Android com Appium.</p>
+    <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
+    <a class="btn" href="posts/play-07-mobile-tests.html">Por Dentro</a>
+  </div>
+  <!-- Play 08 -->
+  <div class="card" title="Play 08 — Nikto Scan">
+    <h3>Play 08 — Nikto Scan</h3>
+    <p>Varredura de vulnerabilidades web com Nikto.</p>
+    <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
+    <a class="btn" href="posts/play-08-nikto-scan.html">Por Dentro</a>
+  </div>
+  <!-- Play 09 -->
+  <div class="card" title="Play 09 — k6 LoadTest">
+    <h3>Play 09 — k6 LoadTest</h3>
+    <p>Teste de performance de API com k6.</p>
+    <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
+    <a class="btn" href="posts/play-09-k6-loadtest.html">Por Dentro</a>
+  </div>
+  <!-- Play 10 -->
+  <div class="card" title="Play 10 — API Validation">
+    <h3>Play 10 — API Validation</h3>
+    <p>Validação de endpoints e contratos REST.</p>
+    <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
+    <a class="btn" href="posts/play-10-api-validation.html">Por Dentro</a>
+  </div>
+  <!-- Play 11 -->
+  <div class="card" title="Play 11 — XSS Scanner">
+    <h3>Play 11 — XSS Scanner</h3>
+    <p>Detecta vulnerabilidades de Cross-Site Scripting.</p>
+    <a class="btn" href="plays/play-11-xss-scanner/">Ver o Play</a>
+    <a class="btn" href="posts/play-11-xss-scanner.html">Por Dentro</a>
+  </div>
+  <!-- Play 12 -->
+  <div class="card" title="Play 12 — CSRF Checker">
+    <h3>Play 12 — CSRF Checker</h3>
+    <p>Verifica falhas de Cross-Site Request Forgery.</p>
+    <a class="btn" href="plays/play-12-csrf-checker/">Ver o Play</a>
+    <a class="btn" href="posts/play-12-csrf-checker.html">Por Dentro</a>
+  </div>
+  <!-- Play 13 -->
+  <div class="card" title="Play 13 — API Fuzzing">
+    <h3>Play 13 — API Fuzzing</h3>
+    <p>Geração de entradas aleatórias para testar APIs.</p>
+    <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
+    <a class="btn" href="posts/play-13-api-fuzzing.html">Por Dentro</a>
+  </div>
+  <!-- Play 14 -->
+  <div class="card" title="Play 14 — Dependency CVE Audit">
+    <h3>Play 14 — Dependency CVE Audit</h3>
+    <p>Avalia vulnerabilidades conhecidas em dependências.</p>
+    <a class="btn" href="plays/play-14-dependency-cve-audit/">Ver o Play</a>
+    <a class="btn" href="posts/play-14-dependency-cve-audit.html">Por Dentro</a>
+  </div>
+  <!-- Play 15 -->
+  <div class="card" title="Play 15 — SSL/TLS Health Check">
+    <h3>Play 15 — SSL/TLS Health Check</h3>
+    <p>Valida certificados e configurações de segurança TLS.</p>
+    <a class="btn" href="plays/play-15-ssl-tls-health-check/">Ver o Play</a>
+    <a class="btn" href="posts/play-15-ssl-tls-health-check.html">Por Dentro</a>
+  </div>
+</section>
 
-    <!-- ===== AJUDA ====================================================== -->
-    <section id="ajuda" class="ajuda">
-      <h2>Ajuda</h2>
-      <p>Bem-vindo ao meu portfólio técnico! Este projeto reúne <strong>plays reais</strong>, scripts de teste e pentest que interagem diretamente com o backend Flask hospedado na Railway e são executados no navegador.</p>
-      <h3>Sobre o Projeto</h3>
-      <p>Desenvolvido com foco em acessibilidade, clareza técnica e praticidade para o avaliador. Hospedado no GitHub Pages com backend em Flask na Railway, demonstra minha atuação em Qualidade de Software, Testes Automatizados, Pentest, CI/CD e cultura DevSecOps.</p>
-      <h3>Como Funciona</h3>
-      <p>Os testes são acionados pelos botões em cada card:</p>
-      <ul>
-        <li><strong>Ver o Play:</strong> abre o ambiente de execução do script em tempo real.</li>
-        <li><strong>Por Dentro:</strong> apresenta passo a passo detalhado, com logs em tempo real e barra de progresso.</li>
-      </ul>
-      <h3>Ver Por Dentro</h3>
-      <p>Confira a documentação de cada play:</p>
-      <ul>
-        <li><strong>Play 01 — Nmap Recon:</strong> passo a passo de uso do Nmap, interpretação de resultados e geração de relatório HTML.</li>
-        <li><strong>Play 02 — Hydra DVWA:</strong> configuração de wordlists, execução de força-bruta e análise de resultados.</li>
-        <li><strong>Play 03 — SQLMap DVWA:</strong> detecção e exploração automatizada de SQL Injection.</li>
-        <li><strong>Play 04 — JMeter LoadTest:</strong> criação de Thread Groups, configuração de samplers e exportação de relatórios.</li>
-        <li><strong>Play 05 — QA Automação:</strong> estrutura de projetos em Cypress, escrita de testes e integração com CI/CD.</li>
-        <li><strong>Play 06 — Carga Bash:</strong> script em Bash para requisições paralelas e coleta de métricas.</li>
-        <li><strong>Play 07 — Testes Mobile:</strong> automação de apps Android com Appium e captura de screenshots.</li>
-        <li><strong>Play 08 — Nikto Scan:</strong> uso do scanner Nikto para identificação de vulnerabilidades web.</li>
-        <li><strong>Play 09 — k6 LoadTest:</strong> scripts em JS para testes de performance de API e análise de métricas.</li>
-        <li><strong>Play 10 — API Validation:</strong> validação de esquemas JSON/OpenAPI e geração de relatórios de contrato.</li>
-        <li><strong>Play 11 — XSS Scanner:</strong> varredura de parâmetros para Cross-Site Scripting e geração de relatório.</li>
-        <li><strong>Play 12 — CSRF Checker:</strong> verificação de proteção CSRF em endpoints sensíveis.</li>
-        <li><strong>Play 13 — API Fuzzing:</strong> envio de payloads malformados para descobrir falhas de entrada.</li>
-        <li><strong>Play 14 — Dependency CVE Audit:</strong> auditoria de dependências com OWASP Dependency-Check e identificação de CVEs.</li>
-        <li><strong>Play 15 — SSL/TLS Health Check:</strong> análise de protocolos e cipher suites, além de verificação de certificados.</li>
-      </ul>
-    </section>
-
-    <!-- ===== GRID DE PLAYS ============================================= -->
-    <section id="plays" class="cards">
-      <!-- ... todos os cards permanecem iguais ... -->
-    </section>
-  </main>
-
-  <!-- ===== RODAPÉ ====================================================== -->
-  <footer>
+  </main>  <!-- ===== RODAPÉ ====================================================== -->  <footer>
     <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
     <p><em>Estes plays executam testes reais em um backend Flask hospedado na <strong>Railway</strong>.</em></p>
-  </footer>
-
-  <!-- ========== EASTER-EGG (Konami + senha) ============================ -->
-  <div id="easter-modal" class="hidden">
+  </footer>  <!-- ========== EASTER-EGG (Konami + senha) ============================ -->  <div id="easter-modal" class="hidden">
     <p>Digite a palavra-chave para desbloquear 💚</p>
     <div style="margin-top:.5rem">
       <input id="easter-key" type="password" placeholder="palavra-chave">
@@ -131,9 +181,7 @@
     <p id="easter-erro" class="hidden"></p>
   </div>
   <div id="easter-gallery" class="hidden"></div>
-  <script src="konami.js"></script>
-
-  <script>
+  <script src="konami.js"></script>  <script>
   document.addEventListener("DOMContentLoaded", () => {
     const text = "QA • Pentest • DevSecOps";
     const el   = document.getElementById("typed-subtitle");
@@ -146,22 +194,5 @@
     }
     type();
   });
-  </script>
-
-<script>
-if (isMobile()) {
-  const btn = document.createElement('button');
-  btn.id = 'mobile-easter-btn';
-  btn.textContent = '🔍 Segredo';
-  document.body.appendChild(btn);
-
-  btn.addEventListener('click', () => {
-    document.getElementById('easter-modal').classList.remove('hidden');
-  });
-}
-</script>
-
-
-
-</body>
+  </script></body>
 </html>
