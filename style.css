@@ -205,3 +205,23 @@ body.neon-dark main.container {
   animation: blink 0.7s steps(1) infinite;
 }
 @keyframes blink { 50% { opacity: 0; } }
+
+#mobile-easter-btn {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #00ffc8;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  box-shadow: 0 0 6px #00ffc8;
+  cursor: pointer;
+  z-index: 10000;
+}
+#mobile-easter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px #00ffc8;
+}

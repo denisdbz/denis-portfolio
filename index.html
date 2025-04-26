@@ -148,5 +148,20 @@
   });
   </script>
 
+<script>
+if (isMobile()) {
+  const btn = document.createElement('button');
+  btn.id = 'mobile-easter-btn';
+  btn.textContent = '🔍 Segredo';
+  document.body.appendChild(btn);
+
+  btn.addEventListener('click', () => {
+    document.getElementById('easter-modal').classList.remove('hidden');
+  });
+}
+</script>
+
+
+
 </body>
 </html>
