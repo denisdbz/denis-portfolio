@@ -17,6 +17,15 @@
 </head>
 <body class="neon-dark">
 
+  <!-- ===== NAVBAR FIXA ============================================== -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#ajuda">Ajuda</a></li>
+      <li><a href="#plays">Plays</a></li>
+    </ul>
+  </nav>
+
   <!-- ===== HERO + LOGO ================================================= -->
   <header class="hero">
     <div class="logo-box">
@@ -26,11 +35,11 @@
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
 
-  <!-- novo subtítulo animado -->
-  <div class="subtitle">
-    <span id="typed-subtitle"></span>
-  </div>
-</header>
+    <!-- novo subtítulo animado -->
+    <div class="subtitle">
+      <span id="typed-subtitle"></span>
+    </div>
+  </header>
 
   <!-- ===== CONTEÚDO PRINCIPAL ========================================= -->
   <main class="container">
@@ -49,7 +58,7 @@
     </nav>
 
     <!-- ===== SOBRE MIM ================================================== -->
-    <section class="sobre">
+    <section id="sobre" class="sobre">
       <h2>Sobre Mim</h2>
       <p>
         Engenheiro de Qualidade com +12 anos de experiência em QA, automação de testes e
@@ -60,13 +69,13 @@
     </section>
 
     <!-- ===== AJUDA ====================================================== -->
-    <section class="ajuda">
+    <section id="ajuda" class="ajuda">
       <h2>Ajuda</h2>
       <p>Passe o mouse sobre um play para ver rapidamente o que ele testa.</p>
     </section>
 
     <!-- ===== GRID DE PLAYS ============================================= -->
-    <section class="cards">
+    <section id="plays" class="cards">
       <!-- Play 01 -->
       <div class="card" title="Play 01 — Nmap Recon">
         <h3>Play 01 — Nmap Recon</h3>
@@ -207,21 +216,20 @@
   <div id="easter-gallery" class="hidden"></div>
   <script src="konami.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const text = "QA • Pentest • DevSecOps";
-  const el   = document.getElementById("typed-subtitle");
-  let idx    = 0;
-
-  function type() {
-    if (idx <= text.length) {
-      el.textContent = text.slice(0, idx++);
-      setTimeout(type, 100);
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const text = "QA • Pentest • DevSecOps";
+    const el   = document.getElementById("typed-subtitle");
+    let idx    = 0;
+    function type() {
+      if (idx <= text.length) {
+        el.textContent = text.slice(0, idx++);
+        setTimeout(type, 100);
+      }
     }
-  }
-  type();
-});
-</script>
+    type();
+  });
+  </script>
 
 </body>
 </html>
