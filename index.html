@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SXND4LYS8S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SXND4LYS8S');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXND4LYS8S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SXND4LYS8S');
+  </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
-
-  <!-- CSS principal -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="neon-dark">
@@ -38,95 +35,151 @@
       <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
     </p>
 
-    <!-- links rápidos -->
+    <!-- ===== LINKS RÁPIDOS ============================================== -->
     <nav class="links">
       <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
       <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
-      <a href="https://wa.me/5511978118097"           target="_blank">WhatsApp</a>
-      <a href="https://github.com/denisdbz"            target="_blank">GitHub</a>
+      <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
+      <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
     </nav>
 
-    <!-- sobre mim -->
+    <!-- ===== SOBRE MIM ================================================== -->
     <section class="sobre">
       <h2>Sobre Mim</h2>
       <p>
         Engenheiro de Qualidade com +12 anos de experiência em QA, automação de testes e
-        segurança. Especializado em Cypress, Appium, JMeter, Jenkins e Kali Linux.
-        Foco em qualidade contínua, CI/CD e cultura DevSecOps.
+        segurança da informação. Especializado em Cypress, Appium, JMeter, Jenkins e Kali Linux.
+        Foco em qualidade contínua, automação, CI/CD e cultura DevSecOps.
       </p>
       <a class="btn" href="curriculo-denis.pdf" download>📄 Baixar Currículo</a>
     </section>
 
-    <!-- ajuda -->
+    <!-- ===== AJUDA ====================================================== -->
     <section class="ajuda">
       <h2>Ajuda</h2>
       <p>Passe o mouse sobre um play para ver rapidamente o que ele testa.</p>
     </section>
 
-    <!-- grid de plays -->
+    <!-- ===== GRID DE PLAYS ============================================= -->
     <section class="cards">
-      <!-- linha 1 -->
-      <div class="card" title="Play 01 — Scanner Nmap em host alvo">
+      <!-- Play 01 -->
+      <div class="card" title="Play 01 — Nmap Recon">
         <h3>Play 01 — Nmap Recon</h3>
         <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
         <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
+        <a class="btn" href="posts/play-01-nmap-recon.html">Por Dentro</a>
       </div>
 
-      <div class="card" title="Play 02 — Força-bruta Hydra em DVWA">
+      <!-- Play 02 -->
+      <div class="card" title="Play 02 — Hydra DVWA">
         <h3>Play 02 — Hydra DVWA</h3>
-        <p>Explora senhas fracas via ataque de força bruta com Hydra.</p>
+        <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
         <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
+        <a class="btn" href="posts/play-02-hydra-dvwa.html">Por Dentro</a>
       </div>
 
-      <div class="card" title="Play 03 — SQLMap em DVWA">
+      <!-- Play 03 -->
+      <div class="card" title="Play 03 — SQLMap DVWA">
         <h3>Play 03 — SQLMap DVWA</h3>
         <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
         <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
+        <a class="btn" href="posts/play-03-sqlmap-dvwa.html">Por Dentro</a>
       </div>
 
-      <!-- linha 2 -->
-      <div class="card" title="Play 04 — Teste de carga JMeter">
+      <!-- Play 04 -->
+      <div class="card" title="Play 04 — JMeter LoadTest">
         <h3>Play 04 — JMeter LoadTest</h3>
         <p>Executa testes de carga e simula múltiplos usuários.</p>
         <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
+        <a class="btn" href="posts/play-04-jmeter-loadtest.html">Por Dentro</a>
       </div>
 
-      <div class="card" title="Play 05 — Automação de interface com Cypress">
+      <!-- Play 05 -->
+      <div class="card" title="Play 05 — QA Automação">
         <h3>Play 05 — QA Automação</h3>
         <p>Execução automatizada de testes de interface com Cypress.</p>
         <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
+        <a class="btn" href="posts/play-05-qa-automacao.html">Por Dentro</a>
       </div>
 
-      <div class="card" title="Play 06 — Carga Bash paralela">
+      <!-- Play 06 -->
+      <div class="card" title="Play 06 — Carga Bash">
         <h3>Play 06 — Carga Bash</h3>
-        <p>Simula carga com múltiplas requisições em loop.</p>
+        <p>Simula carga com múltiplas requisições em loop via shell.</p>
         <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
+        <a class="btn" href="posts/play-06-carga-bash.html">Por Dentro</a>
       </div>
 
-      <!-- linha 3 -->
-      <div class="card" title="Play 07 — Automação mobile Appium">
+      <!-- Play 07 -->
+      <div class="card" title="Play 07 — Testes Mobile">
         <h3>Play 07 — Testes Mobile</h3>
-        <p>Execução de cenários automatizados em app Android.</p>
+        <p>Execução de cenários automatizados em app Android com Appium.</p>
         <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
+        <a class="btn" href="posts/play-07-mobile-tests.html">Por Dentro</a>
       </div>
 
-      <div class="card" title="Play 08 — Varredura Nikto">
+      <!-- Play 08 -->
+      <div class="card" title="Play 08 — Nikto Scan">
         <h3>Play 08 — Nikto Scan</h3>
         <p>Varredura de vulnerabilidades web com Nikto.</p>
         <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
+        <a class="btn" href="posts/play-08-nikto-scan.html">Por Dentro</a>
       </div>
 
-      <div class="card" title="Play 09 — Carga k6">
+      <!-- Play 09 -->
+      <div class="card" title="Play 09 — k6 LoadTest">
         <h3>Play 09 — k6 LoadTest</h3>
         <p>Teste de performance de API com k6.</p>
         <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
+        <a class="btn" href="posts/play-09-k6-loadtest.html">Por Dentro</a>
       </div>
 
-      <!-- linha 4 -->
-      <div class="card" title="Play 10 — Validação de API">
+      <!-- Play 10 -->
+      <div class="card" title="Play 10 — API Validation">
         <h3>Play 10 — API Validation</h3>
         <p>Validação de endpoints e contratos REST.</p>
         <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
+        <a class="btn" href="posts/play-10-api-validation.html">Por Dentro</a>
+      </div>
+
+      <!-- Play 11 -->
+      <div class="card" title="Play 11 — XSS Scanner">
+        <h3>Play 11 — XSS Scanner</h3>
+        <p>Detecta vulnerabilidades de Cross-Site Scripting.</p>
+        <a class="btn" href="plays/play-11-xss-scanner/">Ver o Play</a>
+        <a class="btn" href="posts/play-11-xss-scanner.html">Por Dentro</a>
+      </div>
+
+      <!-- Play 12 -->
+      <div class="card" title="Play 12 — CSRF Checker">
+        <h3>Play 12 — CSRF Checker</h3>
+        <p>Verifica falhas de Cross-Site Request Forgery.</p>
+        <a class="btn" href="plays/play-12-csrf-checker/">Ver o Play</a>
+        <a class="btn" href="posts/play-12-csrf-checker.html">Por Dentro</a>
+      </div>
+
+      <!-- Play 13 -->
+      <div class="card" title="Play 13 — API Fuzzing">
+        <h3>Play 13 — API Fuzzing</h3>
+        <p>Geração de entradas aleatórias para testar APIs.</p>
+        <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
+        <a class="btn" href="posts/play-13-api-fuzzing.html">Por Dentro</a>
+      </div>
+
+      <!-- Play 14 -->
+      <div class="card" title="Play 14 — Dependency CVE Audit">
+        <h3>Play 14 — Dependency CVE Audit</h3>
+        <p>Avalia vulnerabilidades conhecidas em dependências.</p>
+        <a class="btn" href="plays/play-14-dependency-cve-audit/">Ver o Play</a>
+        <a class="btn" href="posts/play-14-dependency-cve-audit.html">Por Dentro</a>
+      </div>
+
+      <!-- Play 15 -->
+      <div class="card" title="Play 15 — SSL/TLS Health Check">
+        <h3>Play 15 — SSL/TLS Health Check</h3>
+        <p>Valida certificados e configurações de segurança TLS.</p>
+        <a class="btn" href="plays/play-15-ssl-tls-health-check/">Ver o Play</a>
+        <a class="btn" href="posts/play-15-ssl-tls-health-check.html">Por Dentro</a>
       </div>
     </section>
   </main>
@@ -134,33 +187,19 @@
   <!-- ===== RODAPÉ ====================================================== -->
   <footer>
     <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
-    <p><em>Estes plays executam testes reais em um backend Flask hospedado na
-           <strong>Railway</strong>.</em></p>
+    <p><em>Estes plays executam testes reais em um backend Flask hospedado na <strong>Railway</strong>.</em></p>
   </footer>
 
-  <!-- ========== EASTER-EGG (Konami + palavra-chave) ===================== -->
-
-  <!-- Modal (senha) -->
+  <!-- ========== EASTER-EGG (Konami + senha) ============================ -->
   <div id="easter-modal" class="hidden">
     <p>Digite a palavra-chave para desbloquear 💚</p>
-
     <div style="margin-top:.5rem">
-      <input id="easter-key" type="password" placeholder="palavra-chave"
-             style="padding:.4rem .6rem;border:1px solid #0f0;background:#000;
-                    color:#0f0;border-radius:4px;">
-      <button id="easter-submit"
-              style="margin-left:.5rem;padding:.4rem .8rem;background:#0f0;
-                     color:#000;font-weight:bold;border:none;border-radius:4px;
-                     cursor:pointer;">OK</button>
+      <input id="easter-key" type="password" placeholder="palavra-chave">
+      <button id="easter-submit">OK</button>
     </div>
-
-    <p id="easter-erro" class="hidden" style="color:#f33;margin-top:.5rem;"></p>
+    <p id="easter-erro" class="hidden"></p>
   </div>
-
-  <!-- Painel que receberá as fotos (criado/mostrado pelo JS) -->
   <div id="easter-gallery" class="hidden"></div>
-
-  <!-- Script -->
   <script src="konami.js"></script>
 </body>
 </html>
