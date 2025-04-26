@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Por Dentro do Play 02 — Hydra DVWA</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="neon-dark">
+  <header class="hero">
+    <div class="logo-box">
+      <img src="../assets/img/logo-animado-denis.svg" alt="Logo" class="logo-animado" />
+      <span class="logo-text">Denis | QA &amp; Pentest</span>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Por Dentro do Play 02 — Hydra DVWA</h1>
+    <p>
+      Aqui detalhamos o ataque de força-bruta em formulários DVWA usando Hydra:
+      <ul>
+        <li>Configuração de wordlist</li>
+        <li>Comando: <code>hydra -l admin -P rockyou.txt http-post-form "/dvwa/login.php:username=^USER^&password=^PASS^"</code></li>
+        <li>Análise de resultados e possíveis defesas</li>
+      </ul>
+    </p>
+    <a class="btn" href="../plays/play-02-hydra-dvwa/">Ir ao Play</a>
+    <a class="btn" href="../index.html">Voltar à Home</a>
+  </main>
+  <footer>
+    <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
+    <p><em>Estes plays executam testes reais em um backend Flask na Railway.</em></p>
+  </footer>
+  <script src="../konami.js"></script>
+</body>
+</html>
