@@ -1,46 +1,33 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXND4LYS8S"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}    
-    gtag('js', new Date());    
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
     gtag('config', 'G-SXND4LYS8S');
   </script>  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Ajuste do container para navbar fixa */
-    body.neon-dark main.container { margin-top: 6rem; }
-    /* Botões de modal */
-    .modal {
-      display: none; position: fixed; z-index: 2000;
-      left: 0; top: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85); overflow: auto;
-    }
-    .modal-content {
-      background: #111; margin: 5% auto; padding: 1.5rem;
-      border: 1px solid #00ffc8; border-radius: 8px;
-      width: 90%; max-width: 600px; color: #77ffee; text-align: left;
-    }
-    .close-btn { float: right; font-size: 1.2rem; cursor: pointer; color: #00ffc8; background: none; border: none; }
-    #mobile-easter-btn {
-      position: fixed; bottom: 1rem; right: 1rem;
-      background: #00ffc8; color: #000; border: none;
-      border-radius: 50%; width: 48px; height: 48px;
-      font-size: 1.5rem; box-shadow: 0 0 6px #00ffc8;
-      cursor: pointer; z-index:10000; display:none;
-    }
-    @media(max-width:768px){ #mobile-easter-btn{ display:block; } }
+    body.neon-dark main.container { margin-top: 4rem; }
+    .subtitle { position: relative; z-index: 10; display: inline-block; margin-top: 0.3rem; }
+    #typed-subtitle { display: inline-block; min-width: 1ch; }
+    #typed-subtitle::after { content: '|'; position: relative; z-index: 10; animation: blink 0.7s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero .links { margin: 0.5rem auto 1rem; }
+    #mobile-easter-btn { position: fixed; bottom: 4rem; right: 1rem; background: #00ffc8; color: #000; border: none; border-radius: 50%; width: 48px; height: 48px; font-size: 1.5rem; box-shadow: 0 0 6px #00ffc8; cursor: pointer; z-index: 10000; }
+    #mobile-easter-btn:hover { transform: translateY(-2px); box-shadow: 0 0 12px #00ffc8; }
   </style>
 </head>
-<body class="neon-dark">  <!-- NAVBAR FIXA -->  <nav class="navbar">
+<body class="neon-dark">
+  <!-- NAVBAR FIXA -->
+  <nav class="navbar">
     <ul>
-      <li><a href="#" id="open-sobre">Sobre</a></li>
-      <li><a href="#" id="open-ajuda">Ajuda</a></li>
+      <li><a href="#" id="btn-sobre">Sobre</a></li>
+      <li><a href="#" id="btn-ajuda">Ajuda</a></li>
       <li><a href="#plays">Plays</a></li>
     </ul>
   </nav>  <!-- HERO + LOGO -->  <header class="hero">
@@ -49,165 +36,172 @@
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
     <div class="subtitle"><span id="typed-subtitle"></span></div>
-  </header>  <!-- CONTEÚDO PRINCIPAL: CARDS -->  <main class="container">
+    <nav class="links">
+      <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
+      <a href="https://wa.me/5511978118097" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://github.com/denisdbz" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>  <!-- CONTEÚDO PRINCIPAL -->  <main class="container">
     <h1>Denis Oliveira — Portfólio Profissional</h1>
-    <p class="intro">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p><!-- GRID DE PLAYS -->
+    <p class="intro">
+      Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
+      <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
+    </p><!-- GRID DE PLAYS -->
 <section id="plays" class="cards">
-  <!-- Play 01 -->
   <div class="card" title="Play 01 — Nmap Recon">
     <h3>Play 01 — Nmap Recon</h3>
     <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
     <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
-    <a class="btn" href="posts/play-01-nmap-recon.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="01">Por Dentro</a>
   </div>
-  <!-- Play 02 -->
   <div class="card" title="Play 02 — Hydra DVWA">
     <h3>Play 02 — Hydra DVWA</h3>
     <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
     <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
-    <a class="btn" href="posts/play-02-hydra-dvwa.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="02">Por Dentro</a>
   </div>
-  <!-- Play 03 -->
   <div class="card" title="Play 03 — SQLMap DVWA">
     <h3>Play 03 — SQLMap DVWA</h3>
     <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
     <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
-    <a class="btn" href="posts/play-03-sqlmap-dvwa.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="03">Por Dentro</a>
   </div>
-  <!-- Play 04 -->
   <div class="card" title="Play 04 — JMeter LoadTest">
     <h3>Play 04 — JMeter LoadTest</h3>
     <p>Executa testes de carga e simula múltiplos usuários.</p>
     <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
-    <a class="btn" href="posts/play-04-jmeter-loadtest.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="04">Por Dentro</a>
   </div>
-  <!-- Play 05 -->
   <div class="card" title="Play 05 — QA Automação">
     <h3>Play 05 — QA Automação</h3>
     <p>Execução automatizada de testes de interface com Cypress.</p>
     <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
-    <a class="btn" href="posts/play-05-qa-automacao.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="05">Por Dentro</a>
   </div>
-  <!-- Play 06 -->
   <div class="card" title="Play 06 — Carga Bash">
     <h3>Play 06 — Carga Bash</h3>
     <p>Simula carga com múltiplas requisições em loop via shell.</p>
     <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
-    <a class="btn" href="posts/play-06-carga-bash.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="06">Por Dentro</a>
   </div>
-  <!-- Play 07 -->
   <div class="card" title="Play 07 — Testes Mobile">
     <h3>Play 07 — Testes Mobile</h3>
-    <p>Execução de cenários em app Android com Appium.</p>
+    <p>Execução de cenários automatizados em app Android com Appium.</p>
     <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
-    <a class="btn" href="posts/play-07-mobile-tests.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="07">Por Dentro</a>
   </div>
-  <!-- Play 08 -->
   <div class="card" title="Play 08 — Nikto Scan">
     <h3>Play 08 — Nikto Scan</h3>
     <p>Varredura de vulnerabilidades web com Nikto.</p>
     <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
-    <a class="btn" href="posts/play-08-nikto-scan.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="08">Por Dentro</a>
   </div>
-  <!-- Play 09 -->
   <div class="card" title="Play 09 — k6 LoadTest">
     <h3>Play 09 — k6 LoadTest</h3>
     <p>Teste de performance de API com k6.</p>
     <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
-    <a class="btn" href="posts/play-09-k6-loadtest.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="09">Por Dentro</a>
   </div>
-  <!-- Play 10 -->
   <div class="card" title="Play 10 — API Validation">
     <h3>Play 10 — API Validation</h3>
     <p>Validação de endpoints e contratos REST.</p>
     <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
-    <a class="btn" href="posts/play-10-api-validation.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="10">Por Dentro</a>
   </div>
-  <!-- Play 11 -->
   <div class="card" title="Play 11 — XSS Scanner">
     <h3>Play 11 — XSS Scanner</h3>
     <p>Detecta vulnerabilidades de Cross-Site Scripting.</p>
     <a class="btn" href="plays/play-11-xss-scanner/">Ver o Play</a>
-    <a class="btn" href="posts/play-11-xss-scanner.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="11">Por Dentro</a>
   </div>
-  <!-- Play 12 -->
   <div class="card" title="Play 12 — CSRF Checker">
     <h3>Play 12 — CSRF Checker</h3>
     <p>Verifica falhas de Cross-Site Request Forgery.</p>
     <a class="btn" href="plays/play-12-csrf-checker/">Ver o Play</a>
-    <a class="btn" href="posts/play-12-csrf-checker.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="12">Por Dentro</a>
   </div>
-  <!-- Play 13 -->
   <div class="card" title="Play 13 — API Fuzzing">
     <h3>Play 13 — API Fuzzing</h3>
     <p>Geração de entradas aleatórias para testar APIs.</p>
     <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
-    <a class="btn" href="posts/play-13-api-fuzzing.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="13">Por Dentro</a>
   </div>
-  <!-- Play 14 -->
   <div class="card" title="Play 14 — Dependency CVE Audit">
     <h3>Play 14 — Dependency CVE Audit</h3>
     <p>Avalia vulnerabilidades conhecidas em dependências.</p>
     <a class="btn" href="plays/play-14-dependency-cve-audit/">Ver o Play</a>
-    <a class="btn" href="posts/play-14-dependency-cve-audit.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="14">Por Dentro</a>
   </div>
-  <!-- Play 15 -->
   <div class="card" title="Play 15 — SSL/TLS Health Check">
     <h3>Play 15 — SSL/TLS Health Check</h3>
     <p>Valida certificados e configurações de segurança TLS.</p>
     <a class="btn" href="plays/play-15-ssl-tls-health-check/">Ver o Play</a>
-    <a class="btn" href="posts/play-15-ssl-tls-health-check.html">Por Dentro</a>
+    <a class="btn btn-por-dentro" data-play="15">Por Dentro</a>
   </div>
 </section>
 
-  </main>  <!-- FOOTER -->  <footer>
-    <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
-    <p><em>Estes plays executam testes reais em um backend Flask hospedado na <strong>Railway</strong>.</em></p>
-  </footer>  <!-- MODAL SOBRE -->  <div id="modal-sobre" class="modal">
+  </main>  <!-- MODAIS -->  <div id="modal-sobre" class="modal hidden">
     <div class="modal-content">
-      <button class="close-btn" id="close-sobre">×</button>
       <h2>Sobre Mim</h2>
-      <p>Engenheiro de Qualidade e Segurança da Informação com mais de 12 anos de experiência em QA, automação de testes e pentest. Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux, atuando com metodologias ágeis (Scrum/Kanban), integração contínua na AWS e cultura DevSecOps. Atualmente lidero projetos de automação robusta e segurança de APIs em cloud.</p>
+      <p>Engenheiro de Qualidade e Segurança da Informação com mais de 12 anos de experiência em QA, automação de testes e pentest. Especialista em Cypress, Appium, JMeter, Jenkins e Kali Linux, atuando com metodologias ágeis (Scrum/Kanban), CI/CD na AWS e cultura DevSecOps.</p>
+      <button id="close-sobre">Fechar</button>
     </div>
-  </div>  <!-- MODAL AJUDA -->  <div id="modal-ajuda" class="modal">
+  </div>
+  <div id="modal-ajuda" class="modal hidden">
     <div class="modal-content">
-      <button class="close-btn" id="close-ajuda">×</button>
       <h2>Ajuda</h2>
-      <p>Bem-vindo ao meu portfólio técnico! Este projeto reúne <strong>plays reais</strong>, scripts de teste e pentest que interagem diretamente com o backend Flask hospedado na Railway e são executados no navegador.</p>
-      <h3>Como Funciona</h3>
+      <p>Este portfólio reúne <strong>plays reais</strong> que demonstram QA, Pentest, CI/CD e DevSecOps.</p>
       <ul>
-        <li><strong>Ver o Play:</strong> abre o ambiente de execução do script em tempo real.</li>
-        <li><strong>Por Dentro:</strong> passo a passo detalhado com logs em tempo real e barra de progresso.</li>
+        <li><strong>Ver o Play:</strong> executa o script em tempo real.</li>
+        <li><strong>Por Dentro:</strong> documentação passo a passo em modal.</li>
       </ul>
+      <button id="close-ajuda">Fechar</button>
     </div>
-  </div>  <!-- EASTER EGG -->  <div id="easter-modal" class="hidden">
+  </div>
+  <div id="modal-por-dentro" class="modal hidden">
+    <div class="modal-content">
+      <h2>Detalhes do Play</h2>
+      <div id="conteudo-por-dentro"></div>
+      <button id="close-por-dentro">Fechar</button>
+    </div>
+  </div>  <!-- FOOTER -->  <footer>
+    <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
+    <p><em>Plays reais executados em Flask na Railway.</em></p>
+  </footer>  <!-- EASTER EGG -->  <div id="easter-modal" class="hidden">
     <p>Digite a palavra-chave para desbloquear 💚</p>
-    <div style="margin-top:.5rem">
-      <input id="easter-key" type="password" placeholder="palavra-chave">
+    <div style="margin-top:.5rem;">
+      <input id="easter-key" type="password" placeholder="palavra-chave" />
       <button id="easter-submit">OK</button>
     </div>
     <p id="easter-erro" class="hidden"></p>
   </div>
-  <div id="easter-gallery" class="hidden"></div>
-  <script src="konami.js"></script>
-  <button id="mobile-easter-btn">🔍</button>  <script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-      // Typed subtitle
-      const text="QA • Pentest • DevSecOps", el=document.getElementById('typed-subtitle'); let i=0;
-      (function type(){ if(i<=text.length) el.textContent=text.slice(0,i++), setTimeout(type,100); })();
-      
-      // Modals
-      const openSobre=document.getElementById('open-sobre'), modalSobre=document.getElementById('modal-sobre'), closeSobre=document.getElementById('close-sobre');
-      openSobre.addEventListener('click', e=>{ e.preventDefault(); modalSobre.style.display='block'; });
-      closeSobre.addEventListener('click', ()=>modalSobre.style.display='none');
-      const openAjuda=document.getElementById('open-ajuda'), modalAjuda=document.getElementById('modal-ajuda'), closeAjuda=document.getElementById('close-ajuda');
-      openAjuda.addEventListener('click', e=>{ e.preventDefault(); modalAjuda.style.display='block'; });
-      closeAjuda.addEventListener('click', ()=>modalAjuda.style.display='none');
+  <div id="easter-gallery" class="hidden"></div>  <script src="konami.js"></script>  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Lupa sempre funcional e acionando o modal
+      const btn = document.createElement('button');
+      btn.id = 'mobile-easter-btn';
+      btn.textContent = '🔍';
+      document.body.appendChild(btn);
+      btn.addEventListener('click', () => document.getElementById('easter-modal').classList.remove('hidden'));
 
-      // Easter egg mobile
-      function isMobile(){ return /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent); }
-      const btn=document.getElementById('mobile-easter-btn');
-      if(isMobile()) btn.addEventListener('click', ()=>document.getElementById('easter-modal').classList.remove('hidden')); else btn.style.display='none';
+      // Typing effect
+      const text = 'QA • Pentest • DevSecOps';
+      let idx = 0;
+      const el = document.getElementById('typed-subtitle');
+      function type(){ if(idx <= text.length){ el.textContent = text.slice(0, idx++); setTimeout(type, 100);} }
+      type();
+
+      // Modals handlers
+      document.getElementById('btn-sobre').onclick = e => { e.preventDefault(); document.getElementById('modal-sobre').classList.remove('hidden'); };
+      document.getElementById('close-sobre').onclick = () => document.getElementById('modal-sobre').classList.add('hidden');
+      document.getElementById('btn-ajuda').onclick = e => { e.preventDefault(); document.getElementById('modal-ajuda').classList.remove('hidden'); };
+      document.getElementById('close-ajuda').onclick = () => document.getElementById('modal-ajuda').classList.add('hidden');
+      document.querySelectorAll('.btn-por-dentro').forEach(b => b.onclick = () => {
+        document.getElementById('conteudo-por-dentro').textContent = `Documentação do Play ${b.dataset.play}.`;
+        document.getElementById('modal-por-dentro').classList.remove('hidden');
+      });
+      document.getElementById('close-por-dentro').onclick = () => document.getElementById('modal-por-dentro').classList.add('hidden');
     });
   </script></body>
 </html>

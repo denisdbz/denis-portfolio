@@ -1,52 +1,58 @@
-/* simulate-run.js  */
+/**
+ * simulate-run.js
+ * Gatilho unificado para executar o play correto,
+ * mostrar progress bar real e stream de logs/relatório.
+ */
 async function executarTeste(playId) {
-  // ─── 1. Descobrir URL do backend ──────────────────────────────────────────
-  const BACKEND =
-    window.BACKEND_URL                                  // var. de ambiente
-    || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)
-        ? "http://127.0.0.1:5000"                       // dev local
-        : "https://web-production-c891.up.railway.app"  // produção default
-       );
+  const btn = document.querySelector(`button[onclick*="${playId}"]`);
+  const progressBar = document.getElementById('barra');
+  const progressFill = document.getElementById('barra-fill');
+  const logsEl = document.getElementById('logs');
 
-  // ─── 2. Elementos de UI ──────────────────────────────────────────────────
-  const btn  = document.querySelector("button");
-  const bar  = document.getElementById("barra");
-  const fill = document.getElementById("barra-fill");
-  const logs = document.getElementById("logs");
-
-  btn.disabled   = true;
-  btn.textContent = "⏳ Iniciando…";
-  bar.classList.remove("hidden");
-  fill.style.width = "0%";
-  logs.textContent = "";
+  btn.disabled = true;
+  btn.textContent = '⏳ Iniciando…';
+  progressBar.classList.remove('hidden');
+  progressFill.style.width = '0%';
+  logsEl.textContent = '';
 
   try {
-    /* --- anima progress bar enquanto faz o fetch --- */
-    let pct = 0;
-    const simInterval = setInterval(() => {
-      pct = Math.min(90, pct + 10);
-      fill.style.width = pct + "%";
-    }, 250);
-
-    /* --- requisição ao backend --- */
-    const resp = await fetch(`${BACKEND}/executar`, {
-      method : "POST",
-      headers: { "Content-Type": "application/json" },
-      body   : JSON.stringify({ play: playId })
+    const resp = await fetch('https://web-production-c891.up.railway.app/executar', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({play: playId})
     });
-
-    clearInterval(simInterval);
-    fill.style.width = "100%";
-
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let received = 0, total = 0;
+    const chunks = [];
+    btn.textContent = '▶️ Executando…';
+    const lenHeader = resp.headers.get('Content-Length');
+    total = lenHeader ? parseInt(lenHeader, 10) : 0;
 
-    const data = await resp.json();
-    if (data.saida) logs.textContent = data.saida;
-    else if (data.erro) logs.textContent = data.erro;
-  } catch (e) {
-    logs.textContent = e.message || "Erro desconhecido";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const text = decoder.decode(value, {stream: true});
+      chunks.push(text);
+      received += value.length;
+      logsEl.textContent = chunks.join('');
+
+      if (total) {
+        const pct = Math.floor((received / total) * 100);
+        progressFill.style.width = pct + '%';
+      } else {
+        const current = parseInt(progressFill.style.width) || 0;
+        progressFill.style.width = Math.min(100, current + 5) + '%';
+      }
+    }
+
+    progressFill.style.width = '100%';
+    btn.textContent = '✅ Concluído';
+  } catch (err) {
+    logsEl.textContent = `❌ ${err.message}`;
+    btn.textContent = '⚠️ Erro';
   } finally {
-    btn.disabled   = false;
-    btn.textContent = "▶️ Executar Teste";
+    btn.disabled = false;
   }
 }
