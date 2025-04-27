@@ -187,27 +187,6 @@ body.light-mode {
   box-shadow: 0 0 20px rgba(0, 255, 159, 0.5);
 }
 
-/* ===== Mobile Easter Egg Botão ===== */
-#mobile-easter-btn {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  padding: 0.8rem;
-  font-size: 1.5rem;
-  background: #00ff9f;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
-  cursor: pointer;
-}
-
-/* ===== Animação Logo ===== */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
 /* ===== Barra de Progresso Simulada ===== */
 #progress-bar {
   background: #00ff9f;
@@ -233,4 +212,11 @@ body.light-mode {
   max-height: 200px;
   overflow-y: auto;
   font-size: 0.9rem;
+}
+
+/* ===== Animação Logo ===== */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
