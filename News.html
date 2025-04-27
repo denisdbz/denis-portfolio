@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News — Denis Oliveira</title>
+  <meta name="description" content="Principais fontes de notícias sobre tecnologia, QA, Pentest e Segurança da Informação.">
+  <meta property="og:title" content="News — Denis Oliveira">
+  <meta property="og:description" content="Fique por dentro das novidades em segurança, automação e tecnologia.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://denisdbz.github.io/denis-portfolio/news.html">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="neon-dark">
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="logo-box">
+    <img src="assets/img/logo-animado-denis.svg" alt="Logo Denis QA Pentest" class="logo-animado" />
+    <span class="logo-text">Notícias de Tecnologia</span>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Principais Fontes de Tecnologia e Segurança</h1>
+  <p class="intro">
+    Mantenha-se atualizado com as novidades do mundo da tecnologia, segurança ofensiva, qualidade de software e DevSecOps.
+  </p>
+
+  <hr class="separator" />
+
+  <section class="news-links">
+    <div class="card">
+      <h3>The Hacker News</h3>
+      <p>Principais notícias sobre segurança da informação e vulnerabilidades recentes.</p>
+      <a class="btn" href="https://thehackernews.com/" target="_blank">Visitar Site</a>
+    </div>
+
+    <div class="card">
+      <h3>OWASP News</h3>
+      <p>Atualizações da principal referência mundial em segurança de aplicações.</p>
+      <a class="btn" href="https://owasp.org/news/" target="_blank">Visitar Site</a>
+    </div>
+
+    <div class="card">
+      <h3>Hacker News (YCombinator)</h3>
+      <p>Discussões sobre startups, segurança, inovação e desenvolvimento de software.</p>
+      <a class="btn" href="https://news.ycombinator.com/" target="_blank">Visitar Site</a>
+    </div>
+
+    <div class="card">
+      <h3>Bleeping Computer</h3>
+      <p>Notícias sobre ataques, ransomware, falhas de segurança e atualizações críticas.</p>
+      <a class="btn" href="https://www.bleepingcomputer.com/" target="_blank">Visitar Site</a>
+    </div>
+
+    <div class="card">
+      <h3>TechCrunch Security</h3>
+      <p>Notícias focadas em cibersegurança, startups e inovações tecnológicas.</p>
+      <a class="btn" href="https://techcrunch.com/tag/security/" target="_blank">Visitar Site</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+    });
+  }
+});
+</script>
+
+</body>
+</html>
