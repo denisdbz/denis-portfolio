@@ -1,6 +1,7 @@
 // scripts.js
 
 document.addEventListener('DOMContentLoaded', () => {
+
   // 1) Typed subtitle animation
   const text = 'QA • Pentest • DevSecOps';
   let idx = 0;
@@ -13,15 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   // 2) Theme toggle (neon ↔ light)
-  document.getElementById('theme-toggle').addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-  });
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+    });
+  }
 
   // 3) Build modals dynamically
   function makeModal(id, title, content) {
-    if (document.getElementById('modal-'+id)) return;
+    if (document.getElementById('modal-' + id)) return;
     const m = document.createElement('div');
-    m.id = 'modal-'+id;
+    m.id = 'modal-' + id;
     m.className = 'modal hidden';
     m.innerHTML = `
       <div class="modal-content">
@@ -29,19 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
         <h2>${title}</h2>${content}
       </div>`;
     document.body.appendChild(m);
-    m.querySelector('.close-modal').onclick = () => m.classList.add('hidden');
   }
 
   makeModal('sobre', 'Sobre Mim', `
-    <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência. 
-    Especialista em QA, Pentest, Automação de Testes e DevSecOps.</p>
+    <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência.</p>
+    <p>Especialista em QA, Pentest, Automação de Testes e DevSecOps.</p>
   `);
 
   makeModal('ajuda', 'Central de Ajuda', `
     <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps.</p>
     <ul>
-      <li><strong>Ver o Play:</strong> executa o teste em tempo real.</li>
-      <li><strong>Por Dentro:</strong> mostra a documentação passo a passo.</li>
+      <li><strong>Ver o Play:</strong> Executa o teste real.</li>
+      <li><strong>Por Dentro:</strong> Mostra documentação explicativa.</li>
     </ul>
   `);
 
@@ -69,18 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('modal-news').classList.remove('hidden');
   };
 
-  // 5) “Por Dentro” action for each play
+  // 5) "Por Dentro" buttons for each play
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.onclick = e => {
       e.preventDefault();
-      const id = btn.dataset.play.padStart(2,'0');
+      const id = btn.dataset.play.padStart(2, '0');
       fetch(`posts/play-${id}.html`)
         .then(r => r.text())
         .then(html => {
           document.getElementById('modal-play-content').innerHTML = html;
           document.getElementById('modal-por-dentro').classList.remove('hidden');
         })
-        .catch(() => alert('Conteúdo não disponível.'));
+        .catch(() => alert('Conteúdo "Por Dentro" ainda não disponível.'));
     };
   });
 
@@ -90,9 +93,40 @@ document.addEventListener('DOMContentLoaded', () => {
     search.oninput = () => {
       const term = search.value.toLowerCase();
       document.querySelectorAll('#plays .card').forEach(card => {
-        card.style.display = card.querySelector('h3').textContent.toLowerCase().includes(term)
-          ? '' : 'none';
+        card.style.display =
+          card.querySelector('h3').textContent.toLowerCase().includes(term)
+          ? ''
+          : 'none';
       });
     };
   }
+
+  // 7) Konami Code Activation (Desktop + Mobile)
+  if (typeof Konami === 'function') {
+    const easterEgg = new Konami(() => {
+      alert('Easter egg ativado! Segredo desbloqueado!');
+      const audio = new Audio('assets/audio/palpite.mp3');
+      audio.play();
+    });
+  }
+
+  // 8) Fechar modais ao clicar no botão de fechar (X)
+  document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.onclick = e => {
+      e.preventDefault();
+      const modalId = btn.getAttribute('data-close');
+      const modal = document.getElementById('modal-' + modalId);
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    };
+  });
+
+  // 9) Fechar o modal "Por Dentro" automaticamente ao clicar nos botões dentro dele
+  document.getElementById('modal-play-content').addEventListener('click', e => {
+    if (e.target.tagName === 'A' && e.target.closest('#modal-play-content')) {
+      document.getElementById('modal-por-dentro').classList.add('hidden');
+    }
+  });
+
 });
