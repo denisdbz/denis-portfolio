@@ -154,7 +154,7 @@ body.light-mode {
   background:#00ff9f;
 }
 
-/* ===== Progresso & Logs ===== */
+/* ===== Barra de Progresso & Logs ===== */
 .progress-bar {
   width:100%;
   max-width:480px;
@@ -192,7 +192,7 @@ footer em {
   color:#00ff9f;
 }
 
-/* ===== Utility ===== */
+/* ===== Utilitário ===== */
 .hidden { display:none; }
 
 /* ===== Animações ===== */
