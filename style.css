@@ -1,222 +1,61 @@
+/* style.css */
 /* ===== Reset Básico ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-/* ===== Body Tema ===== */
-body.neon-dark {
-  background-color: #0a0a0a;
-  color: #e0e0e0;
-  font-family: 'Poppins', sans-serif;
-  min-height: 100vh;
-}
-
-body.light-mode {
-  background-color: #f5f5f5;
-  color: #333;
-}
+/* ===== Tema ===== */
+body.neon-dark { background:#0a0a0a; color:#e0e0e0; font-family:'Poppins', sans-serif; min-height:100vh; }
+body.light-mode { background:#f5f5f5; color:#333; }
 
 /* ===== Navbar ===== */
-.navbar {
-  background: #111;
-  padding: 1rem;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.navbar a, .navbar button {
-  color: #00ff9f;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.navbar a:hover, .navbar button:hover {
-  text-decoration: underline;
-}
+.navbar { background:#111; padding:1rem; position:sticky; top:0; z-index:1000; }
+.navbar ul { list-style:none; display:flex; justify-content:center; gap:2rem; }
+.navbar a, .navbar button { color:#00ff9f; text-decoration:none; font-weight:bold; font-size:1.1rem; background:none; border:none; cursor:pointer; }
+.navbar a:hover, .navbar button:hover { text-decoration:underline; }
 
 /* ===== Hero ===== */
-.hero {
-  text-align: center;
-  padding: 2rem 1rem;
-}
+.hero { text-align:center; padding:2rem 1rem; }
+.logo-box { margin-bottom:1rem; }
+.logo-animado { width:120px; animation:pulse 2s infinite; }
+.logo-text { font-size:1.5rem; font-weight:bold; margin-top:0.5rem; display:block; }
+.subtitle { margin-top:.5rem; font-size:1rem; display:inline-block; }
+#typed-subtitle::after { content:'|'; animation:blink .7s steps(1) infinite; }
+@keyframes blink {50%{opacity:0;}}
 
-.logo-box {
-  margin-bottom: 1rem;
-}
+/* ===== Contatos ===== */
+.links { margin-top:1rem; display:flex; justify-content:center; gap:1.2rem; }
+.links a { font-weight:600; color:#e0e0e0; display:flex; align-items:center; gap:.4rem; }
+.links img { width:20px; }
 
-.logo-animado {
-  width: 120px;
-  animation: pulse 2s infinite;
-}
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  display: block;
-}
-
-/* ===== Container Geral ===== */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+/* ===== Container ===== */
+.container { max-width:1000px; margin:0 auto; padding:2rem; text-align:left; }
 
 /* ===== Introdução ===== */
-.intro {
-  font-size: 1.2rem;
-  margin: 1rem 0 2rem 0;
-}
+.intro { font-size:1.2rem; margin-bottom:2rem; }
 
-/* ===== Separadores ===== */
-.separator {
-  border: none;
-  height: 1px;
-  background: linear-gradient(to right, #00ff9f, transparent);
-  margin: 2rem 0;
-}
+/* ===== Separador ===== */
+.separator { border:none; height:1px; background:linear-gradient(to right,#00ff9f,transparent); margin:2rem 0; }
 
 /* ===== Cards ===== */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+.card { background:#151515; padding:1.5rem; border-radius:8px; box-shadow:0 0 15px rgba(0,255,159,.3); transition:transform .3s; }
+.card:hover { transform:translateY(-6px); }
+.card h3 { margin-bottom:.8rem; color:#00ff9f; }
+.card p { margin-bottom:1rem; }
 
-.card {
-  background: #151515;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 255, 159, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-.card h3 {
-  margin-bottom: 1rem;
-  color: #00ff9f;
-}
-
-.card p {
-  margin-bottom: 1rem;
-}
+/* destaque */
+.card.destaque { grid-column:1/-1; border:1px solid #00ff9f; }
 
 /* ===== Botões ===== */
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.2rem;
-  background: #00ff9f;
-  color: #0a0a0a;
-  font-weight: bold;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-}
+.btn { display:inline-block; padding:.7rem 1.2rem; background:#00ff9f; color:#0a0a0a; font-weight:bold; border-radius:5px; text-decoration:none; margin-right:.5rem; margin-top:.5rem; }
+.btn:hover { background:#00e68c; }
+.btn-por-dentro { background:#00ff9f; }
 
-.btn:hover {
-  background: #00e68c;
-}
+/* ===== Footer ===== */
+footer { text-align:center; padding:2rem 1rem; font-size:.9rem; color:#a0a0a0; }
+footer em { color:#00ff9f; }
 
-/* Botão Por Dentro */
-.btn-por-dentro {
-  background: #00ff9f;
-  color: #0a0a0a;
-}
+/* ===== Animações ===== */
+@keyframes pulse {0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
 
-.btn-por-dentro:hover {
-  background: #00e68c;
-}
-
-/* ===== Skills ===== */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.skill-category h3 {
-  margin-bottom: 0.5rem;
-  color: #00ff9f;
-}
-
-/* ===== Modais ===== */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 10, 10, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.hidden {
-  display: none;
-}
-
-.modal-content {
-  background: #1a1a1a;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 500px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 255, 159, 0.5);
-}
-
-/* ===== Barra de Progresso Simulada ===== */
-#progress-bar {
-  background: #00ff9f;
-  height: 10px;
-  border-radius: 5px;
-  width: 0%;
-  margin-top: 1rem;
-}
-
-#progress-container {
-  background: #333;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 1rem;
-}
-
-#logs {
-  margin-top: 1rem;
-  font-family: monospace;
-  background: #111;
-  padding: 1rem;
-  border-radius: 10px;
-  max-height: 200px;
-  overflow-y: auto;
-  font-size: 0.9rem;
-}
-
-/* ===== Animação Logo ===== */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
+/* ===== Utilities ===== */
+.hidden { display:none; }
