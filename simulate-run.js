@@ -1,4 +1,3 @@
-
 /**
  * simulate-run.js
  * Envia requisição ao backend, exibe barra de progresso e logs em tempo real.
