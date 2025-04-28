@@ -1,7 +1,5 @@
 /**
  * simulate-run.js
- * Gatilho unificado para executar o play correto,
- * mostrar progress bar real e stream de logs/relatório.
  */
 async function executarTeste(playId) {
   const btn = document.querySelector(`button[onclick*="${playId}"]`);
@@ -16,7 +14,7 @@ async function executarTeste(playId) {
   logsEl.textContent = '';
 
   try {
-    const resp = await fetch('https://web-production-c891.up.railway.app/executar', {
+    const resp = await fetch('/executar', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({play: playId})
@@ -38,13 +36,16 @@ async function executarTeste(playId) {
       received += value.length;
       logsEl.textContent = chunks.join('');
 
-      if (total) {
-        const pct = Math.floor((received / total) * 100);
-        progressFill.style.width = pct + '%';
-      } else {
-        const current = parseInt(progressFill.style.width) || 0;
-        progressFill.style.width = Math.min(100, current + 5) + '%';
-      }
+      // Atualiza a barra e a cor
+      const pct = total
+        ? Math.floor((received / total) * 100)
+        : Math.min(100, parseInt(progressFill.style.width) + 5);
+      progressFill.style.width = pct + '%';
+
+      // cor dinâmica: verde <50, amarelo <80, vermelho ≥80
+      if (pct < 50) progressFill.style.background = '#00ff9f';
+      else if (pct < 80) progressFill.style.background = '#ffe600';
+      else progressFill.style.background = '#ff4d4d';
     }
 
     progressFill.style.width = '100%';
