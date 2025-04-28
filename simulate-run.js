@@ -1,5 +1,7 @@
+
 /**
  * simulate-run.js
+ * Envia requisição ao backend, exibe barra de progresso e logs em tempo real.
  */
 async function executarTeste(playId) {
   const btn = document.querySelector(`button[onclick*="${playId}"]`);
@@ -25,6 +27,7 @@ async function executarTeste(playId) {
     let received = 0, total = 0;
     const chunks = [];
     btn.textContent = '▶️ Executando…';
+
     const lenHeader = resp.headers.get('Content-Length');
     total = lenHeader ? parseInt(lenHeader, 10) : 0;
 
@@ -36,16 +39,13 @@ async function executarTeste(playId) {
       received += value.length;
       logsEl.textContent = chunks.join('');
 
-      // Atualiza a barra e a cor
-      const pct = total
-        ? Math.floor((received / total) * 100)
-        : Math.min(100, parseInt(progressFill.style.width) + 5);
-      progressFill.style.width = pct + '%';
-
-      // cor dinâmica: verde <50, amarelo <80, vermelho ≥80
-      if (pct < 50) progressFill.style.background = '#00ff9f';
-      else if (pct < 80) progressFill.style.background = '#ffe600';
-      else progressFill.style.background = '#ff4d4d';
+      if (total) {
+        const pct = Math.floor((received / total) * 100);
+        progressFill.style.width = pct + '%';
+      } else {
+        const current = parseInt(progressFill.style.width) || 0;
+        progressFill.style.width = Math.min(100, current + 5) + '%';
+      }
     }
 
     progressFill.style.width = '100%';
