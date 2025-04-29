@@ -13,6 +13,8 @@ async function executarTeste(play) {
         btnExecutar.innerHTML = '⏳ Executando...';
     }
 
+    const inicio = Date.now(); // Marca o início
+
     try {
         const resposta = await fetch('https://web-production-c891.up.railway.app/executar', {
             method: 'POST',
@@ -51,6 +53,10 @@ async function executarTeste(play) {
     } catch (erro) {
         logs.innerHTML = `<span style="color: red;">Erro na comunicação com o servidor.</span>`;
     } finally {
+        const fim = Date.now(); // Marca o fim
+        const tempoTotal = ((fim - inicio) / 1000).toFixed(2);
+        logs.innerHTML += `<br><span style="color: #00ffff;">✅ Teste concluído em ${tempoTotal} segundos.</span>`;
+        
         if (btnExecutar) {
             btnExecutar.disabled = false;
             btnExecutar.innerHTML = '▶️ Executar Teste';
