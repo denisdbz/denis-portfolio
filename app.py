@@ -1,55 +1,45 @@
 from flask import Flask, request, Response, jsonify
-import subprocess
-import os
+import subprocess, os, glob
 
 app = Flask(__name__)
 
-# Lista de plays permitidos
-PLAYS_PERMITIDOS = {
-    f"play-{str(i).zfill(2)}" for i in range(1, 16)
-}
+PLAYS_PERMITIDOS = { f"play-{i:02d}" for i in range(1,16) }
 
-# Rota principal para checar se o servidor está no ar
 @app.route('/')
 def home():
     return 'Servidor Flask ativo!'
 
-# Rota para execução de testes (Play)
+@app.route('/health')
+def health():
+    return jsonify(status='ok'), 200
+
 @app.route('/executar', methods=['POST'])
 def executar():
     dados = request.get_json()
-    play = dados.get('play')
-
-    if not play or play not in PLAYS_PERMITIDOS:
+    play = dados.get('play', '').strip()
+    if play not in PLAYS_PERMITIDOS:
         return jsonify({'erro': 'Play inválido ou não autorizado.'}), 403
 
-    caminho_script = f"./plays/{play}-*/run.sh"
-    script_real = None
-
-    # Localiza o run.sh correto baseado no wildcard
-    for path in os.listdir('./plays'):
-        if path.startswith(play):
-            script_real = f"./plays/{path}/run.sh"
-            break
-
-    if not script_real or not os.path.isfile(script_real):
+    # localiza script via glob
+    caminhos = glob.glob(f"./plays/{play}-*/run.sh")
+    if not caminhos:
         return jsonify({'erro': 'Script não encontrado para o Play informado.'}), 404
+    script_real = caminhos[0]
 
     def gerar_saida():
         processo = subprocess.Popen(
             ["bash", script_real],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            universal_newlines=True
+            text=True
         )
-
         for linha in processo.stdout:
-            yield f"data: {linha.strip()}\n\n"
-
+            yield linha
         processo.stdout.close()
         processo.wait()
 
     return Response(gerar_saida(), mimetype='text/event-stream')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)
