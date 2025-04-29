@@ -18,7 +18,7 @@ async function executarTeste(play) {
 
     if (!resposta.ok) {
       const erro = await resposta.json();
-      logs.textContent = "Erro: " + (erro.erro || 'Falha inesperada.');
+      logs.textContent = JSON.parse(recebido).saida.replace(/\\n/g, '\n').replace(/\\u2014/g, '—');
       return;
     }
 
