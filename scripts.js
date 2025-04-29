@@ -36,9 +36,92 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   makeModal('sobre', 'Sobre Mim', `
-    <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência.</p>
-    <p>Especialista em QA, Pentest, Automação de Testes e DevSecOps.</p>
-  `);
+<div class="modal-sobre">
+  <h1>Sobre Denis Oliveira Santos</h1>
+  <p>
+    Sou Engenheiro de Qualidade de Software e Segurança da Informação com mais de
+    <strong>12 anos</strong> de experiência, atuando desde 2012 em projetos de 
+    infraestrutura, QA manual, automação de testes e, nos últimos anos, em 
+    pentesting e DevSecOps. Minha missão é integrar qualidade e segurança 
+    desde as primeiras etapas do ciclo de desenvolvimento até a entrega final.
+  </p>
+
+  <h2>Trajetória Profissional</h2>
+  <ul class="timeline">
+    <li>
+      <span class="timeline-year">2010 – 2012</span>
+      <div class="timeline-content">
+        <h3>Analista de Atendimento Jr. — Droga Raia</h3>
+        <p>Suporte técnico Linux/Windows, SQL e manutenção de hardware.</p>
+      </div>
+    </li>
+    <li>
+      <span class="timeline-year">2012 – 2015</span>
+      <div class="timeline-content">
+        <h3>Analista de Testes — RaiaDrogasil S/A</h3>
+        <p>Criação de roteiros de teste, automação com Selenium-IDE, TestLink e Mantis.</p>
+      </div>
+    </li>
+    <li>
+      <span class="timeline-year">2016 – 2017</span>
+      <div class="timeline-content">
+        <h3>Analista de Testes — Spread Tecnologia</h3>
+        <p>Coordenação de casos de teste e projetos de telecom em ambientes ágeis.</p>
+      </div>
+    </li>
+    <li>
+      <span class="timeline-year">2017 – 2018</span>
+      <div class="timeline-content">
+        <h3>Automação de Testes — Flexvision</h3>
+        <p>Desenvolvimento de frameworks em Java/Selenium e integração contínua com Jenkins.</p>
+      </div>
+    </li>
+    <li>
+      <span class="timeline-year">2018 – 2019</span>
+      <div class="timeline-content">
+        <h3>Test Automation — K2 Partnering Solutions</h3>
+        <p>BDD com Ruby/Cucumber, testes mobile e APIs com SOAPUI.</p>
+      </div>
+    </li>
+    <li>
+      <span class="timeline-year">2019 – 2020</span>
+      <div class="timeline-content">
+        <h3>Analista de Automação — Prime Control</h3>
+        <p>Planejamento e execução de testes end-to-end e mobile.</p>
+      </div>
+    </li>
+    <li>
+      <span class="timeline-year">2020 – 2023</span>
+      <div class="timeline-content">
+        <h3>QA Engineer — VR Benefícios</h3>
+        <p>Automação com Cypress, JMeter e pipelines CI/CD no Jenkins.</p>
+      </div>
+    </li>
+    <li>
+      <span class="timeline-year">2024 – Presente</span>
+      <div class="timeline-content">
+        <h3>Senior Software Quality Engineer — Fiserv Brasil</h3>
+        <p>
+          Automação end-to-end com Playwright e Postman, pentests em rede e 
+          aplicações, e práticas DevSecOps em fintech.
+        </p>
+      </div>
+    </li>
+  </ul>
+
+  <h2>Principais Competências</h2>
+  <ul class="skills-list">
+    <li><strong>Testes e QA:</strong> Cypress, Selenium, Appium, Postman/Newman</li>
+    <li><strong>Pentest & Segurança:</strong> OWASP Top 10, Burp Suite, Nmap, SQLMap, Hydra</li>
+    <li><strong>Performance:</strong> JMeter, k6</li>
+    <li><strong>DevSecOps:</strong> Docker, GitHub Actions, Railway, Jenkins</li>
+  </ul>
+
+  <h2>Evolução da Carreira</h2>
+  <div class="chart-container">
+    <canvas id="careerChart" width="400" height="200"></canvas>
+  </div>
+</div>
 
   makeModal('ajuda', 'Central de Ajuda', `
     <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps.</p>
