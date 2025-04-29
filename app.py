@@ -1,8 +1,8 @@
 from flask import Flask, request, Response, jsonify
-import subprocess
-import os
+from flask_cors import CORS   # <— import
 
 app = Flask(__name__)
+CORS(app)                     # <— habilita CORS para todas as rotas
 
 # Lista de plays permitidos
 PLAYS_PERMITIDOS = {
