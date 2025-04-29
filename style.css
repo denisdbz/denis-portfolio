@@ -253,3 +253,20 @@ footer {
   max-width: 100%;
   margin: auto;
 }
+/* Ajuste de tamanho e scroll nos modais */
+.modal-content {
+  /* nunca ultrapassar 90% da altura da viewport */
+  max-height: 90vh;
+  /* adiciona scroll interno quando o conteúdo ultrapassar esse limite */
+  overflow-y: auto;
+  /* deixa um espaço mínimo nas bordas */
+  margin: 1rem;
+}
+
+/* Em telas muito pequenas, ajusta a largura também */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    max-width: none;
+  }
+}
