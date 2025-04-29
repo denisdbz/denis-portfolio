@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-  
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Por Dentro do Play 06 — Carga Bash</title>
-  <link rel="stylesheet" href="../style.css"/>
-</head>
-<body class="neon-dark">
-  <header class="hero">
-    <div class="logo-box">
-      <img src="../assets/img/logo-animado-denis.svg" alt="Logo" class="logo-animado"/>
-      <span class="logo-text">Denis | QA &amp; Pentest</span>
-    </div>
-  </header>
-  <main class="container">
-    <h1>Por Dentro do Play 06 — Carga Bash</h1>
-    <p>Mostramos como criar um script Bash para stress test:</p>
-    <ul>
-      <li>Uso de loops e background (`&`) para paralelismo</li>
-      <li>Controle de threads com `xargs -P`</li>
-      <li>Coleta de tempos de resposta</li>
-      <li>Exibição de estatísticas finais no console</li>
-    </ul>
-    <a class="btn" href="../plays/play-06-carga-bash/">▶️ Ir ao Play</a>
-    <a class="btn" href="../index.html">← Voltar à Home</a>
-  </main>
-  <footer>
-    <p>© 2025 Denis Oliveira • Todos os direitos reservados.</p>
-  </footer>
-</body>
-</html>
+<h2>Detalhes do Play</h2>
+<h1>Por Dentro do Play 06 — Carga Bash</h1>
+<p>Neste Play, usamos bash script para gerar carga de requisições contra o servidor.</p>
+
+<h2>Objetivos</h2>
+<ul>
+  <li>Testar resiliência sob múltiplas conexões simultâneas</li>
+  <li>Observar comportamento de resposta da aplicação</li>
+</ul>
+
+<h2>Comandos Utilizados</h2>
+<ul>
+  <li>for loop para simular requisições paralelas</li>
+  <li>curl para testar endpoints</li>
+</ul>
+
+<h2>Resultados Esperados</h2>
+<ul>
+  <li>Latência aumentada conforme a carga</li>
+  <li>Possível queda ou throttling da aplicação</li>
+</ul>
