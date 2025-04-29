@@ -1,10 +1,10 @@
 // scripts.js
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Inicia AOS
+  // 1) Inicia AOS
   AOS.init({ duration: 800, once: true });
 
-  // Typed subtitle
+  // 2) Typed subtitle animation
   const text = 'QA • Pentest • DevSecOps';
   let idx = 0;
   const el = document.getElementById('typed-subtitle');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
-  // Theme toggle + persistência
+  // 3) Theme toggle com persistência
   const themeToggle = document.getElementById('theme-toggle');
   const saved = localStorage.getItem('theme');
   if (saved === 'light') document.body.classList.add('light-mode');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 
-  // Função genérica de criação de modal
+  // 4) Função genérica de criação de modal
   function makeModal(id, title, content) {
     if (document.getElementById('modal-' + id)) return;
     const m = document.createElement('div');
@@ -38,18 +38,88 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(m);
   }
 
-  // Modais fixos (Sobre, Ajuda, News) já configurados antes...
+  // 5) Modais fixos
+  makeModal('sobre', 'Sobre Denis Oliveira', `
+    <div class="modal-sobre">
+      <h1>Minha Trajetória Profissional</h1>
+      <ul class="timeline">
+        <li>
+          <button class="timeline-toggle">2010 – 2012</button>
+          <div class="timeline-detail">Analista de Atendimento Jr. — Droga Raia: suporte técnico Linux e SQL.</div>
+        </li>
+        <li>
+          <button class="timeline-toggle">2012 – 2015</button>
+          <div class="timeline-detail">Analista de Testes — RaiaDrogasil: automação Selenium-IDE, TestLink, Mantis.</div>
+        </li>
+        <li>
+          <button class="timeline-toggle">2016 – 2017</button>
+          <div class="timeline-detail">Analista de Testes — Spread Tecnologia: gestão de casos e telecom.</div>
+        </li>
+        <li>
+          <button class="timeline-toggle">2017 – 2018</button>
+          <div class="timeline-detail">Automação — Flexvision: Jenkins CI, automação Java/Selenium, Jira.</div>
+        </li>
+        <li>
+          <button class="timeline-toggle">2018 – 2019</button>
+          <div class="timeline-detail">Test Automation — K2 Partnering: Ruby/Cucumber, SOAPUI.</div>
+        </li>
+        <li>
+          <button class="timeline-toggle">2019 – 2020</button>
+          <div class="timeline-detail">Analista de Automação — Prime Control: testes end-to-end e mobile.</div>
+        </li>
+        <li>
+          <button class="timeline-toggle">2020 – 2023</button>
+          <div class="timeline-detail">QA Engineer — VR Benefícios: Cypress, JMeter, Jenkins CI.</div>
+        </li>
+        <li>
+          <button class="timeline-toggle">2024 – Presente</button>
+          <div class="timeline-detail">Senior QA Engineer — Fiserv: Playwright, Postman, DevSecOps.</div>
+        </li>
+      </ul>
+    </div>
+  `);
+  makeModal('ajuda', 'Central de Ajuda', `
+    <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps.</p>
+    <ul>
+      <li><strong>Ver o Play:</strong> Executa o teste real.</li>
+      <li><strong>Por Dentro:</strong> Mostra documentação detalhada.</li>
+    </ul>
+  `);
+  makeModal('news', 'Últimas Notícias', `
+    <ul>
+      <li><a href="https://hackerone.com/resources" target="_blank">HackerOne</a></li>
+      <li><a href="https://portswigger.net/daily-swig" target="_blank">Daily Swig</a></li>
+      <li><a href="https://dev.to/t/qualityassurance" target="_blank">Dev.to QA</a></li>
+    </ul>
+  `);
 
-  // Timeline interativa no modal “Sobre”
-  document.querySelectorAll('.timeline-toggle').forEach(btn => {
-    const detail = btn.nextElementSibling;
-    detail.classList.add('hidden');
-    btn.addEventListener('click', () => detail.classList.toggle('hidden'));
+  // 6) Hook navbar buttons
+  ['sobre', 'ajuda', 'news'].forEach(id => {
+    document.getElementById(`btn-${id}`).onclick = e => {
+      e.preventDefault();
+      document.getElementById(`modal-${id}`).classList.remove('hidden');
+    };
   });
 
-  // “Por Dentro” de cada Play (idem ao anterior)
+  // 7) Botões “Por Dentro”
+  document.querySelectorAll('.btn-por-dentro').forEach(btn => {
+    btn.onclick = async e => {
+      e.preventDefault();
+      const id = btn.dataset.play.padStart(2, '0');
+      const modal = document.getElementById('modal-por-dentro');
+      const content = document.getElementById('modal-play-content');
+      content.innerHTML = '<p>Carregando conteúdo...</p>';
+      modal.classList.remove('hidden');
+      try {
+        const resp = await fetch(`posts/play-${id}.html`);
+        content.innerHTML = resp.ok ? await resp.text() : '<p>Conteúdo indisponível.</p>';
+      } catch {
+        content.innerHTML = '<p>Erro ao carregar conteúdo.</p>';
+      }
+    };
+  });
 
-  // Busca com debounce
+  // 8) Busca com debounce
   const search = document.getElementById('search-input');
   let timer;
   search.oninput = () => {
@@ -62,9 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 200);
   };
 
-  // Fechar modais com ESC ou “×”
+  // 9) Fechar modais
   document.addEventListener('keyup', e => {
-    if (e.key === 'Escape') document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden'));
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden'));
+    }
   });
   document.querySelectorAll('.close-modal').forEach(btn => {
     btn.onclick = e => {
@@ -73,12 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 
-  // Registrar Service Worker
+  // 10) Service Worker registration
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(() => console.log('Service Worker registrado'))
-        .catch(err => console.error('Falha no SW:', err));
+      navigator.serviceWorker.register('/service-worker.js');
     });
   }
 });

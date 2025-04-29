@@ -6,10 +6,10 @@ const ASSETS = [
   '/scripts.js',
   '/simulate-run.js',
   '/assets/img/logo-animado-denis.svg',
-  // adicione aqui outras rotas estáticas e builds dos Plays
+  // adicione outros assets estáticos ou diretórios
 ];
 
-// Instalação e cache inicial
+// Install
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE_NAME)
@@ -18,7 +18,7 @@ self.addEventListener('install', e => {
   );
 });
 
-// Intercept fetch
+// Fetch
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request)
@@ -26,11 +26,15 @@ self.addEventListener('fetch', e => {
   );
 });
 
-// Ativação e limpeza de caches antigos
+// Activate
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-    ))
+    caches.keys().then(keys =>
+      Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      )
+    )
   );
 });
