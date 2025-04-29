@@ -1,4 +1,2 @@
-Projeto Denis Portfolio - 2025
-Estruturado para GitHub Pages + Railway
-
+Projeto Denis Portfolio - Versão com seções reais Sobre, Ajuda e News.
 © Denis Oliveira

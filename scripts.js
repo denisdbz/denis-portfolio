@@ -1,17 +1,12 @@
 // ===== Scroll para Seções =====
-document.getElementById('btn-sobre').addEventListener('click', function(e) {
-  e.preventDefault();
-  alert('Seção "Sobre" será adicionada futuramente.');
-});
-
-document.getElementById('btn-ajuda').addEventListener('click', function(e) {
-  e.preventDefault();
-  alert('Seção "Ajuda" será adicionada futuramente.');
-});
-
-document.getElementById('btn-news').addEventListener('click', function(e) {
-  e.preventDefault();
-  alert('Seção "News" será adicionada futuramente.');
+document.querySelectorAll('nav ul li a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 });
 
 // ===== Troca de Tema Claro/Escuro =====
