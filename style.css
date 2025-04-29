@@ -7,266 +7,118 @@
   --text-light: #222;
 }
 
-/* ===== Reset básico ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
 
-/* ===== Corpo principal ===== */
+/* Corpo */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: var(--bg-main);
   color: var(--text-main);
-  line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x:hidden;
 }
-
-/* ===== Estilos para Light Mode ===== */
 body.light-mode {
-  background: #f5f5f5;
-  color: var(--text-light);
+  background:#f5f5f5; color: var(--text-light);
 }
 
-/* ===== Navbar ===== */
-.navbar {
-  background: var(--bg-card);
-  padding: 1rem;
-  text-align: center;
-}
-.navbar ul { list-style: none; }
-.navbar ul li { display: inline-block; margin: 0 15px; }
+/* Navbar */
+.navbar { background: var(--bg-card); padding:1rem; text-align:center; }
+.navbar ul { list-style:none; }
+.navbar ul li { display:inline-block; margin:0 15px; }
 .navbar a, .navbar button {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
+  color: var(--color-accent); font-weight:bold; font-size:1rem;
+  text-decoration:none; background:none; border:none; cursor:pointer;
 }
 
-/* ===== Hero Section ===== */
-.hero {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-.logo-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.logo-animado { width: 60px; }
+/* Hero */
+.hero { text-align:center; padding:2rem 1rem; }
+.logo-box { display:flex; align-items:center; justify-content:center; gap:1rem; }
+.logo-animado { width:60px; }
 .logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size:1.5rem; font-weight:bold;
   animation: neon 1.5s ease-in-out infinite alternate;
 }
 @keyframes neon {
-  0%   { text-shadow: 0 0 5px var(--color-accent); }
-  50%  { text-shadow: 0 0 20px var(--color-accent); }
-  100% { text-shadow: 0 0 5px var(--color-accent); }
+  0%,100% { text-shadow:0 0 5px var(--color-accent); }
+  50% { text-shadow:0 0 20px var(--color-accent); }
 }
-.subtitle {
-  margin-top: 0.5rem;
-  font-style: italic;
-  font-size: 1.2rem;
-}
+.subtitle { margin-top:0.5rem; font-style:italic; font-size:1.2rem; }
 
-/* ===== Links abaixo do Hero ===== */
-.links {
-  margin-top: 1rem;
-}
-.links a {
-  margin: 0 10px;
-  color: var(--color-accent);
-  font-size: 0.9rem;
-}
+/* Links */
+.links { margin-top:1rem; }
+.links a { margin:0 10px; color:var(--color-accent); }
 
-/* ===== Main Container ===== */
-.container {
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: auto;
-}
-.intro {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-.separator {
-  margin: 2rem auto;
-  border: none;
-  border-top: 2px solid var(--color-accent);
-  width: 50%;
-}
+/* Main */
+.container { padding:2rem 1rem; max-width:1200px; margin:auto; }
+.intro { text-align:center; margin-bottom:2rem; }
+.separator { margin:2rem auto; border:none; border-top:2px solid var(--color-accent); width:50%; }
 
-/* ===== Cards de Plays ===== */
+/* Cards */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  justify-items: center;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem; justify-items:center;
 }
 .card {
-  background: var(--bg-card);
-  border: 1px solid var(--color-accent);
-  padding: 2rem;
-  border-radius: 10px;
-  transition: transform 0.3s;
+  background: var(--bg-card); border:1px solid var(--color-accent);
+  padding:2rem; border-radius:10px; transition:transform .3s;
 }
-.card:hover { transform: translateY(-5px); }
-.card h3 { margin-bottom: 1rem; }
-.card p { margin-bottom: 1rem; }
+.card:hover { transform:translateY(-5px); }
 
-/* ===== Botões ===== */
+/* Botões */
 .btn {
-  display: inline-block;
-  margin: 0.5rem 0.5rem 0 0;
-  padding: 0.6rem 1.2rem;
-  background: var(--color-accent);
-  color: var(--bg-main);
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s;
+  display:inline-block; margin:.5rem .5rem 0 0;
+  padding:.6rem 1.2rem; background:var(--color-accent);
+  color:var(--bg-main); font-weight:bold; border-radius:5px;
+  transition:background .3s; text-decoration:none;
 }
-.btn:hover { background: var(--color-accent-hover); }
-.btn-por-dentro {
-  background: #444;
-  color: var(--color-accent);
-}
-.btn-por-dentro:hover { background: #666; }
+.btn:hover { background:var(--color-accent-hover); }
+.btn-por-dentro { background:#444; color:var(--color-accent); }
+.btn-por-dentro:hover { background:#666; }
 
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: var(--bg-card);
-  color: var(--color-accent);
-  margin-top: 3rem;
-  font-size: 0.9rem;
+/* Feedback */
+#feedback { margin:3rem auto; max-width:600px; text-align:center; }
+#feedback form { display:grid; gap:.5rem; }
+#feedback input, #feedback textarea {
+  width:100%; padding:.7rem; border:1px solid var(--color-accent);
+  border-radius:5px; background:var(--bg-main); color:var(--text-main);
 }
+#feedback textarea { resize:vertical; height:120px; }
+#feedback button { justify-self:center; }
 
-/* ===== Modal ===== */
+/* Modais */
 .modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
+  position:fixed; top:0; left:0;
+  width:100%; height:100%; background:rgba(0,0,0,.7);
+  display:flex; justify-content:center; align-items:center; z-index:10000;
 }
-.modal.hidden { display: none; }
+.modal.hidden { display:none; }
 .modal-content {
-  background: var(--bg-card);
-  padding: 2rem;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  color: var(--text-main);
-  position: relative;
-  box-shadow: 0 0 15px rgba(0,255,159,0.5);
+  background:var(--bg-card); padding:2rem;
+  border-radius:10px; max-height:90vh; overflow-y:auto;
+  margin:1rem; width:90%; max-width:500px;
+  box-shadow:0 0 15px rgba(0,255,159,0.5);
 }
 .close-modal {
-  position: absolute;
-  top: 10px; right: 15px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: var(--color-accent);
-  cursor: pointer;
+  position:absolute; top:10px; right:15px; background:none;
+  border:none; font-size:2rem; color:var(--color-accent); cursor:pointer;
 }
 
-/* ===== Progress Spinner ===== */
-.spinner {
-  font-size: 1.2rem;
-  text-align: center;
-  padding: 1rem;
-}
+/* Scroll animations (AOS já cuida) */
 
-/* ===== Logs da execução ===== */
-#logs {
-  background: var(--bg-card);
-  border: 1px solid var(--color-accent);
-  padding: 1rem;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  height: 200px;
-  overflow-y: auto;
-  border-radius: 5px;
-}
-
-/* ===== Input de busca ===== */
+/* Busca */
 #search-input {
-  width: 100%;
-  max-width: 500px;
-  padding: 0.7rem;
-  margin: 1rem auto 2rem;
-  display: block;
-  border: 1px solid var(--color-accent);
-  background: var(--bg-main);
-  color: var(--text-main);
-  border-radius: 5px;
+  width:100%; max-width:500px; padding:.7rem;
+  margin:1rem auto 2rem; display:block;
+  border:1px solid var(--color-accent); border-radius:5px;
+  background:var(--bg-main); color:var(--text-main);
 }
 
-/* ===== Timeline no modal Sobre ===== */
-.modal-sobre { padding: 1rem; }
-.timeline {
-  list-style: none;
-  position: relative;
-  margin: 2rem 0;
-  padding-left: 40px;
+/* Timeline interativa */
+.timeline-toggle {
+  background:none; border:none; color:var(--color-accent);
+  font-weight:bold; cursor:pointer; margin-bottom:.5rem;
 }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 18px;
-  top: 0; bottom: 0;
-  width: 4px;
-  background: var(--color-accent);
-}
-.timeline li {
-  position: relative;
-  margin-bottom: 2rem;
-}
-.timeline-year {
-  position: absolute;
-  left: -5px; top: 0;
-  background: var(--bg-card);
-  color: var(--color-accent);
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-.timeline-content { padding-left: 20px; }
-.skills-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 0.5rem 2rem;
-  margin-bottom: 2rem;
-}
-.chart-container {
-  max-width: 100%;
-  margin: auto;
-}
-/* Ajuste de tamanho e scroll nos modais */
-.modal-content {
-  /* nunca ultrapassar 90% da altura da viewport */
-  max-height: 90vh;
-  /* adiciona scroll interno quando o conteúdo ultrapassar esse limite */
-  overflow-y: auto;
-  /* deixa um espaço mínimo nas bordas */
-  margin: 1rem;
-}
+.timeline-detail.hidden { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.timeline-detail { max-height:500px; overflow:hidden; transition:max-height .3s ease; }
 
-/* Em telas muito pequenas, ajusta a largura também */
-@media (max-width: 600px) {
-  .modal-content {
-    width: 90%;
-    max-width: none;
-  }
-}
+/* Service Worker fetch placeholder (sem estilos adicionais) */

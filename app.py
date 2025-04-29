@@ -1,9 +1,13 @@
 from flask import Flask, request, Response, jsonify
 import subprocess, os, glob
+from prometheus_client import Counter, generate_latest, CONTENT_TYPE_LATEST
 
 app = Flask(__name__)
 
-PLAYS_PERMITIDOS = { f"play-{i:02d}" for i in range(1,16) }
+PLAYS_PERMITIDOS = { f"play-{i:02d}" for i in range(1, 23) }
+
+# Métrica de contagem de execuções por play
+PLAY_COUNTER = Counter('play_executions_total', 'Total de execuções de Plays', ['play'])
 
 @app.route('/')
 def home():
@@ -13,6 +17,11 @@ def home():
 def health():
     return jsonify(status='ok'), 200
 
+@app.route('/metrics')
+def metrics():
+    data = generate_latest()
+    return Response(data, mimetype=CONTENT_TYPE_LATEST)
+
 @app.route('/executar', methods=['POST'])
 def executar():
     dados = request.get_json()
@@ -20,7 +29,7 @@ def executar():
     if play not in PLAYS_PERMITIDOS:
         return jsonify({'erro': 'Play inválido ou não autorizado.'}), 403
 
-    # localiza script via glob
+    # Localiza script via glob
     caminhos = glob.glob(f"./plays/{play}-*/run.sh")
     if not caminhos:
         return jsonify({'erro': 'Script não encontrado para o Play informado.'}), 404
@@ -31,10 +40,12 @@ def executar():
             ["bash", script_real],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            text=True
+            universal_newlines=True
         )
         for linha in processo.stdout:
-            yield linha
+            # Incrementa métrica
+            PLAY_COUNTER.labels(play=play).inc()
+            yield f"data: {linha.strip()}\n\n"
         processo.stdout.close()
         processo.wait()
 

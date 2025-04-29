@@ -4,57 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
-  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps. Testes técnicos, desafios práticos e projetos de automação de qualidade e segurança.">
-  <meta property="og:title" content="Denis Oliveira — Portfólio Profissional">
-  <meta property="og:description" content="Testes automatizados, pentests e segurança da informação. Explore meus projetos técnicos.">
+  <!-- PWA: manifest e cor da barra de status -->
+  <meta name="theme-color" content="#00ff9f">
+  <link rel="manifest" href="manifest.json" />
+  <!-- AOS CSS para animações on-scroll -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+  <!-- Estilos principais -->
   <link rel="stylesheet" href="style.css" />
+  <!-- Ícone do site -->
   <link rel="icon" href="assets/img/logo-animado-denis.svg" type="image/svg+xml" />
+  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps.">
+  <meta property="og:title" content="Denis Oliveira — Portfólio Profissional">
+  <meta property="og:description" content="Testes automatizados, pentests e segurança da informação.">
 </head>
 <body class="neon-dark">
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <ul>
-    <li><a href="#" id="btn-sobre">Sobre</a></li>
-    <li><a href="#" id="btn-ajuda">Ajuda</a></li>
-    <li><a href="#" id="btn-news">News</a></li>
-    <li><a href="#plays">Plays</a></li>
-    <li><button id="theme-toggle" title="Mudar tema">🌙/☀️</button></li>
-  </ul>
-</nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">…</nav>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="logo-box">
-    <img src="assets/img/logo-animado-denis.svg" alt="Logo Denis QA Pentest" class="logo-animado" />
-    <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
-  </div>
-  <div class="subtitle"><span id="typed-subtitle"></span></div>
-  <nav class="links">
-    <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
-    <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
-    <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
-    <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-  </nav>
-</header>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="logo-box">
+      <picture>
+        <source srcset="assets/img/logo-animado-denis.avif" type="image/avif"/>
+        <source srcset="assets/img/logo-animado-denis.webp" type="image/webp"/>
+        <img
+          src="assets/img/logo-animado-denis.svg"
+          alt="Logo Denis QA Pentest"
+          class="logo-animado"
+          loading="lazy"
+        />
+      </picture>
+      <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
+    </div>
+    <div class="subtitle"><span id="typed-subtitle"></span></div>
+    <nav class="links">…</nav>
+  </header>
 
-<!-- CONTEÚDO PRINCIPAL -->
-<main class="container">
-  <h1>Denis Oliveira — Portfólio Profissional</h1>
-  <p class="intro">
-    Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
-    <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
-  </p>
-
-  <hr class="separator" />
-
-  <!-- BUSCA -->
-  <input type="text" id="search-input" placeholder="Buscar plays..." />
-
-  <!-- GRID DE CARDS -->
-  <section id="plays" class="cards">
-
-    <!-- Aqui vão os 15 cards -->
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container">
+    … <!-- cards de Plays -->
 
     <!-- Play 01 -->
     <div class="card" title="Play 01 — Nmap Recon">
@@ -173,10 +162,8 @@
       <a class="btn" href="plays/play-15-ssl-tls-health-check/">Ver o Play</a>
       <button class="btn btn-por-dentro" data-play="15">Por Dentro</button>
     </div>
-
-
 <!-- Play 16 -->
-<div class="card" title="Play 16 — Docker Vulnerability Scan">
+<div class="card" data-aos="fade-up" data-aos-delay="1600" title="Play 16 — Docker Vulnerability Scan">
   <h3>Play 16 — Docker Vulnerability Scan</h3>
   <p>Varredura de imagens Docker à procura de CVEs com Trivy.</p>
   <a class="btn" href="plays/play-16-docker-vulnerability-scan/">Ver o Play</a>
@@ -184,7 +171,7 @@
 </div>
 
 <!-- Play 17 -->
-<div class="card" title="Play 17 — Kubernetes Config Audit">
+<div class="card" data-aos="fade-up" data-aos-delay="1700" title="Play 17 — Kubernetes Config Audit">
   <h3>Play 17 — Kubernetes Config Audit</h3>
   <p>Verificação de configurações inseguras em clusters Kubernetes com kube-bench.</p>
   <a class="btn" href="plays/play-17-kubernetes-config-audit/">Ver o Play</a>
@@ -192,7 +179,7 @@
 </div>
 
 <!-- Play 18 -->
-<div class="card" title="Play 18 — OWASP ZAP Automated Scan">
+<div class="card" data-aos="fade-up" data-aos-delay="1800" title="Play 18 — OWASP ZAP Automated Scan">
   <h3>Play 18 — OWASP ZAP Automated Scan</h3>
   <p>Scanner automatizado de vulnerabilidades web com OWASP ZAP.</p>
   <a class="btn" href="plays/play-18-owasp-zap-automated-scan/">Ver o Play</a>
@@ -200,7 +187,7 @@
 </div>
 
 <!-- Play 19 -->
-<div class="card" title="Play 19 — Static Analysis Python (Bandit)">
+<div class="card" data-aos="fade-up" data-aos-delay="1900" title="Play 19 — Static Analysis Python (Bandit)">
   <h3>Play 19 — Static Analysis Python (Bandit)</h3>
   <p>Análise estática de código Python em busca de falhas comuns com Bandit.</p>
   <a class="btn" href="plays/play-19-static-analysis-python-bandit/">Ver o Play</a>
@@ -208,7 +195,7 @@
 </div>
 
 <!-- Play 20 -->
-<div class="card" title="Play 20 — IaC Security Audit (Terraform)">
+<div class="card" data-aos="fade-up" data-aos-delay="2000" title="Play 20 — IaC Security Audit (Terraform)">
   <h3>Play 20 — IaC Security Audit (Terraform)</h3>
   <p>Auditoria de segurança em templates Terraform com Checkov.</p>
   <a class="btn" href="plays/play-20-iac-security-audit-terraform/">Ver o Play</a>
@@ -216,7 +203,7 @@
 </div>
 
 <!-- Play 21 -->
-<div class="card" title="Play 21 — JWT Token Penetration Test">
+<div class="card" data-aos="fade-up" data-aos-delay="2100" title="Play 21 — JWT Token Penetration Test">
   <h3>Play 21 — JWT Token Penetration Test</h3>
   <p>Teste de manipulação e validação de tokens JWT em APIs.</p>
   <a class="btn" href="plays/play-21-jwt-token-penetration-test/">Ver o Play</a>
@@ -224,32 +211,43 @@
 </div>
 
 <!-- Play 22 -->
-<div class="card" title="Play 22 — Dependency Supply Chain Check">
+<div class="card" data-aos="fade-up" data-aos-delay="2200" title="Play 22 — Dependency Supply Chain Check">
   <h3>Play 22 — Dependency Supply Chain Check</h3>
   <p>Inspeção de dependências NPM/PyPI contra supply-chain attacks.</p>
   <a class="btn" href="plays/play-22-dependency-supply-chain-check/">Ver o Play</a>
-  <button class="btn btn-por-dentro" data-play="22">Por Dentro</button>
-</div>
+  <button class="btn btn-por-dentro"
 
-  </section>
-</main>
+    <!-- FORMULÁRIO DE FEEDBACK -->
+    <section id="feedback">
+      <h2>Gostou? Deixe um feedback!</h2>
+      <form action="https://formspree.io/f/SEU_ID" method="POST">
+        <input type="email" name="email" placeholder="Seu e-mail" required />
+        <textarea name="message" placeholder="Sua mensagem" required></textarea>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </section>
+  </main>
 
 <!-- FOOTER -->
+
 <footer>
   <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
   <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
 </footer>
 
-<!-- Modal Por Dentro -->
-<div id="modal-por-dentro" class="modal hidden">
-  <div class="modal-content">
-    <button class="close-modal" data-close="por-dentro">&times;</button>
-    <div id="modal-play-content"></div>
+  <!-- Modal Por Dentro -->
+  <div id="modal-por-dentro" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-modal" data-close="por-dentro">&times;</button>
+      <div id="modal-play-content"></div>
+    </div>
   </div>
-</div>
 
-  <!-- Inclua o Chart.js ANTES do seu scripts.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Scripts -->
+  <!-- Animações on-scroll (AOS) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Service Worker para PWA -->
+  <script src="service-worker.js"></script>
   <script src="scripts.js"></script>
   <script src="assets/easter/konami.js"></script>
 </body>
