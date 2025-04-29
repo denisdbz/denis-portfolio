@@ -1,19 +1,25 @@
 <h1>Por Dentro do Play 12 — CSRF Checker</h1>
-
-<p>Validamos a presença de proteções contra Cross-Site Request Forgery (CSRF) em formulários.</p>
+<p>Este Play verifica se a aplicação está vulnerável a ataques de <strong>Cross-Site Request Forgery (CSRF)</strong>.</p>
 
 <h2>Objetivos</h2>
 <ul>
-  <li>Detectar ausência de tokens CSRF em requisições críticas</li>
-  <li>Simular ataques de submissão forçada</li>
+  <li>Verificar se tokens anti-CSRF estão implementados.</li>
+  <li>Simular requisições maliciosas com cookies válidos.</li>
 </ul>
 
-<h2>Ferramentas Utilizadas</h2>
+<h2>Ferramentas</h2>
 <ul>
-  <li>Testes manuais + ferramentas automáticas</li>
+  <li><code>Burp Suite</code></li>
+  <li>Scripts curl/Postman com cookies de sessão</li>
 </ul>
 
 <h2>Resultados Esperados</h2>
 <ul>
-  <li>Mapeamento de pontos vulneráveis</li>
+  <li>Identificação de endpoints vulneráveis.</li>
+  <li>Recomendações de correção com tokens e validações.</li>
 </ul>
+
+<div class="btn-box">
+  <a class="btn" href="../plays/play-12-csrf-checker/" target="_blank">▶️ Ir ao Play</a>
+  <a class="btn" href="/denis-portfolio/">← Voltar à Home</a>
+</div>

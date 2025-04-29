@@ -1,19 +1,24 @@
 <h1>Por Dentro do Play 13 — API Fuzzing</h1>
-
-<p>Geramos entradas aleatórias em APIs para detectar falhas não tratadas e vulnerabilidades ocultas.</p>
+<p>Executamos fuzzing em APIs REST para encontrar falhas em tratamento de dados, autenticação e limites.</p>
 
 <h2>Objetivos</h2>
 <ul>
-  <li>Testar resiliência de APIs a entradas inesperadas</li>
-  <li>Descobrir crashs, leaks e respostas inconsistentes</li>
+  <li>Testar campos de input com dados inesperados ou extremos.</li>
+  <li>Identificar falhas de validação ou erros do servidor.</li>
 </ul>
 
-<h2>Ferramentas Utilizadas</h2>
+<h2>Ferramentas</h2>
 <ul>
-  <li>RESTler, Schemathesis</li>
+  <li><code>ffuf</code>, <code>Postman Fuzzer</code>, ou scripts customizados</li>
 </ul>
 
 <h2>Resultados Esperados</h2>
 <ul>
-  <li>Relatório de anomalias detectadas nas APIs</li>
+  <li>Listagem de inputs que causaram falhas ou exceções.</li>
+  <li>Logs com status codes, tempo de resposta e comportamento inesperado.</li>
 </ul>
+
+<div class="btn-box">
+  <a class="btn" href="../plays/play-13-api-fuzzing/" target="_blank">▶️ Ir ao Play</a>
+  <a class="btn" href="/denis-portfolio/">← Voltar à Home</a>
+</div>

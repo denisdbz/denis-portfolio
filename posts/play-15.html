@@ -1,20 +1,25 @@
 <h1>Por Dentro do Play 15 — SSL/TLS Health Check</h1>
-
-<p>Executamos validação de configuração SSL/TLS para identificar vulnerabilidades em HTTPS.</p>
+<p>Este Play verifica se o servidor está usando protocolos seguros de <strong>SSL/TLS</strong> e configurações apropriadas de segurança.</p>
 
 <h2>Objetivos</h2>
 <ul>
-  <li>Verificar validade de certificados</li>
-  <li>Detectar versões de protocolos vulneráveis</li>
-  <li>Mapear suporte a ciphers seguros</li>
+  <li>Checar validade de certificados e algoritmos utilizados.</li>
+  <li>Detectar protocolos obsoletos (SSLv3, TLS 1.0) e vulnerabilidades.</li>
 </ul>
 
-<h2>Ferramentas Utilizadas</h2>
+<h2>Ferramentas</h2>
 <ul>
-  <li>SSL Labs, testssl.sh</li>
+  <li><code>sslscan</code></li>
+  <li><code>testssl.sh</code></li>
 </ul>
 
 <h2>Resultados Esperados</h2>
 <ul>
-  <li>Relatório de conformidade SSL/TLS</li>
+  <li>Listagem de protocolos e criptografias aceitas.</li>
+  <li>Recomendações de endurecimento para segurança HTTPS.</li>
 </ul>
+
+<div class="btn-box">
+  <a class="btn" href="../plays/play-15-ssl-tls-health-check/" target="_blank">▶️ Ir ao Play</a>
+  <a class="btn" href="/denis-portfolio/">← Voltar à Home</a>
+</div>
