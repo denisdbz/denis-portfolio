@@ -1,3 +1,12 @@
+:root {
+  --color-accent: #00ff9f;
+  --color-accent-hover: #00cc7f;
+  --bg-main: #0a0a0a;
+  --bg-card: #111;
+  --text-main: #e0e0e0;
+  --text-light: #222;
+}
+
 /* ===== Reset básico ===== */
 * {
   margin: 0;
@@ -8,8 +17,8 @@
 /* ===== Corpo principal ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #0a0a0a;
-  color: #e0e0e0;
+  background: var(--bg-main);
+  color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -17,7 +26,7 @@ body {
 /* ===== Estilos para Light Mode ===== */
 body.light-mode {
   background: #f5f5f5;
-  color: #222;
+  color: var(--text-light);
 }
 
 /* ===== Navbar ===== */
@@ -33,8 +42,9 @@ body.light-mode {
   display: inline-block;
   margin: 0 15px;
 }
-.navbar a, .navbar button {
-  color: #00ff9f;
+.navbar a,
+.navbar button {
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
@@ -60,7 +70,16 @@ body.light-mode {
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
+  animation: neon 1.5s ease-in-out infinite alternate;
 }
+
+/* Neon flicker */
+@keyframes neon {
+  0%   { text-shadow: 0 0 5px var(--color-accent); }
+  50%  { text-shadow: 0 0 20px var(--color-accent); }
+  100% { text-shadow: 0 0 5px var(--color-accent); }
+}
+
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
@@ -73,7 +92,7 @@ body.light-mode {
 }
 .links a {
   margin: 0 10px;
-  color: #00ff9f;
+  color: var(--color-accent);
   font-size: 0.9rem;
 }
 
@@ -90,7 +109,7 @@ body.light-mode {
 .separator {
   margin: 2rem auto;
   border: none;
-  border-top: 2px solid #00ff9f;
+  border-top: 2px solid var(--color-accent);
   width: 50%;
 }
 
@@ -99,10 +118,11 @@ body.light-mode {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  justify-items: center;
 }
 .card {
-  background: #111;
-  border: 1px solid #00ff9f;
+  background: var(--bg-card);
+  border: 1px solid var(--color-accent);
   padding: 2rem;
   border-radius: 10px;
   transition: transform 0.3s;
@@ -122,20 +142,19 @@ body.light-mode {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
   padding: 0.6rem 1.2rem;
-  background: #00ff9f;
-  color: #0a0a0a;
+  background: var(--color-accent);
+  color: var(--bg-main);
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
   transition: background 0.3s;
 }
 .btn:hover {
-  background: #00cc7f;
+  background: var(--color-accent-hover);
 }
 .btn-por-dentro {
   background: #444;
-  color: #00ff9f;
-  cursor: pointer;
+  color: var(--color-accent);
 }
 .btn-por-dentro:hover {
   background: #666;
@@ -145,8 +164,8 @@ body.light-mode {
 footer {
   text-align: center;
   padding: 1rem;
-  background: #111;
-  color: #00ff9f;
+  background: var(--bg-card);
+  color: var(--color-accent);
   margin-top: 3rem;
   font-size: 0.9rem;
 }
@@ -166,27 +185,26 @@ footer {
   display: none;
 }
 .modal-content {
-  background: #111;
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 10px;
   width: 90%;
-  max-width: 500px; /* <-- Ajuste aqui */
-  color: #e0e0e0;
+  max-width: 500px;
+  color: var(--text-main);
   position: relative;
   box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
 }
-
 .close-modal {
   position: absolute;
   top: 10px; right: 15px;
   background: none;
   border: none;
   font-size: 2rem;
-  color: #00ff9f;
+  color: var(--color-accent);
   cursor: pointer;
 }
 
-/* ===== Barra de Progresso (para Executar Play) ===== */
+/* ===== Barra de Progresso (agora apenas container) ===== */
 #barra {
   width: 100%;
   background: #333;
@@ -196,14 +214,14 @@ footer {
 #barra-fill {
   height: 100%;
   width: 0%;
-  background: #00ff9f;
+  background: var(--color-accent);
   transition: width 0.3s ease-in-out;
 }
 
 /* ===== Logs da execução ===== */
 #logs {
-  background: #111;
-  border: 1px solid #00ff9f;
+  background: var(--bg-card);
+  border: 1px solid var(--color-accent);
   padding: 1rem;
   margin-top: 1rem;
   font-size: 0.9rem;
@@ -219,13 +237,13 @@ footer {
   padding: 0.7rem;
   margin: 1rem auto 2rem;
   display: block;
-  border: 1px solid #00ff9f;
-  background: #0a0a0a;
-  color: #e0e0e0;
+  border: 1px solid var(--color-accent);
+  background: var(--bg-main);
+  color: var(--text-main);
   border-radius: 5px;
 }
 .log-info {
-  color: #00ff9f;
+  color: var(--color-accent);
   font-weight: bold;
 }
 .log-erro {
