@@ -166,14 +166,15 @@ footer {
   display: none;
 }
 .modal-content {
-  background: #111;
+  /* Limita a altura ao tamanho da viewport e permite rolagem interna */
+  max-height: 80vh;
+  overflow-y: auto;
+
+  /* Já existentes: */
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 10px;
-  width: 90%;
-  max-width: 500px; /* <-- Ajuste aqui */
-  color: #e0e0e0;
-  position: relative;
-  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
+  /* … */
 }
 
 .close-modal {
