@@ -1,48 +1,55 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask import Flask, request, Response, jsonify
 import subprocess
 import os
 
 app = Flask(__name__)
-CORS(app)
 
-# Lista segura de plays permitidos (whitelist)
+# Lista de plays permitidos
 PLAYS_PERMITIDOS = {
     f"play-{str(i).zfill(2)}" for i in range(1, 16)
 }
 
-@app.route("/executar", methods=["POST"])
+# Rota principal para checar se o servidor está no ar
+@app.route('/')
+def home():
+    return 'Servidor Flask ativo!'
+
+# Rota para execução de testes (Play)
+@app.route('/executar', methods=['POST'])
 def executar():
-    try:
-        play = request.json.get("play")
-        if not play:
-            return jsonify({"erro": "Play não informado."}), 400
+    dados = request.get_json()
+    play = dados.get('play')
 
-        # Verifica se o play é permitido
-        if play not in PLAYS_PERMITIDOS:
-            return jsonify({"erro": "Play inválido ou não autorizado."}), 403
+    if not play or play not in PLAYS_PERMITIDOS:
+        return jsonify({'erro': 'Play inválido ou não autorizado.'}), 403
 
-        projeto_root = os.path.dirname(os.path.abspath(__file__))
-        # Monta o caminho para o run.sh correto
-        script_path = os.path.join(projeto_root, "plays", f"{play}-nmap-recon", "run.sh")
+    caminho_script = f"./plays/{play}-*/run.sh"
+    script_real = None
 
-        if not os.path.isfile(script_path):
-            return jsonify({"erro": f"Script {script_path} não encontrado."}), 404
+    # Localiza o run.sh correto baseado no wildcard
+    for path in os.listdir('./plays'):
+        if path.startswith(play):
+            script_real = f"./plays/{path}/run.sh"
+            break
 
-        resultado = subprocess.check_output(
-            f"bash {script_path}",
-            shell=True,
+    if not script_real or not os.path.isfile(script_real):
+        return jsonify({'erro': 'Script não encontrado para o Play informado.'}), 404
+
+    def gerar_saida():
+        processo = subprocess.Popen(
+            ["bash", script_real],
+            stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            text=True,
-            timeout=120
+            universal_newlines=True
         )
 
-        return jsonify({"saida": resultado})
+        for linha in processo.stdout:
+            yield f"data: {linha.strip()}\n\n"
 
-    except subprocess.CalledProcessError as e:
-        return jsonify({"erro": e.output}), 500
-    except Exception as e:
-        return jsonify({"erro": str(e)}), 500
+        processo.stdout.close()
+        processo.wait()
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    return Response(gerar_saida(), mimetype='text/event-stream')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
