@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denis Oliveira — Portfólio Profissional</title>
-  <!-- PWA: manifest e cor da barra de status -->
-  <meta name="theme-color" content="#00ff9f">
-  <link rel="manifest" href="manifest.json" />
-  <!-- AOS CSS para animações on-scroll -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
-  <!-- Estilos principais -->
-  <link rel="stylesheet" href="style.css" />
-  <!-- Ícone do site -->
-  <link rel="icon" href="assets/img/logo-animado-denis.svg" type="image/svg+xml" />
-  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps.">
+  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps. Testes técnicos, desafios práticos e projetos de automação de qualidade e segurança.">
   <meta property="og:title" content="Denis Oliveira — Portfólio Profissional">
-  <meta property="og:description" content="Testes automatizados, pentests e segurança da informação.">
+  <meta property="og:description" content="Testes automatizados, pentests e segurança da informação. Explore meus projetos técnicos.">
+  <meta name="theme-color" content="#00ff9f">
+  <link rel="manifest" href="manifest.json"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="assets/img/logo-animado-denis.svg" type="image/svg+xml"/>
 </head>
 <body class="neon-dark">
 
   <!-- NAVBAR -->
-  <nav class="navbar">…</nav>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#" id="btn-sobre">Sobre</a></li>
+      <li><a href="#" id="btn-ajuda">Ajuda</a></li>
+      <li><a href="#" id="btn-news">News</a></li>
+      <li><a href="#plays">Plays</a></li>
+      <li><button id="theme-toggle" title="Mudar tema">🌙/☀️</button></li>
+    </ul>
+  </nav>
 
   <!-- HERO -->
   <header class="hero">
@@ -38,184 +42,207 @@
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
     <div class="subtitle"><span id="typed-subtitle"></span></div>
-    <nav class="links">…</nav>
+    <nav class="links">
+      <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
+      <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
+      <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
+      <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
+    </nav>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
   <main class="container">
-    … <!-- cards de Plays -->
+    <h1>Denis Oliveira — Portfólio Profissional</h1>
+    <p class="intro">
+      Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
+      <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
+    </p>
 
-    <!-- Play 01 -->
-    <div class="card" title="Play 01 — Nmap Recon">
-      <h3>Play 01 — Nmap Recon</h3>
-      <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-      <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="01">Por Dentro</button>
-    </div>
+    <hr class="separator"/>
 
-    <!-- Play 02 -->
-    <div class="card" title="Play 02 — Hydra DVWA">
-      <h3>Play 02 — Hydra DVWA</h3>
-      <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
-      <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="02">Por Dentro</button>
-    </div>
+    <!-- BUSCA -->
+    <input type="text" id="search-input" placeholder="Buscar plays..." />
 
-    <!-- Play 03 -->
-    <div class="card" title="Play 03 — SQLMap DVWA">
-      <h3>Play 03 — SQLMap DVWA</h3>
-      <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
-      <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="03">Por Dentro</button>
-    </div>
+    <!-- GRID DE CARDS -->
+    <section id="plays" class="cards">
 
-    <!-- Play 04 -->
-    <div class="card" title="Play 04 — JMeter LoadTest">
-      <h3>Play 04 — JMeter LoadTest</h3>
-      <p>Executa testes de carga e simula múltiplos usuários.</p>
-      <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="04">Por Dentro</button>
-    </div>
+      <!-- Play 01 -->
+      <div class="card" data-aos="fade-up" title="Play 01 — Nmap Recon">
+        <h3>Play 01 — Nmap Recon</h3>
+        <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
+        <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="01">Por Dentro</button>
+      </div>
 
-    <!-- Play 05 -->
-    <div class="card" title="Play 05 — QA Automação">
-      <h3>Play 05 — QA Automação</h3>
-      <p>Execução automatizada de testes de interface com Cypress.</p>
-      <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="05">Por Dentro</button>
-    </div>
-    <!-- Play 06 -->
-    <div class="card" title="Play 06 — Carga Bash">
-      <h3>Play 06 — Carga Bash</h3>
-      <p>Simula carga com múltiplas requisições em loop via shell script.</p>
-      <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="06">Por Dentro</button>
-    </div>
+      <!-- Play 02 -->
+      <div class="card" data-aos="fade-up" title="Play 02 — Hydra DVWA">
+        <h3>Play 02 — Hydra DVWA</h3>
+        <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
+        <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="02">Por Dentro</button>
+      </div>
 
-    <!-- Play 07 -->
-    <div class="card" title="Play 07 — Testes Mobile">
-      <h3>Play 07 — Testes Mobile</h3>
-      <p>Execução de testes automatizados em aplicativos Android usando Appium.</p>
-      <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="07">Por Dentro</button>
-    </div>
+      <!-- Play 03 -->
+      <div class="card" data-aos="fade-up" title="Play 03 — SQLMap DVWA">
+        <h3>Play 03 — SQLMap DVWA</h3>
+        <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
+        <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="03">Por Dentro</button>
+      </div>
 
-    <!-- Play 08 -->
-    <div class="card" title="Play 08 — Nikto Scan">
-      <h3>Play 08 — Nikto Scan</h3>
-      <p>Escaneamento de vulnerabilidades web usando Nikto.</p>
-      <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="08">Por Dentro</button>
-    </div>
+      <!-- Play 04 -->
+      <div class="card" data-aos="fade-up" title="Play 04 — JMeter LoadTest">
+        <h3>Play 04 — JMeter LoadTest</h3>
+        <p>Executa testes de carga e simula múltiplos usuários.</p>
+        <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="04">Por Dentro</button>
+      </div>
 
-    <!-- Play 09 -->
-    <div class="card" title="Play 09 — k6 LoadTest">
-      <h3>Play 09 — k6 LoadTest</h3>
-      <p>Testes de performance de APIs com o K6.</p>
-      <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="09">Por Dentro</button>
-    </div>
+      <!-- Play 05 -->
+      <div class="card" data-aos="fade-up" title="Play 05 — QA Automação">
+        <h3>Play 05 — QA Automação</h3>
+        <p>Execução automatizada de testes de interface com Cypress.</p>
+        <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="05">Por Dentro</button>
+      </div>
 
-    <!-- Play 10 -->
-    <div class="card" title="Play 10 — API Validation">
-      <h3>Play 10 — API Validation</h3>
-      <p>Validação de endpoints e contratos RESTful APIs.</p>
-      <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="10">Por Dentro</button>
-    </div>
-    <!-- Play 11 -->
-    <div class="card" title="Play 11 — XSS Scanner">
-      <h3>Play 11 — XSS Scanner</h3>
-      <p>Detecção de vulnerabilidades de Cross-Site Scripting (XSS).</p>
-      <a class="btn" href="plays/play-11-xss-scanner/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="11">Por Dentro</button>
-    </div>
+      <!-- Play 06 -->
+      <div class="card" data-aos="fade-up" title="Play 06 — Carga Bash">
+        <h3>Play 06 — Carga Bash</h3>
+        <p>Simula carga com múltiplas requisições em loop via shell script.</p>
+        <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="06">Por Dentro</button>
+      </div>
 
-    <!-- Play 12 -->
-    <div class="card" title="Play 12 — CSRF Checker">
-      <h3>Play 12 — CSRF Checker</h3>
-      <p>Verificação de falhas de proteção contra CSRF.</p>
-      <a class="btn" href="plays/play-12-csrf-checker/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="12">Por Dentro</button>
-    </div>
+      <!-- Play 07 -->
+      <div class="card" data-aos="fade-up" title="Play 07 — Testes Mobile">
+        <h3>Play 07 — Testes Mobile</h3>
+        <p>Execução de testes automatizados em aplicativos Android usando Appium.</p>
+        <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="07">Por Dentro</button>
+      </div>
 
-    <!-- Play 13 -->
-    <div class="card" title="Play 13 — API Fuzzing">
-      <h3>Play 13 — API Fuzzing</h3>
-      <p>Geração de cargas de dados randômicos para testes de APIs.</p>
-      <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="13">Por Dentro</button>
-    </div>
+      <!-- Play 08 -->
+      <div class="card" data-aos="fade-up" title="Play 08 — Nikto Scan">
+        <h3>Play 08 — Nikto Scan</h3>
+        <p>Escaneamento de vulnerabilidades web usando Nikto.</p>
+        <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="08">Por Dentro</button>
+      </div>
 
-    <!-- Play 14 -->
-    <div class="card" title="Play 14 — Dependency CVE Audit">
-      <h3>Play 14 — Dependency CVE Audit</h3>
-      <p>Auditoria de dependências para identificar vulnerabilidades conhecidas.</p>
-      <a class="btn" href="plays/play-14-dependency-cve-audit/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="14">Por Dentro</button>
-    </div>
+      <!-- Play 09 -->
+      <div class="card" data-aos="fade-up" title="Play 09 — k6 LoadTest">
+        <h3>Play 09 — k6 LoadTest</h3>
+        <p>Testes de performance de APIs com o K6.</p>
+        <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="09">Por Dentro</button>
+      </div>
 
-    <!-- Play 15 -->
-    <div class="card" title="Play 15 — SSL/TLS Health Check">
-      <h3>Play 15 — SSL/TLS Health Check</h3>
-      <p>Validação de certificados SSL/TLS e análise de segurança HTTPS.</p>
-      <a class="btn" href="plays/play-15-ssl-tls-health-check/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="15">Por Dentro</button>
-    </div>
-<!-- Play 16 -->
-<div class="card" data-aos="fade-up" data-aos-delay="1600" title="Play 16 — Docker Vulnerability Scan">
-  <h3>Play 16 — Docker Vulnerability Scan</h3>
-  <p>Varredura de imagens Docker à procura de CVEs com Trivy.</p>
-  <a class="btn" href="plays/play-16-docker-vulnerability-scan/">Ver o Play</a>
-  <button class="btn btn-por-dentro" data-play="16">Por Dentro</button>
-</div>
+      <!-- Play 10 -->
+      <div class="card" data-aos="fade-up" title="Play 10 — API Validation">
+        <h3>Play 10 — API Validation</h3>
+        <p>Validação de endpoints e contratos RESTful APIs.</p>
+        <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="10">Por Dentro</button>
+      </div>
 
-<!-- Play 17 -->
-<div class="card" data-aos="fade-up" data-aos-delay="1700" title="Play 17 — Kubernetes Config Audit">
-  <h3>Play 17 — Kubernetes Config Audit</h3>
-  <p>Verificação de configurações inseguras em clusters Kubernetes com kube-bench.</p>
-  <a class="btn" href="plays/play-17-kubernetes-config-audit/">Ver o Play</a>
-  <button class="btn btn-por-dentro" data-play="17">Por Dentro</button>
-</div>
+      <!-- Play 11 -->
+      <div class="card" data-aos="fade-up" title="Play 11 — XSS Scanner">
+        <h3>Play 11 — XSS Scanner</h3>
+        <p>Detecção de vulnerabilidades de Cross-Site Scripting (XSS).</p>
+        <a class="btn" href="plays/play-11-xss-scanner/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="11">Por Dentro</button>
+      </div>
 
-<!-- Play 18 -->
-<div class="card" data-aos="fade-up" data-aos-delay="1800" title="Play 18 — OWASP ZAP Automated Scan">
-  <h3>Play 18 — OWASP ZAP Automated Scan</h3>
-  <p>Scanner automatizado de vulnerabilidades web com OWASP ZAP.</p>
-  <a class="btn" href="plays/play-18-owasp-zap-automated-scan/">Ver o Play</a>
-  <button class="btn btn-por-dentro" data-play="18">Por Dentro</button>
-</div>
+      <!-- Play 12 -->
+      <div class="card" data-aos="fade-up" title="Play 12 — CSRF Checker">
+        <h3>Play 12 — CSRF Checker</h3>
+        <p>Verificação de falhas de proteção contra CSRF.</p>
+        <a class="btn" href="plays/play-12-csrf-checker/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="12">Por Dentro</button>
+      </div>
 
-<!-- Play 19 -->
-<div class="card" data-aos="fade-up" data-aos-delay="1900" title="Play 19 — Static Analysis Python (Bandit)">
-  <h3>Play 19 — Static Analysis Python (Bandit)</h3>
-  <p>Análise estática de código Python em busca de falhas comuns com Bandit.</p>
-  <a class="btn" href="plays/play-19-static-analysis-python-bandit/">Ver o Play</a>
-  <button class="btn btn-por-dentro" data-play="19">Por Dentro</button>
-</div>
+      <!-- Play 13 -->
+      <div class="card" data-aos="fade-up" title="Play 13 — API Fuzzing">
+        <h3>Play 13 — API Fuzzing</h3>
+        <p>Geração de cargas de dados randômicos para testes de APIs.</p>
+        <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="13">Por Dentro</button>
+      </div>
 
-<!-- Play 20 -->
-<div class="card" data-aos="fade-up" data-aos-delay="2000" title="Play 20 — IaC Security Audit (Terraform)">
-  <h3>Play 20 — IaC Security Audit (Terraform)</h3>
-  <p>Auditoria de segurança em templates Terraform com Checkov.</p>
-  <a class="btn" href="plays/play-20-iac-security-audit-terraform/">Ver o Play</a>
-  <button class="btn btn-por-dentro" data-play="20">Por Dentro</button>
-</div>
+      <!-- Play 14 -->
+      <div class="card" data-aos="fade-up" title="Play 14 — Dependency CVE Audit">
+        <h3>Play 14 — Dependency CVE Audit</h3>
+        <p>Auditoria de dependências para identificar vulnerabilidades conhecidas.</p>
+        <a class="btn" href="plays/play-14-dependency-cve-audit/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="14">Por Dentro</button>
+      </div>
 
-<!-- Play 21 -->
-<div class="card" data-aos="fade-up" data-aos-delay="2100" title="Play 21 — JWT Token Penetration Test">
-  <h3>Play 21 — JWT Token Penetration Test</h3>
-  <p>Teste de manipulação e validação de tokens JWT em APIs.</p>
-  <a class="btn" href="plays/play-21-jwt-token-penetration-test/">Ver o Play</a>
-  <button class="btn btn-por-dentro" data-play="21">Por Dentro</button>
-</div>
+      <!-- Play 15 -->
+      <div class="card" data-aos="fade-up" title="Play 15 — SSL/TLS Health Check">
+        <h3>Play 15 — SSL/TLS Health Check</h3>
+        <p>Validação de certificados SSL/TLS e análise de segurança HTTPS.</p>
+        <a class="btn" href="plays/play-15-ssl-tls-health-check/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="15">Por Dentro</button>
+      </div>
 
-<!-- Play 22 -->
-<div class="card" data-aos="fade-up" data-aos-delay="2200" title="Play 22 — Dependency Supply Chain Check">
-  <h3>Play 22 — Dependency Supply Chain Check</h3>
-  <p>Inspeção de dependências NPM/PyPI contra supply-chain attacks.</p>
-  <a class="btn" href="plays/play-22-dependency-supply-chain-check/">Ver o Play</a>
-  <button class="btn btn-por-dentro"
+      <!-- Play 16 -->
+      <div class="card" data-aos="fade-up" title="Play 16 — Docker Vulnerability Scan">
+        <h3>Play 16 — Docker Vulnerability Scan</h3>
+        <p>Varredura de imagens Docker à procura de CVEs com Trivy.</p>
+        <a class="btn" href="plays/play-16-docker-vulnerability-scan/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="16">Por Dentro</button>
+      </div>
+
+      <!-- Play 17 -->
+      <div class="card" data-aos="fade-up" title="Play 17 — Kubernetes Config Audit">
+        <h3>Play 17 — Kubernetes Config Audit</h3>
+        <p>Verificação de configurações inseguras em clusters Kubernetes com kube-bench.</p>
+        <a class="btn" href="plays/play-17-kubernetes-config-audit/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="17">Por Dentro</button>
+      </div>
+
+      <!-- Play 18 -->  
+      <div class="card" data-aos="fade-up" title="Play 18 — OWASP ZAP Automated Scan">
+        <h3>Play 18 — OWASP ZAP Automated Scan</h3>
+        <p>Scanner automatizado de vulnerabilidades web com OWASP ZAP.</p>
+        <a class="btn" href="plays/play-18-owasp-zap-automated-scan/">Ver o Play</a>
+        <button class="btn btn-por-dentro" data-play="18">Por Dentro</button>
+      </div>
+
+      <!-- Play 19 -->  
+      <div class="card" data-aos="fade-up" title="Play 19 — Static Analysis Python (Bandit)">  
+        <h3>Play 19 — Static Analysis Python (Bandit)</h3>  
+        <p>Análise estática de código Python em busca de falhas comuns com Bandit.</p>  
+        <a class="btn" href="plays/play-19-static-analysis-python-bandit/">Ver o Play</a>  
+        <button class="btn btn-por-dentro" data-play="19">Por Dentro</button>  
+      </div>  
+
+      <!-- Play 20 -->  
+      <div class="card" data-aos="fade-up" title="Play 20 — IaC Security Audit (Terraform)">  
+        <h3>Play 20 — IaC Security Audit (Terraform)</h3>  
+        <p>Auditoria de segurança em templates Terraform com Checkov.</p>  
+        <a class="btn" href="plays/play-20-iac-security-audit-terraform/">Ver o Play</a>  
+        <button class="btn btn-por-dentro" data-play="20">Por Dentro</button>  
+      </div>  
+
+      <!-- Play 21 -->  
+      <div class="card" data-aos="fade-up" title="Play 21 — JWT Token Penetration Test">  
+        <h3>Play 21 — JWT Token Penetration Test</h3>  
+        <p>Teste de manipulação e validação de tokens JWT em APIs.</p>  
+        <a class="btn" href="plays/play-21-jwt-token-penetration-test/">Ver o Play</a>  
+        <button class="btn btn-por-dentro" data-play="21">Por Dentro</button>  
+      </div>  
+
+      <!-- Play 22 -->  
+      <div class="card" data-aos="fade-up" title="Play 22 — Dependency Supply Chain Check">  
+        <h3>Play 22 — Dependency Supply Chain Check</h3>  
+        <p>Inspeção de dependências NPM/PyPI contra supply-chain attacks.</p>  
+        <a class="btn" href="plays/play-22-dependency-supply-chain-check/">Ver o Play</a>  
+        <button class="btn btn-por-dentro" data-play="22">Por Dentro</button>  
+      </div>
+
+    </section>
 
     <!-- FORMULÁRIO DE FEEDBACK -->
     <section id="feedback">
@@ -226,14 +253,14 @@
         <button type="submit" class="btn">Enviar</button>
       </form>
     </section>
+
   </main>
 
-<!-- FOOTER -->
-
-<footer>
-  <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
-  <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
+    <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
+  </footer>
 
   <!-- Modal Por Dentro -->
   <div id="modal-por-dentro" class="modal hidden">
@@ -243,12 +270,12 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <!-- Animações on-scroll (AOS) -->
+  <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- Service Worker para PWA -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="service-worker.js"></script>
   <script src="scripts.js"></script>
   <script src="assets/easter/konami.js"></script>
+
 </body>
 </html>
