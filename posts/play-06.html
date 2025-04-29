@@ -1,21 +1,25 @@
-<h2>Detalhes do Play</h2>
 <h1>Por Dentro do Play 06 — Carga Bash</h1>
-<p>Neste Play, usamos bash script para gerar carga de requisições contra o servidor.</p>
+<p>Simulamos requisições em massa a partir de scripts <strong>Bash</strong> para medir respostas da aplicação.</p>
 
 <h2>Objetivos</h2>
 <ul>
-  <li>Testar resiliência sob múltiplas conexões simultâneas</li>
-  <li>Observar comportamento de resposta da aplicação</li>
+  <li>Gerar carga com loops de <code>curl</code>.</li>
+  <li>Observar estabilidade e consumo da API.</li>
 </ul>
 
-<h2>Comandos Utilizados</h2>
+<h2>Ferramentas</h2>
 <ul>
-  <li>for loop para simular requisições paralelas</li>
-  <li>curl para testar endpoints</li>
+  <li><code>bash</code> scripts</li>
+  <li><code>curl</code> e <code>ab</code> (ApacheBench)</li>
 </ul>
 
 <h2>Resultados Esperados</h2>
 <ul>
-  <li>Latência aumentada conforme a carga</li>
-  <li>Possível queda ou throttling da aplicação</li>
+  <li>Relatório com tempos e códigos de resposta.</li>
+  <li>Avaliação básica de performance sem ferramentas pesadas.</li>
 </ul>
+
+<div class="btn-box">
+  <a class="btn" href="../plays/play-06-carga-bash/" target="_blank">▶️ Ir ao Play</a>
+  <a class="btn" href="../index.html">← Voltar à Home</a>
+</div>
