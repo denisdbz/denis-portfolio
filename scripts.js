@@ -77,13 +77,16 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.onclick = e => {
       e.preventDefault();
       const id = btn.dataset.play.padStart(2, '0');
+      document.getElementById('modal-play-content').innerHTML = '<p>Carregando conteúdo...</p>';
+      document.getElementById('modal-por-dentro').classList.remove('hidden');
       fetch(`posts/play-${id}.html`)
         .then(r => r.text())
         .then(html => {
           document.getElementById('modal-play-content').innerHTML = html;
-          document.getElementById('modal-por-dentro').classList.remove('hidden');
         })
-        .catch(() => alert('Conteúdo "Por Dentro" ainda não disponível.'));
+        .catch(() => {
+          document.getElementById('modal-play-content').innerHTML = '<p>Conteúdo "Por Dentro" ainda não disponível.</p>';
+        });
     };
   });
 
@@ -122,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 
-  // 9) Fechar o modal "Por Dentro" automaticamente ao clicar nos botões dentro dele
+  // 9) Fechar o modal "Por Dentro" automaticamente ao clicar nos links dentro dele
   document.getElementById('modal-play-content').addEventListener('click', e => {
     if (e.target.tagName === 'A' && e.target.closest('#modal-play-content')) {
       document.getElementById('modal-por-dentro').classList.add('hidden');

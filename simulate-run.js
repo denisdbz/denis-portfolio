@@ -1,58 +1,45 @@
-/**
- * simulate-run.js
- * Envia requisição ao back-end e exibe barra de progresso e logs em tempo real.
- */
-async function executarTeste(playId) {
-  const btn = document.querySelector(`button[onclick*="${playId}"]`);
+// simulate-run.js
+
+async function executarTeste(play) {
   const barra = document.getElementById('barra');
   const barraFill = document.getElementById('barra-fill');
-  const logsEl = document.getElementById('logs');
+  const logs = document.getElementById('logs');
 
-  btn.disabled = true;
-  btn.textContent = '⏳ Iniciando…';
   barra.classList.remove('hidden');
   barraFill.style.width = '0%';
-  logsEl.textContent = '';
+  logs.textContent = '';
 
   try {
-    const resp = await fetch('/executar', {
+    const resposta = await fetch('https://web-production-c891.up.railway.app/executar', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({play: playId})
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ play })
     });
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const reader = resp.body.getReader();
-    const decoder = new TextDecoder();
-    let recebido = 0, total = 0;
-    const partes = [];
-    btn.textContent = '▶️ Executando…';
 
-    const lenHeader = resp.headers.get('Content-Length');
-    total = lenHeader ? parseInt(lenHeader, 10) : 0;
+    if (!resposta.ok) {
+      const erro = await resposta.json();
+      logs.textContent = "Erro: " + (erro.erro || 'Falha inesperada.');
+      return;
+    }
+
+    const leitor = resposta.body.getReader();
+    const decodificador = new TextDecoder();
+    let recebido = '';
 
     while (true) {
-      const { done, value } = await reader.read();
+      const { done, value } = await leitor.read();
       if (done) break;
-      const texto = decoder.decode(value, {stream: true});
-      partes.push(texto);
-      recebido += value.length;
-      logsEl.textContent = partes.join('');
+      recebido += decodificador.decode(value);
+      logs.textContent = recebido;
 
-      if (total) {
-        const pct = Math.floor((recebido / total) * 100);
-        barraFill.style.width = pct + '%';
-      } else {
-        const atual = parseInt(barraFill.style.width) || 0;
-        barraFill.style.width = Math.min(100, atual + 5) + '%';
-      }
+      // Atualiza a barra de progresso conforme tamanho recebido
+      let larguraAtual = Math.min(100, (recebido.length / 50)) + '%';
+      barraFill.style.width = larguraAtual;
     }
 
     barraFill.style.width = '100%';
-    btn.textContent = '✅ Concluído';
-  } catch (err) {
-    logsEl.textContent = `❌ ${err.message}`;
-    btn.textContent = '⚠️ Erro';
-  } finally {
-    btn.disabled = false;
+
+  } catch (error) {
+    logs.textContent = "Erro ao conectar: " + error.message;
   }
 }
