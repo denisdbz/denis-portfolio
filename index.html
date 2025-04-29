@@ -4,213 +4,168 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
-  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps. Testes técnicos, desafios práticos e projetos de automação de qualidade e segurança.">
-  <meta property="og:title" content="Denis Oliveira — Portfólio Profissional">
-  <meta property="og:description" content="Testes automatizados, pentests e segurança da informação. Explore meus projetos técnicos.">
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="assets/img/logo-animado-denis.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/img/logo-animado-denis.svg" />
+  <script src="particles.js"></script>
 </head>
-<body class="neon-dark">
+<body>
+  <div id="particles-js"></div>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <ul>
-    <li><a href="#" id="btn-sobre">Sobre</a></li>
-    <li><a href="#" id="btn-ajuda">Ajuda</a></li>
-    <li><a href="#" id="btn-news">News</a></li>
-    <li><a href="#plays">Plays</a></li>
-    <li><button id="theme-toggle" title="Mudar tema">🌙/☀️</button></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="logo-box">
-    <img src="assets/img/logo-animado-denis.svg" alt="Logo Denis QA Pentest" class="logo-animado" />
-    <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
-  </div>
-  <div class="subtitle"><span id="typed-subtitle"></span></div>
-  <nav class="links">
-    <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
-    <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
-    <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
-    <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#" id="btn-sobre">Sobre</a></li>
+      <li><a href="#" id="btn-ajuda">Ajuda</a></li>
+      <li><a href="#" id="btn-news">News</a></li>
+      <li><a href="#plays">Plays</a></li>
+      <li><button id="theme-toggle" title="Mudar tema">🌙/☀️</button></li>
+    </ul>
   </nav>
-</header>
 
-<!-- CONTEÚDO PRINCIPAL -->
-<main class="container">
-  <h1>Denis Oliveira — Portfólio Profissional</h1>
-  <p class="intro">
-    Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
-    <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
-  </p>
+  <header class="hero">
+    <h1>Denis | QA & Pentest</h1>
+    <p id="typed-subtitle">Portfólio Técnico com Automação, Pentest, Segurança e QA</p>
+  </header>
 
-  <hr class="separator" />
+  <main class="container">
+    <h1>Meus Plays Técnicos</h1>
+    <input type="text" id="search-input" placeholder="Buscar plays..." />
 
-  <!-- BUSCA -->
-  <input type="text" id="search-input" placeholder="Buscar plays..." />
-
-  <!-- GRID DE CARDS -->
-  <section id="plays" class="cards">
-    <div class="card" title="Play 01 — Nmap Recon">
-      <h3>Play 01 — Nmap Recon</h3>
-      <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-      <a class="btn" href="plays/play-01-nmap-recon/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="01">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 02 — Hydra DVWA">
-      <h3>Play 02 — Hydra DVWA</h3>
-      <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
-      <a class="btn" href="plays/play-02-hydra-dvwa/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="02">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 03 — SQLMap DVWA">
-      <h3>Play 03 — SQLMap DVWA</h3>
-      <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
-      <a class="btn" href="plays/play-03-sqlmap-dvwa/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="03">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 04 — JMeter LoadTest">
-      <h3>Play 04 — JMeter LoadTest</h3>
-      <p>Executa testes de carga e simula múltiplos usuários.</p>
-      <a class="btn" href="plays/play-04-jmeter-loadtest/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="04">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 05 — QA Automação">
-      <h3>Play 05 — QA Automação</h3>
-      <p>Execução automatizada de testes de interface com Cypress.</p>
-      <a class="btn" href="plays/play-05-qa-automacao/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="05">Por Dentro</button>
-    </div>
-    <div class="card" title="Play 06 — Carga Bash">
-      <h3>Play 06 — Carga Bash</h3>
-      <p>Simula carga com múltiplas requisições em shell script.</p>
-      <a class="btn" href="plays/play-06-carga-bash/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="06">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 07 — Testes Mobile">
-      <h3>Play 07 — Testes Mobile</h3>
-      <p>Testes automatizados em app Android com Appium.</p>
-      <a class="btn" href="plays/play-07-mobile-tests/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="07">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 08 — Nikto Scan">
-      <h3>Play 08 — Nikto Scan</h3>
-      <p>Escaneamento de vulnerabilidades web com Nikto.</p>
-      <a class="btn" href="plays/play-08-nikto-scan/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="08">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 09 — k6 LoadTest">
-      <h3>Play 09 — k6 LoadTest</h3>
-      <p>Testes de performance de APIs com K6.</p>
-      <a class="btn" href="plays/play-09-k6-loadtest/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="09">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 10 — API Validation">
-      <h3>Play 10 — API Validation</h3>
-      <p>Validação de endpoints e contratos RESTful.</p>
-      <a class="btn" href="plays/play-10-api-validation/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="10">Por Dentro</button>
-    </div>
-    <div class="card" title="Play 11 — XSS Scanner">
-      <h3>Play 11 — XSS Scanner</h3>
-      <p>Detecção de vulnerabilidades XSS com payloads automáticos.</p>
-      <a class="btn" href="plays/play-11-xss-scanner/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="11">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 12 — CSRF Checker">
-      <h3>Play 12 — CSRF Checker</h3>
-      <p>Verificação de falhas em tokens anti-CSRF e proteção cruzada.</p>
-      <a class="btn" href="plays/play-12-csrf-checker/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="12">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 13 — API Fuzzing">
-      <h3>Play 13 — API Fuzzing</h3>
-      <p>Testes de robustez em APIs com dados randômicos.</p>
-      <a class="btn" href="plays/play-13-api-fuzzing/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="13">Por Dentro</button>
-    </div>
-
-    <div class="card" title="Play 14 — Dependency CVE Audit">
-      <h3>Play 14 — Dependency CVE Audit</h3>
-      <p>Auditoria de dependências e pacotes vulneráveis.</p>
-      <a class="btn" href="plays/play-14-dependency-cve-audit/">Ver o Play</a>
-      <button class="btn btn-por-dentro" data-play="14">Por Dentro</button>
-    </div>
-
-<div class="card" title="Play 15 — SSL/TLS Health Check">
-  <h3>Play 15 — SSL/TLS Health Check</h3>
-  <p>Validação de certificados, protocolos e boas práticas HTTPS.</p>
-</div> <!-- <<< FECHAR O CARD DO PLAY 15 AQUI!! -->
-
-<!-- Agora começam os novos -->
-<div class="card" title="Play 16 — Playwright API Test">
-  <h3>Play 16 — Playwright API Test</h3>
-  <p>Testes automatizados de APIs REST usando Playwright sem interface gráfica.</p>
-  <a class="btn" href="plays/play-16-playwright-api-test/">Ver o Play</a>
+    <section id="plays" class="cards">
+<div class="card" title="Play 01">
+  <h3>Play 01 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 1.</p>
+  <a class="btn" href="plays/play-01/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="01">Por Dentro</button>
+</div>
+<div class="card" title="Play 02">
+  <h3>Play 02 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 2.</p>
+  <a class="btn" href="plays/play-02/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="02">Por Dentro</button>
+</div>
+<div class="card" title="Play 03">
+  <h3>Play 03 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 3.</p>
+  <a class="btn" href="plays/play-03/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="03">Por Dentro</button>
+</div>
+<div class="card" title="Play 04">
+  <h3>Play 04 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 4.</p>
+  <a class="btn" href="plays/play-04/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="04">Por Dentro</button>
+</div>
+<div class="card" title="Play 05">
+  <h3>Play 05 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 5.</p>
+  <a class="btn" href="plays/play-05/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="05">Por Dentro</button>
+</div>
+<div class="card" title="Play 06">
+  <h3>Play 06 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 6.</p>
+  <a class="btn" href="plays/play-06/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="06">Por Dentro</button>
+</div>
+<div class="card" title="Play 07">
+  <h3>Play 07 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 7.</p>
+  <a class="btn" href="plays/play-07/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="07">Por Dentro</button>
+</div>
+<div class="card" title="Play 08">
+  <h3>Play 08 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 8.</p>
+  <a class="btn" href="plays/play-08/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="08">Por Dentro</button>
+</div>
+<div class="card" title="Play 09">
+  <h3>Play 09 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 9.</p>
+  <a class="btn" href="plays/play-09/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="09">Por Dentro</button>
+</div>
+<div class="card" title="Play 10">
+  <h3>Play 10 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 10.</p>
+  <a class="btn" href="plays/play-10/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="10">Por Dentro</button>
+</div>
+<div class="card" title="Play 11">
+  <h3>Play 11 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 11.</p>
+  <a class="btn" href="plays/play-11/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="11">Por Dentro</button>
+</div>
+<div class="card" title="Play 12">
+  <h3>Play 12 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 12.</p>
+  <a class="btn" href="plays/play-12/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="12">Por Dentro</button>
+</div>
+<div class="card" title="Play 13">
+  <h3>Play 13 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 13.</p>
+  <a class="btn" href="plays/play-13/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="13">Por Dentro</button>
+</div>
+<div class="card" title="Play 14">
+  <h3>Play 14 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 14.</p>
+  <a class="btn" href="plays/play-14/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="14">Por Dentro</button>
+</div>
+<div class="card" title="Play 15">
+  <h3>Play 15 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 15.</p>
+  <a class="btn" href="plays/play-15/">Ver o Play</a>
+  <button class="btn btn-por-dentro" data-play="15">Por Dentro</button>
+</div>
+<div class="card" title="Play 16">
+  <h3>Play 16 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 16.</p>
+  <a class="btn" href="plays/play-16/">Ver o Play</a>
   <button class="btn btn-por-dentro" data-play="16">Por Dentro</button>
 </div>
-
-
-<div class="card" title="Play 17 — Burp Suite Passive Scan">
-  <h3>Play 17 — Burp Suite Passive Scan</h3>
-  <p>Escaneamento de vulnerabilidades web de forma passiva com Burp Suite.</p>
-  <a class="btn" href="plays/play-17-burp-suite-passive-scan/">Ver o Play</a>
+<div class="card" title="Play 17">
+  <h3>Play 17 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 17.</p>
+  <a class="btn" href="plays/play-17/">Ver o Play</a>
   <button class="btn btn-por-dentro" data-play="17">Por Dentro</button>
 </div>
-
-<div class="card" title="Play 18 — Load Test CI/CD">
-  <h3>Play 18 — Load Test CI/CD</h3>
-  <p>Execução automática de testes de carga em pipelines de integração contínua.</p>
-  <a class="btn" href="plays/play-18-loadtest-cicd/">Ver o Play</a>
+<div class="card" title="Play 18">
+  <h3>Play 18 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 18.</p>
+  <a class="btn" href="plays/play-18/">Ver o Play</a>
   <button class="btn btn-por-dentro" data-play="18">Por Dentro</button>
 </div>
-
-<div class="card" title="Play 19 — Recon-ng OSINT Scan">
-  <h3>Play 19 — Recon-ng OSINT Scan</h3>
-  <p>Coleta de informações públicas (OSINT) utilizando Recon-ng framework.</p>
-  <a class="btn" href="plays/play-19-recon-ng-osint-scan/">Ver o Play</a>
+<div class="card" title="Play 19">
+  <h3>Play 19 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 19.</p>
+  <a class="btn" href="plays/play-19/">Ver o Play</a>
   <button class="btn btn-por-dentro" data-play="19">Por Dentro</button>
 </div>
-
-<div class="card" title="Play 20 — CSP Header Checker">
-  <h3>Play 20 — CSP Header Checker</h3>
-  <p>Verificação de políticas de segurança CSP em sites e APIs para hardening.</p>
-  <a class="btn" href="plays/play-20-csp-header-checker/">Ver o Play</a>
+<div class="card" title="Play 20">
+  <h3>Play 20 — Título Exemplo</h3>
+  <p>Descrição rápida do Play 20.</p>
+  <a class="btn" href="plays/play-20/">Ver o Play</a>
   <button class="btn btn-por-dentro" data-play="20">Por Dentro</button>
 </div>
+    </section>
+  </main>
 
-  </section>
-</main>
-
-<!-- Modal Por Dentro -->
-<div id="modal-por-dentro" class="modal hidden">
-  <div class="modal-content">
-    <button class="close-modal" data-close="por-dentro">&times;</button>
-    <div id="modal-play-content"></div>
+  <div id="modal-por-dentro" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-modal" data-close="por-dentro">&times;</button>
+      <div id="modal-play-content"></div>
+    </div>
   </div>
-</div>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
-  <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
-</footer>
+  <footer>
+    <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
+    <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
+  </footer>
 
-<!-- SCRIPTS -->
-<script src="scripts.js"></script>
-<script src="assets/easter/konami.js"></script>
-
+  <script src="scripts.js"></script>
 </body>
 </html>
