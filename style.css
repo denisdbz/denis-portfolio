@@ -232,3 +232,7 @@ footer {
   color: #ff4b5c;
   font-weight: bold;
 }
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
