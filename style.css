@@ -31,19 +31,13 @@ body.light-mode {
 
 /* ===== Navbar ===== */
 .navbar {
-  background: #111;
+  background: var(--bg-card);
   padding: 1rem;
   text-align: center;
 }
-.navbar ul {
-  list-style: none;
-}
-.navbar ul li {
-  display: inline-block;
-  margin: 0 15px;
-}
-.navbar a,
-.navbar button {
+.navbar ul { list-style: none; }
+.navbar ul li { display: inline-block; margin: 0 15px; }
+.navbar a, .navbar button {
   color: var(--color-accent);
   text-decoration: none;
   font-weight: bold;
@@ -64,22 +58,17 @@ body.light-mode {
   justify-content: center;
   gap: 1rem;
 }
-.logo-animado {
-  width: 60px;
-}
+.logo-animado { width: 60px; }
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
   animation: neon 1.5s ease-in-out infinite alternate;
 }
-
-/* Neon flicker */
 @keyframes neon {
   0%   { text-shadow: 0 0 5px var(--color-accent); }
   50%  { text-shadow: 0 0 20px var(--color-accent); }
   100% { text-shadow: 0 0 5px var(--color-accent); }
 }
-
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
@@ -127,15 +116,9 @@ body.light-mode {
   border-radius: 10px;
   transition: transform 0.3s;
 }
-.card:hover {
-  transform: translateY(-5px);
-}
-.card h3 {
-  margin-bottom: 1rem;
-}
-.card p {
-  margin-bottom: 1rem;
-}
+.card:hover { transform: translateY(-5px); }
+.card h3 { margin-bottom: 1rem; }
+.card p { margin-bottom: 1rem; }
 
 /* ===== Botões ===== */
 .btn {
@@ -149,16 +132,12 @@ body.light-mode {
   border-radius: 5px;
   transition: background 0.3s;
 }
-.btn:hover {
-  background: var(--color-accent-hover);
-}
+.btn:hover { background: var(--color-accent-hover); }
 .btn-por-dentro {
   background: #444;
   color: var(--color-accent);
 }
-.btn-por-dentro:hover {
-  background: #666;
-}
+.btn-por-dentro:hover { background: #666; }
 
 /* ===== Footer ===== */
 footer {
@@ -181,9 +160,7 @@ footer {
   align-items: center;
   z-index: 10000;
 }
-.modal.hidden {
-  display: none;
-}
+.modal.hidden { display: none; }
 .modal-content {
   background: var(--bg-card);
   padding: 2rem;
@@ -192,7 +169,7 @@ footer {
   max-width: 500px;
   color: var(--text-main);
   position: relative;
-  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
+  box-shadow: 0 0 15px rgba(0,255,159,0.5);
 }
 .close-modal {
   position: absolute;
@@ -204,18 +181,11 @@ footer {
   cursor: pointer;
 }
 
-/* ===== Barra de Progresso (agora apenas container) ===== */
-#barra {
-  width: 100%;
-  background: #333;
-  height: 10px;
-  margin-top: 2rem;
-}
-#barra-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--color-accent);
-  transition: width 0.3s ease-in-out;
+/* ===== Progress Spinner ===== */
+.spinner {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 /* ===== Logs da execução ===== */
@@ -242,15 +212,44 @@ footer {
   color: var(--text-main);
   border-radius: 5px;
 }
-.log-info {
+
+/* ===== Timeline no modal Sobre ===== */
+.modal-sobre { padding: 1rem; }
+.timeline {
+  list-style: none;
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 0; bottom: 0;
+  width: 4px;
+  background: var(--color-accent);
+}
+.timeline li {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-year {
+  position: absolute;
+  left: -5px; top: 0;
+  background: var(--bg-card);
   color: var(--color-accent);
   font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
-.log-erro {
-  color: #ff4b5c;
-  font-weight: bold;
+.timeline-content { padding-left: 20px; }
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 0.5rem 2rem;
+  margin-bottom: 2rem;
 }
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.chart-container {
+  max-width: 100%;
+  margin: auto;
 }
