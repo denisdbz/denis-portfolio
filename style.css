@@ -1,3 +1,15 @@
+/* style.css */
+
+/* ===== Variáveis de tema ===== */
+:root {
+  --color-accent: #00ff9f;
+  --color-accent-hover: #00cc7f;
+  --bg-main: #0a0a0a;
+  --bg-card: #111;
+  --text-main: #e0e0e0;
+  --text-light: #222;
+}
+
 /* ===== Reset básico ===== */
 * {
   margin: 0;
@@ -5,24 +17,22 @@
   box-sizing: border-box;
 }
 
-/* ===== Corpo principal ===== */
+/* ===== Corpo ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #0a0a0a;
-  color: #e0e0e0;
+  background: var(--bg-main);
+  color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
 }
-
-/* ===== Estilos para Light Mode ===== */
 body.light-mode {
   background: #f5f5f5;
-  color: #222;
+  color: var(--text-light);
 }
 
 /* ===== Navbar ===== */
 .navbar {
-  background: #111;
+  background: var(--bg-card);
   padding: 1rem;
   text-align: center;
 }
@@ -33,8 +43,9 @@ body.light-mode {
   display: inline-block;
   margin: 0 15px;
 }
-.navbar a, .navbar button {
-  color: #00ff9f;
+.navbar a,
+.navbar button {
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
@@ -43,7 +54,7 @@ body.light-mode {
   cursor: pointer;
 }
 
-/* ===== Hero Section ===== */
+/* ===== Hero ===== */
 .hero {
   text-align: center;
   padding: 2rem 1rem;
@@ -54,30 +65,49 @@ body.light-mode {
   justify-content: center;
   gap: 1rem;
 }
-.logo-animado {
-  width: 60px;
+/* Pulsar neon no texto */
+@keyframes neon {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--color-accent);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--color-accent);
+  }
 }
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
+  animation: neon 1.5s ease-in-out infinite alternate;
 }
+/* Pulsar neon no SVG */
+@keyframes neon-pulse-img {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px var(--color-accent));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px var(--color-accent));
+  }
+}
+.logo-animado {
+  width: 60px;
+  animation: neon-pulse-img 1.5s ease-in-out infinite alternate;
+}
+
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.2rem;
 }
-
-/* ===== Links abaixo do Hero ===== */
 .links {
   margin-top: 1rem;
 }
 .links a {
   margin: 0 10px;
-  color: #00ff9f;
+  color: var(--color-accent);
   font-size: 0.9rem;
 }
 
-/* ===== Main Container ===== */
+/* ===== Container principal ===== */
 .container {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -90,7 +120,7 @@ body.light-mode {
 .separator {
   margin: 2rem auto;
   border: none;
-  border-top: 2px solid #00ff9f;
+  border-top: 2px solid var(--color-accent);
   width: 50%;
 }
 
@@ -99,10 +129,11 @@ body.light-mode {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  justify-items: center;
 }
 .card {
-  background: #111;
-  border: 1px solid #00ff9f;
+  background: var(--bg-card);
+  border: 1px solid var(--color-accent);
   padding: 2rem;
   border-radius: 10px;
   transition: transform 0.3s;
@@ -122,40 +153,55 @@ body.light-mode {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
   padding: 0.6rem 1.2rem;
-  background: #00ff9f;
-  color: #0a0a0a;
+  background: var(--color-accent);
+  color: var(--bg-main);
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
   transition: background 0.3s;
 }
 .btn:hover {
-  background: #00cc7f;
+  background: var(--color-accent-hover);
 }
 .btn-por-dentro {
   background: #444;
-  color: #00ff9f;
+  color: var(--color-accent);
   cursor: pointer;
 }
 .btn-por-dentro:hover {
   background: #666;
 }
 
-/* ===== Footer ===== */
-footer {
+/* ===== Feedback ===== */
+#feedback {
+  margin: 3rem auto;
+  max-width: 600px;
   text-align: center;
-  padding: 1rem;
-  background: #111;
-  color: #00ff9f;
-  margin-top: 3rem;
-  font-size: 0.9rem;
+}
+#feedback form {
+  display: grid;
+  gap: 0.5rem;
+}
+#feedback input,
+#feedback textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 5px;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+#feedback button {
+  justify-self: center;
 }
 
 /* ===== Modal ===== */
 .modal {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
@@ -166,74 +212,43 @@ footer {
   display: none;
 }
 .modal-content {
-  /* Limita a altura ao tamanho da viewport e permite rolagem interna */
-  max-height: 80vh;
-  overflow-y: auto;
-
-  /* Já existentes: */
   background: var(--bg-card);
   padding: 2rem;
   border-radius: 10px;
-  /* … */
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 1rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
 }
-
 .close-modal {
   position: absolute;
-  top: 10px; right: 15px;
+  top: 10px;
+  right: 15px;
   background: none;
   border: none;
   font-size: 2rem;
-  color: #00ff9f;
+  color: var(--color-accent);
   cursor: pointer;
 }
 
-/* ===== Barra de Progresso (para Executar Play) ===== */
-#barra {
-  width: 100%;
-  background: #333;
-  height: 10px;
+/* ===== Timeline & Chart ===== */
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.timeline li {
+  margin-bottom: 1rem;
+}
+.timeline-year {
+  font-weight: bold;
+  color: var(--color-accent);
+}
+.timeline-content {
+  margin-left: 1rem;
+}
+.chart-container {
   margin-top: 2rem;
-}
-#barra-fill {
-  height: 100%;
-  width: 0%;
-  background: #00ff9f;
-  transition: width 0.3s ease-in-out;
-}
-
-/* ===== Logs da execução ===== */
-#logs {
-  background: #111;
-  border: 1px solid #00ff9f;
-  padding: 1rem;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  height: 200px;
-  overflow-y: auto;
-  border-radius: 5px;
-}
-
-/* ===== Input de busca ===== */
-#search-input {
-  width: 100%;
-  max-width: 500px;
-  padding: 0.7rem;
-  margin: 1rem auto 2rem;
-  display: block;
-  border: 1px solid #00ff9f;
-  background: #0a0a0a;
-  color: #e0e0e0;
-  border-radius: 5px;
-}
-.log-info {
-  color: #00ff9f;
-  font-weight: bold;
-}
-.log-erro {
-  color: #ff4b5c;
-  font-weight: bold;
-}
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
