@@ -29,13 +29,35 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 # Instala k6 via script oficial (com fallback)
-RUN curl -s https://packagecloud.io/install/repositories/loadimpact/k6/script.deb.sh | bash || true \
-  && apt-get update && apt-get install -y k6 || true \
-  && rm -rf /var/lib/apt/lists/*
+FROM python:3.11-slim
 
+# 1) Instala ferramentas necessárias
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      curl \
+      gnupg2 \
+      apt-transport-https \
+      ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+# 2) Adiciona chave GPG e o repositório oficial do k6
+RUN curl -fsSL https://dl.k6.io/key.gpg \
+     | gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg \
+ && echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" \
+     > /etc/apt/sources.list.d/k6.list
+
+# 3) Atualiza o APT e instala o k6
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends k6 \
+ && rm -rf /var/lib/apt/lists/*
+
+# 4) Resto do seu Dockerfile
 WORKDIR /app
-
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
+
+CMD ["python", "app.py"]
 
 # Biblioteca Python do backend
 RUN pip install --no-cache-dir -r requirements.txt
