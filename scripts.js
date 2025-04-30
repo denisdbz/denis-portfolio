@@ -106,10 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
     list.innerHTML = `<p class="loading">Carregando notícias…</p>`;
 
     try {
-      const RSS_URL = encodeURIComponent('http://feeds.twit.tv/brickhouse.xml');
-      const API_KEY = 'a4dfb3814aee4c04a9efaef4bcf2a82e';
-      const res = await fetch(
-        `https://api.rss2json.com/v1/api.json?rss_url=${RSS_URL}&api_key=${API_KEY}&count=6`
+const RSS_URL = encodeURIComponent('http://feeds.twit.tv/brickhouse.xml');
+// const API_KEY = 'a4dfb3814aee4c04a9efaef4bcf2a82e'; // remova se não for usar
+
+const res = await fetch(
+  `https://api.rss2json.com/v1/api.json?rss_url=${RSS_URL}&count=6`
+);
       );
       const data = await res.json();
       if (data.status !== 'ok') throw new Error(data.message);
