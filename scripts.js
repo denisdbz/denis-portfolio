@@ -1,172 +1,155 @@
 // scripts.js
 
 document.addEventListener('DOMContentLoaded', () => {
+
   // 1) Typed subtitle animation
   const text = 'QA • Pentest • DevSecOps';
   let idx = 0;
   const el = document.getElementById('typed-subtitle');
   (function type() {
-    if (el && idx <= text.length) {
+    if (idx <= text.length) {
       el.textContent = text.slice(0, idx++);
       setTimeout(type, 100);
     }
   })();
 
-  // 2) Theme toggle + persistence
+  // 2) Theme toggle (neon ↔ light)
   const themeToggle = document.getElementById('theme-toggle');
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') document.body.classList.add('light-mode');
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const isLight = document.body.classList.toggle('light-mode');
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      document.body.classList.toggle('light-mode');
     });
   }
 
-  // 3) Initialize AOS (animations on scroll)
-  if (window.AOS) AOS.init();
-
-  // 4) Generic modal creation
+  // 3) Make modals
   function makeModal(id, title, content) {
     if (document.getElementById('modal-' + id)) return;
-    const modal = document.createElement('div');
-    modal.id = 'modal-' + id;
-    modal.className = 'modal hidden';
-    modal.innerHTML = `
+    const m = document.createElement('div');
+    m.id = 'modal-' + id;
+    m.className = 'modal hidden';
+    m.innerHTML = `
       <div class="modal-content">
         <button class="close-modal" data-close="${id}">&times;</button>
         <h2>${title}</h2>
         ${content}
       </div>`;
-    document.body.appendChild(modal);
+    document.body.appendChild(m);
   }
 
-  // 5) Sobre modal (completo)
+  // Sobre
   makeModal('sobre', 'Sobre Mim', `
-    <div class="modal-sobre">
-      <p>Sou Engenheiro de Qualidade de Software e Segurança da Informação com mais de <strong>12 anos</strong> de experiência, atuando desde 2012 em projetos de infraestrutura, QA manual, automação de testes e, nos últimos anos, em pentesting e DevSecOps. Minha missão é integrar qualidade e segurança desde as primeiras etapas do ciclo de desenvolvimento até a entrega final.</p>
-      <h2>Trajetória Profissional</h2>
-      <ul class="timeline">
-        <li><span class="timeline-year">2010 – 2012</span><div class="timeline-content"><h3>Analista de Atendimento Jr. — Droga Raia</h3><p>Suporte técnico Linux/Windows, SQL e manutenção de hardware.</p></div></li>
-        <li><span class="timeline-year">2012 – 2015</span><div class="timeline-content"><h3>Analista de Testes — RaiaDrogasil S/A</h3><p>Criação de roteiros de teste, automação com Selenium-IDE, TestLink e Mantis.</p></div></li>
-        <li><span class="timeline-year">2016 – 2017</span><div class="timeline-content"><h3>Analista de Testes — Spread Tecnologia</h3><p>Coordenação de casos de teste e projetos de telecom em ambientes ágeis.</p></div></li>
-        <li><span class="timeline-year">2017 – 2018</span><div class="timeline-content"><h3>Automação de Testes — Flexvision</h3><p>Desenvolvimento de frameworks em Java/Selenium e integração contínua com Jenkins.</p></div></li>
-        <li><span class="timeline-year">2018 – 2019</span><div class="timeline-content"><h3>Test Automation — K2 Partnering Solutions</h3><p>BDD com Ruby/Cucumber, testes mobile e APIs com SOAPUI.</p></div></li>
-        <li><span class="timeline-year">2019 – 2020</span><div class="timeline-content"><h3>Analista de Automação — Prime Control</h3><p>Planejamento e execução de testes end-to-end e mobile.</p></div></li>
-        <li><span class="timeline-year">2020 – 2023</span><div class="timeline-content"><h3>QA Engineer — VR Benefícios</h3><p>Automação com Cypress, JMeter e pipelines CI/CD no Jenkins.</p></div></li>
-        <li><span class="timeline-year">2024 – Presente</span><div class="timeline-content"><h3>Senior Software Quality Engineer — Fiserv Brasil</h3><p>Automação end-to-end com Playwright e Postman, pentests em rede e aplicações, e práticas DevSecOps em fintech.</p></div></li>
-      </ul>
-      <h2>Principais Competências</h2>
-      <ul class="skills-list">
-        <li><strong>Testes e QA:</strong> Cypress, Selenium, Appium, Postman/Newman</li>
-        <li><strong>Pentest & Segurança:</strong> OWASP Top 10, Burp Suite, Nmap, SQLMap, Hydra</li>
-        <li><strong>Performance:</strong> JMeter, k6</li>
-        <li><strong>DevSecOps:</strong> Docker, GitHub Actions, Railway, Jenkins</li>
-      </ul>
-      <h2>Evolução da Carreira</h2>
-      <div class="chart-container"><canvas id="careerChart" width="400" height="200"></canvas></div>
+    <!-- seu conteúdo de Sobre -->
+    ...
+  `);
+
+  // Ajuda
+  makeModal('ajuda', 'Central de Ajuda', `
+    <!-- seu conteúdo de Ajuda -->
+    ...
+  `);
+
+  // News (agora dinâmico)
+  makeModal('news', 'Últimas Notícias', `
+    <div id="news-list" class="news-grid">
+      <p class="loading">Carregando notícias...</p>
     </div>
   `);
 
-  // 6) Ajuda modal
-  makeModal('ajuda', 'Central de Ajuda', `
-    <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps.</p>
-    <ul>
-      <li><strong>▶️ Ver o Play:</strong> Executa o teste real.</li>
-      <li><strong>Por Dentro:</strong> Documentação explicativa.</li>
-    </ul>
-  `);
+  // “Por Dentro”
+  makeModal('por-dentro', 'Detalhes do Play', `<div id="modal-play-content"></div>`);
 
-  // 7) News modal
-  makeModal('news', 'Últimas Notícias', `
-    <ul>
-      <li><a href="https://hackerone.com/resources" target="_blank">HackerOne</a></li>
-      <li><a href="https://portswigger.net/daily-swig" target="_blank">Daily Swig</a></li>
-      <li><a href="https://dev.to/t/qualityassurance" target="_blank">Dev.to QA</a></li>
-    </ul>
-  `);
+  // 4) Hook navbar buttons
+  document.getElementById('btn-sobre').onclick = e => {
+    e.preventDefault();
+    document.getElementById('modal-sobre').classList.remove('hidden');
+  };
+  document.getElementById('btn-ajuda').onclick = e => {
+    e.preventDefault();
+    document.getElementById('modal-ajuda').classList.remove('hidden');
+  };
 
-  // 8) Navbar buttons
-  ['sobre','ajuda','news'].forEach(id => {
-    const btn = document.getElementById(`btn-${id}`);
-    if (!btn) return;
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      document.getElementById(`modal-${id}`).classList.remove('hidden');
-      if (id === 'sobre') setTimeout(renderCareerChart, 100);
-    });
-  });
+  // 5) News: ao abrir, dispara fetch
+  const NEWS_API_KEY = 'a4dfb3814aee4c04a9efaef4bcf2a82e';
+  document.getElementById('btn-news').onclick = async e => {
+    e.preventDefault();
+    const modal = document.getElementById('modal-news');
+    const list = document.getElementById('news-list');
 
-  // 9) “Por Dentro” buttons
+    // mostra loading
+    list.innerHTML = `<p class="loading">Carregando notícias...</p>`;
+
+    try {
+      const res = await fetch(
+        `https://newsapi.org/v2/top-headlines?category=technology&language=pt&pageSize=8&apiKey=${NEWS_API_KEY}`
+      );
+      const json = await res.json();
+      if (json.status !== 'ok') throw new Error(json.message);
+
+      const cards = json.articles.map(a => `
+        <div class="news-card">
+          <img src="${a.urlToImage|| 'https://via.placeholder.com/300x100?text=No+Image'}" alt="${a.title}"/>
+          <div class="news-card-content">
+            <h4>${a.title}</h4>
+            <small>${a.source.name}</small>
+            <a href="${a.url}" target="_blank">Leia mais</a>
+          </div>
+        </div>
+      `).join('');
+
+      list.innerHTML = cards || '<p class="loading">Nenhuma notícia encontrada.</p>';
+    } catch (err) {
+      console.error(err);
+      list.innerHTML = `<p class="loading">Erro ao carregar notícias.</p>`;
+    }
+
+    modal.classList.remove('hidden');
+  };
+
+  // 6) “Por Dentro” buttons para cada play
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
-    btn.addEventListener('click', async e => {
+    btn.onclick = e => {
       e.preventDefault();
-      const id = btn.dataset.play.padStart(2,'0');
-      const modal = document.getElementById('modal-por-dentro');
-      const content = document.getElementById('modal-play-content');
-      content.innerHTML = '<p>Carregando conteúdo...</p>';
-      modal.classList.remove('hidden');
-      try {
-        const resp = await fetch(`posts/play-${id}.html`);
-        content.innerHTML = resp.ok
-          ? await resp.text()
-          : '<p>Conteúdo “Por Dentro” não disponível.</p>';
-      } catch {
-        content.innerHTML = '<p>Erro ao carregar conteúdo.</p>';
-      }
-    });
+      const id = btn.dataset.play.padStart(2, '0');
+      document.getElementById('modal-play-content').innerHTML = '<p>Carregando...</p>';
+      document.getElementById('modal-por-dentro').classList.remove('hidden');
+      fetch(`posts/play-${id}.html`)
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('modal-play-content').innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById('modal-play-content').innerHTML = '<p>Conteúdo indisponível.</p>';
+        });
+    };
   });
 
-  // 10) Busca com debounce
+  // 7) Search/filter plays
   const search = document.getElementById('search-input');
   if (search) {
-    let timer;
-    search.addEventListener('input', () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        const term = search.value.toLowerCase();
-        document.querySelectorAll('#plays .card').forEach(card => {
-          card.style.display = card.textContent.toLowerCase().includes(term)
-            ? ''
-            : 'none';
-        });
-      }, 200);
+    search.oninput = () => {
+      const term = search.value.toLowerCase();
+      document.querySelectorAll('#plays .card').forEach(card => {
+        card.style.display =
+          card.querySelector('h3').textContent.toLowerCase().includes(term)
+          ? ''
+          : 'none';
+      });
+    };
+  }
+
+  // 8) Konami Code (Easter egg)
+  if (typeof Konami === 'function') {
+    new Konami(() => {
+      alert('Easter egg ativado! 🎉');
     });
   }
 
-  // 11) Fechar modais (Esc ou “×”)
-  document.addEventListener('keyup', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden'));
+  // 9) Fechar qualquer modal
+  document.body.addEventListener('click', e => {
+    if (e.target.matches('.close-modal')) {
+      const id = e.target.dataset.close;
+      document.getElementById('modal-' + id).classList.add('hidden');
     }
   });
-  document.querySelectorAll('.close-modal').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      document.getElementById(`modal-${btn.dataset.close}`).classList.add('hidden');
-    });
-  });
 
-  // 12) Renderiza o gráfico de carreira
-  function renderCareerChart() {
-    const ctx = document.getElementById('careerChart');
-    if (!ctx) return;
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['2010','2012','2016','2017','2018','2019','2020','2024'],
-        datasets: [{
-          label: 'Evolução de Nível',
-          data: [1,2,3,4,5,6,7,8],
-          fill: false,
-          tension: 0.4
-        }]
-      },
-      options: {
-        scales: {
-          y: { beginAtZero: true, ticks: { stepSize: 1 } }
-        }
-      }
-    });
-  }
 });
