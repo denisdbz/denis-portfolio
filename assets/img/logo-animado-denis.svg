@@ -29,7 +29,7 @@
   </style>
 
   <!-- Terminal-like Icon -->
-  <rect x="0" y="0" width="50" height="50" rx="8" ry="8" class="icon" />
+  <rect x="0" y="0" width="50" height="50" rx="8" ry="8" class="icon"/>
   <text x="12" y="33" font-size="28" fill="black">&gt;_</text>
 
   <!-- Text -->
