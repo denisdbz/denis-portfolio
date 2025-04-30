@@ -259,7 +259,8 @@
     </section>
   </main>
 
-  <!-- RODAPÉ -->
+
+<!-- RODAPÉ -->
   <footer>
     <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
     <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
@@ -274,10 +275,21 @@
   </div>
 
   <!-- SCRIPTS (ordem importa!) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-GYIRiK9fW5td5BfiG+7mXPs2s+oairp1mU5M+lw/lfPjxxgTnU4qZbk0Oz8Xdl1ql4vGCT7dXzCyjW/OmY5qHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- 1) Animações on-scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- 2) Gráficos -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="service-worker.js"></script>
+  <!-- 3) Lógica dos modais, menu, busca, etc -->
   <script src="scripts.js"></script>
+  <!-- 4) Easter Egg Konami -->
   <script src="assets/easter/konami.js"></script>
+  <!-- 5) Registro do Service Worker **sempre por último**, protegido contra erro -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('service-worker.js')
+        .catch(err => console.warn('SW registration failed:', err));
+    }
+  </script>
 </body>
 </html>
