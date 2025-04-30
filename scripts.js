@@ -1,5 +1,4 @@
 // scripts.js
-
 document.addEventListener('DOMContentLoaded', () => {
 
   // 1) Typed subtitle animation
