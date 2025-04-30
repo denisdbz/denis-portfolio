@@ -1,5 +1,4 @@
 /* style.css */
-
 /* ===== Variáveis de tema ===== */
 :root {
   --color-accent: #00ff9f;
@@ -9,14 +8,12 @@
   --text-main: #e0e0e0;
   --text-light: #222;
 }
-
 /* ===== Reset básico ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 /* ===== Corpo ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
