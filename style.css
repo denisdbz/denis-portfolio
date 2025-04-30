@@ -249,3 +249,8 @@ body.light-mode .modal-content,
 .modal-content {
   outline: none;
 }
+
+/* Centraliza o <h1> principal */
+.container > h1 {
+  text-align: center;
+}
