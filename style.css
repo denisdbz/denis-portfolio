@@ -30,41 +30,90 @@ body.light-mode {
   color: var(--text-light);
 }
 
-/* ===== Navbar ===== */
-.navbar {
-  background: var(--bg-card);
-  padding: 1rem;
-  text-align: center;
-}
+/* ===== Navbar Neon Pulse ===== */
+
 .navbar ul {
-  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
 }
-.navbar ul li {
-  display: inline-block;
-  margin: 0 15px;
-}
+
 .navbar a,
 .navbar button {
-  color: var(--color-accent);
-  text-decoration: none;
+  position: relative;
+  color: #00ff9f;
   font-weight: bold;
+  text-decoration: none;
   font-size: 1rem;
   background: none;
   border: none;
   cursor: pointer;
+  text-shadow: 0 0 8px #00ff9f;
+  animation: neonPulse 2s ease-in-out infinite;
 }
 
-/* ===== Hero ===== */
+.navbar button {
+  font-family: inherit;
+}
+
+/* Reúsa o keyframes já definido */
+@keyframes neonPulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 10px #00ff9f)
+      drop-shadow(0 0 20px #00ff9f);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 5px #00ff9f)
+      drop-shadow(0 0 10px #00ff9f);
+  }
+}
+
+/* HERO & LOGO */
 .hero {
   text-align: center;
   padding: 2rem 1rem;
 }
+
 .logo-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
 }
+
+.logo-animado {
+  width: 60px;     /* Ajuste tamanho se precisar */
+  height: auto;
+}
+
+/* Efeito de pulso neon */
+.neon-pulse-img {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 10px #00ff9f)
+      drop-shadow(0 0 20px #00ff9f);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 5px #00ff9f)
+      drop-shadow(0 0 10px #00ff9f);
+  }
+}
+
+/* Texto do logo */
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 8px #00ff9f;
+}
+
+
 /* Pulsar neon no texto */
 @keyframes neon {
   0%, 100% {
@@ -251,4 +300,4 @@ body.light-mode {
 }
 .chart-container {
   margin-top: 2rem;
-}
+ }
