@@ -320,22 +320,22 @@
     </div>
   </div>
 
-
   <!-- SCRIPTS (ordem importa!) -->
-  <!-- 1) Animações on-scroll (AOS) -->
+
+  <!-- ... -->
+  <!-- 1) AOS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- 2) Gráficos (Chart.js) -->
+  <!-- 2) Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- 3) Lógica de modais, menu, busca, etc -->
+  <!-- 3) Seu scripts.js -->
   <script src="scripts.js"></script>
-  <!-- 4) Easter-Egg Konami -->
+  <!-- 4) Konami -->
   <script src="assets/easter/konami.js"></script>
   <!-- 5) Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('service-worker.js')
-        .catch(err => console.warn('SW registration failed:', err));
+      navigator.serviceWorker.register('service-worker.js')
+        .catch(err => console.warn('SW failed:', err));
     }
   </script>
 </body>
