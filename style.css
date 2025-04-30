@@ -1,4 +1,5 @@
 /* style.css */
+
 /* ===== Variáveis de tema ===== */
 :root {
   --color-accent: #00ff9f;
@@ -8,13 +9,16 @@
   --text-main: #e0e0e0;
   --text-light: #222;
 }
+
 /* ===== Reset básico ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 /* ===== Corpo ===== */
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: var(--bg-main);
@@ -54,6 +58,7 @@ body.light-mode {
 }
 
 /* Reúsa o keyframes já definido */
+
 @keyframes neonPulse {
   0%, 100% {
     filter:
@@ -68,6 +73,7 @@ body.light-mode {
 }
 
 /* HERO & LOGO */
+
 .hero {
   text-align: center;
   padding: 2rem 1rem;
@@ -85,6 +91,7 @@ body.light-mode {
 }
 
 /* Efeito de pulso neon */
+
 .neon-pulse-img {
   animation: neonPulse 2s ease-in-out infinite;
 }
@@ -103,6 +110,7 @@ body.light-mode {
 }
 
 /* Texto do logo */
+
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
@@ -112,6 +120,7 @@ body.light-mode {
 
 
 /* Pulsar neon no texto */
+
 @keyframes neon {
   0%, 100% {
     text-shadow: 0 0 5px var(--color-accent);
@@ -125,7 +134,9 @@ body.light-mode {
   font-weight: bold;
   animation: neon 1.5s ease-in-out infinite alternate;
 }
+
 /* Pulsar neon no SVG */
+
 @keyframes neon-pulse-img {
   0%, 100% {
     filter: drop-shadow(0 0 5px var(--color-accent));
@@ -154,6 +165,7 @@ body.light-mode {
 }
 
 /* ===== Container principal ===== */
+
 .container {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -171,6 +183,7 @@ body.light-mode {
 }
 
 /* ===== Cards de Plays ===== */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -195,6 +208,7 @@ body.light-mode {
 }
 
 /* ===== Botões ===== */
+
 .btn {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
@@ -219,6 +233,7 @@ body.light-mode {
 }
 
 /* ===== Feedback ===== */
+
 #feedback {
   margin: 3rem auto;
   max-width: 600px;
@@ -242,6 +257,7 @@ body.light-mode {
 }
 
 /* ===== Modal ===== */
+
 .modal {
   position: fixed;
   top: 0;
@@ -280,6 +296,7 @@ body.light-mode {
 }
 
 /* ===== Timeline & Chart ===== */
+
 .timeline {
   list-style: none;
   padding: 0;
