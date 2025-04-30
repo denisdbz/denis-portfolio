@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5) Sobre modal (completo)
   makeModal('sobre', 'Sobre Mim', `
     <div class="modal-sobre">
-      <h1>Sobre Denis Oliveira Santos</h1>
       <p>Sou Engenheiro de Qualidade de Software e Segurança da Informação com mais de <strong>12 anos</strong> de experiência, atuando desde 2012 em projetos de infraestrutura, QA manual, automação de testes e, nos últimos anos, em pentesting e DevSecOps. Minha missão é integrar qualidade e segurança desde as primeiras etapas do ciclo de desenvolvimento até a entrega final.</p>
       <h2>Trajetória Profissional</h2>
       <ul class="timeline">
