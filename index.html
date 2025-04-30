@@ -321,23 +321,20 @@
   </div>
 
   <!-- SCRIPTS (ordem importa!) -->
-
-  <!-- ... -->
-  <!-- 1) AOS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- 2) Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- 3) Seu scripts.js -->
-  <script src="scripts.js"></script>
-  <!-- 4) Konami -->
-  <script src="assets/easter/konami.js"></script>
-  <!-- 5) Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .catch(err => console.warn('SW failed:', err));
-    }
-  </script>
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Seu scripts.js -->
+<script src="scripts.js"></script>
+<!-- Konami -->
+<script src="assets/easter/konami.js"></script>
+<!-- Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js').catch(console.warn);
+  }
+</script>
 </body>
 </html>
 
