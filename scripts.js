@@ -99,37 +99,44 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     document.getElementById('modal-ajuda').classList.remove('hidden');
   };
-  document.getElementById('btn-news').onclick = async e => {
-    e.preventDefault();
-    const modal = document.getElementById('modal-news');
-    const list  = document.getElementById('news-list');
-    list.innerHTML = `<p class="loading">Carregando notícias…</p>`;
+// 3) Menu “News”
+document.getElementById('btn-news').onclick = async e => {
+  e.preventDefault();
+  const modal = document.getElementById('modal-news');
+  const list  = document.getElementById('news-list');
 
-    try {
-const RSS_URL = encodeURIComponent('http://feeds.twit.tv/brickhouse.xml');
-// const API_KEY = 'a4dfb3814aee4c04a9efaef4bcf2a82e'; // remova se não for usar
+  // Mostra loading
+  list.innerHTML = `<p class="loading">Carregando notícias...</p>`;
+  modal.classList.remove('hidden');
 
-const res = await fetch(
-  `https://api.rss2json.com/v1/api.json?rss_url=${RSS_URL}&count=6`
-);
-      );
-      const data = await res.json();
-      if (data.status !== 'ok') throw new Error(data.message);
+  try {
+    const RSS_URL = encodeURIComponent('http://feeds.twit.tv/brickhouse.xml');
+    const API_KEY = 'a4dfb3814aee4c04a9efaef4bcf2a82e';
+    const res = await fetch(
+      `https://api.rss2json.com/v1/api.json?rss_url=${RSS_URL}&api_key=${API_KEY}&count=6`
+    );
+    const data = await res.json();
+    if (data.status !== 'ok') throw new Error(data.message);
 
-      list.innerHTML = data.items.map(item => `
-        <div class="news-card">
-          <img src="${item.thumbnail || item.enclosure.link || 'https://via.placeholder.com/300x100'}" alt="${item.title}"/>
-          <div class="news-card-content">
-            <h4>${item.title}</h4>
-            <small>${item.pubDate.split(' ')[0]}</small>
-            <a href="${item.link}" target="_blank">Leia mais →</a>
-          </div>
+    // Monta grid de cards com imagem, título, data e link
+    list.innerHTML = data.items.map(item => `
+      <div class="news-card">
+        <img
+          src="${item.thumbnail || item.enclosure?.link || 'https://via.placeholder.com/300x100'}"
+          alt="${item.title}"
+        />
+        <div class="news-card-content">
+          <h4>${item.title}</h4>
+          <small>${item.pubDate.split(' ')[0]}</small>
+          <a href="${item.link}" target="_blank">Leia mais →</a>
         </div>
-      `).join('');
-    } catch (err) {
-      console.error('News load error:', err);
-      list.innerHTML = `<p class="loading error">Erro ao carregar notícias.</p>`;
-    }
+      </div>
+    `).join('');
+  } catch (err) {
+    console.error('News load error:', err);
+    list.innerHTML = `<p class="loading error">Erro ao carregar notícias.</p>`;
+  }
+};
 
     modal.classList.remove('hidden');
   };
