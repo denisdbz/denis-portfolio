@@ -373,3 +373,54 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* ===== Feedback ===== */
+#feedback, #feedback p {
+  text-align: center;
+  margin: 2rem 0 1rem;
+}
+
+#feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#feedback input[type="email"],
+#feedback textarea {
+  border: 1px solid #00ff9f;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  border-radius: 5px;
+  padding: 0.7rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+#feedback input[type="email"] {
+  width: 200px;
+}
+
+#feedback textarea {
+  width: 300px;
+  height: 3rem;
+  resize: vertical;
+}
+
+#feedback button {
+  background: #00ff9f;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#feedback button:hover {
+  background: #00cc7f;
+}
