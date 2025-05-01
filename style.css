@@ -132,9 +132,15 @@ body {
   padding: 2rem;
   border-radius: 10px;
   transition: transform 0.3s;
+  /* ===== borda pulsante ===== */
+  animation: border-pulse 3s ease-in-out infinite;
 }
 .card:hover {
   transform: translateY(-5px);
+}
+@keyframes border-pulse {
+  0%,100% { border-color: #00ff9f; }
+  50%     { border-color: #00cc7f; }
 }
 .card h3 {
   margin-bottom: 1rem;
@@ -184,21 +190,21 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin: 2rem auto;
+  margin: 3rem auto;
   max-width: 600px;
-  background: rgba(0,255,159,0.05);
   padding: 1rem;
+  background: rgba(0,255,159,0.05);
+  border: 1px solid #00ff9f;
   border-radius: 8px;
 }
-.feedback input,
+.feedback input[type="email"] {
+  flex: 1 1 150px;
+  min-width: 150px;
+}
 .feedback textarea {
-  background: #111;
-  border: 1px solid #00ff9f;
-  color: #e0e0e0;
-  padding: 0.5rem;
-  border-radius: 5px;
-  flex: 1 1 120px;
-  min-width: 120px;
+  flex: 2 1 250px;
+  min-width: 200px;
+  height: 3rem;
 }
 .feedback button {
   background: #00ff9f;
@@ -289,9 +295,48 @@ footer {
   height: 300px;
 }
 
+/* ===== Play page: barra de progresso + logs ===== */
+#barra {
+  width: 100%;
+  background: #333;
+  height: 10px;
+  margin-top: 2rem;
+  border-radius: 5px;
+}
+#barra-fill {
+  height: 100%;
+  width: 0%;
+  background: #00ff9f;
+  transition: width 0.3s ease-in-out;
+  border-radius: 5px 0 0 5px;
+}
+#logs {
+  background: #111;
+  border: 1px solid #00ff9f;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+.log-info {
+  color: #00ff9f;
+  font-weight: bold;
+}
+.log-erro {
+  color: #ff4b5c;
+  font-weight: bold;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* ===== Media Queries ===== */
 @media (max-width: 600px) {
   .navbar ul li { margin: 0 .5rem; }
   .logo-text { font-size: 1.5rem; }
   .btn, .btn-por-dentro { font-size: 0.9rem; }
+  .feedback { flex-direction: column; }
 }
