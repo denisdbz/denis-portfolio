@@ -55,14 +55,23 @@ document.body.addEventListener('click', e => {
 });
 
 // 7) "Por Dentro" buttons
+// 7) "Por Dentro" buttons (fetch de HTML estático)
 document.querySelectorAll('.btn-por-dentro').forEach(btn => {
   btn.addEventListener('click', async e => {
     e.preventDefault();
+    const id = btn.dataset.play.padStart(2, '0');
     openModal('por-dentro');
-    document.getElementById('modal-play-content').innerHTML =
-      '<p>Conteúdo detalhado do Play ainda não implementado.</p>';
+    const container = document.getElementById('modal-play-content');
+    container.innerHTML = `<p class="loading">Carregando conteúdo do Play ${id}…</p>`;
+
+    try {
+      const resp = await fetch(`posts/play-${id}.html`);
+      if (!resp.ok) throw new Error('Não encontrado');
+      container.innerHTML = await resp.text();
+    } catch (err) {
+      container.innerHTML = `<p>Conteúdo detalhado do Play ${id} ainda não implementado.</p>`;
+    }
   });
-});
 
 // 8) Timeline chart (Chart.js)
 function drawChart() {
