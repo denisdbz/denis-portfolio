@@ -51,16 +51,38 @@ document.getElementById('btn-news').addEventListener('click', async e => {
   await loadNews();
 });
 
-// Botões "Por Dentro" de cada Play
-document.querySelectorAll('.btn-por-dentro').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    const id = btn.dataset.play.padStart(2, '0');
-    document.getElementById('modal-por-dentro').classList.remove('hidden');
-    document.getElementById('modal-play-content').textContent = 
-      `Conteúdo detalhado do Play ${id} ainda não implementado.`;
-  });
-});
+@@ // Botões "Por Dentro" de cada Play
+-document.querySelectorAll('.btn-por-dentro').forEach(btn => {
+-  btn.addEventListener('click', e => {
+-    e.preventDefault();
+-    const id = btn.dataset.play.padStart(2, '0');
+-    document.getElementById('modal-por-dentro').classList.remove('hidden');
+-    document.getElementById('modal-play-content').textContent =
+-      `Conteúdo detalhado do Play ${id} ainda não implementado.`;
+-  });
+-});
++document.querySelectorAll('.btn-por-dentro').forEach(btn => {
++  btn.addEventListener('click', async e => {
++    e.preventDefault();
++    const id = btn.dataset.play.padStart(2, '0');
++    const modal = document.getElementById('modal-por-dentro');
++    const container = document.getElementById('modal-play-content');
++    // abre modal e mostra loading
++    modal.classList.remove('hidden');
++    container.innerHTML = '<p class="loading">Carregando conteúdo…</p>';
++    try {
++      // busca o HTML real na pasta posts
++      const resp = await fetch(`posts/play-${id}.html`);
++      if (!resp.ok) throw new Error('Não encontrado');
++      const html = await resp.text();
++      container.innerHTML = html;
++    } catch (err) {
++      console.error(err);
++      container.innerHTML = '<p class="error">Erro ao carregar o conteúdo.</p>';
++    }
++  });
++});
+
 
 // 4) Load notícias via RSS2JSON (sem api_key, free tier)
 async function loadNews() {
