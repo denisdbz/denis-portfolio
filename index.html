@@ -32,7 +32,10 @@
       />
       <span class="logo-text neon-pulse">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
-    <div class="subtitle"><span class="neon-pulse">QA • Pentest • DevSecOps</span></div>
+    <div class="subtitle">
+      <!-- aqui era texto estático; agora deixamos vazio e o JS digita -->
+      <span id="typed-subtitle" class="neon-pulse"></span>
+    </div>
     <nav class="links">
       <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
       <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
@@ -209,16 +212,16 @@
       </div>
     </section>
 
-<!-- FORMULÁRIO DE FEEDBACK -->
-<section id="feedback" class="feedback-form">
-  <h2>Gostou? Deixe um feedback!</h2>
-  <form action="https://formspree.io/f/SEU_ID" method="POST">
-    <input type="email" name="email" placeholder="Seu e-mail" required />
-    <textarea name="message" placeholder="Sua mensagem" required></textarea>
-    <button type="submit">Enviar</button>
-  </form>
-</section>
-
+    <!-- FORMULÁRIO DE FEEDBACK -->
+    <section id="feedback" class="feedback-form">
+      <h2>Gostou? Deixe um feedback!</h2>
+      <form action="https://formspree.io/f/SEU_ID" method="POST">
+        <input type="email" name="email" placeholder="Seu e-mail" required />
+        <textarea name="message" placeholder="Sua mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
 
   <!-- RODAPÉ -->
   <footer>
