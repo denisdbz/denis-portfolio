@@ -106,14 +106,6 @@ document.querySelectorAll('.close-modal').forEach(btn => {
     closeModal(btn.getAttribute('data-close'));
   });
 });
-// Fechar também ao clicar fora do conteúdo
-document.querySelectorAll('.modal').forEach(modal => {
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      closeModal(modal.id.replace('modal-', ''));
-    }
-  });
-});
 
 // 5) Fechar qualquer modal ao pressionar ESC
 document.addEventListener('keydown', e => {
@@ -124,6 +116,16 @@ document.addEventListener('keydown', e => {
       }
     });
   }
+});
+
+
+// Fechar também ao clicar fora do conteúdo
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      closeModal(modal.id.replace('modal-', ''));
+    }
+  });
 });
 
 
