@@ -14,10 +14,43 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== Animações Neon ===== */
+@keyframes neonTextPulse {
+  0%,100% {
+    text-shadow:
+      0 0 5px #00ff9f,
+      0 0 10px #00ff9f,
+      0 0 20px #00ff9f;
+    color: #00ff9f;
+  }
+  50% {
+    text-shadow:
+      0 0 20px #00ff9f,
+      0 0 30px #00ff9f,
+      0 0 40px #00ff9f;
+    color: #00ff9f;
+  }
+}
+@keyframes neonBorderPulse {
+  0%,100% {
+    box-shadow:
+      0 0 10px #00ff9f,
+      0 0 20px #00ff9f,
+      0 0 30px #00ff9f;
+  }
+  50% {
+    box-shadow:
+      0 0 20px #00ff9f,
+      0 0 30px #00ff9f,
+      0 0 40px #00ff9f;
+  }
+}
+
 /* ===== Navbar ===== */
 .navbar {
   background: #111;
   padding: 1rem;
+  text-align: center;
 }
 .navbar ul {
   list-style: none;
@@ -25,7 +58,7 @@ body {
   justify-content: center;
 }
 .navbar ul li {
-  margin: 0 1.5rem;
+  margin: 0 1rem;
 }
 .navbar a, .navbar button {
   color: #00ff9f;
@@ -35,10 +68,6 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  transition: color .2s;
-}
-.navbar a:hover, .navbar button:hover {
-  color: #fff;
 }
 
 /* ===== Hero Section ===== */
@@ -52,33 +81,26 @@ body {
   justify-content: center;
   gap: 1rem;
 }
-.logo-animado {
+/* Logo animada com neon pulsante */
+.logo-animado.neon-pulse {
   width: 60px;
-  height: 60px;
-  animation: neon-pulse 2s ease-in-out infinite;
+  animation: neonTextPulse 2s infinite;
 }
-.logo-text {
-  font-size: 2rem;
+.logo-text.neon-pulse {
+  font-size: 1.5rem;
   font-weight: bold;
-  animation: neon-pulse 2s ease-in-out infinite;
+  animation: neonTextPulse 2s infinite;
 }
-
-/* ===== Subtítulo neon-pulse ===== */
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.2rem;
-  color: #00ff9f;
-  animation: neon-pulse 2s ease-in-out infinite;
+}
+.subtitle span.neon-pulse {
+  animation: neonTextPulse 2s infinite;
 }
 
-/* ===== Neon pulse ===== */
-@keyframes neon-pulse {
-  0%, 100% { text-shadow: 0 0 4px rgba(0,255,159,0.6), 0 0 10px rgba(0,255,159,0.8), 0 0 20px rgba(0,255,159,1); }
-  50%       { text-shadow: 0 0 2px rgba(0,255,159,0.4), 0 0 6px rgba(0,255,159,0.6), 0 0 12px rgba(0,255,159,0.8); }
-}
-
-/* ===== Links sociais ===== */
+/* ===== Links abaixo do Hero ===== */
 .links {
   margin-top: 1rem;
 }
@@ -93,6 +115,9 @@ body {
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: auto;
+}
+.container > h1,
+.container > .intro {
   text-align: center;
 }
 .intro {
@@ -120,27 +145,23 @@ body {
   border-radius: 5px;
 }
 
-/* ===== Grid de cards ===== */
+/* ===== Cards de Plays ===== */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
+/* Borda e sombra neon pulsante nos cards */
 .card {
   background: #111;
   border: 1px solid #00ff9f;
-  padding: 2rem;
   border-radius: 10px;
+  padding: 2rem;
+  animation: neonBorderPulse 4s infinite;
   transition: transform 0.3s;
-  /* ===== borda pulsante ===== */
-  animation: border-pulse 3s ease-in-out infinite;
 }
 .card:hover {
   transform: translateY(-5px);
-}
-@keyframes border-pulse {
-  0%,100% { border-color: #00ff9f; }
-  50%     { border-color: #00cc7f; }
 }
 .card h3 {
   margin-bottom: 1rem;
@@ -149,7 +170,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ===== Botões “Ver o Play” ===== */
+/* ===== Botões ===== */
 .btn {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
@@ -163,10 +184,8 @@ body {
 }
 .btn:hover {
   background: #00cc7f;
-  box-shadow: 0 0 8px rgba(0,255,159,0.7);
 }
-
-/* ===== Botão “Por Dentro” nos cards ===== */
+/* Botão “Por Dentro” em azul-neon */
 .btn-por-dentro {
   display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
@@ -177,42 +196,49 @@ body {
   font-weight: bold;
   border-radius: 5px;
   transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 5px #00aaff;
 }
 .btn-por-dentro:hover {
-  background: #0098dd;
-  box-shadow: 0 0 8px rgba(0,170,255,0.7);
+  background: #008fcc;
+  box-shadow: 0 0 10px #00aaff;
 }
 
 /* ===== Feedback ===== */
-.feedback {
+.feedback-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+.feedback-section form {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  margin: 3rem auto;
-  max-width: 600px;
-  padding: 1rem;
-  background: rgba(0,255,159,0.05);
-  border: 1px solid #00ff9f;
-  border-radius: 8px;
+  flex-wrap: wrap;
 }
-.feedback input[type="email"] {
-  flex: 1 1 150px;
-  min-width: 150px;
+.feedback-section input,
+.feedback-section textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: #000;
 }
-.feedback textarea {
-  flex: 2 1 250px;
-  min-width: 200px;
-  height: 3rem;
+.feedback-section textarea {
+  resize: vertical;
+  min-height: 3rem;
 }
-.feedback button {
+.feedback-section .feedback-btn {
   background: #00ff9f;
   color: #0a0a0a;
-  border: none;
   padding: 0.6rem 1.2rem;
+  border: none;
   border-radius: 5px;
   font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.feedback-section .feedback-btn:hover {
+  background: #00cc7f;
 }
 
 /* ===== Footer ===== */
@@ -224,91 +250,112 @@ footer {
   margin-top: 3rem;
   font-size: 0.9rem;
 }
+footer em {
+  display: block;
+  font-style: italic;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
 
-/* ===== Modais ===== */
+/* ===== Modal ===== */
 .modal {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  overflow: auto;
 }
 .modal.hidden {
   display: none;
 }
+/* Conteúdo do modal com borda neon pulsante e scroll interno */
 .modal-content {
   background: #111;
   padding: 2rem;
   border-radius: 10px;
   width: 90%;
   max-width: 600px;
-  color: #e0e0e0;
-  position: relative;
-  border: 2px solid #00ff9f;
-  box-shadow: 0 0 20px rgba(0,255,159,0.8);
-  max-height: calc(100vh - 4rem);
+  max-height: 85vh;
   overflow-y: auto;
+  border: 2px solid #00ff9f;
+  animation: neonBorderPulse 4s infinite;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,255,159,0.5);
 }
 .close-modal {
   position: absolute;
-  top: 15px; right: 20px;
+  top: 10px; right: 15px;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #00ff9f;
   cursor: pointer;
-  transition: color .2s;
 }
-.close-modal:hover {
-  color: #fff;
+/* quando o modal abre, impede scroll do body */
+body.modal-open {
+  overflow: hidden;
 }
 
-/* ===== Timeline no Modal Sobre ===== */
+/* ===== Canvas do modal “Sobre Mim” ===== */
+#sobre-chart {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  height: 250px;
+  margin: 1rem auto;
+}
+
+/* ===== Estilo do timeline ===== */
 .timeline {
-  list-style: none;
-  margin: 1rem 0 0 0;
-  padding-left: 1.5rem;
-  border-left: 3px solid #00ff9f;
-}
-.timeline li {
   position: relative;
-  margin: 1rem 0;
-  padding-left: 1rem;
+  margin-top: 2rem;
+  padding-left: 2rem;
 }
-.timeline li::before {
+.timeline::before {
   content: '';
   position: absolute;
-  left: -9px; top: 4px;
-  width: 8px; height: 8px;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #00ff9f;
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 14px;
+  height: 14px;
   background: #00ff9f;
   border-radius: 50%;
 }
-
-/* ===== Chart container ===== */
-.chart-container {
-  margin: 2rem 0;
-  width: 100%;
-  height: 300px;
+.timeline-year {
+  display: inline-block;
+  font-weight: bold;
+  color: #00ff9f;
+  margin-right: 0.5rem;
 }
 
-/* ===== Play page: barra de progresso + logs ===== */
+/* ===== Logs e barra de progresso ===== */
 #barra {
   width: 100%;
   background: #333;
   height: 10px;
   margin-top: 2rem;
-  border-radius: 5px;
 }
 #barra-fill {
   height: 100%;
   width: 0%;
   background: #00ff9f;
   transition: width 0.3s ease-in-out;
-  border-radius: 5px 0 0 5px;
 }
 #logs {
   background: #111;
@@ -320,23 +367,9 @@ footer {
   overflow-y: auto;
   border-radius: 5px;
 }
-.log-info {
-  color: #00ff9f;
-  font-weight: bold;
-}
-.log-erro {
-  color: #ff4b5c;
-  font-weight: bold;
-}
+
+/* ===== Outras utilidades ===== */
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-/* ===== Media Queries ===== */
-@media (max-width: 600px) {
-  .navbar ul li { margin: 0 .5rem; }
-  .logo-text { font-size: 1.5rem; }
-  .btn, .btn-por-dentro { font-size: 0.9rem; }
-  .feedback { flex-direction: column; }
 }
