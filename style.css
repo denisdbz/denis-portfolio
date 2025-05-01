@@ -94,6 +94,20 @@ body.light-mode {
   width: 50%;
 }
 
+
+
+/* CENTRALIZA TÍTULO E DESCRIÇÃO */
+.container > h1,
+.container > .intro {
+  text-align: center;
+}
+
+/* CENTRALIZA O INPUT DE BUSCA */
+#search-input {
+  display: block;
+  margin: 1rem auto;
+}
+
 /* ===== Cards de Plays ===== */
 .cards {
   display: grid;
