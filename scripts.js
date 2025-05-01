@@ -20,8 +20,9 @@ if (themeToggle) {
 }
 
 // 3) Função para renderizar o gráfico “Sobre Mim”
-function renderSobreChart() {
-  const ctx = document.getElementById('sobre-chart').getContext('2d');
+// --- função que desenha o gráfico de experiência ---
+function renderExperienceChart() {
+  const ctx = document.getElementById('experienceChart').getContext('2d');
   new Chart(ctx, {
     type: 'bar',
     data: {
@@ -33,10 +34,25 @@ function renderSobreChart() {
     },
     options: {
       responsive: true,
-      maintainAspectRatio: false
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 2 }
+        }
+      },
+      plugins: {
+        legend: { labels: { color: '#fff' } }
+      }
     }
   });
 }
+
+// --- abrir modal Sobre e renderizar gráfico ---
+document.getElementById('btn-sobre').addEventListener('click', e => {
+  e.preventDefault();
+  document.getElementById('modal-sobre').classList.remove('hidden');
+  renderExperienceChart();
+});
 
 // 4) Constrói modais dinamicamente (Sobre, Ajuda, News já no HTML)
 function makeModal(id, title, content) {
