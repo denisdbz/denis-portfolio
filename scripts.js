@@ -57,7 +57,7 @@ makeModal('sobre', 'Sobre Mim', `
   <h3>Contato</h3>
   <p>Quer conversar sobre projetos, QA, segurança ou tecnologia?</p>
   <p><a href="mailto:denis.qae.hack@gmail.com" class="btn">denis.qae.hack@gmail.com</a></p>
-);
+`);
   makeModal('ajuda', 'Central de Ajuda', `
     <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps.</p>
     <ul>

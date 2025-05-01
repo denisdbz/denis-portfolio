@@ -14,16 +14,24 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== Estilos para Light Mode ===== */
+body.light-mode {
+  background: #f5f5f5;
+  color: #222;
+}
+
 /* ===== Navbar ===== */
 .navbar {
   background: #111;
   padding: 1rem;
+  text-align: center;
 }
 .navbar ul {
   list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+}
+.navbar ul li {
+  display: inline-block;
+  margin: 0 15px;
 }
 .navbar a, .navbar button {
   color: #00ff9f;
@@ -46,36 +54,17 @@ body {
   justify-content: center;
   gap: 1rem;
 }
-.logo-box picture,
-.logo-box img {
-  display: block;
-}
 .logo-animado {
   width: 60px;
-}
-/* classe extra de pulsação */
-.neon-pulse-img {
-  animation: pulsar 1.5s ease-in-out infinite alternate;
-}
-@keyframes pulsar {
-  from {
-    filter: drop-shadow(0 0 8px #00ff9f);
-  }
-  to {
-    filter: drop-shadow(0 0 20px #00ff9f);
-  }
 }
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
 }
-
-/* ===== Subtitle abaixo do logo ===== */
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.2rem;
-  color: #ccc;
 }
 
 /* ===== Links abaixo do Hero ===== */
@@ -105,20 +94,7 @@ body {
   width: 50%;
 }
 
-/* ===== Busca ===== */
-#search-input {
-  width: 100%;
-  max-width: 500px;
-  padding: 0.7rem;
-  margin: 1rem auto 2rem;
-  display: block;
-  border: 1px solid #00ff9f;
-  background: #0a0a0a;
-  color: #e0e0e0;
-  border-radius: 5px;
-}
-
-/* ===== Cartões de Plays ===== */
+/* ===== Cards de Plays ===== */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -159,33 +135,10 @@ body {
 .btn-por-dentro {
   background: #444;
   color: #00ff9f;
+  cursor: pointer;
 }
 .btn-por-dentro:hover {
   background: #666;
-}
-
-/* ===== Feedback Form ===== */
-#feedback {
-  margin-top: 4rem;
-  text-align: center;
-}
-#feedback form {
-  display: inline-block;
-  text-align: left;
-}
-#feedback input,
-#feedback textarea {
-  display: block;
-  width: 300px;
-  padding: 0.7rem;
-  margin-bottom: 1rem;
-  border: 1px solid #00ff9f;
-  border-radius: 5px;
-  background: #0a0a0a;
-  color: #e0e0e0;
-}
-#feedback button {
-  margin: auto;
 }
 
 /* ===== Footer ===== */
@@ -203,7 +156,7 @@ footer {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,53 +165,85 @@ footer {
 .modal.hidden {
   display: none;
 }
-/* === Modal === */
 .modal-content {
   background: #111;
   padding: 2rem;
   border-radius: 10px;
   width: 90%;
-  max-width: 600px;
-  /* limita a altura e ativa scroll interno */
-  max-height: 90vh;
-  overflow-y: auto;
+  max-width: 500px; /* ← ajuste conforme necessidade */
+  color: #e0e0e0;
   position: relative;
-  box-shadow: 0 0 15px rgba(0,255,159,0.5);
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
 }
-
-/* força o botão “×” a aparecer sobre tudo */
 .close-modal {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 2rem;
-  color: #00ff9f;
+  top: 10px; right: 15px;
   background: none;
   border: none;
+  font-size: 2rem;
+  color: #00ff9f;
   cursor: pointer;
-  z-index: 10;
 }
 
-/* remove scroll da página principal enquanto o modal está aberto */
-.modal:not(.hidden) ~ * {
-  overflow: hidden;
+/* ===== Barra de Progresso (para Executar Play) ===== */
+#barra {
+  width: 100%;
+  background: #333;
+  height: 10px;
+  margin-top: 2rem;
+}
+#barra-fill {
+  height: 100%;
+  width: 0%;
+  background: #00ff9f;
+  transition: width 0.3s ease-in-out;
 }
 
-/* ===== Tecla ESC para fechar modal ===== */
-body.light-mode .modal-content,
-.modal-content {
-  outline: none;
+/* ===== Logs da execução ===== */
+#logs {
+  background: #111;
+  border: 1px solid #00ff9f;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
 }
 
-/* Centraliza o <h1> principal */
-.container > h1 {
-  text-align: center;
+/* ===== Input de busca ===== */
+#search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.7rem;
+  margin: 1rem auto 2rem;
+  display: block;
+  border: 1px solid #00ff9f;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  border-radius: 5px;
 }
+.log-info {
+  color: #00ff9f;
+  font-weight: bold;
+}
+.log-erro {
+  color: #ff4b5c;
+  font-weight: bold;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== Notícias no modal ===== */
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
+  margin-top: 1rem;
 }
+
 .news-card {
   background: #111;
   border: 1px solid #00ff9f;
@@ -266,12 +251,18 @@ body.light-mode .modal-content,
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s;
 }
+.news-card:hover {
+  transform: translateY(-4px);
+}
+
 .news-card img {
   width: 100%;
+  height: 120px;
   object-fit: cover;
-  height: 100px;
 }
+
 .news-card-content {
   padding: 0.75rem;
   flex: 1;
@@ -280,127 +271,20 @@ body.light-mode .modal-content,
 }
 .news-card-content h4 {
   margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-}
-.news-card-content small {
-  color: #888;
-  margin-bottom: 0.5rem;
-}
-.news-card-content a {
-  margin-top: auto;
-  text-decoration: none;
-  color: #0a0a0a;
-  background: #00ff9f;
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 4px;
-  font-weight: bold;
-}
-.loading {
-  grid-column: 1/-1;
-  text-align: center;
+  font-size: 1rem;
   color: #00ff9f;
 }
-
-
-
-    /* === Modais === */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 1rem;
-    }
-    .modal.hidden {
-      display: none;
-    }
-    .modal-content {
-      background: #111;
-      border: 2px solid #00ff9f;
-      border-radius: 8px;
-      padding: 1.5rem;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 0 20px rgba(0,255,159,0.6);
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .modal-content h2 {
-      margin-top: 0;
-      color: #fff;
-    }
-    .close-modal {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.75rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #00ff9f;
-      cursor: pointer;
-    }
-
-    /* === Grid de Notícias === */
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .news-card {
-      background: #111;
-      border: 1px solid #00ff9f;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,255,159,0.4);
-      transition: transform 0.2s;
-    }
-    .news-card:hover {
-      transform: translateY(-4px);
-    }
-    .news-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
-    .news-card-content {
-      padding: 0.75rem;
-    }
-    .news-card-content h4 {
-      margin: 0 0 0.5rem;
-      font-size: 1rem;
-      color: #fff;
-    }
-    .news-card-content small {
-      color: #888;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .news-card-content a {
-      color: #00ff9f;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 0.5rem;
-      display: inline-block;
-    }
-    .news-card-content a:hover {
-      text-decoration: underline;
-    }
-
-    /* === Mensagens de loading/erro === */
-    .loading {
-      color: #00ff9f;
-      text-align: center;
-    }
-    .loading.error {
-      color: #f55;
-    }
-
+.news-card-content small {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: auto;
+}
+.news-card-content a {
+  margin-top: 0.75rem;
+  text-decoration: none;
+  color: #00ff9f;
+  font-weight: bold;
+}
+.news-card-content a:hover {
+  text-decoration: underline;
+}
