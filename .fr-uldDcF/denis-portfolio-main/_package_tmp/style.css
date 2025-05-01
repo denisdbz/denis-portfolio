@@ -1,0 +1,250 @@
+:root {
+  --color-accent: #00ff9f;
+  --color-accent-hover: #00cc7f;
+  --bg-main: #0a0a0a;
+  --bg-card: #111;
+  --text-main: #e0e0e0;
+  --text-light: #222;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+body.light-mode {
+  background: #f5f5f5;
+  color: var(--text-light);
+}
+
+/* Navbar */
+.navbar {
+  background: var(--bg-card);
+  padding: 1rem;
+  text-align: center;
+}
+.navbar ul {
+  list-style: none;
+}
+.navbar ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+.navbar a,
+.navbar button {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.logo-animado {
+  width: 60px;
+}
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+@keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 5px var(--color-accent);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--color-accent);
+  }
+}
+.subtitle {
+  margin-top: 0.5rem;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+/* Links */
+.links {
+  margin-top: 1rem;
+}
+.links a {
+  margin: 0 10px;
+  color: var(--color-accent);
+}
+
+/* Main Container */
+.container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.separator {
+  margin: 2rem auto;
+  border: none;
+  border-top: 2px solid var(--color-accent);
+  width: 50%;
+}
+
+/* Cards de Plays */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--color-accent);
+  padding: 2rem;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.6rem 1.2rem;
+  background: var(--color-accent);
+  color: var(--bg-main);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: var(--color-accent-hover);
+}
+.btn-por-dentro {
+  background: #444;
+  color: var(--color-accent);
+}
+.btn-por-dentro:hover {
+  background: #666;
+}
+
+/* Feedback */
+#feedback {
+  margin: 3rem auto;
+  max-width: 600px;
+  text-align: center;
+}
+#feedback form {
+  display: grid;
+  gap: 0.5rem;
+}
+#feedback input,
+#feedback textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 5px;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+#feedback textarea {
+  resize: vertical;
+  height: 120px;
+}
+#feedback button {
+  justify-self: center;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.modal.hidden {
+  display: none;
+}
+.modal-content {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 1rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
+}
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+/* Busca */
+#search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.7rem;
+  margin: 1rem auto 2rem;
+  display: block;
+  border: 1px solid var(--color-accent);
+  border-radius: 5px;
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Timeline interativa */
+.timeline-toggle {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.timeline-detail.hidden {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.timeline-detail {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}

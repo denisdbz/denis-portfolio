@@ -1,0 +1,17 @@
+version: '3'
+services:
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa
+    ports:
+      - "8081:80"
+    environment:
+      - MYSQL_PASS=dvwa
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    container_name: dvwa-db
+    environment:
+      MYSQL_ROOT_PASSWORD: dvwa
+      MYSQL_DATABASE: dvwa

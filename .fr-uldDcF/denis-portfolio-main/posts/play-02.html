@@ -1,0 +1,30 @@
+<h1>Por Dentro do Play 02 — Hydra DVWA</h1>
+
+<p>Neste Play, utilizamos o <strong>Hydra</strong> para realizar testes de força bruta em aplicações vulneráveis como o DVWA (Damn Vulnerable Web Application).</p>
+
+<h2>Objetivos</h2>
+<ul>
+  <li>Testar a resistência de formulários de login contra ataques de força bruta.</li>
+  <li>Identificar credenciais fracas e senhas comuns.</li>
+</ul>
+
+<h2>Comandos Utilizados</h2>
+<ul>
+  <li><code>hydra -l admin -P passwords.txt http-post-form "/login.php:username=^USER^&password=^PASS^:Login failed"</code> — Teste básico de força bruta HTTP POST.</li>
+  <li><code>hydra -L users.txt -P passwords.txt ftp://192.168.0.1</code> — Teste de múltiplos usuários via FTP.</li>
+</ul>
+
+<h2>Resultados Esperados</h2>
+<ul>
+  <li>Encontrar combinações válidas de usuário/senha.</li>
+  <li>Expor senhas fracas e validar mecanismos de autenticação.</li>
+  <li>Relatório de tentativas e resultados.</li>
+</ul>
+
+<hr class="separator">
+
+<div class="btn-box">
+  <a class="btn" href="../plays/play-02-hydra-dvwa/" target="_blank">▶️ Ir ao Play</a>
+  <a class="btn" href="../index.html">← Voltar à Home</a>
+</div>
+
