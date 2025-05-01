@@ -13,32 +13,45 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+body.light-mode {
+  background: #f5f5f5;
+  color: #222;
+}
+body.modal-open {
+  overflow: hidden;
+}
 
 /* ===== Navbar ===== */
 .navbar {
   background: #111;
   padding: 1rem 0;
+  text-align: center;
 }
 .navbar ul {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
   list-style: none;
+}
+.navbar li {
+  display: inline-block;
+  margin: 0 1.5rem;
 }
 .navbar a, .navbar button {
   color: #00ff9f;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* ===== Neon pulse animation ===== */
+/* ===== Neon-pulse keyframes ===== */
 @keyframes neonPulse {
   0%, 100% {
     text-shadow:
+      0 0 4px rgba(0,255,159,0.8),
+      0 0 8px rgba(0,255,159,0.6),
+      0 0 16px rgba(0,255,159,0.4);
+    box-shadow:
       0 0 4px rgba(0,255,159,0.8),
       0 0 8px rgba(0,255,159,0.6),
       0 0 16px rgba(0,255,159,0.4);
@@ -48,14 +61,11 @@ body {
       0 0 8px rgba(0,255,159,1),
       0 0 16px rgba(0,255,159,0.8),
       0 0 32px rgba(0,255,159,0.6);
+    box-shadow:
+      0 0 8px rgba(0,255,159,1),
+      0 0 16px rgba(0,255,159,0.8),
+      0 0 32px rgba(0,255,159,0.6);
   }
-}
-
-/* Aplicar pulso neon somente em logo, título e subtítulo */
-.logo-animado,
-.logo-text,
-.subtitle {
-  animation: neonPulse 1.5s ease-in-out infinite;
 }
 
 /* ===== Hero Section ===== */
@@ -68,6 +78,12 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+/* Aplicar pulso neon ao logo, título e subtítulo */
+.logo-animado.neon-pulse,
+.logo-text.neon-pulse,
+.subtitle span.neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
 }
 .logo-animado {
   width: 80px;
@@ -83,44 +99,23 @@ body {
   font-size: 1.2rem;
 }
 
-/* ===== Links de contato ===== */
-.links {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-.links a {
-  color: #00ff9f;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
 /* ===== Main Container ===== */
 .container {
   padding: 2rem 1rem;
-  max-width: 1200px;
+  max-width: 800px;
   margin: auto;
+  text-align: center;
 }
 .container h1,
 .container .intro {
-  text-align: center;
-}
-.intro {
   margin-bottom: 1rem;
-}
-.separator {
-  margin: 1.5rem auto;
-  border: none;
-  border-top: 2px solid #00ff9f;
-  width: 50%;
 }
 
 /* ===== Busca ===== */
 #search-input {
   display: block;
   width: 90%;
-  max-width: 500px;
+  max-width: 400px;
   margin: 1rem auto 2rem;
   padding: 0.7rem;
   border: 1px solid #00ff9f;
@@ -132,46 +127,46 @@ body {
 /* ===== Cards de Plays ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 .card {
   background: #111;
   border: 1px solid #00ff9f;
-  padding: 2rem;
-  border-radius: 10px;
+  padding: 1.5rem;
+  border-radius: 8px;
   transition: transform 0.3s;
 }
 .card:hover {
   transform: translateY(-5px);
 }
 .card h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .card p {
   margin-bottom: 1rem;
 }
-.btn {
+
+/* ===== Botões ===== */
+.btn, .btn-por-dentro {
   display: inline-block;
-  margin: 0.5rem 0.5rem 0 0;
-  padding: 0.6rem 1.2rem;
+  margin: 0.3rem 0.3rem 0 0;
+  padding: 0.5rem 1rem;
   background: #00ff9f;
   color: #0a0a0a;
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
+  border: none;
+  cursor: pointer;
   transition: background 0.3s;
 }
-.btn:hover {
+.btn:hover, .btn-por-dentro:hover {
   background: #00cc7f;
 }
 .btn-por-dentro {
   background: #444;
   color: #00ff9f;
-  cursor: pointer;
-}
-.btn-por-dentro:hover {
-  background: #666;
 }
 
 /* ===== Modal ===== */
@@ -179,13 +174,12 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   z-index: 10000;
-  overflow-y: auto;
 }
 .modal.hidden {
   display: none;
@@ -193,11 +187,15 @@ body {
 .modal-content {
   background: #111;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 8px;
   width: 100%;
   max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
   position: relative;
-  box-shadow: 0 0 15px rgba(0, 255, 159, 0.5);
+  /* neon border pulsante */
+  box-shadow: 0 0 8px #00ff9f;
+  animation: neonPulse 2s ease-in-out infinite;
 }
 .close-modal {
   position: absolute;
@@ -209,16 +207,53 @@ body {
   cursor: pointer;
 }
 
-/* ===== Barra de Progresso & Logs (Play) ===== */
+/* ===== Modal “Sobre” ===== */
+#modal-sobre .modal-content h2 {
+  margin-bottom: 1rem;
+  color: #00ff9f;
+}
+#modal-sobre .modal-content p {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+#modal-sobre canvas {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1.5rem;
+}
+#modal-sobre .timeline {
+  list-style: none;
+  border-left: 3px solid #00ff9f;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+#modal-sobre .timeline li {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+#modal-sobre .timeline li::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  background: #00ff9f;
+  border-radius: 50%;
+}
+
+/* ===== Barra de progresso e logs (Play) ===== */
 #barra {
   width: 100%;
   background: #333;
-  height: 10px;
-  margin-top: 2rem;
+  height: 8px;
+  margin-top: 1.5rem;
 }
 #barra-fill {
   height: 100%;
-  width: 0%;
+  width: 0;
   background: #00ff9f;
   transition: width 0.3s ease-in-out;
 }
@@ -227,132 +262,42 @@ body {
   border: 1px solid #00ff9f;
   padding: 1rem;
   margin-top: 1rem;
-  font-size: 0.9rem;
-  height: 200px;
+  height: 180px;
   overflow-y: auto;
   border-radius: 5px;
 }
 
-/* ===== News Grid ===== */
+/* ===== Grid de notícias ===== */
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
 }
 .news-card {
   background: #222;
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
 }
 .news-card img {
   width: 100%;
-  height: auto;
-  border-radius: 4px;
+  height: 120px;
+  object-fit: cover;
+}
+.news-card-content {
+  padding: 0.75rem;
+}
+.news-card-content h4 {
   margin-bottom: 0.5rem;
+  color: #00ff9f;
 }
-.news-content h4 {
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
-}
-.news-content small {
+.news-card-content small {
   font-size: 0.75rem;
-  display: block;
+  color: #aaa;
   margin-bottom: 0.5rem;
 }
-.news-content a {
+.news-card-content a {
+  font-weight: bold;
   color: #00ff9f;
   text-decoration: none;
-  font-size: 0.85rem;
-}
-
-/* ===== Timeline (Sobre Mim) ===== */
-.timeline {
-  list-style: none;
-  border-left: 3px solid #00ff9f;
-  margin: 1.5rem 0;
-  padding-left: 1.5rem;
-}
-.timeline li {
-  position: relative;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
-}
-.timeline li::before {
-  content: '●';
-  position: absolute;
-  left: -9px;
-  top: 2px;
-  color: #00ff9f;
-  font-size: 1.2rem;
-}
-/* ==== Neon-pulse ==== */
-@keyframes neon-pulse {
-  0%, 100% {
-    text-shadow:
-      0 0 4px #00ff9f,
-      0 0 8px #00ff9f,
-      0 0 16px #00ff9f,
-      0 0 24px #00ff9f;
-  }
-  50% {
-    text-shadow:
-      0 0 2px #00ff9f,
-      0 0 4px #00ff9f,
-      0 0 8px #00ff9f,
-      0 0 12px #00ff9f;
-  }
-}
-
-.neon-pulse {
-  animation: neon-pulse 2s infinite ease-in-out;
-}
-
-/* Reaplique ao logo e títulos */
-.logo-animado.neon-pulse-img,
-.logo-text.neon-pulse,
-.subtitle span.neon-pulse {
-  animation: neon-pulse 2s infinite ease-in-out;
-}
-
-/* ===== Modal “Sobre”: canvas & timeline ===== */
-#modal-sobre .modal-content {
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-  padding-bottom: 2rem;
-}
-
-#modal-sobre .timeline {
-  list-style: none;
-  margin: 1.5rem 0;
-  padding: 0;
-  border-left: 3px solid #00ff9f;
-}
-
-#modal-sobre .timeline li {
-  margin: 1rem 0;
-  padding-left: 1rem;
-  position: relative;
-}
-
-#modal-sobre .timeline li::before {
-  content: '';
-  position: absolute;
-  left: -6px;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  background: #00ff9f;
-  border-radius: 50%;
-}
-
-#modal-sobre canvas {
-  width: 100% !important;
-  max-width: 400px;
-  margin: 1rem auto;
-  display: block;
 }
