@@ -163,22 +163,15 @@ body {
   box-shadow: 0 0 8px rgba(0,255,159,0.7);
 }
 
-/* ===== Botões “Por Dentro” ===== */
-.btn-por-dentro {
-  display: inline-block;
-  margin: 0.5rem 0 0 0.5rem;
-  padding: 0.6rem 1.2rem;
-  background: #00ccff;
-  color: #0a0a0a;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 8px rgba(0,204,255,0.7);
+/* ===== Botões “Por Dentro” e “Voltar à Home” nos modais ===== */
+.modal-content .btn {
+  margin: 0.5rem 0.5rem 0 0;
 }
-.btn-por-dentro:hover {
-  background: #00aadd;
-  box-shadow: 0 0 12px rgba(0,204,255,0.9);
+.modal-content .btn[href="#"] {
+  /* apenas se usar link fictício para voltar */
+}
+.modal-content .btn.home {
+  /* opcionalmente usar <a class="btn home" href="/">Voltar à Home</a> */
 }
 
 /* ===== Feedback ===== */
@@ -190,7 +183,9 @@ body {
   gap: 1rem;
   margin: 2rem auto;
   max-width: 600px;
-  text-align: center;
+  background: rgba(0,255,159,0.05);
+  padding: 1rem;
+  border-radius: 8px;
 }
 .feedback input,
 .feedback textarea {
@@ -199,7 +194,7 @@ body {
   color: #e0e0e0;
   padding: 0.5rem;
   border-radius: 5px;
-  flex: 1;
+  flex: 1 1 120px;
   min-width: 120px;
 }
 .feedback button {
@@ -246,6 +241,9 @@ footer {
   position: relative;
   border: 2px solid #00ff9f;
   box-shadow: 0 0 20px rgba(0,255,159,0.8);
+  /* recupera scroll interno */
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
 }
 .close-modal {
   position: absolute;
