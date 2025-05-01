@@ -4,9 +4,11 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denis Oliveira — Portfólio Profissional</title>
-  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps."/>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="icon" href="assets/img/logo-animado-denis.png" type="image/png"/>
+  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps. Testes técnicos, desafios práticos e projetos de automação de qualidade e segurança.">
+  <meta property="og:title" content="Denis Oliveira — Portfólio Profissional">
+  <meta property="og:description" content="Testes automatizados, pentests e segurança da informação. Explore meus projetos técnicos.">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/img/logo-animado-denis.svg" type="image/svg+xml" />
 </head>
 <body class="neon-dark">
 
@@ -25,17 +27,14 @@
   <header class="hero">
     <div class="logo-box">
       <img
-        src="assets/img/logo-animado-denis.png"
-        alt="Logo Denis QA & Pentest"
+        src="assets/img/logo-animado-denis.svg"
+        alt="Logo Denis QA &amp; Pentest"
         class="logo-animado neon-pulse"
         loading="lazy"
       />
       <span class="logo-text neon-pulse">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
-    <div class="subtitle">
-      <!-- aqui era texto estático; agora deixamos vazio e o JS digita -->
-      <span id="typed-subtitle" class="neon-pulse"></span>
-    </div>
+    <div class="subtitle"><span class="neon-pulse">QA • Pentest • DevSecOps</span></div>
     <nav class="links">
       <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
       <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
@@ -51,8 +50,11 @@
       Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
       <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
     </p>
+
     <hr class="separator"/>
-    <input type="text" id="search-input" placeholder="Buscar plays..." />
+
+    <!-- BUSCA -->
+    <input type="text" id="search-input" placeholder="Buscar plays…" />
 
     <!-- GRID DE CARDS -->
     <section id="plays" class="cards">
@@ -211,16 +213,6 @@
         <button class="btn-por-dentro" data-play="22">Por Dentro</button>
       </div>
     </section>
-
-    <!-- FORMULÁRIO DE FEEDBACK -->
-    <section id="feedback" class="feedback-form">
-      <h2>Gostou? Deixe um feedback!</h2>
-      <form action="https://formspree.io/f/SEU_ID" method="POST">
-        <input type="email" name="email" placeholder="Seu e-mail" required />
-        <textarea name="message" placeholder="Sua mensagem" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
   </main>
 
   <!-- RODAPÉ -->
@@ -234,7 +226,7 @@
     <div class="modal-content">
       <button class="close-modal" data-close="sobre">&times;</button>
       <h2>Sobre Mim</h2>
-      <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps. Apaixonado por construir pipelines seguras, integrar qualidade desde o CI/CD e fomentar a cultura DevOps em times ágeis.</p>
+      <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps. Apaixonado por construir pipelines seguras, integrar qualidade no CI/CD e fomentar a cultura DevOps em times ágeis.</p>
       <canvas id="sobre-chart"></canvas>
       <ul class="timeline">
         <li><strong>2011:</strong> Início na área de TI — suporte técnico e infraestrutura.</li>
@@ -264,7 +256,9 @@
     <div class="modal-content">
       <button class="close-modal" data-close="news">&times;</button>
       <h2>Últimas Notícias</h2>
-      <div id="news-list" class="news-grid"></div>
+      <div id="news-list" class="news-grid">
+        <p class="loading">Carregando notícias…</p>
+      </div>
     </div>
   </div>
 
@@ -287,3 +281,4 @@
   </script>
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-/* ===== Reset & Corpo principal ===== */
+/* ===== Reset & Corpo ===== */
 * {
   margin: 0;
   padding: 0;
@@ -11,17 +11,16 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Neon pulsante – só no logo, título principal e legenda digitada ===== */
+/* ===== Neon pulsante (só logo, título principal e typed subtitle) ===== */
 @keyframes neon-pulse {
-  0%, 100% { text-shadow: 0 0 4px #00ff9f, 0 0 16px #00ff9f; }
-  50%      { text-shadow: 0 0 8px #00ff9f, 0 0 24px #00ff9f; }
+  0%,100% { text-shadow:0 0 4px #00ff9f,0 0 16px #00ff9f }
+  50%     { text-shadow:0 0 8px #00ff9f,0 0 24px #00ff9f }
 }
 .logo-animado,
 .logo-text,
 #typed-subtitle {
   color: #00ff9f;
   animation: neon-pulse 2s infinite;
-  text-shadow: 0 0 4px #00ff9f, 0 0 16px #00ff9f;
 }
 
 /* ===== Navbar ===== */
@@ -30,13 +29,8 @@ body {
   padding: 1rem;
   text-align: center;
 }
-.navbar ul {
-  list-style: none;
-}
-.navbar li {
-  display: inline-block;
-  margin: 0 1rem;
-}
+.navbar ul { list-style: none; }
+.navbar li { display: inline-block; margin: 0 1rem; }
 .navbar a, .navbar button {
   color: #00ff9f;
   text-decoration: none;
@@ -44,42 +38,33 @@ body {
   cursor: pointer;
 }
 
-/* ===== Hero ===== */
-.hero {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-.logo-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.logo-animado {
-  width: 60px;
-}
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.subtitle {
-  margin-top: 0.5rem;
-  font-style: italic;
-  font-size: 1.2rem;
-}
+/* ===== Hero Section ===== */
+.hero { text-align: center; padding: 2rem 1rem; }
+.logo-box { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+.logo-animado { width: 60px; }
+.logo-text { font-size: 1.5rem; font-weight: bold; }
+.subtitle { margin-top: .5rem; font-style: italic; font-size: 1.2rem; }
 
-/* ===== Centralizar título principal ===== */
-.container > h1 {
+/* ===== Título e intro centralizados ===== */
+.container > h1,
+.container > .intro {
   text-align: center;
-  margin-top: 1rem;
 }
+.intro { margin-bottom: 1rem; }
 
-/* ===== Search Input ===== */
-#search-input {
-  width: 100%;
-  max-width: 500px;
-  padding: 0.7rem;
+/* ===== Barra de separação ===== */
+.separator {
   margin: 1rem auto 2rem;
+  border: none;
+  border-top: 2px solid #00ff9f;
+  width: 50%;
+}
+
+/* ===== Busca ===== */
+#search-input {
+  width: 100%; max-width: 500px;
+  padding: .7rem;
+  margin: 0 auto 2rem;
   display: block;
   border: 1px solid #00ff9f;
   background: #0a0a0a;
@@ -90,115 +75,86 @@ body {
 /* ===== Cards ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
   gap: 2rem;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 .card {
   background: #111;
   border: 1px solid #00ff9f;
   border-radius: 10px;
   padding: 1.5rem;
-  transition: box-shadow 0.3s;
+  transition: box-shadow .3s;
 }
 .card:hover {
   box-shadow: 0 0 20px #00ff9f;
 }
-.card h3 {
-  margin-bottom: 0.5rem;
-}
-.card p {
-  margin-bottom: 1rem;
-}
+.card h3 { margin-bottom: .5rem; }
+.card p  { margin-bottom: 1rem; }
 
-/* ===== Botão “Ver o Play” ===== */
+/* ===== Botões ===== */
 .btn {
   display: inline-block;
-  margin: 0.5rem 0.5rem 0 0;
-  padding: 0.6rem 1.2rem;
+  margin: .5rem .5rem 0 0;
+  padding: .6rem 1.2rem;
   background: #00ff9f;
   color: #0a0a0a;
-  text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  transition: background 0.3s;
+  text-decoration: none;
+  transition: background .3s;
 }
-.btn:hover {
-  background: #00cc7f;
-}
+.btn:hover { background: #00cc7f; }
 
-/* ===== Botão “Por Dentro” – mesmo padding/raio do .btn, cor azul ===== */
 .btn-por-dentro {
   display: inline-block;
-  margin: 0.5rem 0.5rem 0 0;
-  padding: 0.6rem 1.2rem;
+  margin: .5rem .5rem 0 0;
+  padding: .6rem 1.2rem;
   background: #0075cc;
   color: #fff;
-  text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  transition: background 0.3s;
+  text-decoration: none;
+  transition: background .3s;
 }
-.btn-por-dentro:hover {
-  background: #005fa3;
-}
+.btn-por-dentro:hover { background: #005fa3; }
 
 /* ===== Modais ===== */
 .modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
+  position: fixed; top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,.7);
+  display: flex; align-items:center; justify-content:center;
+  z-index:10000;
 }
-.modal.hidden {
-  display: none;
-}
+.modal.hidden { display: none; }
 .modal-content {
   background: #111;
   padding: 2rem;
   border-radius: 10px;
-  width: 90%;
-  max-width: 600px;
+  width: 90%; max-width: 600px;
   color: #e0e0e0;
-  position: relative;
   box-shadow: 0 0 20px #00ff9f;
-  overflow-y: auto;
   max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
 }
-/* X de fechar */
 .close-modal {
-  position: absolute;
-  top: 1rem; right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #00ff9f;
-  cursor: pointer;
+  position: absolute; top:1rem; right:1rem;
+  background:none; border:none;
+  font-size:1.5rem; color:#00ff9f;
+  cursor:pointer;
 }
 
-/* ===== Evita duplicidade de rodapé dentro do modal ===== */
-.modal-footer + .modal-footer {
-  display: none;
-}
-
-/* ===== Footer dos “Por Dentro” ===== */
+/* ===== Evita duplicidade de rodapés dentro do modal ===== */
+.modal-footer + .modal-footer { display: none; }
 .modal-footer {
+  display: flex; flex-wrap: wrap; gap: 1rem;
   margin-top: 1.5rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
 
-/* ===== “Sobre Mim” – gráfico e timeline ===== */
-#sobre-chart {
-  width: 100% !important;
-  height: 250px !important;
-  margin: 1rem 0;
-}
+/* ===== Sobre Mim (gráfico + timeline) ===== */
+#sobre-chart { width:100%!important; height:250px!important; margin:1rem 0; }
 .timeline {
   list-style: none;
   padding-left: 1rem;
@@ -218,7 +174,7 @@ body {
   border-radius: 50%;
 }
 
-/* ===== Formulário de Feedback ===== */
+/* ===== Feedback ===== */
 #feedback {
   max-width: 500px;
   margin: 3rem auto;
@@ -235,7 +191,7 @@ body {
 #feedback input,
 #feedback textarea {
   width: 100%;
-  padding: 0.7rem;
+  padding: .7rem;
   border: 1px solid #00ff9f;
   background: transparent;
   color: #e0e0e0;
@@ -243,7 +199,7 @@ body {
 }
 #feedback button {
   align-self: center;
-  padding: 0.6rem 1.2rem;
+  padding: .6rem 1.2rem;
 }
 
 /* ===== Footer ===== */
@@ -253,24 +209,27 @@ footer {
   background: #111;
   color: #00ff9f;
   margin-top: 3rem;
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 footer em {
   font-style: italic;
-  color: #00ff9f;
-  opacity: 0.8;
+  opacity: .8;
 }
 
-/* ===== Play page (“Ver o Play”) – desliga neon no título ===== */
-.play-header .hero h1,
-.play-header .hero .logo-text {
-  animation: none !important;
-  text-shadow: none !important;
+/* ===== “Ver o Play” (pages individuais) ===== */
+/* remove neon do título e centraliza o subtítulo */
+.play-header h1,
+.play-header .logo-text,
+.play-header .hero h1 {
+  animation: none!important;
+  text-shadow: none!important;
 }
-/* e exibe barra + logs */
-#barra,
-#barra-fill,
-#logs {
+.play-container h1,
+.play-container p {
+  text-align: center;
+}
+#barra, #barra-fill, #logs {
   display: block;
   margin: 1rem auto;
+  max-width: 90%;
 }
