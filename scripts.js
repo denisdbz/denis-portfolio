@@ -72,14 +72,31 @@ document.getElementById('btn-news').addEventListener('click', e => {
 });
 
 // “Por Dentro” de cada Play (dá para completar conforme a lógica de API que tiver)
+// 4) Por Dentro buttons — substituir por este código:
 document.querySelectorAll('.btn-por-dentro').forEach(btn => {
-  btn.addEventListener('click', e => {
+  btn.addEventListener('click', async e => {
     e.preventDefault();
-    openModal('por-dentro');
     const playId = btn.dataset.play.padStart(2, '0');
-    // aqui você carrega e injeta em #modal-play-content
-    document.getElementById('modal-play-content').textContent =
-      'Conteúdo detalhado do Play ' + playId + ' ainda não implementado.';
+    const modal = document.getElementById('modal-por-dentro');
+    const container = document.getElementById('modal-play-content');
+
+    // abre o modal e trava scroll
+    openModal('por-dentro');
+
+    // mostra loading
+    container.innerHTML = '<p class="loading">Carregando conteúdo...</p>';
+
+    try {
+      // tenta carregar o HTML em posts/play-XX.html
+      const resp = await fetch(`posts/play-${playId}.html`);
+      if (!resp.ok) throw new Error('Não encontrado');
+      const html = await resp.text();
+      container.innerHTML = html;
+    } catch {
+      container.innerHTML = `
+        <p>Conteúdo “Por Dentro” do Play ${playId} ainda não disponível.</p>
+      `;
+    }
   });
 });
 
@@ -97,6 +114,18 @@ document.querySelectorAll('.modal').forEach(modal => {
     }
   });
 });
+
+// 5) Fechar qualquer modal ao pressionar ESC
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' || e.key === 'Esc') {
+    document.querySelectorAll('.modal').forEach(modal => {
+      if (!modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+      }
+    });
+  }
+});
+
 
 // 5) Search/filter plays
 const searchInput = document.getElementById('search-input');
