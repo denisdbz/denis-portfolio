@@ -1,179 +1,95 @@
-// 1) Typed subtitle animation
-const subtitleText = 'QA • Pentest • DevSecOps';
-let ti = 0;
-const subtitleEl = document.getElementById('typed-subtitle');
-(function type() {
-  if (ti <= subtitleText.length) {
-    subtitleEl.textContent = subtitleText.slice(0, ti++);
-    setTimeout(type, 100);
+// scripts.js
+document.addEventListener('DOMContentLoaded', () => {
+  // --- 1) Typed subtitle animation (já existente) ---
+  const text = 'QA • Pentest • DevSecOps';
+  let idx = 0;
+  const el = document.getElementById('typed-subtitle');
+  (function type() {
+    if (idx <= text.length) {
+      el.textContent = text.slice(0, idx++);
+      setTimeout(type, 100);
+    }
+  })();
+
+  // --- 2) Theme toggle (já existente) ---
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () =>
+      document.body.classList.toggle('light-mode')
+    );
   }
-})();
 
-// 2) Theme toggle (neon ↔ light)
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle?.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-});
+  // --- Funções utilitárias para abrir/fechar modais ---
+  function openModal(id) {
+    document.getElementById(`modal-${id}`).classList.remove('hidden');
+    document.body.classList.add('modal-open');
+  }
+  function closeModal(id) {
+    document.getElementById(`modal-${id}`).classList.add('hidden');
+    document.body.classList.remove('modal-open');
+  }
 
-// 3) Render experience chart inside “Sobre” modal
-function renderExperienceChart() {
-  const ctx = document.getElementById('experienceChart').getContext('2d');
-  // limpa chart anterior, caso exista
-  if (window.exChart) window.exChart.destroy();
-  window.exChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['QA', 'Pentest', 'Automação', 'DevSecOps'],
-      datasets: [{
-        label: 'Anos de experiência',
-        data: [12, 5, 8, 4],
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: { beginAtZero: true, ticks: { stepSize: 2 } }
-      },
-      plugins: {
-        legend: { labels: { color: '#fff' } }
-      }
+  // --- 3) Listeners nos botões de menu ---
+  document.getElementById('btn-sobre')
+    .addEventListener('click', e => { e.preventDefault(); openModal('sobre'); });
+  document.getElementById('btn-ajuda')
+    .addEventListener('click', e => { e.preventDefault(); openModal('ajuda'); });
+  document.getElementById('btn-news')
+    .addEventListener('click', e => { e.preventDefault(); openModal('news'); /* opcional: loadNews(); */ });
+
+  // --- 4) Botões “Por Dentro” ---
+  document.querySelectorAll('.btn-por-dentro').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const id = btn.dataset.play.padStart(2, '0');
+      openModal('por-dentro');
+      document.getElementById('modal-play-content').innerHTML = '<p>Carregando conteúdo...</p>';
+      fetch(`posts/play-${id}.html`)
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('modal-play-content').innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById('modal-play-content').innerHTML = '<p>Conteúdo ainda não disponível.</p>';
+        });
+    });
+  });
+
+  // --- 5) Fechar ao clicar no “×” (qualquer modal) ---
+  document.body.addEventListener('click', e => {
+    if (e.target.classList.contains('close-modal')) {
+      const id = e.target.getAttribute('data-close');
+      closeModal(id);
     }
   });
-}
 
-// 4) Abrir/fechar modais
-function openModal(id) {
-  document.body.classList.add('modal-open');
-  document.getElementById('modal-' + id).classList.remove('hidden');
-}
-function closeModal(id) {
-  document.body.classList.remove('modal-open');
-  document.getElementById('modal-' + id).classList.add('hidden');
-}
-
-// “Sobre” com gráfico e timeline
-document.getElementById('btn-sobre').addEventListener('click', e => {
-  e.preventDefault();
-  openModal('sobre');
-  renderExperienceChart();
-});
-
-// “Ajuda”
-document.getElementById('btn-ajuda').addEventListener('click', e => {
-  e.preventDefault();
-  openModal('ajuda');
-});
-
-// “News” + carregamento pelo RSS2JSON
-document.getElementById('btn-news').addEventListener('click', e => {
-  e.preventDefault();
-  openModal('news');
-  loadNews();
-});
-
-// “Por Dentro” de cada Play (dá para completar conforme a lógica de API que tiver)
-// 4) Por Dentro buttons — substituir por este código:
-document.querySelectorAll('.btn-por-dentro').forEach(btn => {
-  btn.addEventListener('click', async e => {
-    e.preventDefault();
-    const playId = btn.dataset.play.padStart(2, '0');
-    const modal = document.getElementById('modal-por-dentro');
-    const container = document.getElementById('modal-play-content');
-
-    // abre o modal e trava scroll
-    openModal('por-dentro');
-
-    // mostra loading
-    container.innerHTML = '<p class="loading">Carregando conteúdo...</p>';
-
-    try {
-      // tenta carregar o HTML em posts/play-XX.html
-      const resp = await fetch(`posts/play-${playId}.html`);
-      if (!resp.ok) throw new Error('Não encontrado');
-      const html = await resp.text();
-      container.innerHTML = html;
-    } catch {
-      container.innerHTML = `
-        <p>Conteúdo “Por Dentro” do Play ${playId} ainda não disponível.</p>
-      `;
+  // --- 6) Fechar com ESC ---
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden'));
+      document.body.classList.remove('modal-open');
     }
   });
-});
 
-// Fechar ao clicar no “×”
-document.querySelectorAll('.close-modal').forEach(btn => {
-  btn.addEventListener('click', () => {
-    closeModal(btn.getAttribute('data-close'));
-  });
-});
+  // --- 7) Restante do seu código (busca, Konami, etc) ---
+  const search = document.getElementById('search-input');
+  if (search) {
+    search.addEventListener('input', () => {
+      const term = search.value.toLowerCase();
+      document.querySelectorAll('#plays .card').forEach(card => {
+        card.style.display = card.querySelector('h3')
+          .textContent.toLowerCase()
+          .includes(term)
+          ? '' : 'none';
+      });
+    });
+  }
 
-// 5) Fechar qualquer modal ao pressionar ESC
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' || e.key === 'Esc') {
-    document.querySelectorAll('.modal').forEach(modal => {
-      if (!modal.classList.contains('hidden')) {
-        modal.classList.add('hidden');
-      }
+  if (typeof Konami === 'function') {
+    new Konami(() => {
+      alert('Easter egg ativado! Segredo desbloqueado!');
+      new Audio('assets/audio/palpite.mp3').play();
     });
   }
 });
-
-
-// Fechar também ao clicar fora do conteúdo
-document.querySelectorAll('.modal').forEach(modal => {
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      closeModal(modal.id.replace('modal-', ''));
-    }
-  });
-});
-
-
-// 5) Search/filter plays
-const searchInput = document.getElementById('search-input');
-searchInput?.addEventListener('input', () => {
-  const term = searchInput.value.toLowerCase();
-  document.querySelectorAll('#plays .card').forEach(card => {
-    card.style.display = card.querySelector('h3')
-      .textContent.toLowerCase().includes(term) ? '' : 'none';
-  });
-});
-
-// 6) Carregar notícias via RSS2JSON
-async function loadNews() {
-  const list = document.getElementById('news-list');
-  list.innerHTML = '<p class="loading">Carregando notícias...</p>';
-  try {
-    const RSS_URL = encodeURIComponent('https://feeds.twit.tv/brickhouse.xml');
-    const API_KEY = 'a4dfb3814aee4c04a9efaef4bcf2a82e';
-    const res = await fetch(
-      `https://api.rss2json.com/v1/api.json?rss_url=${RSS_URL}&api_key=${API_KEY}&count=6`
-    );
-    const data = await res.json();
-    if (data.status !== 'ok') throw new Error(data.message);
-    list.innerHTML = data.items.map(item => `
-      <div class="news-card">
-        <img src="${item.thumbnail || item.enclosure.link || 'https://via.placeholder.com/300x100'}" alt="${item.title}">
-        <div class="news-card-content">
-          <h4>${item.title}</h4>
-          <small>${new Date(item.pubDate).toLocaleDateString()}</small>
-          <a href="${item.link}" target="_blank">Leia mais →</a>
-        </div>
-      </div>
-    `).join('');
-  } catch (err) {
-    console.error('News load error:', err);
-    list.innerHTML = '<p class="loading error">Erro ao carregar notícias.</p>';
-  }
-}
-
-// 7) Iniciar AOS (se estiver usando)
-if (window.AOS) AOS.init();
-
-// 8) Konami Code Easter Egg
-if (typeof Konami === 'function') {
-  new Konami(() => {
-    alert('Easter egg ativado! Segredo desbloqueado!');
-    new Audio('assets/audio/palpite.mp3').play();
-  });
-}
+k
