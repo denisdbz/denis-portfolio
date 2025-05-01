@@ -14,11 +14,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Bloqueia scroll do body quando um modal está aberto */
-body.modal-open {
-  overflow: hidden;
-}
-
 /* ===== Estilos para Light Mode ===== */
 body.light-mode {
   background: #f5f5f5;
@@ -34,13 +29,9 @@ body.light-mode {
   list-style: none;
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 1.5rem;
 }
-.navbar ul li {
-  margin: 0 1rem;
-}
-.navbar a,
-.navbar button {
+.navbar a, .navbar button {
   color: #00ff9f;
   text-decoration: none;
   font-weight: bold;
@@ -57,21 +48,20 @@ body.light-mode {
 }
 .logo-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-/* neon pulse keyframes */
-@keyframes neonPulse {
-  0%,100% { filter: drop-shadow(0 0 5px #00ff9f); }
-  50%    { filter: drop-shadow(0 0 20px #00ff9f); }
-}
-/* aplica ao logo */
-.neon-pulse-img {
-  animation: neonPulse 1.5s ease-in-out infinite;
+  gap: 0.5rem;
 }
 .logo-animado {
-  width: 60px;
+  width: 80px;
+  height: auto;
+}
+.neon-pulse-img {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+@keyframes neonPulse {
+  0%,100% { box-shadow: 0 0 8px #00ff9f; }
+  50%    { box-shadow: 0 0 20px #00ff9f; }
 }
 .logo-text {
   font-size: 1.5rem;
@@ -86,7 +76,6 @@ body.light-mode {
 /* ===== Links abaixo do Hero ===== */
 .links {
   margin-top: 1rem;
-  text-align: center;
 }
 .links a {
   margin: 0 10px;
@@ -113,12 +102,14 @@ body.light-mode {
   border-top: 2px solid #00ff9f;
   width: 50%;
 }
+
+/* ===== Input de busca ===== */
 #search-input {
-  display: block;
-  margin: 1rem auto 2rem;
   width: 100%;
   max-width: 500px;
   padding: 0.7rem;
+  margin: 1rem auto 2rem;
+  display: block;
   border: 1px solid #00ff9f;
   background: #0a0a0a;
   color: #e0e0e0;
@@ -160,12 +151,16 @@ body.light-mode {
   border-radius: 5px;
   transition: background 0.3s;
 }
-.btn:hover { background: #00cc7f; }
+.btn:hover {
+  background: #00cc7f;
+}
 .btn-por-dentro {
   background: #444;
   color: #00ff9f;
 }
-.btn-por-dentro:hover { background: #666; }
+.btn-por-dentro:hover {
+  background: #666;
+}
 
 /* ===== Footer ===== */
 footer {
@@ -177,7 +172,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ===== Modal ===== */
+/* ===== Modal Geral ===== */
 .modal {
   position: fixed;
   top: 0; left: 0;
@@ -186,7 +181,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  z-index: 1000;
 }
 .modal.hidden {
   display: none;
@@ -197,7 +192,7 @@ footer {
   border-radius: 10px;
   width: 90%;
   max-width: 600px;
-  max-height: 90vh;
+  max-height: 80vh;
   overflow-y: auto;
   position: relative;
   box-shadow: 0 0 15px rgba(0,255,159,0.5);
@@ -211,21 +206,55 @@ footer {
   border: none;
   cursor: pointer;
 }
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ===== Progress Bar (Play) ===== */
+#barra {
+  width: 100%;
+  background: #333;
+  height: 10px;
+  margin-top: 2rem;
+}
+#barra-fill {
+  height: 100%;
+  width: 0%;
+  background: #00ff9f;
+  transition: width 0.3s ease-in-out;
+}
+
+/* ===== Logs Play ===== */
+#logs {
+  background: #111;
+  border: 1px solid #00ff9f;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  height: 200px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+.log-info { color: #00ff9f; font-weight: bold; }
+.log-erro { color: #ff4b5c; font-weight: bold; }
 
 /* ===== Notícias no modal ===== */
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap: 1rem;
-  margin-top: 1rem;
 }
 .news-card {
-  background: #222;
+  background: #111;
+  border: 1px solid #00ff9f;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 0 5px rgba(0,255,159,0.4);
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s;
+}
+.news-card:hover {
+  transform: translateY(-4px);
 }
 .news-card img {
   width: 100%;
@@ -234,9 +263,9 @@ footer {
 }
 .news-card-content {
   padding: 0.75rem;
-  flex: 1;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 .news-card-content h4 {
   margin: 0 0 0.5rem;
@@ -258,7 +287,7 @@ footer {
   text-decoration: underline;
 }
 
-/* ===== Canvas e Timeline no Sobre ===== */
+/* ===== Canvas do modal “Sobre Mim” ===== */
 #experienceChart {
   display: block;
   width: 100%;
@@ -266,6 +295,8 @@ footer {
   height: 250px;
   margin: 1rem auto;
 }
+
+/* ===== Linha do Tempo ===== */
 .timeline {
   position: relative;
   margin-top: 2rem;
@@ -274,9 +305,7 @@ footer {
 .timeline::before {
   content: '';
   position: absolute;
-  left: 1rem;
-  top: 0;
-  bottom: 0;
+  left: 1rem; top: 0; bottom: 0;
   width: 2px;
   background: #00ff9f;
 }
@@ -287,10 +316,8 @@ footer {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -7px;
-  top: 0;
-  width: 14px;
-  height: 14px;
+  left: -7px; top: 0;
+  width: 14px; height: 14px;
   background: #00ff9f;
   border-radius: 50%;
 }
