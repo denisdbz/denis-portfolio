@@ -55,23 +55,20 @@ body {
 .logo-animado {
   width: 60px;
   height: 60px;
-}
-.logo-animado.neon-pulse {
   animation: neon-pulse 2s ease-in-out infinite;
 }
 .logo-text {
   font-size: 2rem;
   font-weight: bold;
-}
-.logo-text.neon-pulse {
   animation: neon-pulse 2s ease-in-out infinite;
 }
+
+/* ===== Subtítulo neon-pulse ===== */
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.2rem;
-}
-.subtitle.neon-pulse {
+  color: #00ff9f;
   animation: neon-pulse 2s ease-in-out infinite;
 }
 
@@ -163,15 +160,21 @@ body {
   box-shadow: 0 0 8px rgba(0,255,159,0.7);
 }
 
-/* ===== Botões “Por Dentro” e “Voltar à Home” nos modais ===== */
-.modal-content .btn {
+/* ===== Botão “Por Dentro” nos cards ===== */
+.btn-por-dentro {
+  display: inline-block;
   margin: 0.5rem 0.5rem 0 0;
+  padding: 0.6rem 1.2rem;
+  background: #00aaff;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s, box-shadow 0.3s;
 }
-.modal-content .btn[href="#"] {
-  /* apenas se usar link fictício para voltar */
-}
-.modal-content .btn.home {
-  /* opcionalmente usar <a class="btn home" href="/">Voltar à Home</a> */
+.btn-por-dentro:hover {
+  background: #0098dd;
+  box-shadow: 0 0 8px rgba(0,170,255,0.7);
 }
 
 /* ===== Feedback ===== */
@@ -241,7 +244,6 @@ footer {
   position: relative;
   border: 2px solid #00ff9f;
   box-shadow: 0 0 20px rgba(0,255,159,0.8);
-  /* recupera scroll interno */
   max-height: calc(100vh - 4rem);
   overflow-y: auto;
 }
