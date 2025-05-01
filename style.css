@@ -289,3 +289,70 @@ body {
   color: #00ff9f;
   font-size: 1.2rem;
 }
+/* ==== Neon-pulse ==== */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 4px #00ff9f,
+      0 0 8px #00ff9f,
+      0 0 16px #00ff9f,
+      0 0 24px #00ff9f;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #00ff9f,
+      0 0 4px #00ff9f,
+      0 0 8px #00ff9f,
+      0 0 12px #00ff9f;
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s infinite ease-in-out;
+}
+
+/* Reaplique ao logo e títulos */
+.logo-animado.neon-pulse-img,
+.logo-text.neon-pulse,
+.subtitle span.neon-pulse {
+  animation: neon-pulse 2s infinite ease-in-out;
+}
+
+/* ===== Modal “Sobre”: canvas & timeline ===== */
+#modal-sobre .modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+#modal-sobre .timeline {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  border-left: 3px solid #00ff9f;
+}
+
+#modal-sobre .timeline li {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+#modal-sobre .timeline li::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: #00ff9f;
+  border-radius: 50%;
+}
+
+#modal-sobre canvas {
+  width: 100% !important;
+  max-width: 400px;
+  margin: 1rem auto;
+  display: block;
+}
