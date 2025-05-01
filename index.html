@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Denis Oliveira — Portfólio Profissional</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="description" content="Portfólio de Denis Oliveira, especialista em QA, Pentest e DevSecOps." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/img/logo-animado-denis.png" type="image/png" />
 </head>
 <body class="neon-dark">
 
@@ -22,15 +24,12 @@
   <!-- HERO -->
   <header class="hero">
     <div class="logo-box">
-      <picture>
-        <source srcset="assets/img/logo-animado-denis.png" type="image/png"/>
-        <img
-          src="assets/img/logo-animado-denis.png"
-          alt="Logo Denis QA & Pentest"
-          class="logo-animado neon-pulse-img"
-          loading="lazy"
-        />
-      </picture>
+      <img
+        src="assets/img/logo-animado-denis.png"
+        alt="Logo Denis QA & Pentest"
+        class="logo-animado neon-pulse-img"
+        loading="lazy"
+      />
       <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
     <div class="subtitle"><span id="typed-subtitle"></span></div>
@@ -42,18 +41,14 @@
     </nav>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
   <main class="container">
     <h1>Denis Oliveira — Portfólio Profissional</h1>
     <p class="intro">
       Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
       <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
     </p>
-    <hr class="separator"/>
-
-    <!-- BUSCA -->
+    <hr class="separator" />
     <input type="text" id="search-input" placeholder="Buscar plays..." />
-
     <!-- GRID DE CARDS -->
     <section id="plays" class="cards">
       <div class="card" data-aos="fade-up" title="Play 01 — Nmap Recon">
@@ -232,8 +227,7 @@
 </div>
     </section>
 
-    <!-- FORMULÁRIO DE FEEDBACK -->
-    <section id="feedback">
+   <section id="feedback">
       <h2>Gostou? Deixe um feedback!</h2>
       <form action="https://formspree.io/f/SEU_ID" method="POST">
         <input type="email" name="email" placeholder="Seu e-mail" required />
@@ -243,70 +237,42 @@
     </section>
   </main>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
-    <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
-  </footer>
-
   <!-- MODAIS -->
-
-  <!-- Sobre -->
   <div id="modal-sobre" class="modal hidden">
     <div class="modal-content">
       <button class="close-modal" data-close="sobre">&times;</button>
       <h2>Sobre Mim</h2>
-      <p>
-        Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest,
-        Automação de Testes e DevSecOps. Apaixonado por construir pipelines seguras, integrar qualidade
-        desde o CI/CD e fomentar a cultura DevOps em times ágeis.
-      </p>
-      <canvas id="experienceChart"></canvas>
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="timeline-year">2011</span>
-          <p>Início na área de TI — suporte técnico e infraestrutura.</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">2014</span>
-          <p>Transição para Qualidade de Software (QA Manual).</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">2016</span>
-          <p>Automação de Testes (Selenium, Cypress, Appium).</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">2018</span>
-          <p>Foco em Segurança: Pentest Web e Mobile.</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">2020</span>
-          <p>DevSecOps — Integração de segurança no CI/CD.</p>
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-year">2024</span>
-          <p>Especialização contínua em Offensive Security e Cloud Security.</p>
-        </div>
-      </div>
+      <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps. Apaixonado por construir pipelines seguras, integrar qualidade desde o CI/CD e fomentar a cultura DevOps em times ágeis.</p>
+      <canvas id="experience-chart" width="400" height="200"></canvas>
+      <ul class="timeline">
+        <li><span>2011</span> Início na área de TI — suporte técnico e infraestrutura.</li>
+        <li><span>2014</span> Transição para Qualidade de Software (QA Manual).</li>
+        <li><span>2016</span> Automação de Testes (Selenium, Cypress, Appium).</li>
+        <li><span>2018</span> Foco em Segurança: Pentest Web e Mobile.</li>
+        <li><span>2020</span> DevSecOps — Integração de segurança no CI/CD.</li>
+        <li><span>2024</span> Especialização contínua em Offensive Security e Cloud Security.</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Ajuda -->
   <div id="modal-ajuda" class="modal hidden">
     <div class="modal-content">
       <button class="close-modal" data-close="ajuda">&times;</button>
       <h2>Central de Ajuda</h2>
-      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps...</p>
+      <ul>
+        <li><strong>Ver o Play:</strong> Executa o teste real.</li>
+        <li><strong>Por Dentro:</strong> Mostra documentação explicativa.</li>
+        <li><strong>Buscar:</strong> Filtra os cards por texto.</li>
+      </ul>
     </div>
   </div>
 
-  <!-- News -->
   <div id="modal-news" class="modal hidden">
     <div class="modal-content">
       <button class="close-modal" data-close="news">&times;</button>
       <h2>Últimas Notícias</h2>
       <div id="news-list" class="news-grid">
-        <p class="loading">Carregando notícias...</p>
+        <p class="loading">Carregando notícias…</p>
       </div>
     </div>
   </div>
