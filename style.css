@@ -1,11 +1,9 @@
-/* ===== Reset básico ===== */
+/* ===== Reset e Base ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/* ===== Corpo principal ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0a0a0a;
@@ -13,112 +11,121 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
-body.light-mode {
-  background: #f5f5f5;
-  color: #222;
+
+/* ===== Variáveis ===== */
+:root {
+  --neon-color: #00ff9f;
+  --neon-shadow:
+    0 0 8px var(--neon-color),
+    0 0 16px var(--neon-color),
+    0 0 24px var(--neon-color);
 }
-body.modal-open {
-  overflow: hidden;
+
+/* ===== Animação Neon ===== */
+@keyframes neon-pulse {
+  0%, 100% { text-shadow: var(--neon-shadow); }
+  50% { text-shadow:
+    0 0 16px var(--neon-color),
+    0 0 32px var(--neon-color),
+    0 0 48px var(--neon-color); }
+}
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
 }
 
 /* ===== Navbar ===== */
 .navbar {
   background: #111;
-  padding: 1rem 0;
-  text-align: center;
+  padding: 1rem;
 }
 .navbar ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
   list-style: none;
 }
-.navbar li {
-  display: inline-block;
-  margin: 0 1.5rem;
-}
-.navbar a, .navbar button {
-  color: #00ff9f;
+.navbar a,
+.navbar button {
+  color: var(--neon-color);
   text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
   background: none;
   border: none;
   cursor: pointer;
+  transition: color .3s;
+}
+.navbar a:hover,
+.navbar button:hover {
+  color: #fff;
 }
 
-/* ===== Neon-pulse keyframes ===== */
-@keyframes neonPulse {
-  0%, 100% {
-    text-shadow:
-      0 0 4px rgba(0,255,159,0.8),
-      0 0 8px rgba(0,255,159,0.6),
-      0 0 16px rgba(0,255,159,0.4);
-    box-shadow:
-      0 0 4px rgba(0,255,159,0.8),
-      0 0 8px rgba(0,255,159,0.6),
-      0 0 16px rgba(0,255,159,0.4);
-  }
-  50% {
-    text-shadow:
-      0 0 8px rgba(0,255,159,1),
-      0 0 16px rgba(0,255,159,0.8),
-      0 0 32px rgba(0,255,159,0.6);
-    box-shadow:
-      0 0 8px rgba(0,255,159,1),
-      0 0 16px rgba(0,255,159,0.8),
-      0 0 32px rgba(0,255,159,0.6);
-  }
-}
-
-/* ===== Hero Section ===== */
+/* ===== Hero ===== */
 .hero {
   text-align: center;
   padding: 2rem 1rem;
 }
 .logo-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
-}
-/* Aplicar pulso neon ao logo, título e subtítulo */
-.logo-animado.neon-pulse,
-.logo-text.neon-pulse,
-.subtitle span.neon-pulse {
-  animation: neonPulse 2s ease-in-out infinite;
 }
 .logo-animado {
   width: 80px;
-  height: auto;
+}
+.logo-animado.neon-pulse {
+  /* já brilha via classe neon-pulse */
 }
 .logo-text {
   font-size: 2rem;
   font-weight: bold;
+}
+.logo-text.neon-pulse {
+  /* já brilha via classe neon-pulse */
 }
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.2rem;
 }
+.subtitle span.neon-pulse {
+  /* já brilha via classe neon-pulse */
+}
 
-/* ===== Main Container ===== */
+/* ===== Links Sociais ===== */
+.links {
+  margin-top: 1rem;
+}
+.links a {
+  margin: 0 10px;
+  color: var(--neon-color);
+  font-size: 0.9rem;
+}
+
+/* ===== Container Principal ===== */
 .container {
   padding: 2rem 1rem;
-  max-width: 800px;
+  max-width: 1200px;
   margin: auto;
-  text-align: center;
 }
-.container h1,
-.container .intro {
-  margin-bottom: 1rem;
+.intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.separator {
+  margin: 2rem auto;
+  border: none;
+  border-top: 2px solid var(--neon-color);
+  width: 50%;
 }
 
 /* ===== Busca ===== */
 #search-input {
-  display: block;
-  width: 90%;
-  max-width: 400px;
-  margin: 1rem auto 2rem;
+  width: 100%;
+  max-width: 500px;
   padding: 0.7rem;
-  border: 1px solid #00ff9f;
+  margin: 1rem auto 2rem;
+  display: block;
+  border: 1px solid var(--neon-color);
   background: #0a0a0a;
   color: #e0e0e0;
   border-radius: 5px;
@@ -127,177 +134,155 @@ body.modal-open {
 /* ===== Cards de Plays ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 .card {
   background: #111;
-  border: 1px solid #00ff9f;
+  border: 1px solid var(--neon-color);
   padding: 1.5rem;
-  border-radius: 8px;
-  transition: transform 0.3s;
+  border-radius: 10px;
+  transition: transform .3s;
 }
 .card:hover {
   transform: translateY(-5px);
 }
 .card h3 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 .card p {
   margin-bottom: 1rem;
 }
 
 /* ===== Botões ===== */
-.btn, .btn-por-dentro {
+.btn {
   display: inline-block;
-  margin: 0.3rem 0.3rem 0 0;
-  padding: 0.5rem 1rem;
-  background: #00ff9f;
+  margin: .5rem .5rem 0 0;
+  padding: .6rem 1.2rem;
+  background: var(--neon-color);
   color: #0a0a0a;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
   border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
+  transition: background .3s;
 }
-.btn:hover, .btn-por-dentro:hover {
+.btn:hover {
   background: #00cc7f;
 }
 .btn-por-dentro {
   background: #444;
-  color: #00ff9f;
+  color: var(--neon-color);
+}
+.btn-por-dentro:hover {
+  background: #666;
 }
 
-/* ===== Modal ===== */
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #111;
+  color: var(--neon-color);
+  margin-top: 3rem;
+  font-size: .9rem;
+}
+
+/* ===== Modais ===== */
 .modal {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0,0,0,0.7);
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 1rem;
+  justify-content: center;
   z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility .3s;
 }
-.modal.hidden {
-  display: none;
+.modal:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
 }
 .modal-content {
   background: #111;
   padding: 2rem;
-  border-radius: 8px;
-  width: 100%;
+  border-radius: 10px;
+  border: 2px solid var(--neon-color);
   max-width: 600px;
-  max-height: 85vh;
-  overflow-y: auto;
+  width: 90%;
+  color: #e0e0e0;
   position: relative;
-  /* neon border pulsante */
-  box-shadow: 0 0 8px #00ff9f;
-  animation: neonPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px var(--neon-color);
+  max-height: 80vh;
+  overflow-y: auto;
 }
 .close-modal {
   position: absolute;
-  top: 10px; right: 15px;
+  top: 1rem; right: 1rem;
   background: none;
   border: none;
-  font-size: 2rem;
-  color: #00ff9f;
+  font-size: 1.5rem;
+  color: var(--neon-color);
   cursor: pointer;
 }
 
-/* ===== Modal “Sobre” ===== */
-#modal-sobre .modal-content h2 {
-  margin-bottom: 1rem;
-  color: #00ff9f;
+/* ===== —> ANULA NEON DENTRO DOS MODAIS <===== */
+.modal-content .neon-pulse,
+.modal-content h2,
+.modal-content p,
+.modal-content ul,
+.modal-content ol,
+.modal-content li {
+  animation: none !important;
+  text-shadow: none !important;
+  color: inherit !important;
 }
-#modal-sobre .modal-content p {
-  margin-bottom: 1.5rem;
-  text-align: left;
-}
-#modal-sobre canvas {
-  display: block;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 1.5rem;
-}
-#modal-sobre .timeline {
+
+/* ===== Linha do Tempo (Sobre) ===== */
+.timeline {
   list-style: none;
-  border-left: 3px solid #00ff9f;
-  margin-left: 1rem;
-  padding-left: 1rem;
+  margin-top: 1rem;
 }
-#modal-sobre .timeline li {
+.timeline li {
   position: relative;
-  margin-bottom: 1rem;
-  padding-left: 1rem;
+  padding-left: 2rem;
+  margin-bottom: 1.5rem;
 }
-#modal-sobre .timeline li::before {
+.timeline li::before {
   content: '';
   position: absolute;
-  left: -9px;
-  top: 5px;
-  width: 14px;
-  height: 14px;
-  background: #00ff9f;
+  left: 0; top: 6px;
+  width: 10px; height: 10px;
+  background: var(--neon-color);
   border-radius: 50%;
 }
-
-/* ===== Barra de progresso e logs (Play) ===== */
-#barra {
-  width: 100%;
-  background: #333;
-  height: 8px;
-  margin-top: 1.5rem;
-}
-#barra-fill {
-  height: 100%;
-  width: 0;
-  background: #00ff9f;
-  transition: width 0.3s ease-in-out;
-}
-#logs {
-  background: #111;
-  border: 1px solid #00ff9f;
-  padding: 1rem;
-  margin-top: 1rem;
-  height: 180px;
-  overflow-y: auto;
-  border-radius: 5px;
+.timeline li strong {
+  display: block;
+  color: var(--neon-color);
+  margin-bottom: .3rem;
 }
 
-/* ===== Grid de notícias ===== */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.news-card {
-  background: #222;
-  border-radius: 6px;
-  overflow: hidden;
-}
-.news-card img {
+/* ===== Gráfico (Sobre) ===== */
+#chart-container {
   width: 100%;
-  height: 120px;
-  object-fit: cover;
+  height: 250px;
+  margin: 1rem 0;
 }
-.news-card-content {
-  padding: 0.75rem;
+
+/* ===== Fade-in para Gráfico ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-.news-card-content h4 {
-  margin-bottom: 0.5rem;
-  color: #00ff9f;
+.chart-wrapper {
+  animation: fadeIn 1s ease-in;
 }
-.news-card-content small {
-  font-size: 0.75rem;
-  color: #aaa;
-  margin-bottom: 0.5rem;
-}
-.news-card-content a {
-  font-weight: bold;
-  color: #00ff9f;
-  text-decoration: none;
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .cards { grid-template-columns: 1fr; }
+  .logo-text { font-size: 1.5rem; }
+  .subtitle span { font-size: 1rem; }
 }
