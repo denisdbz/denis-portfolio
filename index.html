@@ -29,12 +29,12 @@
       <img
         src="assets/img/logo-animado-denis.svg"
         alt="Logo Denis QA &amp; Pentest"
-        class="logo-animado neon-pulse"
+        class="logo-animado glow-anim"
         loading="lazy"
       />
-      <span class="logo-text neon-pulse">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
+      <span class="logo-text glow-anim">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
-    <div class="subtitle"><span class="neon-pulse">QA • Pentest • DevSecOps</span></div>
+    <div class="subtitle glow-anim"><span id="typed-subtitle"></span></div>
     <nav class="links">
       <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
       <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
@@ -216,6 +216,18 @@
   </main>
 
   <!-- RODAPÉ -->
+  <!-- FORMULÁRIO DE FEEDBACK -->
+    <section id="feedback">
+      <h2>Gostou? Deixe um feedback!</h2>
+      <form action="https://formspree.io/f/SEU_ID" method="POST">
+        <input type="email" name="email" placeholder="Seu e-mail" required/>
+        <textarea name="message" placeholder="Sua mensagem" required></textarea>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
   <footer>
     <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
     <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
@@ -226,15 +238,15 @@
     <div class="modal-content">
       <button class="close-modal" data-close="sobre">&times;</button>
       <h2>Sobre Mim</h2>
-      <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps. Apaixonado por construir pipelines seguras, integrar qualidade no CI/CD e fomentar a cultura DevOps em times ágeis.</p>
-      <canvas id="sobre-chart"></canvas>
+      <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps. Apaixonado por construir pipelines seguras, integrar qualidade desde o CI/CD e fomentar a cultura DevOps em times ágeis.</p>
+      <canvas id="careerChart" width="400" height="200"></canvas>
       <ul class="timeline">
-        <li><strong>2011:</strong> Início na área de TI — suporte técnico e infraestrutura.</li>
-        <li><strong>2014:</strong> Transição para Qualidade de Software (QA Manual).</li>
-        <li><strong>2016:</strong> Automação de Testes (Selenium, Cypress, Appium).</li>
-        <li><strong>2018:</strong> Foco em Segurança: Pentest Web e Mobile.</li>
-        <li><strong>2020:</strong> DevSecOps — Integração de segurança no CI/CD.</li>
-        <li><strong>2024:</strong> Especialização contínua em Offensive Security e Cloud Security.</li>
+        <li><strong>2011:</strong> Suporte técnico e infraestrutura.</li>
+        <li><strong>2014:</strong> QA Manual.</li>
+        <li><strong>2016:</strong> Automação de Testes.</li>
+        <li><strong>2018:</strong> Pentest Web/Mobile.</li>
+        <li><strong>2020:</strong> DevSecOps.</li>
+        <li><strong>2024:</strong> Cloud Security.</li>
       </ul>
     </div>
   </div>
@@ -247,7 +259,6 @@
       <ul>
         <li><strong>Ver o Play:</strong> Executa o teste real.</li>
         <li><strong>Por Dentro:</strong> Mostra documentação explicativa.</li>
-        <li><strong>Buscar:</strong> Filtra os cards por texto.</li>
       </ul>
     </div>
   </div>
@@ -270,15 +281,7 @@
   </div>
 
   <!-- SCRIPTS -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="scripts.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('service-worker.js')
-        .catch(err => console.warn('SW registration falhou:', err));
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="scripts.js" defer></script>
 </body>
 </html>
-
