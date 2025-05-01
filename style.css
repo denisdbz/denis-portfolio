@@ -1,9 +1,11 @@
-/* ===== Reset e Base ===== */
+/* ===== Reset básico ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ===== Corpo principal ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0a0a0a;
@@ -12,109 +14,99 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== Variáveis ===== */
-:root {
-  --neon-color: #00ff9f;
-  --neon-shadow:
-    0 0 8px var(--neon-color),
-    0 0 16px var(--neon-color),
-    0 0 24px var(--neon-color);
-}
-
-/* ===== Animação Neon ===== */
-@keyframes neon-pulse {
-  0%, 100% { text-shadow: var(--neon-shadow); }
-  50% { text-shadow:
-    0 0 16px var(--neon-color),
-    0 0 32px var(--neon-color),
-    0 0 48px var(--neon-color); }
-}
-.neon-pulse {
-  animation: neon-pulse 2s ease-in-out infinite;
-}
-
 /* ===== Navbar ===== */
 .navbar {
   background: #111;
   padding: 1rem;
 }
 .navbar ul {
+  list-style: none;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  list-style: none;
 }
-.navbar a,
-.navbar button {
-  color: var(--neon-color);
+.navbar ul li {
+  margin: 0 1.5rem;
+}
+.navbar a, .navbar button {
+  color: #00ff9f;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1rem;
   background: none;
   border: none;
   cursor: pointer;
-  transition: color .3s;
+  transition: color .2s;
 }
-.navbar a:hover,
-.navbar button:hover {
+.navbar a:hover, .navbar button:hover {
   color: #fff;
 }
 
-/* ===== Hero ===== */
+/* ===== Hero Section ===== */
 .hero {
   text-align: center;
   padding: 2rem 1rem;
 }
 .logo-box {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 .logo-animado {
-  width: 80px;
+  width: 60px;
+  height: 60px;
 }
-.logo-animado.neon-pulse,
-.logo-text.neon-pulse {
-  /* brilho aplicado apenas aqui */
+.logo-animado.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
 }
 .logo-text {
   font-size: 2rem;
   font-weight: bold;
+}
+.logo-text.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
 }
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.2rem;
 }
+.subtitle.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
 
-/* ===== Links Sociais ===== */
+/* ===== Neon pulse ===== */
+@keyframes neon-pulse {
+  0%, 100% { text-shadow: 0 0 4px rgba(0,255,159,0.6), 0 0 10px rgba(0,255,159,0.8), 0 0 20px rgba(0,255,159,1); }
+  50%       { text-shadow: 0 0 2px rgba(0,255,159,0.4), 0 0 6px rgba(0,255,159,0.6), 0 0 12px rgba(0,255,159,0.8); }
+}
+
+/* ===== Links sociais ===== */
 .links {
   margin-top: 1rem;
-  text-align: center;
 }
 .links a {
   margin: 0 10px;
-  color: var(--neon-color);
+  color: #00ff9f;
   font-size: 0.9rem;
 }
 
-/* ===== Container Principal ===== */
+/* ===== Main Container ===== */
 .container {
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: auto;
-}
-.container h1 {
-  text-align: center;   /* título centralizado */
-  margin-bottom: 0.5rem;
+  text-align: center;
 }
 .intro {
-  text-align: center;
   margin-bottom: 2rem;
 }
+
+/* ===== Separator ===== */
 .separator {
   margin: 2rem auto;
   border: none;
-  border-top: 2px solid var(--neon-color);
+  border-top: 2px solid #00ff9f;
   width: 50%;
 }
 
@@ -125,13 +117,13 @@ body {
   padding: 0.7rem;
   margin: 1rem auto 2rem;
   display: block;
-  border: 1px solid var(--neon-color);
+  border: 1px solid #00ff9f;
   background: #0a0a0a;
   color: #e0e0e0;
   border-radius: 5px;
 }
 
-/* ===== Cards de Plays ===== */
+/* ===== Grid de cards ===== */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -139,73 +131,84 @@ body {
 }
 .card {
   background: #111;
-  border: 1px solid var(--neon-color);
-  padding: 1.5rem;
+  border: 1px solid #00ff9f;
+  padding: 2rem;
   border-radius: 10px;
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 .card:hover {
   transform: translateY(-5px);
 }
+.card h3 {
+  margin-bottom: 1rem;
+}
+.card p {
+  margin-bottom: 1rem;
+}
 
-/* ===== Botões ===== */
+/* ===== Botões “Ver o Play” ===== */
 .btn {
   display: inline-block;
-  margin: .5rem .5rem 0 0;
-  padding: .6rem 1.2rem;
-  background: var(--neon-color);
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.6rem 1.2rem;
+  background: #00ff9f;
   color: #0a0a0a;
-  font-weight: bold;
   text-decoration: none;
+  font-weight: bold;
   border-radius: 5px;
-  transition: background .3s;
+  transition: background 0.3s, box-shadow 0.3s;
 }
 .btn:hover {
   background: #00cc7f;
-}
-/* agora o "Por Dentro" fica igual ao "Ver o Play" */
-.btn-por-dentro {
-  background: var(--neon-color);
-  color: #0a0a0a;
-}
-.btn-por-dentro:hover {
-  background: #00cc7f;
+  box-shadow: 0 0 8px rgba(0,255,159,0.7);
 }
 
-/* ===== Feedback Section ===== */
-.feedback {
-  margin: 3rem auto 1rem;
-  max-width: 800px;
-  text-align: center;
+/* ===== Botões “Por Dentro” ===== */
+.btn-por-dentro {
+  display: inline-block;
+  margin: 0.5rem 0 0 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #00ccff;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 8px rgba(0,204,255,0.7);
 }
-.feedback form {
+.btn-por-dentro:hover {
+  background: #00aadd;
+  box-shadow: 0 0 12px rgba(0,204,255,0.9);
+}
+
+/* ===== Feedback ===== */
+.feedback {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
-  margin-top: .5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  text-align: center;
 }
-.feedback input[type="email"],
+.feedback input,
 .feedback textarea {
-  padding: .6rem;
-  border: 1px solid var(--neon-color);
-  background: #0a0a0a;
+  background: #111;
+  border: 1px solid #00ff9f;
   color: #e0e0e0;
+  padding: 0.5rem;
   border-radius: 5px;
-  flex: 1 1 200px;
+  flex: 1;
+  min-width: 120px;
 }
 .feedback button {
-  background: var(--neon-color);
+  background: #00ff9f;
   color: #0a0a0a;
   border: none;
-  padding: .6rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 5px;
   font-weight: bold;
-  cursor: pointer;
-  transition: background .3s;
-}
-.feedback button:hover {
-  background: #00cc7f;
 }
 
 /* ===== Footer ===== */
@@ -213,13 +216,9 @@ footer {
   text-align: center;
   padding: 1rem;
   background: #111;
-  color: var(--neon-color);
+  color: #00ff9f;
   margin-top: 3rem;
-  font-size: .9rem;
-}
-footer em {
-  display: block;
-  margin-top: .3rem;
+  font-size: 0.9rem;
 }
 
 /* ===== Modais ===== */
@@ -229,88 +228,70 @@ footer em {
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.7);
   display: flex;
-  align-items: center;
   justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .3s, visibility .3s;
+  align-items: center;
   z-index: 10000;
+  overflow: auto;
 }
-.modal:not(.hidden) {
-  opacity: 1;
-  visibility: visible;
+.modal.hidden {
+  display: none;
 }
 .modal-content {
   background: #111;
   padding: 2rem;
   border-radius: 10px;
-  border: 2px solid var(--neon-color);
-  max-width: 600px;
   width: 90%;
+  max-width: 600px;
   color: #e0e0e0;
   position: relative;
-  box-shadow: 0 0 20px var(--neon-color);
-  max-height: 80vh;
-  overflow-y: auto;
+  border: 2px solid #00ff9f;
+  box-shadow: 0 0 20px rgba(0,255,159,0.8);
 }
 .close-modal {
   position: absolute;
-  top: 1rem; right: 1rem;
+  top: 15px; right: 20px;
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: var(--neon-color);
+  color: #00ff9f;
   cursor: pointer;
+  transition: color .2s;
+}
+.close-modal:hover {
+  color: #fff;
 }
 
-/* ===== —> NEON DENTRO DOS MODAIS DESLIGADO <===== */
-.modal-content .neon-pulse,
-.modal-content h2,
-.modal-content p,
-.modal-content ul,
-.modal-content li {
-  animation: none !important;
-  text-shadow: none !important;
-  color: inherit !important;
-}
-
-/* ===== Linha do Tempo (Sobre) ===== */
+/* ===== Timeline no Modal Sobre ===== */
 .timeline {
   list-style: none;
-  margin-top: 1rem;
+  margin: 1rem 0 0 0;
+  padding-left: 1.5rem;
+  border-left: 3px solid #00ff9f;
 }
 .timeline li {
   position: relative;
-  padding-left: 2rem;
-  margin-bottom: 1.5rem;
+  margin: 1rem 0;
+  padding-left: 1rem;
 }
 .timeline li::before {
   content: '';
   position: absolute;
-  left: 0; top: 6px;
-  width: 10px; height: 10px;
-  background: var(--neon-color);
+  left: -9px; top: 4px;
+  width: 8px; height: 8px;
+  background: #00ff9f;
   border-radius: 50%;
 }
-.timeline li strong {
-  display: block;
-  color: var(--neon-color);
-  margin-bottom: .3rem;
-}
 
-/* ===== Gráfico (Sobre) ===== */
-#chart-container {
+/* ===== Chart container ===== */
+.chart-container {
+  margin: 2rem 0;
   width: 100%;
-  height: 250px;
-  margin: 1rem 0;
+  height: 300px;
 }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.chart-wrapper { animation: fadeIn 1s ease-in; }
 
-/* ===== Responsividade ===== */
-@media (max-width: 768px) {
-  .cards { grid-template-columns: 1fr; }
-  .feedback form { flex-direction: column; align-items: stretch; }
+/* ===== Media Queries ===== */
+@media (max-width: 600px) {
+  .navbar ul li { margin: 0 .5rem; }
   .logo-text { font-size: 1.5rem; }
-  .subtitle { font-size: 1rem; }
+  .btn, .btn-por-dentro { font-size: 0.9rem; }
 }
