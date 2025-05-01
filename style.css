@@ -452,3 +452,47 @@ button:disabled {
 #feedback button:hover {
   background: #00cc7f;
 }
+
+/* ===== Feedback Form (Alinhamento e aparência) ===== */
+.feedback-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+}
+.feedback-form h2 {
+  margin-bottom: 1rem;
+}
+/* Campos empilhados, largura total */
+.feedback-form input,
+.feedback-form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.5rem auto;
+  border: 1px solid #00ff9f;
+  border-radius: 5px;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+.feedback-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+/* Botão enviar no final, alinhado ao centro */
+.feedback-form button {
+  display: inline-block;
+  margin: 1rem auto 0;
+  padding: 0.7rem 1.5rem;
+  background: #00ff9f;
+  color: #0a0a0a;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.feedback-form button:hover {
+  background: #00cc7f;
+}
+
