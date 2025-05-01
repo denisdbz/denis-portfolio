@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
   // 3) Renderiza gráfico de experiência no modal "Sobre Mim"
   function renderExperienceChart() {
     const ctx = document.getElementById('experienceChart').getContext('2d');
