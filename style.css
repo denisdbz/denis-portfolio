@@ -288,3 +288,11 @@ button:disabled {
 .news-card-content a:hover {
   text-decoration: underline;
 }
+/* ===== Canvas do modal “Sobre Mim” ===== */
+#sobre-chart {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  height: 250px;
+  margin: 1rem auto;
+}
