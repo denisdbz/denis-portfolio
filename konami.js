@@ -3,7 +3,7 @@
   // ================== CONFIGURAÇÃO ==================
   const secretKey = '01092024';
   const audioSrc  = 'assets/easter/palpite.mp3';
-  const videoSrc  = 'assets/easter/2025-05-02.mp4';
+  const videoSrc  = 'assets/easter/VID-20250502-WA0032.mp4'; // seu novo vídeo
   const fotos     = [
     'assets/easter/foto1.jpg',
     'assets/easter/foto2.jpg',
@@ -11,24 +11,27 @@
     'assets/easter/foto4.jpg'
   ];
 
-  // ==================== KONAMI ======================
-  const pattern = [38,38,40,40,37,39,37,39,66,65];
+  // ==================== VARIÁVEIS ======================
+  const pattern = [38,38,40,40,37,39,37,39,66,65]; // ↑ ↑ ↓ ↓ ← → ← → B A
   let buffer = [];
+  let iniciado = false;
+  let audio;
 
-  window.addEventListener('keydown', ev => {
+  // ==================== KONAMI ======================
+  function onKeyDown(ev) {
     if (ev.key === 'Escape') {
-      ocultarEasterEgg();
+      fecharTudo();
     }
 
     buffer.push(ev.keyCode);
     if (buffer.length > pattern.length) buffer.shift();
 
-    // só ao completar a sequência
+    // só chama solicitarSenha se bater a sequência
     if (pattern.every((v,i) => v === buffer[i])) {
       buffer = [];
       solicitarSenha();
     }
-  });
+  }
 
   // ==================== MODAL DE SENHA =======================
   function solicitarSenha() {
@@ -37,35 +40,35 @@
     const input = document.getElementById('easter-key');
     const erro  = document.getElementById('easter-erro');
 
-    modal.classList.remove('hidden');
+    // Reset visual
     erro.classList.add('hidden');
     input.value = '';
+    modal.classList.remove('hidden');
     input.focus();
 
-    // garante que este handler só exista aqui
-    btn.onclick = () => {
+    // Remove listener anterior (se houver) e adiciona o atual
+    btn.replaceWith(btn.cloneNode(true));
+    const novoBtn = document.getElementById('easter-submit');
+    novoBtn.addEventListener('click', () => {
       if (input.value.trim() === secretKey) {
         modal.classList.add('hidden');
-        ativarEasterEgg();
+        abrirEasterEgg();
       } else {
         erro.classList.remove('hidden');
       }
-    };
+    });
   }
-  window.solicitarSenha = solicitarSenha;
 
   // ==================== EASTER EGG ======================
-  let iniciado = false;
-  let audio;
-
-  function ativarEasterEgg() {
+  function abrirEasterEgg() {
     const galeria = document.getElementById('easter-gallery');
 
     if (!iniciado) {
       galeria.innerHTML = ''; // limpa
 
-      // vídeo
+      // Vídeo no topo
       const video = document.createElement('video');
+      video.id = 'easter-video';
       video.src = videoSrc;
       video.controls = true;
       video.autoplay = true;
@@ -74,17 +77,12 @@
       video.style.marginBottom = '1rem';
       galeria.appendChild(video);
 
-      // grid de fotos
+      // Grid de fotos
       const grid = document.createElement('div');
-      grid.style.display = 'grid';
-      grid.style.gap = '1rem';
-      grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(200px,1fr))';
+      grid.className = 'easter-images';
       fotos.forEach(src => {
         const img = new Image();
         img.src = src;
-        img.style.width = '100%';
-        img.style.border = '2px solid var(--neon-color)';
-        img.style.borderRadius = '4px';
         grid.appendChild(img);
       });
       galeria.appendChild(grid);
@@ -92,26 +90,24 @@
       iniciado = true;
     }
 
-    galeria.classList.remove('hidden');
-
-    // áudio de fundo
+    // Toca áudio em loop
     audio = new Audio(audioSrc);
     audio.loop = true;
     audio.volume = 0.6;
     audio.play();
 
-    galeria.onclick = ocultarEasterEgg;
+    galeria.classList.remove('hidden');
   }
 
   // ==================== FECHAR ======================
-  function ocultarEasterEgg() {
+  function fecharTudo() {
     const modal   = document.getElementById('easter-modal');
     const galeria = document.getElementById('easter-gallery');
 
-    if (!modal.classList.contains('hidden')) {
+    if (modal && !modal.classList.contains('hidden')) {
       modal.classList.add('hidden');
     }
-    if (!galeria.classList.contains('hidden')) {
+    if (galeria && !galeria.classList.contains('hidden')) {
       galeria.classList.add('hidden');
     }
     if (audio) {
@@ -119,5 +115,17 @@
       audio = null;
     }
   }
+
+  // ==================== INIT ======================
+  document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('keydown', onKeyDown);
+
+    // também fecha clicando no botão "×" padrão dos modais
+    document.querySelectorAll('#easter-modal .close-modal').forEach(btn => {
+      btn.addEventListener('click', fecharTudo);
+    });
+    // e fecha clicando fora do conteúdo, na área transparente
+    document.getElementById('easter-gallery').addEventListener('click', fecharTudo);
+  });
 
 })();
