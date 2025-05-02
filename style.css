@@ -370,3 +370,53 @@ button:disabled {
   cursor: not-allowed;
 }
 
+
+/* Easter-Egg Modal */
+#easter-modal.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, .8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+}
+#easter-modal .modal-content {
+  position: relative;
+  background: #111;
+  padding: 1.5rem;
+  border: 2px solid var(--neon-color);
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 0 20px var(--neon-color);
+}
+#easter-modal .close-modal {
+  position: absolute;
+  top: .5rem; right: .5rem;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Container de imagens */
+.easter-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+.easter-images img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--neon-color);
+  border-radius: 4px;
+}
+
+/* Garantir que o vídeo fique acima das imagens */
+#easter-video {
+  display: block;
+}
