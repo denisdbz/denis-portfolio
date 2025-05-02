@@ -425,3 +425,28 @@ button:disabled {
 #easter-video {
   display: block;
 }
+
+
+/* Em style.css ou em um arquivo CSS global carregado antes do konami.js */
+
+/* Container centralizado */
+#easter-gallery {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  padding: 1rem;
+}
+
+/* Vídeo e imagens com aspecto preservado */
+#easter-gallery video,
+#easter-gallery img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 16px var(--neon-color);
+}

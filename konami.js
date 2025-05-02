@@ -1,96 +1,76 @@
-/* konami.js – Easter-egg com senha e multimídia */
+/* konami.js – Easter-egg via Konami Code, modal de senha e exibição de um único vídeo */
 (() => {
   // ================== CONFIGURAÇÃO ==================
-  const secretKey = '01092024';
-  const audioSrc  = 'assets/easter/palpite.mp3';
-  const videoSrc  = 'assets/easter/2025-05-02.mp4'; // seu novo vídeo
-  const fotos     = [
-    'assets/easter/foto1.jpg',
-    'assets/easter/foto2.jpg',
-    'assets/easter/foto3.jpg',
-    'assets/easter/foto4.jpg'
-  ];
+  const secretKey = '01092024';                                // senha secreta
+  const videoSrc  = 'assets/easter/2025-05-02.mp4';   // seu vídeo
 
-  // ==================== VARIÁVEIS ======================
-  const pattern = [38,38,40,40,37,39,37,39,66,65]; // ↑ ↑ ↓ ↓ ← → ← → B A
+  // sequência do Konami Code (↑↑↓↓←→←→BA)
+  const pattern = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
   let buffer = [];
   let iniciado = false;
   let audio;
 
-  // ==================== KONAMI ======================
+  // Captura teclas para detectar a sequência
   function onKeyDown(ev) {
-    if (ev.key === 'Escape') {
-      fecharTudo();
-    }
+    if (ev.key === 'Escape') fecharTudo();
 
     buffer.push(ev.keyCode);
     if (buffer.length > pattern.length) buffer.shift();
 
-    // só chama solicitarSenha se bater a sequência
-    if (pattern.every((v,i) => v === buffer[i])) {
+    if (pattern.every((v, i) => v === buffer[i])) {
       buffer = [];
       solicitarSenha();
     }
   }
 
-  // ==================== MODAL DE SENHA =======================
+  // Abre modal de senha
   function solicitarSenha() {
     const modal = document.getElementById('easter-modal');
     const btn   = document.getElementById('easter-submit');
     const input = document.getElementById('easter-key');
     const erro  = document.getElementById('easter-erro');
 
-    // Reset visual
     erro.classList.add('hidden');
     input.value = '';
     modal.classList.remove('hidden');
     input.focus();
 
-    // Remove listener anterior (se houver) e adiciona o atual
-    btn.replaceWith(btn.cloneNode(true));
-    const novoBtn = document.getElementById('easter-submit');
+    // remove listeners antigos e adiciona novo handler
+    const novoBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(novoBtn, btn);
     novoBtn.addEventListener('click', () => {
       if (input.value.trim() === secretKey) {
         modal.classList.add('hidden');
-        abrirEasterEgg();
+        abrirVideo();
       } else {
         erro.classList.remove('hidden');
       }
     });
   }
 
-  // ==================== EASTER EGG ======================
-  function abrirEasterEgg() {
+  // Exibe o vídeo e toca o áudio de fundo
+  function abrirVideo() {
     const galeria = document.getElementById('easter-gallery');
 
     if (!iniciado) {
-      galeria.innerHTML = ''; // limpa
+      galeria.innerHTML = '';
 
-      // Vídeo no topo
+      // cria elemento <video>
       const video = document.createElement('video');
-      video.id = 'easter-video';
       video.src = videoSrc;
       video.controls = true;
       video.autoplay = true;
       video.loop = true;
-      video.style.maxWidth = '90%';
-      video.style.marginBottom = '1rem';
+      video.style.objectFit = 'contain';   // mantém proporção
+      video.style.maxWidth = '90vw';
+      video.style.maxHeight = '90vh';
       galeria.appendChild(video);
-
-      // Grid de fotos
-      const grid = document.createElement('div');
-      grid.className = 'easter-images';
-      fotos.forEach(src => {
-        const img = new Image();
-        img.src = src;
-        grid.appendChild(img);
-      });
-      galeria.appendChild(grid);
 
       iniciado = true;
     }
 
-    // Toca áudio em loop
+    // toca áudio em loop
+    if (audio) audio.pause();
     audio = new Audio(audioSrc);
     audio.loop = true;
     audio.volume = 0.6;
@@ -99,7 +79,7 @@
     galeria.classList.remove('hidden');
   }
 
-  // ==================== FECHAR ======================
+  // Fecha tanto o modal de senha quanto o player de vídeo
   function fecharTudo() {
     const modal   = document.getElementById('easter-modal');
     const galeria = document.getElementById('easter-gallery');
@@ -116,16 +96,16 @@
     }
   }
 
-  // ==================== INIT ======================
+  // Inicialização
   document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('keydown', onKeyDown);
 
-    // também fecha clicando no botão "×" padrão dos modais
-    document.querySelectorAll('#easter-modal .close-modal').forEach(btn => {
-      btn.addEventListener('click', fecharTudo);
-    });
-    // e fecha clicando fora do conteúdo, na área transparente
-    document.getElementById('easter-gallery').addEventListener('click', fecharTudo);
-  });
+    // botão “×” do modal de senha
+    document.querySelectorAll('#easter-modal .close-modal')
+      .forEach(btn => btn.addEventListener('click', fecharTudo));
 
+    // clique fora do vídeo fecha
+    document.getElementById('easter-gallery')
+      .addEventListener('click', fecharTudo);
+  });
 })();
