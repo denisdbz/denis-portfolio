@@ -111,15 +111,34 @@ function renderSobreChart() {
   if (sobreChart) return;
   const ctx = document.getElementById('sobre-chart');
   if (!ctx) return;
+
   sobreChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ['2011','2014','2016','2018','2020','2024'],
-      datasets: [{ label: 'Anos de experiência', data: [1,3,5,7,9,12] }]
+      datasets: [{
+        label: 'Anos de experiência',
+        data: [1,3,5,7,9,12],
+        // AQUI É ONDE ADICIONAMOS A COR
+        backgroundColor: 'rgba(0, 255, 159, 0.6)',
+        borderColor:   'rgba(0, 255, 159, 1)',
+        borderWidth: 2,
+        hoverBackgroundColor: 'rgba(0, 255, 159, 0.8)',
+        hoverBorderColor:   'rgba(0, 255, 159, 1)'
+      }]
     },
     options: {
       responsive: true,
-      scales: { y: { beginAtZero: true } }
+      scales: {
+        y: { beginAtZero: true }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: '#fff' // legenda em branco, se quiser
+          }
+        }
+      }
     }
   });
 }
