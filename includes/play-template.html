@@ -1,14 +1,56 @@
-<main class="container">
-  <h1 class="play-title neon-pulse"></h1>
-  <p class="intro"></p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play XX — Título do Play</title>
+  <link rel="stylesheet" href="../../style.css"/>
+</head>
+<body class="neon-dark">
 
-  <div id="barra" class="progress-bar hidden">
-    <div id="barra-fill"></div>
-  </div>
-  <pre id="logs" class="output-box"></pre>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../sobre.html">Sobre</a></li>
+      <li><a href="../../news.html">News</a></li>
+    </ul>
+  </nav>
 
-  <div class="btn-group">
-    <button id="exec-btn" class="btn">▶️ Executar Teste</button>
+  <!-- Hero com logo + título neon -->
+  <header class="hero">
+    <div class="logo-box">
+      <img src="../../assets/img/logo-animado-denis.png" alt="Logo Denis" class="logo-animado"/>
+      <span class="logo-text">Play XX — Título do Play</span>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="container">
+    <h1>Play XX — Título do Play</h1>
+    <p class="intro">
+      Descrição completa deste Play: aqui você explica o objetivo principal, o contexto e qualquer detalhe introdutório.
+    </p>
+
+    <!-- Barra de progresso -->
+    <div id="barra" class="progress-bar hidden">
+      <div id="barra-fill"></div>
+    </div>
+
+    <!-- Caixa de logs -->
+    <pre id="logs" class="output-box"></pre>
+
+    <!-- Botões de ação -->
+    <button class="btn" onclick="executarTeste('play-XX')">▶️ Executar Teste</button>
     <a class="btn" href="../../index.html">← Voltar</a>
-  </div>
-</main>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
+    <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
+  </footer>
+
+  <script src="../../scripts.js"></script>
+</body>
+</html>
