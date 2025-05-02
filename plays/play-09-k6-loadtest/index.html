@@ -18,33 +18,39 @@
 
   <header class="hero">
     <div class="logo-box">
-      <img src="../../assets/img/logo-animado-denis.svg" alt="Logo" class="logo-animado"/>
-      <span class="logo-text">Play 09 — k6 LoadTest</span>
+      <img src="../../assets/img/logo-animado-denis.png" alt="Logo" class="logo-animado neon-pulse"/>
+      <span class="logo-text neon-pulse">Play 09 — k6 LoadTest</span>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Play 09 — k6 LoadTest</h1>
-    <p class="intro">
-      Teste de performance de API com k6.
-    </p>
-
-    <div id="barra" class="progress-bar hidden">
-      <div id="barra-fill"></div>
-    </div>
-    <pre id="logs" class="output-box"></pre>
-
-    <button class="btn neon-btn" onclick="executarTeste('play-09-k6-loadtest')">
-      ▶️ Executar Teste
-    </button>
-    <a class="btn" href="../../index.html">← Voltar</a>
-  </main>
+  <div id="play-root"
+       data-play-id="play-09-k6-loadtest"
+       data-play-title="Play 09 — k6 LoadTest"
+       data-play-desc="Testes de performance de APIs com o K6.">
+  </div>
 
   <footer>
     <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
-    <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
+    <em>Portfólio Técnico • QA • Pentest • DevSecOps</em>
   </footer>
 
-  <script src="../../simulate-run.js" defer></script>
+  <script src="../../scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const root = document.getElementById('play-root');
+      const {{ playId, playTitle, playDesc }} = root.dataset;
+
+      fetch('../../includes/play-template.html')
+        .then(r => r.text())
+        .then(template => {{
+          root.innerHTML = template;
+          root.querySelector('.play-title').textContent = playTitle;
+          root.querySelector('.intro').textContent = playDesc;
+          root.querySelector('#exec-btn')
+              .addEventListener('click', () => executarTeste(playId));
+        }})
+        .catch(console.error);
+    });
+  </script>
 </body>
 </html>

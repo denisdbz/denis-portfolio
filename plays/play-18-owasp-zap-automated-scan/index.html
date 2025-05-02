@@ -7,26 +7,50 @@
   <link rel="stylesheet" href="../../style.css"/>
 </head>
 <body class="neon-dark">
-  <nav class="navbar"><ul>
-    <li><a href="../../index.html">Home</a></li>
-    <li><a href="../../sobre.html">Sobre</a></li>
-    <li><a href="../../news.html">News</a></li>
-  </ul></nav>
-  <header class="hero"><div class="logo-box">
-    <img src="../../assets/img/logo-animado-denis.svg" alt="Logo" class="logo-animado"/>
-    <span class="logo-text">Play 18 — OWASP ZAP Automated Scan</span>
-  </div></header>
-  <main class="container">
-    <h1>Play 18 — OWASP ZAP Automated Scan</h1>
-    <p class="intro">Scanner automatizado de vulnerabilidades web com OWASP ZAP.</p>
-    <div id="barra" class="progress-bar hidden"><div id="barra-fill"></div></div>
-    <pre id="logs" class="output-box"></pre>
-    <button class="btn" onclick="executarTeste('play-18-owasp-zap-automated-scan')">▶️ Executar Teste</button>
-    <a class="btn" href="../../index.html">← Voltar</a>
-  </main>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../sobre.html">Sobre</a></li>
+      <li><a href="../../news.html">News</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="logo-box">
+      <img src="../../assets/img/logo-animado-denis.png" alt="Logo" class="logo-animado neon-pulse"/>
+      <span class="logo-text neon-pulse">Play 18 — OWASP ZAP Automated Scan</span>
+    </div>
+  </header>
+
+  <div id="play-root"
+       data-play-id="play-18-owasp-zap-automated-scan"
+       data-play-title="Play 18 — OWASP ZAP Automated Scan"
+       data-play-desc="Scanner automatizado de vulnerabilidades web com OWASP ZAP.">
+  </div>
+
   <footer>
     <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
+    <em>Portfólio Técnico • QA • Pentest • DevSecOps</em>
   </footer>
-  <script src="../../simulate-run.js"></script>
+
+  <script src="../../scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const root = document.getElementById('play-root');
+      const {{ playId, playTitle, playDesc }} = root.dataset;
+
+      fetch('../../includes/play-template.html')
+        .then(r => r.text())
+        .then(template => {{
+          root.innerHTML = template;
+          root.querySelector('.play-title').textContent = playTitle;
+          root.querySelector('.intro').textContent = playDesc;
+          root.querySelector('#exec-btn')
+              .addEventListener('click', () => executarTeste(playId));
+        }})
+        .catch(console.error);
+    });
+  </script>
 </body>
 </html>
