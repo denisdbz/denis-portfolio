@@ -260,3 +260,23 @@ footer {
   background: #00ff9f;
   border-radius: 50%;
 }
+
+/* ===== Centralizar título, intro, linha e busca ===== */
+.container h1 {
+  text-align: center;
+}
+
+.container .intro {
+  text-align: center;
+  margin-bottom: 1rem; /* já existia, mas reforça o espaçamento */
+}
+
+.container .separator {
+  margin: 1.5rem auto; /* centraliza horizontalmente */
+}
+
+#search-input {
+  display: block;       /* para poder usar margin auto */
+  margin: 0 auto 2rem;  /* 2rem abaixo, zero acima */
+  text-align: center;   /* placeholder centralizado */
+}
