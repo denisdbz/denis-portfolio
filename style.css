@@ -205,3 +205,9 @@ body.light-mode {
   overflow-y: auto;
   white-space: pre-wrap;
 }
+.logo-animado {
+  width: 60px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
