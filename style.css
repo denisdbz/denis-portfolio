@@ -1,3 +1,7 @@
+:root {
+  --neon-color: #00ffe0; /* verde-azulado */
+}
+
 /* ===== Reset básico ===== */
 * {
   margin: 0;
@@ -62,16 +66,21 @@ body.light-mode {
 }
 .hero h1,
 .hero p {
-  color: #0f0;
+  color: var(--neon-color);
   text-shadow:
-    0 0 8px #0f0,
-    0 0 16px #0f0,
-    0 0 24px #0f0;
+    0 0 8px var(--neon-color),
+    0 0 16px var(--neon-color),
+    0 0 24px var(--neon-color);
 }
-/* Logo pulso */
 @keyframes pulseLogo {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #0f0); }
-  50%      { transform: scale(1.05); filter: drop-shadow(0 0 12px #0f0); }
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px var(--neon-color));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px var(--neon-color));
+  }
 }
 
 /* ===== Busca ===== */
@@ -95,7 +104,7 @@ body.light-mode {
 .card {
   background: #1e1e1e;
   padding: 1rem;
-  border: 2px solid #0f0;
+  border: 2px solid var(--neon-color);
   border-radius: 0.5rem;
   text-align: center;
   position: relative;
@@ -105,15 +114,14 @@ body.light-mode {
 .card:hover {
   transform: translateY(-5px);
   box-shadow:
-    0 0 10px #0f0,
-    0 0 20px #0f0,
-    0 0 30px rgba(0,255,0,0.5);
+    0 0 10px var(--neon-color),
+    0 0 20px var(--neon-color),
+    0 0 30px rgba(0,255,224,0.5);
 }
-/* Border neon pulso */
 @keyframes neonBorder {
-  0%   { box-shadow: 0 0 4px #0f0; }
-  50%  { box-shadow: 0 0 12px #0f0; }
-  100% { box-shadow: 0 0 4px #0f0; }
+  0%   { box-shadow: 0 0 4px var(--neon-color); }
+  50%  { box-shadow: 0 0 12px var(--neon-color); }
+  100% { box-shadow: 0 0 4px var(--neon-color); }
 }
 .card h3 {
   margin-bottom: 0.5rem;
@@ -124,18 +132,18 @@ body.light-mode {
 .card .btn {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  background: #0f0;
+  background: var(--neon-color);
   color: #000;
   cursor: pointer;
   border: none;
-  box-shadow: 0 0 5px #0f0;
+  box-shadow: 0 0 5px var(--neon-color);
   transition: background 0.3s, box-shadow 0.3s;
 }
 .card .btn:hover {
-  background: #1aff1a;
+  background: #66fff1;
   box-shadow:
-    0 0 8px #1aff1a,
-    0 0 16px #1aff1a;
+    0 0 8px #66fff1,
+    0 0 16px #66fff1;
 }
 .card .btn-por-dentro {
   margin-left: 0.5rem;
@@ -168,8 +176,8 @@ body.light-mode {
   overflow-y: auto;
   position: relative;
   box-shadow:
-    0 0 10px rgba(0,255,0,0.5),
-    inset 0 0 5px rgba(0,255,0,0.2);
+    0 0 10px rgba(0,255,224,0.5),
+    inset 0 0 5px rgba(0,255,224,0.2);
 }
 .close-modal {
   position: absolute;
@@ -181,7 +189,6 @@ body.light-mode {
   color: #e0e0e0;
   cursor: pointer;
 }
-/* Modal fade-in */
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
@@ -196,7 +203,7 @@ body.light-mode {
   background: rgba(0,0,0,0.9);
   padding: 1rem;
   border-radius: 0.5rem;
-  color: #0f0;
+  color: var(--neon-color);
   font-family: monospace;
   z-index: 200;
 }
@@ -214,7 +221,7 @@ body.light-mode {
 .progress-bar .fill {
   width: 0%;
   height: 100%;
-  background: lime;
+  background: var(--neon-color);
   transition: width 0.3s ease;
 }
 .output-box {
