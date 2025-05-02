@@ -1,38 +1,35 @@
-:root {
-  --neon-color: #00ffe0;
-  --bg-dark: #141414;
-  --bg-darker: #111;
-  --text-light: #e0e0e0;
-  --text-dark: #333;
+K:root {
+  --neon-color: #00ff9f;
 }
 
-/* ===== Reset ===== */
+/* ===== Reset básico ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== Corpo ===== */
+/* ===== Corpo principal ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-light);
+  background: #0a0a0a;
+  color: #e0e0e0;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 body.light-mode {
-  background: #f4f4f4;
-  color: var(--text-dark);
+  background: #f5f5f5;
+  color: #222;
 }
 
 /* ===== Navbar ===== */
 .navbar {
-  background: var(--bg-darker);
+  background: #111;
   padding: 1rem;
+  text-align: center;
 }
 .navbar ul {
   list-style: none;
-  text-align: center;
 }
 .navbar ul li {
   display: inline-block;
@@ -48,12 +45,12 @@ body.light-mode {
   cursor: pointer;
 }
 
-/* ===== Hero personalizado ===== */
+/* ===== Hero Section ===== */
 .hero {
   text-align: center;
   padding: 2rem 1rem;
 }
-.logo-title {
+.logo-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,44 +58,46 @@ body.light-mode {
 }
 .logo-animado {
   width: 60px;
-  animation: pulse 2s infinite alternate;
 }
-.hero-title {
-  font-size: 2rem;
-  color: var(--neon-color);
-  text-shadow:
-    0 0 5px var(--neon-color),
-    0 0 20px var(--neon-color),
-    0 0 30px var(--neon-color);
-  animation: pulse 2s infinite alternate;
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
+
+/* ===== Subtítulo digitado ===== */
 .subtitle {
   margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.2rem;
-  color: var(--neon-color);
-  text-shadow: 0 0 8px var(--neon-color);
 }
 
-/* ===== Typed subtitle animation ===== */
-/* (se já tiver no scripts.js, apenas mantenha o elemento .subtitle e #typed-subtitle) */
+/* ===== Links abaixo do Hero ===== */
+.links {
+  margin-top: 1rem;
+}
+.links a {
+  margin: 0 10px;
+  color: var(--neon-color);
+  font-size: 0.9rem;
+}
 
-/* ===== Pulsar neon ===== */
-@keyframes pulse {
-  from {
-    text-shadow:
-      0 0 5px var(--neon-color),
-      0 0 20px var(--neon-color),
-      0 0 30px var(--neon-color);
-    filter: brightness(1);
-  }
-  to {
-    text-shadow:
-      0 0 10px var(--neon-color),
-      0 0 30px var(--neon-color),
-      0 0 40px var(--neon-color);
-    filter: brightness(1.2);
-  }
+/* ===== Centraliza título e descrição da Home ===== */
+.hero-texto {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.hero-texto h2 {
+  font-size: 2rem;
+  color: var(--neon-color);
+  text-shadow:
+    0 0 4px var(--neon-color),
+    0 0 10px var(--neon-color),
+    0 0 20px var(--neon-color);
+}
+.hero-texto .intro {
+  font-size: 1rem;
+  max-width: 800px;
+  margin: 0.5rem auto 1.5rem;
 }
 
 /* ===== Main Container ===== */
@@ -125,7 +124,7 @@ body.light-mode {
   gap: 2rem;
 }
 .card {
-  background: var(--bg-darker);
+  background: #111;
   border: 1px solid var(--neon-color);
   padding: 2rem;
   border-radius: 10px;
@@ -147,7 +146,7 @@ body.light-mode {
   margin: 0.5rem 0.5rem 0 0;
   padding: 0.6rem 1.2rem;
   background: var(--neon-color);
-  color: var(--bg-dark);
+  color: #0a0a0a;
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
@@ -157,21 +156,29 @@ body.light-mode {
   background: #00cc7f;
 }
 .btn-por-dentro {
-  background: #005f9e;
-  color: #fff;
+  background: #444;
+  color: var(--neon-color);
   cursor: pointer;
 }
 .btn-por-dentro:hover {
-  background: #007fcf;
+  background: #666;
 }
 
 /* ===== Footer ===== */
 footer {
   text-align: center;
-  padding: 1rem;
-  background: var(--bg-darker);
-  color: var(--neon-color);
+  padding: 1.5rem 0 2rem;
+  background: #111;
   margin-top: 3rem;
+}
+footer p,
+footer em {
+  color: var(--neon-color);
+  display: block;
+}
+footer em {
+  font-style: italic;
+  margin-top: 0.3rem;
   font-size: 0.9rem;
 }
 
@@ -189,40 +196,32 @@ footer {
 .modal.hidden {
   display: none;
 }
-.modal-open {
-  overflow: hidden;
-}
 .modal-content {
-  background: var(--bg-darker);
+  background: #111;
   padding: 2rem;
   border-radius: 10px;
   width: 90%;
   max-width: 600px;
-  color: var(--text-light);
+  color: #e0e0e0;
   position: relative;
   box-shadow: 0 0 15px var(--neon-color);
-  max-height: 90vh;
-  overflow-y: auto;
 }
 .close-modal {
   position: absolute;
   top: 10px; right: 15px;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--neon-color);
   cursor: pointer;
 }
 
-/* ===== Barra de Progresso (Play interno) ===== */
-.progress-bar {
+/* ===== Barra de Progresso (Play) ===== */
+#barra {
   width: 100%;
   background: #333;
   height: 10px;
-  margin-top: 1rem;
-}
-.progress-bar.hidden {
-  display: none;
+  margin-top: 2rem;
 }
 #barra-fill {
   height: 100%;
@@ -232,8 +231,8 @@ footer {
 }
 
 /* ===== Logs da execução ===== */
-.output-box {
-  background: var(--bg-darker);
+#logs {
+  background: #111;
   border: 1px solid var(--neon-color);
   padding: 1rem;
   margin-top: 1rem;
@@ -251,14 +250,56 @@ footer {
   margin: 1rem auto 2rem;
   display: block;
   border: 1px solid var(--neon-color);
-  background: var(--bg-dark);
-  color: var(--text-light);
+  background: #0a0a0a;
+  color: #e0e0e0;
   border-radius: 5px;
 }
 
-/* ===== Logs de estilo ===== */
-.log-info {
+/* ===== Formulário de Feedback ===== */
+.feedback-container {
+  margin-top: 3rem;
+  text-align: center;
+}
+.feedback-container h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--neon-color);
+}
+#feedback-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+#feedback-form input,
+#feedback-form textarea {
+  border: 1px solid var(--neon-color);
+  background: #141414;
+  color: #e0e0e0;
+  padding: 0.7rem;
+  border-radius: 5px;
+  font-family: inherit;
+}
+#feedback-form input {
+  flex: 1 1 200px;
+  max-width: 200px;
+  height: 2.2rem;
+}
+#feedback-form textarea {
+  flex: 2 1 300px;
+  height: 2.2rem;
+  resize: vertical;
+}
+#feedback-form .btn {
+  flex: 0 0 auto;
+  margin-left: 0.5rem;
+}
+
+/* ===== Logs/Erros ===== */
+.log-info {
+  color: #00ff9f;
   font-weight: bold;
 }
 .log-erro {
@@ -269,3 +310,4 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+

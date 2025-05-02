@@ -39,24 +39,18 @@
 </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
-  <main class="container">
-    <h1>Denis Oliveira — Portfólio Profissional</h1>
+<main class="container">
+  <!-- ================================
+       TÍTULO E DESCRIÇÃO CENTRALIZADOS
+       ================================ -->
+  <div class="hero-texto">
+    <h2>Denis Oliveira — Portfólio Profissional</h2>
     <p class="intro">
-      Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
-      <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
+      Apaixonado por Qualidade de Software e Segurança da Informação.
+      Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
     </p>
-
     <hr class="separator"/>
-
-    <!-- Formulário de feedback -->
-    <section id="feedback">
-      <h2>Gostou? Deixe um feedback!</h2>
-      <form action="https://formspree.io/f/SEU_ID" method="POST">
-        <input type="email" name="email" placeholder="Seu e-mail" required />
-        <textarea name="message" placeholder="Sua mensagem" required></textarea>
-        <button type="submit" class="btn">Enviar</button>
-      </form>
-    </section>
+  </div>
 
     <!-- Busca de plays -->
     <input type="text" id="search-input" placeholder="Buscar plays..." />
@@ -217,13 +211,25 @@
         <button class="btn btn-por-dentro" data-play="22">Por Dentro</button>
       </div>
     </section>
-  </main>
+
+  <!-- ======================================
+       FORMULÁRIO DE FEEDBACK NO FINAL DA PÁGINA
+       ====================================== -->
+  <div class="feedback-container">
+    <h3>Gostou? Deixe um feedback!</h3>
+    <form id="feedback-form">
+      <input type="email" id="fb-email" placeholder="Seu e-mail" required/>
+      <textarea id="fb-msg" placeholder="Sua mensagem" required></textarea>
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
     <em>Portfólio Técnico • QA • Pentest • DevSecOps</em>
   </footer>
+</main>
 
   <!-- Modal “Sobre” -->
   <div id="modal-sobre" class="modal hidden">
