@@ -286,5 +286,34 @@
   <!-- Simulação de execução e scripts de comportamento -->
   <script src="simulate-run.js"></script>
   <script src="scripts.js"></script>
+
+
+<!-- Easter-Egg Modal -->
+<div id="easter-modal" class="modal hidden">
+  <div class="modal-content">
+    <button class="close-modal" onclick="ocultarEasterEgg()">✕</button>
+    <div id="easter-gallery" class="easter-gallery hidden">
+      <!-- Vídeo -->
+      <video
+        id="easter-video"
+        width="640"
+        height="360"
+        controls
+        autoplay
+        muted
+        loop
+        style="max-width:100%; margin-bottom:1rem;"
+      >
+        <source src="assets/easter/1264737_lamp.mp4" type="video/mp4" />
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+      <!-- Galeria de Fotos -->
+      <div id="easter-images" class="easter-images"></div>
+    </div>
+  </div>
+</div>
+
+
+
 </body>
 </html>
