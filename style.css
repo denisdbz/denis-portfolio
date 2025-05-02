@@ -14,14 +14,26 @@ K:root
       0 0 40px var(--neon-color); }
 }
 
-/* Aplica o glow pulsante no logo, no título e no subtítulo */
+/* ===== Neon pulsante no logo e no texto do hero ===== */
 .logo-animado,
 .logo-text,
-.hero-texto h2,
-.subtitle {
-  color: var(--neon-color) !important;
+.hero .logo-text,
+.hero .subtitle {
   animation: neon-pulse 2s ease-in-out infinite;
+  color: var(--neon-color) !important;
 }
+
+/* ===== Neon nos rótulos dos botões ===== */
+.btn,
+#feedback-form button {
+  /* mantém o fundo, mas faz o texto brilhar */
+  color: var(--neon-color) !important;
+  text-shadow:
+    0 0 5px var(--neon-color),
+    0 0 10px var(--neon-color),
+    0 0 15px var(--neon-color);
+}
+
 
 /* Mantém o subtítulo digitado */
 .subtitle {
