@@ -3,33 +3,48 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 01 — Nmap Recon</title>
+  <title>Play XX — Título do Play</title>
   <link rel="stylesheet" href="../../style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="neon-dark">
 
   <nav class="navbar">
     <ul>
       <li><a href="../../index.html">Home</a></li>
-      <li><a href="../../sobre.html">Sobre</a></li>
-      <li><a href="../../news.html">News</a></li>
+      <li><a href="../../index.html#btn-sobre">Sobre</a></li>
+      <li><a href="../../index.html#btn-news">News</a></li>
     </ul>
   </nav>
 
   <header class="hero">
     <div class="logo-box">
       <img src="../../assets/img/logo-animado-denis.png" alt="Logo" class="logo-animado"/>
-      <span class="logo-text">Play 01 — Nmap Recon</span>
+      <span class="logo-text">Play XX — Título do Play</span>
     </div>
   </header>
 
   <main class="container">
-    <h1>Play 01 — Nmap Recon</h1>
-    <p class="intro">Varredura de portas e serviços para reconhecer hosts na rede.</p>
+    <h1>Play XX — Título do Play</h1>
+    <p class="intro">Descrição completa do play XX, explicando o que faz e objetivos.</p>
+
+    <!-- Barra de progresso e logs -->
+    <div id="barra" class="progress-bar hidden">
+      <div id="barra-fill"></div>
+    </div>
+    <pre id="logs" class="output-box"></pre>
+
+    <!-- Botões -->
+    <button onclick="executarTeste()">▶️ Executar Teste</button>
+    <a href="../../index.html" class="btn">← Voltar à Home</a>
   </main>
 
-  <script src="../../scripts.js"></script>
+  <footer>
+    <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
+    <em>Portfólio Técnico • QA • Pentest • DevSecOps</em>
+  </footer>
+
   <script src="../../simulate-run.js"></script>
-  <script src="../../assets/play-loader.js"></script>
+  <script src="../../scripts.js"></script>
 </body>
 </html>

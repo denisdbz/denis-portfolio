@@ -5,47 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css"/>
-  <script src="scripts.js" defer></script>
+
+  <!-- Chart.js (para o gráfico do modal “Sobre”) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="neon-dark">
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <ul>
-      <li><button data-modal="sobre">Sobre</button></li>
-      <li><button data-modal="ajuda">Ajuda</button></li>
-      <li><button data-modal="news">News</button></li>
-      <li><button data-modal="por-dentro">Plays</button></li>
-      <li><button class="toggle-theme">☀️/🌙</button></li>
+      <li><a href="#" id="btn-sobre">Sobre</a></li>
+      <li><a href="#" id="btn-ajuda">Ajuda</a></li>
+      <li><a href="#" id="btn-news">News</a></li>
+      <li><a href="#" id="btn-plays">Plays</a></li>
+      <li><button id="theme-toggle" title="Mudar tema">🌙/☀️</button></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <header class="hero">
-    <div class="logo-title">
-      <img src="assets/img/logo-animado-denis.png" alt="Logo" class="logo-inline"/>
-      <div class="logo-text">
-        <h1>Denis | QA &amp; Pentest</h1>
-        <p>QA • Pentest • DevSecOps</p>
-      </div>
+    <div class="logo-box">
+      <img src="assets/img/logo-animado-denis.png" alt="Logo Denis QA Pentest" class="logo-animado"/>
+      <span class="logo-text">Denis&nbsp;|&nbsp;QA&nbsp;&amp;&nbsp;Pentest</span>
     </div>
-    <div class="contact-links">
-      <a href="https://linkedin.com/in/denisdbz" target="_blank">LinkedIn</a>
-      <a href="mailto:denis@example.com">E-mail</a>
-      <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+    <div class="subtitle"><span id="typed-subtitle"></span></div>
+    <nav class="links">
+      <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
+      <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
+      <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
       <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-    </div>
+    </nav>
   </header>
 
-  <!-- MAIN -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main class="container">
-    <h2>Denis Oliveira — Portfólio Profissional</h2>
-    <p class="intro">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
-    <div class="underline"></div>
+    <h1>Denis Oliveira — Portfólio Profissional</h1>
+    <p class="intro">
+      Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
+      <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
+    </p>
 
-    <input type="text" class="search" placeholder="Buscar plays…" />
+    <hr class="separator"/>
 
-    <section id="plays" class="cards">
+    <!-- Formulário de feedback -->
+    <section id="feedback">
+      <h2>Gostou? Deixe um feedback!</h2>
+      <form action="https://formspree.io/f/SEU_ID" method="POST">
+        <input type="email" name="email" placeholder="Seu e-mail" required />
+        <textarea name="message" placeholder="Sua mensagem" required></textarea>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </section>
+
+    <!-- Busca de plays -->
+    <input type="text" id="search-input" placeholder="Buscar plays..." />
+
+    <!-- Grid de cards -->
+  <section id="plays" class="cards">
       <!-- Replicar este bloco para cada Play -->
       <div class="card">
         <h3>Play 01 — Nmap Recon</h3>
@@ -200,23 +216,24 @@
         <button class="btn btn-por-dentro" data-play="22">Por Dentro</button>
       </div>
     </section>
-
-    <!-- progresso e logs -->
-    <div id="progress-container" class="hidden">
-      <div class="progress-bar"><div class="fill"></div></div>
-      <pre id="output-box" class="output-box"></pre>
-    </div>
   </main>
 
-  <!-- MODAIS -->
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
+    <em>Portfólio Técnico • QA • Pentest • DevSecOps</em>
+  </footer>
+
+  <!-- Modal “Sobre” -->
   <div id="modal-sobre" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal">&times;</button>
+      <button class="close-modal" data-close="sobre">&times;</button>
       <h2>Sobre Mim</h2>
       <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps.</p>
       <p>Apaixonado por construir pipelines seguras, integrar qualidade desde o CI/CD e fomentar a cultura DevOps em times ágeis.</p>
       <canvas id="sobre-chart" width="400" height="200"></canvas>
-      <ul class="timeline">
+      <hr/>
+      <ul>
         <li><strong>2011:</strong> Suporte técnico e infraestrutura.</li>
         <li><strong>2014:</strong> QA Manual.</li>
         <li><strong>2016:</strong> Automação de Testes.</li>
@@ -227,28 +244,40 @@
     </div>
   </div>
 
+  <!-- Modal “Ajuda” -->
   <div id="modal-ajuda" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal">&times;</button>
+      <button class="close-modal" data-close="ajuda">&times;</button>
       <h2>Central de Ajuda</h2>
-      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps. Use os botões “Por Dentro” ou “Ver o Play”.</p>
+      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps.</p>
+      <ul>
+        <li><strong>Ver o Play:</strong> Executa o teste real.</li>
+        <li><strong>Por Dentro:</strong> Mostra documentação explicativa.</li>
+      </ul>
     </div>
   </div>
 
+  <!-- Modal “News” -->
   <div id="modal-news" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal">&times;</button>
+      <button class="close-modal" data-close="news">&times;</button>
       <h2>Últimas Notícias</h2>
-      <div id="news-list"><p>Carregando...</p></div>
+      <div id="news-list">Carregando...</div>
     </div>
   </div>
 
-  <div id="modal-por-dentro" class="modal hidden">
+  <!-- Modal “Plays” -->
+  <div id="modal-plays" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal">&times;</button>
-      <div id="modal-play-content"></div>
+      <button class="close-modal" data-close="plays">&times;</button>
+      <h2>Todos os Plays</h2>
+      <!-- Aqui você poderia listar de novo ou encaminhar de outra forma -->
+      <p>Use a grade na própria página para navegar.</p>
     </div>
   </div>
+
+  <!-- Simulação de execução e scripts de comportamento -->
+  <script src="simulate-run.js"></script>
   <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,58 +1,113 @@
+// scripts.js
+
 document.addEventListener('DOMContentLoaded', () => {
-  // abre modais
-  document.querySelectorAll('[data-modal]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.getElementById(`modal-${btn.dataset.modal}`)
-        .classList.remove('hidden');
-    });
+  // 1) Typed subtitle animation
+  const text = 'QA • Pentest • DevSecOps';
+  let idx = 0;
+  const el = document.getElementById('typed-subtitle');
+  (function type() {
+    if (idx <= text.length) {
+      el.textContent = text.slice(0, idx++);
+      setTimeout(type, 100);
+    }
+  })();
+
+  // 2) Theme toggle + persistência
+  const themeToggle = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') document.body.classList.add('light-mode');
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 
-  // fechar modais
+  // 3) Modals genéricos (Sobre, Ajuda, News, Plays and Por Dentro)
+  function openModal(id) {
+    document.getElementById('modal-' + id)?.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+    if (id === 'sobre') renderSobreChart();
+    if (id === 'news') loadNews();
+  }
+  ['sobre','ajuda','news','plays'].forEach(id => {
+    document.getElementById('btn-' + id)
+      ?.addEventListener('click', e => {
+        e.preventDefault();
+        openModal(id);
+      });
+  });
   document.querySelectorAll('.close-modal').forEach(btn => {
     btn.addEventListener('click', () => {
-      btn.closest('.modal').classList.add('hidden');
-    });
-  });
-  // fechar clicando fora
-  document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.add('hidden');
+      document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden'));
+      document.body.classList.remove('modal-open');
     });
   });
 
-  // busca de Plays
-  const search = document.querySelector('.search');
-  if (search) {
-    search.addEventListener('input', () => {
-      const term = search.value.toLowerCase();
-      document.querySelectorAll('.card').forEach(card => {
-        card.style.display =
-          card.textContent.toLowerCase().includes(term) ? '' : 'none';
-      });
+  // 4) Search/filter plays
+  const search = document.getElementById('search-input');
+  search?.addEventListener('input', () => {
+    const term = search.value.toLowerCase();
+    document.querySelectorAll('#plays .card').forEach(card => {
+      card.style.display =
+        card.querySelector('h3').textContent.toLowerCase().includes(term)
+        ? ''
+        : 'none';
+    });
+  });
+
+  // 5) Load news (modal News)
+  async function loadNews() {
+    const list = document.getElementById('news-list');
+    if (!list) return;
+    try {
+      const res = await fetch('https://api.allorigins.win/raw?url=https://hn.algolia.com/api/v1/search?tags=front_page');
+      const data = await res.json();
+      list.innerHTML = data.hits.slice(0,5).map(hit =>
+        `<a href="${hit.url}" target="_blank">${hit.title}</a>`
+      ).join('<br>');
+    } catch {
+      list.textContent = 'Falha ao carregar notícias.';
+    }
+  }
+
+  // 6) “Por Dentro” de cada play
+  document.querySelectorAll('.btn-por-dentro').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const id = btn.dataset.play.padStart(2,'0');
+      const modal = document.getElementById('modal-por-dentro');
+      document.getElementById('modal-play-content').innerHTML = 'Carregando…';
+      openModal('por-dentro');
+      fetch(`plays/play-${id}-${btn.closest('.card').title.split('—')[1].trim().toLowerCase().replace(/\s+/g,'-')}/post.html`)
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('modal-play-content').innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById('modal-play-content').innerHTML = 'Conteúdo não disponível.';
+        });
+    });
+  });
+
+  // 7) Gráfico do modal Sobre
+  let sobreChart;
+  function renderSobreChart() {
+    if (sobreChart) return;
+    const ctx = document.getElementById('sobre-chart');
+    if (!ctx) return;
+    sobreChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2011','2014','2016','2018','2020','2024'],
+        datasets: [{
+          label: 'Anos de experiência',
+          data: [1,3,5,7,9,12],
+          backgroundColor: 'rgba(0,255,159,0.6)'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true } }
+      }
     });
   }
 });
-
-// inicia SSE para executar teste
-function startTest(playId) {
-  const pc = document.getElementById('progress-container');
-  const fill = document.querySelector('.fill');
-  const out  = document.getElementById('output-box');
-  if (!pc||!fill||!out) return;
-
-  pc.classList.remove('hidden');
-  fill.style.width = '0%';
-  out.textContent = '';
-
-  const es = new EventSource(`/stream/${playId}`);
-  es.onmessage = e => {
-    const d = JSON.parse(e.data);
-    if (d.progress !== undefined)
-      fill.style.width = d.progress + '%';
-    if (d.log !== undefined) {
-      out.textContent += d.log + "\n";
-      out.scrollTop = out.scrollHeight;
-    }
-  };
-  es.addEventListener('end', () => es.close());
-}
