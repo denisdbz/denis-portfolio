@@ -3,7 +3,7 @@
   // ================== CONFIGURAÇÃO ==================
   const secretKey = '01092024';
   const audioSrc  = 'assets/easter/palpite.mp3';
-  const videoSrc  = 'assets/easter/VID-20250502-WA0032.mp4'; // seu novo vídeo
+  const videoSrc  = 'assets/easter/2025-05-02.mp4'; // seu novo vídeo
   const fotos     = [
     'assets/easter/foto1.jpg',
     'assets/easter/foto2.jpg',
