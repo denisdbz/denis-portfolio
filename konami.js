@@ -3,7 +3,7 @@
   // ================== CONFIGURAÇÃO ==================
   const secretKey = '01092024';                  // senha atualizada
   const audioSrc  = 'assets/easter/palpite.mp3'; // trilha sonora
-  const videoSrc  = 'assets/easter/VID-20250502-WA0032.mp4'; // vídeo do Easter Egg
+  const videoSrc  = 'assets/easter/2025-05-02.mp4'; // vídeo do Easter Egg
   const fotos     = [                             // galeria de fotos
     'assets/easter/foto1.jpg',
     'assets/easter/foto2.jpg',
