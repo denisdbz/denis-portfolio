@@ -12,24 +12,20 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <ul>
-      <li><button class="link" data-modal="sobre">Sobre</button></li>
-      <li><button class="link" data-modal="ajuda">Ajuda</button></li>
-      <li><button class="link" data-modal="news">News</button></li>
-      <li><button class="link" data-modal="por-dentro">Plays</button></li>
+      <li><button data-modal="sobre">Sobre</button></li>
+      <li><button data-modal="ajuda">Ajuda</button></li>
+      <li><button data-modal="news">News</button></li>
+      <li><button data-modal="por-dentro">Plays</button></li>
       <li><button class="toggle-theme">☀️/🌙</button></li>
     </ul>
   </nav>
 
-  <!-- HERO / CABEÇALHO -->
+  <!-- HERO -->
   <header class="hero">
     <div class="logo-title">
-      <img
-        src="assets/img/logo-animado-denis.png"
-        alt="Logo Denis | QA & Pentest"
-        class="logo-inline"
-      />
+      <img src="assets/img/logo-animado-denis.png" alt="Logo" class="logo-inline"/>
       <div class="logo-text">
-        <h1>Denis | QA & Pentest</h1>
+        <h1>Denis | QA &amp; Pentest</h1>
         <p>QA • Pentest • DevSecOps</p>
       </div>
     </div>
@@ -41,26 +37,23 @@
     </div>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- MAIN -->
   <main class="container">
     <h2>Denis Oliveira — Portfólio Profissional</h2>
-    <p>Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
+    <p class="intro">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
     <div class="underline"></div>
 
-    <!-- BUSCA DE PLAYS -->
-    <input id="search" type="text" placeholder="Buscar plays…" class="search"/>
+    <input type="text" class="search" placeholder="Buscar plays…" />
 
-<!-- GRID DE CARTÕES DOS PLAYS -->
     <section id="plays" class="cards">
-      <!-- EXEMPLO DE CARTÃO: replique para cada play -->
+      <!-- Replicar este bloco para cada Play -->
       <div class="card">
         <h3>Play 01 — Nmap Recon</h3>
         <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-        <a class="btn neon-btn" href="plays/play-01-nmap-recon/index.html">▶️ Ver o Play</a>
+        <a class="btn" href="plays/01-nmap-recon/">▶️ Ver o Play</a>
         <button class="btn btn-por-dentro" data-play="01">Por Dentro</button>
       </div>
-
- <div class="card" title="Play 02 — Hydra DVWA">
+        <div class="card" title="Play 02 — Hydra DVWA">
         <h3>Play 02 — Hydra DVWA</h3>
         <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
         <a class="btn" href="plays/play-02-hydra-dvwa/">▶️ Ver o Play</a>
@@ -208,11 +201,9 @@
       </div>
     </section>
 
-    <!-- CONTAINER GLOBAL DE PROGRESSO E LOGS -->
+    <!-- progresso e logs -->
     <div id="progress-container" class="hidden">
-      <div class="progress-bar">
-        <div id="progress-fill" class="fill"></div>
-      </div>
+      <div class="progress-bar"><div class="fill"></div></div>
       <pre id="output-box" class="output-box"></pre>
     </div>
   </main>
@@ -220,9 +211,10 @@
   <!-- MODAIS -->
   <div id="modal-sobre" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal" data-close="sobre">&times;</button>
+      <button class="close-modal">&times;</button>
       <h2>Sobre Mim</h2>
       <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps.</p>
+      <p>Apaixonado por construir pipelines seguras, integrar qualidade desde o CI/CD e fomentar a cultura DevOps em times ágeis.</p>
       <canvas id="sobre-chart" width="400" height="200"></canvas>
       <ul class="timeline">
         <li><strong>2011:</strong> Suporte técnico e infraestrutura.</li>
@@ -237,28 +229,26 @@
 
   <div id="modal-ajuda" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal" data-close="ajuda">&times;</button>
+      <button class="close-modal">&times;</button>
       <h2>Central de Ajuda</h2>
-      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps. Navegue pelos cards e use “Por Dentro” ou “Ver o Play” para explorar cada teste.</p>
+      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps. Use os botões “Por Dentro” ou “Ver o Play”.</p>
     </div>
   </div>
 
   <div id="modal-news" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal" data-close="news">&times;</button>
+      <button class="close-modal">&times;</button>
       <h2>Últimas Notícias</h2>
-      <div id="news-list" class="news-grid">
-        <p class="loading">Carregando...</p>
-      </div>
+      <div id="news-list"><p>Carregando...</p></div>
     </div>
   </div>
 
   <div id="modal-por-dentro" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal" data-close="por-dentro">&times;</button>
+      <button class="close-modal">&times;</button>
       <div id="modal-play-content"></div>
     </div>
   </div>
-
+  <script src="scripts.js"></script>
 </body>
 </html>
