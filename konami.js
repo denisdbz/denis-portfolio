@@ -1,18 +1,16 @@
-/* konami.js – Easter-egg via Konami Code, modal de senha e exibição de um único vídeo */
+// konami.js
 (() => {
   // ================== CONFIGURAÇÃO ==================
-  const secretKey = '01092024';                                // senha secreta
-  const videoSrc  = 'assets/easter/2025-05-02.mp4';   // seu vídeo
+  const secretKey = '01092024';                   // senha
+  const videoSrc   = 'assets/easter/VID-20250502-WA0048.mp4'; // seu vídeo
 
-  // sequência do Konami Code (↑↑↓↓←→←→BA)
-  const pattern = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+  // ==================== KONAMI ======================
+  const pattern = [38,38,40,40,37,39,37,39,66,65]; // ↑ ↑ ↓ ↓ ← → ← → B A
   let buffer = [];
-  let iniciado = false;
-  let audio;
 
-  // Captura teclas para detectar a sequência
-  function onKeyDown(ev) {
-    if (ev.key === 'Escape') fecharTudo();
+  window.addEventListener('keydown', ev => {
+    // Esc fecha o egg se aberto
+    if (ev.key === 'Escape') ocultarEasterEgg();
 
     buffer.push(ev.keyCode);
     if (buffer.length > pattern.length) buffer.shift();
@@ -21,9 +19,9 @@
       buffer = [];
       solicitarSenha();
     }
-  }
+  });
 
-  // Abre modal de senha
+  // ==================== MODAL =======================
   function solicitarSenha() {
     const modal = document.getElementById('easter-modal');
     const btn   = document.getElementById('easter-submit');
@@ -35,77 +33,61 @@
     modal.classList.remove('hidden');
     input.focus();
 
-    // remove listeners antigos e adiciona novo handler
-    const novoBtn = btn.cloneNode(true);
-    btn.parentNode.replaceChild(novoBtn, btn);
-    novoBtn.addEventListener('click', () => {
+    btn.onclick = () => {
       if (input.value.trim() === secretKey) {
         modal.classList.add('hidden');
-        abrirVideo();
+        ativarEasterEgg();
       } else {
+        erro.textContent = 'Senha incorreta 😅';
         erro.classList.remove('hidden');
       }
-    });
+    };
   }
 
-  // Exibe o vídeo e toca o áudio de fundo
-  function abrirVideo() {
-    const galeria = document.getElementById('easter-gallery');
+  // ==================== EASTER ======================
+  let painelCriado = false;
+  let videoElem;
 
-    if (!iniciado) {
-      galeria.innerHTML = '';
+  function ativarEasterEgg() {
+    const gallery = document.getElementById('easter-gallery');
 
-      // cria elemento <video>
-      const video = document.createElement('video');
-      video.src = videoSrc;
-      video.controls = true;
-      video.autoplay = true;
-      video.loop = true;
-      video.style.objectFit = 'contain';   // mantém proporção
-      video.style.maxWidth = '90vw';
-      video.style.maxHeight = '90vh';
-      galeria.appendChild(video);
+    if (!painelCriado) {
+      // container full-screen
+      gallery.className =
+        'fixed inset-0 z-50 flex items-center justify-center bg-black/75';
+      gallery.style.cursor = 'pointer';
 
-      iniciado = true;
+      // cria o <video>
+      videoElem = document.createElement('video');
+      videoElem.src         = videoSrc;
+      videoElem.controls    = true;
+      videoElem.autoplay    = true;
+      videoElem.loop        = true;
+      videoElem.style.maxWidth  = '80vw';
+      videoElem.style.maxHeight = '80vh';
+      videoElem.style.objectFit = 'contain';
+      videoElem.style.border    = '4px solid var(--neon-color)';
+      videoElem.style.boxShadow  = '0 0 20px var(--neon-color)';
+      videoElem.style.borderRadius = '8px';
+
+      gallery.appendChild(videoElem);
+      painelCriado = true;
     }
 
-    // toca áudio em loop
-    if (audio) audio.pause();
-    audio = new Audio(audioSrc);
-    audio.loop = true;
-    audio.volume = 0.6;
-    audio.play();
-
-    galeria.classList.remove('hidden');
+    gallery.classList.remove('hidden');
+    videoElem.play();
+    gallery.onclick = ocultarEasterEgg;
   }
 
-  // Fecha tanto o modal de senha quanto o player de vídeo
-  function fecharTudo() {
-    const modal   = document.getElementById('easter-modal');
-    const galeria = document.getElementById('easter-gallery');
-
-    if (modal && !modal.classList.contains('hidden')) {
-      modal.classList.add('hidden');
-    }
-    if (galeria && !galeria.classList.contains('hidden')) {
-      galeria.classList.add('hidden');
-    }
-    if (audio) {
-      audio.pause();
-      audio = null;
+  function ocultarEasterEgg() {
+    const gallery = document.getElementById('easter-gallery');
+    if (!gallery.classList.contains('hidden')) {
+      gallery.classList.add('hidden');
+      if (videoElem) videoElem.pause();
     }
   }
 
-  // Inicialização
-  document.addEventListener('DOMContentLoaded', () => {
-    window.addEventListener('keydown', onKeyDown);
+  // expose to global (se quiser chamar manualmente)
+  window.solicitarSenha = solicitarSenha;
 
-    // botão “×” do modal de senha
-    document.querySelectorAll('#easter-modal .close-modal')
-      .forEach(btn => btn.addEventListener('click', fecharTudo));
-
-    // clique fora do vídeo fecha
-    document.getElementById('easter-gallery')
-      .addEventListener('click', fecharTudo);
-  });
 })();
