@@ -1,4 +1,54 @@
-K:root {
+K:root
+
+/* ===== Pulsar Neon ===== */
+@keyframes neon-pulse {
+  0%, 100% { text-shadow: 
+      0 0 5px var(--neon-color),
+      0 0 10px var(--neon-color),
+      0 0 20px var(--neon-color),
+      0 0 30px var(--neon-color); }
+  50% { text-shadow:
+      0 0 10px var(--neon-color),
+      0 0 20px var(--neon-color),
+      0 0 30px var(--neon-color),
+      0 0 40px var(--neon-color); }
+}
+
+/* Aplica o glow pulsante no logo, no título e no subtítulo */
+.logo-animado,
+.logo-text,
+.hero-texto h2,
+.subtitle {
+  color: var(--neon-color) !important;
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+/* Mantém o subtítulo digitado */
+.subtitle {
+  font-style: italic;
+}
+
+/* Garante que as bordas e campos usem a cor neon */
+.card {
+  border-color: var(--neon-color);
+  box-shadow: 0 0 8px rgba(0,255,159,0.5);
+}
+#search-input,
+#feedback-form input,
+#feedback-form textarea {
+  border-color: var(--neon-color);
+}
+.btn, .btn-por-dentro {
+  background: var(--neon-color);
+  box-shadow: 0 0 8px rgba(0,255,159,0.5);
+  color: #0a0a0a;
+}
+.btn-por-dentro {
+  color: var(--neon-color);
+  background: #111;
+}
+
+ {
   --neon-color: #00ff9f;
 }
 
