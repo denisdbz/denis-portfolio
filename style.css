@@ -253,10 +253,6 @@ footer em {
   z-index: 10000;
 }
 
-.modal.hidden {
-  display: none !important;
-}
-
 
 .modal-content {
   background: #111;
@@ -277,6 +273,12 @@ footer em {
   color: var(--neon-color);
   cursor: pointer;
 }
+
+
+.modal.hidden {
+  display: none !important;
+}
+
 
 /* ===== Barra de Progresso (Play) ===== */
 #barra {
