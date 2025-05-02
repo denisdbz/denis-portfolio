@@ -283,16 +283,23 @@
     </div>
   </div>
 
-  <!-- Simulação de execução e scripts de comportamento -->
-  <script src="simulate-run.js"></script>
+  
+<!-- Easter Egg: modal de senha -->
+  <div id="easter-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-modal" data-close="easter-modal">&times;</button>
+      <h2>💡 Insira a senha secreta</h2>
+      <input id="easter-key" type="password" placeholder="Senha"/>
+      <p id="easter-erro" class="error hidden">Senha incorreta 😅</p>
+      <button id="easter-submit" class="btn">OK</button>
+    </div>
+  </div>
+
+  <!-- Easter Egg: galeria (vídeo + fotos) -->
+  <div id="easter-gallery" class="hidden"></div>
+
+  <!-- Seus scripts (konami.js por último) -->
   <script src="scripts.js"></script>
-
-
-<!-- Easter-Egg Modal -->
-
-<!-- dentro do <div class="modal-content"> do easter-modal -->
-<div id="easter-gallery" class="hidden"></div>
-
-
+  <script src="konami.js"></script>
 </body>
 </html>
