@@ -1,5 +1,9 @@
 :root {
   --neon-color: #00ffe0;
+  --bg-dark: #141414;
+  --bg-darker: #111;
+  --text-light: #e0e0e0;
+  --text-dark: #333;
 }
 
 /* ===== Reset ===== */
@@ -12,202 +16,256 @@
 /* ===== Corpo ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #141414;
-  color: #e0e0e0;
+  background: var(--bg-dark);
+  color: var(--text-light);
   overflow-x: hidden;
 }
 body.light-mode {
   background: #f4f4f4;
-  color: #333;
+  color: var(--text-dark);
 }
 
 /* ===== Navbar ===== */
 .navbar {
-  background: #111;
+  background: var(--bg-darker);
   padding: 1rem;
 }
 .navbar ul {
   list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+  text-align: center;
+}
+.navbar ul li {
+  display: inline-block;
+  margin: 0 15px;
 }
 .navbar a, .navbar button {
   color: var(--neon-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
   background: none;
   border: none;
   cursor: pointer;
-  font-weight: bold;
 }
 
-/* ===== Hero ===== */
+/* ===== Hero personalizado ===== */
 .hero {
   text-align: center;
-  padding: 2rem 0;
-}
-.logo-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-}
-.logo-inline {
-  width: 60px;
-}
-.logo-text h1, .logo-text p {
-  color: var(--neon-color);
-  text-shadow:
-    0 0 8px var(--neon-color),
-    0 0 16px var(--neon-color);
-}
-
-/* ===== Conteúdo Principal ===== */
-.container {
-  max-width: 960px;
-  margin: 0 auto;
   padding: 2rem 1rem;
 }
-.container h2 {
-  text-align: center;
-  margin-bottom: 0.5rem;
+.logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
-.container p.intro {
-  text-align: center;
-  margin-bottom: 1rem;
+.logo-animado {
+  width: 60px;
+  animation: pulse 2s infinite alternate;
 }
-.underline {
+.hero-title {
+  font-size: 2rem;
+  color: var(--neon-color);
+  text-shadow:
+    0 0 5px var(--neon-color),
+    0 0 20px var(--neon-color),
+    0 0 30px var(--neon-color);
+  animation: pulse 2s infinite alternate;
+}
+.subtitle {
+  margin-top: 0.5rem;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--neon-color);
+  text-shadow: 0 0 8px var(--neon-color);
+}
+
+/* ===== Typed subtitle animation ===== */
+/* (se já tiver no scripts.js, apenas mantenha o elemento .subtitle e #typed-subtitle) */
+
+/* ===== Pulsar neon ===== */
+@keyframes pulse {
+  from {
+    text-shadow:
+      0 0 5px var(--neon-color),
+      0 0 20px var(--neon-color),
+      0 0 30px var(--neon-color);
+    filter: brightness(1);
+  }
+  to {
+    text-shadow:
+      0 0 10px var(--neon-color),
+      0 0 30px var(--neon-color),
+      0 0 40px var(--neon-color);
+    filter: brightness(1.2);
+  }
+}
+
+/* ===== Main Container ===== */
+.container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.intro {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.separator {
+  margin: 2rem auto;
+  border: none;
+  border-top: 2px solid var(--neon-color);
   width: 50%;
-  height: 2px;
-  background: var(--neon-color);
-  margin: 0.5rem auto 2rem;
 }
 
-/* ===== Busca ===== */
-.search {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 2rem;
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--neon-color);
-  border-radius: 5px;
-  background: #222;
-  color: #e0e0e0;
-}
-
-/* ===== Cards ===== */
+/* ===== Cards de Plays ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 .card {
-  background: #1e1e1e;
-  border: 2px solid var(--neon-color);
-  border-radius: 8px;
-  padding: 1.2rem;
-  text-align: left;
-  transition: box-shadow .3s;
+  background: var(--bg-darker);
+  border: 1px solid var(--neon-color);
+  padding: 2rem;
+  border-radius: 10px;
+  transition: transform 0.3s;
 }
 .card:hover {
-  box-shadow: 0 0 12px var(--neon-color);
+  transform: translateY(-5px);
 }
 .card h3 {
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
 }
 .card p {
   margin-bottom: 1rem;
 }
-.card .btn {
+
+/* ===== Botões ===== */
+.btn {
   display: inline-block;
-  padding: .6rem 1.2rem;
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.6rem 1.2rem;
   background: var(--neon-color);
-  color: #000;
+  color: var(--bg-dark);
+  text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
-  text-decoration: none;
-  transition: background .3s, box-shadow .3s;
+  transition: background 0.3s;
 }
-.card .btn:hover {
-  background: #66fff1;
-  box-shadow: 0 0 8px #66fff1;
+.btn:hover {
+  background: #00cc7f;
 }
-.card .btn-por-dentro {
-  margin-left: .5rem;
-  background: #1e90ff;
+.btn-por-dentro {
+  background: #005f9e;
   color: #fff;
+  cursor: pointer;
 }
-.card .btn-por-dentro:hover {
-  background: #56b4e0;
+.btn-por-dentro:hover {
+  background: #007fcf;
 }
 
-/* ===== Modais ===== */
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg-darker);
+  color: var(--neon-color);
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+/* ===== Modal ===== */
 .modal {
   position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: auto;
-  z-index: 1000;
+  align-items: center;
+  z-index: 10000;
 }
 .modal.hidden {
   display: none;
 }
+.modal-open {
+  overflow: hidden;
+}
 .modal-content {
-  background: #111;
+  background: var(--bg-darker);
   padding: 2rem;
-  border-radius: 8px;
-  max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  color: var(--text-light);
   position: relative;
-  box-shadow: 0 0 16px var(--neon-color);
+  box-shadow: 0 0 15px var(--neon-color);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 .close-modal {
   position: absolute;
-  top: 1rem; right: 1rem;
-  background: none; border: none;
-  color: #e0e0e0; font-size:1.5rem; cursor:pointer;
+  top: 10px; right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--neon-color);
+  cursor: pointer;
 }
 
-/* ===== Barra de Progresso & Logs ===== */
-#progress-container {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  width: 320px;
-  background: rgba(0,0,0,0.9);
-  padding: 1rem;
-  border-radius: 6px;
-  color: var(--neon-color);
-  font-family: monospace;
-  z-index: 1100;
+/* ===== Barra de Progresso (Play interno) ===== */
+.progress-bar {
+  width: 100%;
+  background: #333;
+  height: 10px;
+  margin-top: 1rem;
 }
-#progress-container.hidden {
+.progress-bar.hidden {
   display: none;
 }
-.progress-bar {
-  background: #333;
-  height: .75rem;
-  border-radius: .5rem;
-  overflow: hidden;
-  margin-bottom: .5rem;
-}
-.fill {
-  width: 0%;
+#barra-fill {
   height: 100%;
+  width: 0%;
   background: var(--neon-color);
-  transition: width .3s;
+  transition: width 0.3s ease-in-out;
 }
+
+/* ===== Logs da execução ===== */
 .output-box {
-  max-height: 150px;
+  background: var(--bg-darker);
+  border: 1px solid var(--neon-color);
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  height: 200px;
   overflow-y: auto;
-  white-space: pre-wrap;
+  border-radius: 5px;
 }
-.logo-animado {
-  width: 60px;
-  height: auto;
+
+/* ===== Input de busca ===== */
+#search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.7rem;
+  margin: 1rem auto 2rem;
   display: block;
-  margin: 0 auto;
+  border: 1px solid var(--neon-color);
+  background: var(--bg-dark);
+  color: var(--text-light);
+  border-radius: 5px;
+}
+
+/* ===== Logs de estilo ===== */
+.log-info {
+  color: var(--neon-color);
+  font-weight: bold;
+}
+.log-erro {
+  color: #ff4b5c;
+  font-weight: bold;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
