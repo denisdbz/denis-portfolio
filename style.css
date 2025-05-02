@@ -229,3 +229,21 @@ body.light-mode {
   overflow-y: auto;
   white-space: pre-wrap;
 }
+
+/* CSS para manter tudo centralizado e colocar o logo inline antes do texto */
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.logo-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-inline {
+  width: 60px;
+  height: auto;
+  animation: pulseLogo 2s infinite ease-in-out;
+}
