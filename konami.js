@@ -2,7 +2,7 @@
 (() => {
   // ================== CONFIGURAÇÃO ==================
   const secretKey = '01092024';                   // senha
-  const videoSrc   = 'assets/easter/VID-20250502-WA0048.mp4'; // seu vídeo
+  const videoSrc   = 'assets/easter/2025-05-02.mp4'; // seu vídeo
 
   // ==================== KONAMI ======================
   const pattern = [38,38,40,40,37,39,37,39,66,65]; // ↑ ↑ ↓ ↓ ← → ← → B A
