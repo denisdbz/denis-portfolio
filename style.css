@@ -12,7 +12,7 @@
 /* ===== Corpo ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #141414; /* fundo mais suave */
+  background: #141414;
   color: #e0e0e0;
   line-height: 1.6;
   overflow-x: hidden;
@@ -60,12 +60,20 @@ body.light-mode {
   text-align: center;
   padding: 2rem 0;
 }
-.hero .logo-box img {
-  width: 150px;
+.logo-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+.logo-inline {
+  width: 64px;
+  height: auto;
   animation: pulseLogo 2s infinite ease-in-out;
 }
-.hero h1,
-.hero p {
+.logo-text h1,
+.logo-text p {
+  margin: 0;
   color: var(--neon-color);
   text-shadow:
     0 0 8px var(--neon-color),
@@ -73,7 +81,7 @@ body.light-mode {
     0 0 24px var(--neon-color);
 }
 @keyframes pulseLogo {
-  0%, 100% {
+  0%,100% {
     transform: scale(1);
     filter: drop-shadow(0 0 4px var(--neon-color));
   }
@@ -107,7 +115,6 @@ body.light-mode {
   border: 2px solid var(--neon-color);
   border-radius: 0.5rem;
   text-align: center;
-  position: relative;
   animation: neonBorder 3s infinite alternate;
   transition: transform 0.3s, box-shadow 0.3s;
 }
