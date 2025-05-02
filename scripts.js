@@ -1,144 +1,98 @@
-// 1) Typed subtitle (máquina de escrever)
-const subtitleText = 'QA • Pentest • DevSecOps';
-let ti = 0;
-const subtitleEl = document.getElementById('typed-subtitle');
-(function type() {
-  if (!subtitleEl) return;
-  if (ti <= subtitleText.length) {
-    subtitleEl.textContent = subtitleText.slice(0, ti++);
-    setTimeout(type, 100);
-  }
-})();
-
-// 2) Theme toggle + persistência
-const themeToggle = document.getElementById('theme-toggle');
-if (localStorage.getItem('theme') === 'light') {
-  document.body.classList.add('light-mode');
-}
-themeToggle?.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  localStorage.setItem(
-    'theme',
-    document.body.classList.contains('light-mode') ? 'light' : 'dark'
-  );
-});
-
-// 3) Abrir/fechar modais via X e ESC
-function openModal(id) {
-  document.getElementById(`modal-${id}`)?.classList.remove('hidden');
-  document.body.classList.add('modal-open');
-  if (id === 'sobre') renderSobreChart();
-}
-function closeModal(id) {
-  document.getElementById(`modal-${id}`)?.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-}
-document.querySelectorAll('.close-modal').forEach(btn => {
-  btn.addEventListener('click', () => closeModal(btn.dataset.close));
-});
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden'));
-    document.body.classList.remove('modal-open');
-  }
-});
-
-// 4) Navbar
-['sobre','ajuda','news'].forEach(id => {
-  document.getElementById(`btn-${id}`)?.addEventListener('click', e => {
-    e.preventDefault();
-    openModal(id);
+document.addEventListener('DOMContentLoaded', () => {
+  // Abrir modais
+  document.querySelectorAll('[data-modal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modal = document.getElementById(`modal-${btn.dataset.modal}`);
+      if (modal) modal.classList.remove('hidden');
+    });
   });
+
+  // Fechar modais pelo botão
+  document.querySelectorAll('.close-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modal = btn.closest('.modal');
+      if (modal) modal.classList.add('hidden');
+    });
+  });
+
+  // Fechar modal clicando fora do conteúdo
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+  });
+
+  // Busca de Plays
+  const searchInput = document.getElementById('search');
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      const termo = searchInput.value.toLowerCase();
+      document.querySelectorAll('#plays .card').forEach(card => {
+        card.style.display = card.textContent.toLowerCase().includes(termo) ? '' : 'none';
+      });
+    });
+  }
+
+  // Carregar detalhes “Por Dentro” dinamicamente
+  document.querySelectorAll('.btn-por-dentro').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const play = btn.dataset.play;
+      fetch(`plays/${play}/details.html`)
+        .then(res => {
+          if (!res.ok) throw new Error('Falha ao carregar detalhes');
+          return res.text();
+        })
+        .then(html => {
+          document.getElementById('modal-play-content').innerHTML = html;
+          document.getElementById('modal-por-dentro').classList.remove('hidden');
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Erro ao carregar os detalhes do play.');
+        });
+    });
+  });
+
+  // Toggle de tema claro/escuro
+  const themeToggle = document.querySelector('.toggle-theme');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem(
+        'theme',
+        document.body.classList.contains('light-mode') ? 'light' : 'dark'
+      );
+    });
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') document.body.classList.add('light-mode');
+  }
 });
 
-// 5) Carregar notícias (modal News)
-async function loadNews() {
-  const grid = document.getElementById('news-list');
-  if (!grid) return;
-  try {
-    const r = await fetch('https://api.allorigins.win/raw?url=https://hn.algolia.com/api/v1/search?tags=front_page');
-    const { hits } = await r.json();
-    grid.innerHTML = hits.slice(0,4).map(h => `
-      <div class="news-card">
-        <h4>${h.title}</h4>
-        <small>${h.author}</small>
-        <a href="${h.url}" target="_blank">Ler mais →</a>
-      </div>
-    `).join('');
-  } catch {
-    grid.innerHTML = '<p>Erro ao carregar notícias.</p>';
-  }
-}
-document.getElementById('btn-news')?.addEventListener('click', loadNews);
+// Função SSE para executar testes e mostrar progresso/log
+function startTest(playId) {
+  const progressContainer = document.getElementById('progress-container');
+  const fill = document.getElementById('progress-fill');
+  const output = document.getElementById('output-box');
+  if (!progressContainer || !fill || !output) return;
 
-// 6) “Por Dentro” de cada play
-document.querySelectorAll('.btn-por-dentro').forEach(btn => {
-  btn.addEventListener('click', async e => {
-    e.preventDefault();
-    const id = btn.dataset.play.padStart(2,'0');
-    openModal('por-dentro');
-    const cont = document.getElementById('modal-play-content');
-    cont.innerHTML = '<p>Carregando conteúdo…</p>';
+  progressContainer.classList.remove('hidden');
+  fill.style.width = '0%';
+  output.textContent = '';
+
+  const evt = new EventSource(`/stream/${playId}`);
+  evt.onmessage = e => {
     try {
-      const r = await fetch(`posts/play-${id}.html`);
-      if (!r.ok) throw '';
-      cont.innerHTML = await r.text();
-      // Garante apenas 1 grupo de botões
-      const grp = document.createElement('div');
-      grp.className = 'modal-btn-group';
-      grp.innerHTML = `
-        <a href="plays/play-${id}-nmap-recon/" class="btn">▶️ Ir ao Play</a>
-        <button class="btn" onclick="closeModal('por-dentro')">← Voltar à Home</button>
-      `;
-      cont.appendChild(grp);
-    } catch {
-      cont.innerHTML = '<p>Erro ao carregar conteúdo.</p>';
-    }
-  });
-});
-
-// 7) Filtrar cards
-document.getElementById('search-input')?.addEventListener('input', e => {
-  const term = e.target.value.toLowerCase();
-  document.querySelectorAll('#plays .card').forEach(c => {
-    c.style.display = c.querySelector('h3').textContent.toLowerCase().includes(term) ? '' : 'none';
-  });
-});
-
-// 8) Gráfico do Sobre (Chart.js)
-let sobreChart;
-function renderSobreChart() {
-  if (sobreChart) return;
-  const ctx = document.getElementById('sobre-chart');
-  if (!ctx) return;
-
-  sobreChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['2011','2014','2016','2018','2020','2024'],
-      datasets: [{
-        label: 'Anos de experiência',
-        data: [1,3,5,7,9,12],
-        // AQUI É ONDE ADICIONAMOS A COR
-        backgroundColor: 'rgba(0, 255, 159, 0.6)',
-        borderColor:   'rgba(0, 255, 159, 1)',
-        borderWidth: 2,
-        hoverBackgroundColor: 'rgba(0, 255, 159, 0.8)',
-        hoverBorderColor:   'rgba(0, 255, 159, 1)'
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: { beginAtZero: true }
-      },
-      plugins: {
-        legend: {
-          labels: {
-            color: '#fff' // legenda em branco, se quiser
-          }
-        }
+      const data = JSON.parse(e.data);
+      if (data.progress !== undefined) {
+        fill.style.width = `${data.progress}%`;
       }
+      if (data.log !== undefined) {
+        output.textContent += data.log;
+        output.scrollTop = output.scrollHeight;
+      }
+    } catch (err) {
+      console.error('Erro ao processar SSE:', err);
     }
-  });
+  };
+  evt.addEventListener('end', () => evt.close());
 }
