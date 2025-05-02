@@ -8,7 +8,7 @@
 /* ===== Corpo ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #0a0a0a;
+  background: #141414; /* fundo mais suave */
   color: #e0e0e0;
   line-height: 1.6;
   overflow-x: hidden;
@@ -58,11 +58,20 @@ body.light-mode {
 }
 .hero .logo-box img {
   width: 150px;
-  animation: pulse 2s infinite;
+  animation: pulseLogo 2s infinite ease-in-out;
 }
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+.hero h1,
+.hero p {
+  color: #0f0;
+  text-shadow:
+    0 0 8px #0f0,
+    0 0 16px #0f0,
+    0 0 24px #0f0;
+}
+/* Logo pulso */
+@keyframes pulseLogo {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #0f0); }
+  50%      { transform: scale(1.05); filter: drop-shadow(0 0 12px #0f0); }
 }
 
 /* ===== Busca ===== */
@@ -84,10 +93,27 @@ body.light-mode {
   gap: 1rem;
 }
 .card {
-  background: #111;
+  background: #1e1e1e;
   padding: 1rem;
+  border: 2px solid #0f0;
   border-radius: 0.5rem;
   text-align: center;
+  position: relative;
+  animation: neonBorder 3s infinite alternate;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 10px #0f0,
+    0 0 20px #0f0,
+    0 0 30px rgba(0,255,0,0.5);
+}
+/* Border neon pulso */
+@keyframes neonBorder {
+  0%   { box-shadow: 0 0 4px #0f0; }
+  50%  { box-shadow: 0 0 12px #0f0; }
+  100% { box-shadow: 0 0 4px #0f0; }
 }
 .card h3 {
   margin-bottom: 0.5rem;
@@ -98,11 +124,18 @@ body.light-mode {
 .card .btn {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
-  text-decoration: none;
   background: #0f0;
   color: #000;
   cursor: pointer;
   border: none;
+  box-shadow: 0 0 5px #0f0;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.card .btn:hover {
+  background: #1aff1a;
+  box-shadow:
+    0 0 8px #1aff1a,
+    0 0 16px #1aff1a;
 }
 .card .btn-por-dentro {
   margin-left: 0.5rem;
@@ -115,11 +148,13 @@ body.light-mode {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 100;
+  animation: fadeIn 0.3s ease-out;
 }
 .modal.hidden {
   display: none;
@@ -132,6 +167,9 @@ body.light-mode {
   max-height: 90%;
   overflow-y: auto;
   position: relative;
+  box-shadow:
+    0 0 10px rgba(0,255,0,0.5),
+    inset 0 0 5px rgba(0,255,0,0.2);
 }
 .close-modal {
   position: absolute;
@@ -142,6 +180,11 @@ body.light-mode {
   border: none;
   color: #e0e0e0;
   cursor: pointer;
+}
+/* Modal fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* ===== Progresso & Logs ===== */
