@@ -1,4 +1,3 @@
-
 from flask import Flask, Response, jsonify
 from flask_cors import CORS
 import subprocess
@@ -27,16 +26,20 @@ def stream_logs(play_id):
             ["bash", script_path],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            universal_newlines=True
+            universal_newlines=True,
+            bufsize=1
         )
+
+        progresso = 0
         for linha in processo.stdout:
-            yield f"data: {linha.strip()}
+            progresso = min(100, progresso + 5)  # Simulação de progresso
+            payload = {
+                "log": linha.strip(),
+                "progress": progresso
+            }
+            yield f"data: {jsonify(payload).get_data(as_text=True)}\n\n"
 
-"
-        yield "event: end
-data: done
-
-"
+        yield "event: end\ndata: done\n\n"
 
     return Response(gerar_saida(), mimetype='text/event-stream')
 
