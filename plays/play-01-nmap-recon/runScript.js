@@ -6,7 +6,7 @@ async function executarTeste() {
   progressFill.style.width = '10%';
 
   try {
-    const res = await fetch("https://SEU_NGROK_ENDPOINT/run/play-01-nmap-recon");
+    const res = await fetch("https://4b9e-2804-388-c3d2-3100-3c8f-801a-637b-3e18.ngrok-free.app/run/play-01-nmap-recon");
     if (!res.ok) throw new Error("Falha ao executar teste");
 
     const reader = res.body.getReader();
