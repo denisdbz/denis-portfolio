@@ -1,292 +1,92 @@
-:root {
-  --neon-color: #00ffe0;
-  --bg-dark: #141414;
-  --text-light: #e0e0e0;
-  --btn-bg: #00ff9f;
-  --btn-hover: #00cc7f;
-}
-
-/* ===== Reset ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* ===== Corpo ===== */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-light);
-  overflow-x: hidden;
-}
-body.light-mode {
-  background: #f4f4f4;
-  color: #333;
-}
-
-/* ===== Navbar ===== */
-.navbar {
-  background: #111;
-  padding: 1rem;
-  text-align: center;
-}
-.navbar ul {
-  list-style: none;
-}
-.navbar li {
-  display: inline-block;
-  margin: 0 1rem;
-}
-.navbar a, .navbar button {
-  color: var(--btn-bg);
-  text-decoration: none;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
+K:root {
+  --neon-color: #00ffe0; /* sua cor atual mantida */
 }
 
 /* ===== Hero ===== */
 .hero {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 }
+
 .logo-box {
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0.6rem;
 }
+
 .logo-animado {
   width: 80px;
   animation: neon-pulse 2s infinite alternate;
-  filter: drop-shadow(0 0 8px var(--neon-color));
+  filter: drop-shadow(0 0 12px var(--neon-color));
 }
-.logo-text {
-  font-size: 1.8rem;
-  font-weight: bold;
+
+.hero-title {
+  font-size: 2rem;
   color: var(--neon-color);
-  text-shadow:
-    0 0 8px var(--neon-color),
-    0 0 16px var(--neon-color),
-    0 0 24px rgba(0,255,224,0.6);
+  margin: 0;
   animation: neon-pulse 2s infinite alternate;
 }
+
 .subtitle {
-  margin-top: .5rem;
-  font-style: italic;
   font-size: 1.2rem;
   color: var(--neon-color);
   text-shadow:
     0 0 4px var(--neon-color),
     0 0 8px var(--neon-color);
   animation: neon-pulse 3s infinite alternate;
+  margin-top: 0.5rem;
 }
 
-/* ===== Busca ===== */
-#search-input {
-  display: block;
-  margin: 1rem auto 2rem;
-  padding: .7rem;
-  width: 100%;
-  max-width: 500px;
-  border: 2px solid var(--btn-bg);
-  border-radius: 5px;
-  background: #0a0a0a;
-  color: var(--text-light);
+/* ===== Conteúdo Hero Centralizado ===== */
+.hero-texto {
+  text-align: center;
+  margin: 2rem 0;
 }
 
-/* ===== Cards ===== */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 2rem;
-  padding: 1rem 0;
+.hero-texto h2 {
+  margin-bottom: 0.5rem;
 }
-.card {
-  background: #111;
-  border: 2px solid var(--btn-bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  transition: transform .3s, box-shadow .3s;
-}
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 12px var(--btn-bg);
-}
-.card h3 {
-  margin-bottom: .5rem;
-  color: var(--neon-color);
-}
-.card p {
+
+.hero-texto .intro {
   margin-bottom: 1rem;
 }
-.btn {
-  display: inline-block;
-  padding: .6rem 1.2rem;
-  background: var(--btn-bg);
-  color: #111;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background .3s, box-shadow .3s;
-}
-.btn:hover {
-  background: var(--btn-hover);
-  box-shadow: 0 0 8px var(--btn-bg);
-}
-/* Por Dentro button style */
-.btn-por-dentro {
-  background: #00bfa5;
-}
-.btn-por-dentro:hover {
-  background: #009e87;
-}
 
-/* ===== Feedback ===== */
-.feedback-container {
-  padding: 2rem 1rem;
-  background: #111;
-  border-top: 2px solid var(--btn-bg);
-  text-align: center;
-}
-.feedback-container h3 {
-  margin-bottom: 1rem;
-  color: var(--neon-color);
-  text-shadow: 0 0 6px var(--neon-color);
-}
-.feedback-container form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-.feedback-container input,
-.feedback-container textarea {
-  width: 100%;
-  max-width: 500px;
-  padding: .7rem;
-  border: 2px solid var(--btn-bg);
-  border-radius: 5px;
-  background: #0a0a0a;
-  color: var(--text-light);
-}
-.feedback-container button {
-  background: var(--btn-bg);
-}
-
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #111;
-  color: var(--btn-bg);
-  border-top: 1px solid var(--btn-bg);
-}
-footer p,
-footer em {
-  margin: .2rem 0;
-}
-
-/* ===== Modal genérico ===== */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 10000;
-}
-.modal.hidden {
-  display: none;
-}
-.modal-content {
-  background: #111;
-  padding: 2rem;
-  border-radius: 8px;
-  position: relative;
-  max-width: 500px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 0 16px var(--btn-bg);
-}
-.modal-content .close-modal {
-  position: absolute;
-  top: .5rem;
-  right: .5rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--btn-bg);
-  cursor: pointer;
-}
-
-/* ===== Easter Egg Video ===== */
-#easter-gallery {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 11000;
-}
-#easter-gallery.hidden {
-  display: none;
-}
-#easter-gallery video {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-  border: 4px solid var(--neon-color);
-  border-radius: 8px;
-  box-shadow: 0 0 20px var(--neon-color);
-}
-
-/* ===== Neon Pulse ===== */
+/* Neon pulsante */
 @keyframes neon-pulse {
   from {
     text-shadow:
       0 0 4px var(--neon-color),
       0 0 8px var(--neon-color),
       0 0 16px rgba(0,255,224,0.4);
+    filter: drop-shadow(0 0 4px var(--neon-color));
   }
   to {
     text-shadow:
       0 0 12px var(--neon-color),
       0 0 24px var(--neon-color),
       0 0 36px rgba(0,255,224,0.8);
+    filter: drop-shadow(0 0 12px var(--neon-color));
   }
 }
 
+/* Responsividade Hero */
+@media (max-width: 768px) {
+  .logo-box {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
 
-/* ==================== Easter Egg – Vídeo Vertical ==================== */
-#easter-gallery {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  z-index: 11000;
+  .logo-animado {
+    width: 60px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
 }
 
-#easter-gallery.hidden {
-  display: none;
-}
-
-/* Força o vídeo a ter proporção vertical 9:16 */
-#easter-gallery video {
-  width: auto;               /* não estica horizontalmente */
-  height: 90vh;              /* ocupa até 90% da altura da viewport */
-  aspect-ratio: 9 / 16;      /* força retrato */
-  object-fit: contain;       /* sem cortar nem distorcer */
-  border: 4px solid var(--neon-color);
-  border-radius: 8px;
-  box-shadow: 0 0 20px var(--neon-color);
-}

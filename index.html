@@ -5,53 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css"/>
-
-  <!-- Chart.js (para o gráfico do modal “Sobre”) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts.js" defer></script>
 </head>
 <body class="neon-dark">
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#" id="btn-sobre">Sobre</a></li>
-      <li><a href="#" id="btn-ajuda">Ajuda</a></li>
-      <li><a href="#" id="btn-news">News</a></li>
-      <li><a href="#" id="btn-plays">Plays</a></li>
-      <li><button id="theme-toggle" title="Mudar tema">🌙/☀️</button></li>
-    </ul>
-  </nav>
-
 <header class="hero">
-  <div class="logo-title">
+  <div class="logo-box">
     <img src="assets/img/logo-animado-denis.png" alt="Logo Denis QA Pentest" class="logo-animado"/>
-    <h1 class="hero-title">Denis | QA &amp; Pentest</h1>
+    <h1 class="hero-title">Denis | QA & Pentest</h1>
   </div>
+  <p class="subtitle">QA • Pentest • DevSecOps</p>
 
-  <div class="subtitle"><span id="typed-subtitle"></span></div>
-
-  <nav class="links">
-    <a href="https://www.linkedin.com/in/denis-oliveira-santos-99a83953/" target="_blank">LinkedIn</a>
-    <a href="mailto:denis.qae.hack@gmail.com">E-mail</a>
-    <a href="https://wa.me/5511978118097" target="_blank">WhatsApp</a>
+  <div class="contact-links">
+    <a href="https://linkedin.com/in/denisdbz" target="_blank">LinkedIn</a>
+    <a href="mailto:denis@example.com">E-mail</a>
+    <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
     <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-  </nav>
+  </div>
 </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
 <main class="container">
-  <!-- ================================
-       TÍTULO E DESCRIÇÃO CENTRALIZADOS
-       ================================ -->
   <div class="hero-texto">
     <h2>Denis Oliveira — Portfólio Profissional</h2>
-    <p class="intro">
-      Apaixonado por Qualidade de Software e Segurança da Informação.
-      Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.
-    </p>
-    <hr class="separator"/>
+    <p class="intro">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
   </div>
-
     <!-- Busca de plays -->
     <input type="text" id="search-input" placeholder="Buscar plays..." />
 
