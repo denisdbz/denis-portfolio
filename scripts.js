@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // SSE para executar testes reais
 function executarTeste() {
-  const evt = new EventSource('https://7bc9-2804-388-c3d2-3100-3c8f-801a-637b-3e18.ngrok-free.app/stream/play-01');
+const evt = new EventSource('https://7bc9-2804-388-c3d2-3100-3c8f-801a-637b-3e18.ngrok-free.app/stream/play-01-nmap-recon');
 
   const progressContainer = document.getElementById('progress-container');
   const progressFill = document.getElementById('progress-fill');
