@@ -1,7 +1,10 @@
 // konami.js
+
+
+
 (() => {
   // ================== CONFIGURAÇÃO ==================
-  const secretKey = '01092024';                   // senha
+  const secretKey = 'Francielly';                   // senha
   const videoSrc   = 'assets/easter/2025-05-02.mp4'; // seu vídeo
 
   // ==================== KONAMI ======================
