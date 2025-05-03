@@ -1,8 +1,8 @@
 :root {
-  --neon-color: #00ffe0; /* verde-azulado */
+  --neon-color: #00ffe0;
 }
 
-/* ===== Reset básico ===== */
+/* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +22,7 @@ body.light-mode {
   color: #333;
 }
 
-/* ===== Container ===== */
+/* ===== Containers ===== */
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -55,7 +55,7 @@ body.light-mode {
   font-size: 1rem;
 }
 
-/* ===== Hero ===== */
+/* ===== Hero / Logo ===== */
 .hero {
   text-align: center;
   padding: 2rem 0;
@@ -79,16 +79,6 @@ body.light-mode {
     0 0 8px var(--neon-color),
     0 0 16px var(--neon-color),
     0 0 24px var(--neon-color);
-}
-@keyframes pulseLogo {
-  0%,100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 4px var(--neon-color));
-  }
-  50% {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 12px var(--neon-color));
-  }
 }
 
 /* ===== Busca ===== */
@@ -120,15 +110,7 @@ body.light-mode {
 }
 .card:hover {
   transform: translateY(-5px);
-  box-shadow:
-    0 0 10px var(--neon-color),
-    0 0 20px var(--neon-color),
-    0 0 30px rgba(0,255,224,0.5);
-}
-@keyframes neonBorder {
-  0%   { box-shadow: 0 0 4px var(--neon-color); }
-  50%  { box-shadow: 0 0 12px var(--neon-color); }
-  100% { box-shadow: 0 0 4px var(--neon-color); }
+  box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color), 0 0 30px rgba(0,255,224,0.5);
 }
 .card h3 {
   margin-bottom: 0.5rem;
@@ -148,9 +130,7 @@ body.light-mode {
 }
 .card .btn:hover {
   background: #66fff1;
-  box-shadow:
-    0 0 8px #66fff1,
-    0 0 16px #66fff1;
+  box-shadow: 0 0 8px #66fff1, 0 0 16px #66fff1;
 }
 .card .btn-por-dentro {
   margin-left: 0.5rem;
@@ -182,9 +162,7 @@ body.light-mode {
   max-height: 90%;
   overflow-y: auto;
   position: relative;
-  box-shadow:
-    0 0 10px rgba(0,255,224,0.5),
-    inset 0 0 5px rgba(0,255,224,0.2);
+  box-shadow: 0 0 10px rgba(0,255,224,0.5), inset 0 0 5px rgba(0,255,224,0.2);
 }
 .close-modal {
   position: absolute;
@@ -196,12 +174,8 @@ body.light-mode {
   color: #e0e0e0;
   cursor: pointer;
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 
-/* ===== Progresso & Logs ===== */
+/* ===== Execução de Testes ===== */
 #progress-container {
   position: fixed;
   bottom: 1rem;
@@ -232,37 +206,20 @@ body.light-mode {
   transition: width 0.3s ease;
 }
 .output-box {
-  max-height: 150px;
+  background-color: #111;
+  color: var(--neon-color);
+  border: 1px solid var(--neon-color);
+  padding: 1em;
+  width: 80%;
+  margin: 1.5em auto;
+  max-height: 300px;
   overflow-y: auto;
+  font-family: monospace;
+  font-size: 0.9em;
   white-space: pre-wrap;
 }
 
-/* ===== CSS Responsivo Adicional ===== */
-
-@media (max-width: 768px) {
-
-.container { padding: 1rem; }
-
-.logo-title { flex-direction: column; gap: 0.2rem; white-space: normal; }
-
-.logo-inline { width: 50px; height: auto; }
-
-.logo-text h1 { font-size: 1.6rem; text-align: center; }
-
-.logo-text p { font-size: 1rem; text-align: center; }
-
-.navbar ul { flex-direction: column; gap: 0.5rem; }
-
-.cards { grid-template-columns: 1fr; }
-
-.card { padding: 0.8rem; }
-
-#progress-container { width: 90%; right: 5%; bottom: 5%; }
-
-.modal-content { padding: 1rem; width: 95%; }
-
-.search { width: 100%; padding: 0.5rem; } }
-
+/* ===== Botões Gerais ===== */
 .neon-btn {
   padding: 10px 20px;
   color: #000;
@@ -274,35 +231,12 @@ body.light-mode {
   box-shadow: 0 0 6px #00ffc8, 0 0 10px #00ffc8;
   transition: all 0.3s ease;
 }
-
 .neon-btn:hover {
   background-color: #00e6b0;
   box-shadow: 0 0 8px #00e6b0, 0 0 12px #00e6b0;
 }
 
-
-.typing {
-  font-size: 1.2em;
-  color: #00ffc3;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #00ffc3;
-  width: 0;
-  animation:
-    typing 4s steps(30, end) forwards,
-    blink 0.7s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 22ch; } /* ajuste conforme o conteúdo */
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-
+/* ===== Botão de Download ===== */
 .btn-download {
   display: inline-block;
   margin-top: 1em;
@@ -316,14 +250,13 @@ body.light-mode {
   transition: 0.3s ease;
   box-shadow: 0 0 5px #00ffc3, 0 0 10px #00ffc3;
 }
-
 .btn-download:hover {
   background-color: #00ffc3;
   color: #000;
   box-shadow: 0 0 10px #00ffc3, 0 0 20px #00ffc3;
 }
 
-
+/* ===== Links de Contato ===== */
 .contact-links {
   margin-top: 1.5em;
   display: flex;
@@ -331,7 +264,6 @@ body.light-mode {
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .contact-links a {
   font-weight: bold;
   color: #00ffc3;
@@ -341,27 +273,71 @@ body.light-mode {
   gap: 0.5em;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
-
 .contact-links a:hover {
   transform: scale(1.1);
   text-shadow: 0 0 6px #00ffc3;
 }
-
 .contact-links i {
   font-size: 1.2em;
   text-shadow: 0 0 4px #00ffc3;
+  animation: pulse-neon 2s infinite;
 }
 
-
-
+/* ===== Animações ===== */
+@keyframes pulseLogo {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px var(--neon-color));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px var(--neon-color));
+  }
+}
+@keyframes neonBorder {
+  0%   { box-shadow: 0 0 4px var(--neon-color); }
+  50%  { box-shadow: 0 0 12px var(--neon-color); }
+  100% { box-shadow: 0 0 4px var(--neon-color); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 @keyframes pulse-neon {
   0%   { transform: scale(1); text-shadow: 0 0 6px #00ffc3; }
   50%  { transform: scale(1.1); text-shadow: 0 0 12px #00ffc3, 0 0 20px #00ffc3; }
   100% { transform: scale(1); text-shadow: 0 0 6px #00ffc3; }
 }
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 22ch; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
 
-.contact-links i {
+/* ===== Efeito digitando ===== */
+.typing {
   font-size: 1.2em;
-  animation: pulse-neon 2s infinite;
-  transition: transform 0.3s ease;
+  color: #00ffc3;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00ffc3;
+  width: 0;
+  animation: typing 4s steps(30, end) forwards, blink 0.7s step-end infinite;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+  .container { padding: 1rem; }
+  .logo-title { flex-direction: column; gap: 0.2rem; white-space: normal; }
+  .logo-inline { width: 50px; height: auto; }
+  .logo-text h1 { font-size: 1.6rem; text-align: center; }
+  .logo-text p { font-size: 1rem; text-align: center; }
+  .navbar ul { flex-direction: column; gap: 0.5rem; }
+  .cards { grid-template-columns: 1fr; }
+  .card { padding: 0.8rem; }
+  #progress-container { width: 90%; right: 5%; bottom: 5%; }
+  .modal-content { padding: 1rem; width: 95%; }
+  .search { width: 100%; padding: 0.5rem; }
 }

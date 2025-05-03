@@ -33,8 +33,17 @@
     </p>
 
 <div style="text-align:center; margin-bottom:2rem;">
-  <button class="btn neon-btn" onclick="executarTeste('play-01')">▶️ Executar Teste</button>
+<button class="btn neon-btn" onclick="executarTeste()">
+  <i class="fas fa-play"></i> Executar Teste
+</button>
   <a class="btn neon-btn" href="../../index.html">← Voltar</a>
+<div id="progress-container" class="progress-container hidden">
+  <div id="progress-fill" class="progress-fill"></div>
+</div>
+
+<pre id="output-box" class="output-box">Aguardando execução...</pre>
+
+
 </div>
 
     <!-- Barra de Progresso -->
