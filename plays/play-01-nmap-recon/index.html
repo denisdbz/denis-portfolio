@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 01 — Nmap Recon</title>
+  <title>Play 01 — Nmap Recon ✅ Ativo</title>
   <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="neon-dark">
   <div class="container">
-    <h1><img src="../../assets/img/logo-animado-denis.svg" style="height: 1em; vertical-align: middle; margin-right: 10px;" />
-      Play 01 — Nmap Recon
-      <span class="badge" title="Este play está conectado a um backend real.">✅ Ativo</span>
-    </h1>
+    <h1><img src="../../assets/img/play-icon.svg" class="icon"/> Play 01 — Nmap Recon <span class="ativo">✅ Ativo</span></h1>
     <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
     <button class="btn neon-btn" onclick="executarTeste()">▶️ Executar Teste</button>
-    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
-    <pre id="output-box">Iniciando teste...</pre>
-    <div class="progress-bar"><div id="progress-fill"></div></div>
+    <a href="../../index.html" class="btn neon-btn">← Voltar</a>
+
+    <pre id="output" class="output-box">Aguardando início...</pre>
+    <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
   </div>
   <script src="runScript.js"></script>
 </body>
