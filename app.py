@@ -1,44 +1,33 @@
-from flask import Flask, Response
+from flask import Flask, Response, stream_with_context, request
+from flask_cors import CORS
 import subprocess
-import time
-import json
 
 app = Flask(__name__)
+CORS(app)  # Libera todas as origens (temporário, cuidado em produção)
 
-@app.route("/")
+@app.route('/')
 def index():
-    return "API do Portfólio Técnico Online"
+    return 'API online. Use /stream/<play_id> para execuções.'
 
-@app.route("/stream/play-01-nmap-recon")
-def stream_play_01():
+@app.route('/stream/<play_id>')
+def stream_logs(play_id):
     def generate():
-        try:
-            process = subprocess.Popen(
-                ["bash", "plays/play-01-nmap-recon/run.sh"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                bufsize=1
-            )
+        process = subprocess.Popen(
+            ['./automated-tests/plays/play-01-nmap-recon/run.sh'],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True,
+            bufsize=1
+        )
 
-            progress = 0
-            yield f"data: {json.dumps({'log': 'Iniciando teste...', 'progress': progress})}\n\n"
+        progress = 0
+        for line in process.stdout:
+            progress = min(progress + 5, 100)
+            yield f'data: {{"log": "{line.strip()}", "progress": {progress}}}\n\n'
 
-            for line in iter(process.stdout.readline, ""):
-                line = line.strip()
-                progress = min(progress + 10, 100)
-                payload = {"log": line, "progress": progress}
-                yield f"data: {json.dumps(payload)}\n\n"
-                time.sleep(0.3)
+        yield 'event: end\ndata: {}\n\n'
 
-            yield f"data: {json.dumps({'log': '✓ Teste finalizado com sucesso.', 'progress': 100})}\n\n"
-            yield "event: end\ndata: FIM\n\n"
-            process.stdout.close()
-            process.wait()
+    return Response(stream_with_context(generate()), mimetype='text/event-stream')
 
-        except Exception as e:
-            erro = f"[ERRO] Falha interna: {str(e)}"
-            yield f"data: {json.dumps({'log': erro, 'progress': 0})}\n\n"
-            yield "event: end\ndata: FIM\n\n"
-
-    return Response(generate(), mimetype="text/event-stream")
+if __name__ == '__main__':
+    app.run(debug=True)
