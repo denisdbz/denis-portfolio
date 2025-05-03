@@ -1,39 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Abrir modais
+  // === Abrir modais ===
   document.querySelectorAll('[data-modal]').forEach(btn => {
     btn.addEventListener('click', () => {
       const modal = document.getElementById(`modal-${btn.dataset.modal}`);
       if (modal) modal.classList.remove('hidden');
+
+      // Se for o modal "sobre", renderiza o gráfico (uma única vez)
+      if (btn.dataset.modal === "sobre") {
+        const canvas = document.getElementById("sobre-chart");
+        if (canvas && !canvas.classList.contains("renderizado")) {
+          new Chart(canvas, {
+            type: "bar",
+            data: {
+              labels: ["2011", "2014", "2016", "2018", "2020", "2024"],
+              datasets: [{
+                label: "Experiência",
+                data: [1, 3, 5, 7, 9, 12],
+                backgroundColor: "#00ffc3",
+                borderColor: "#00ffc3",
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  ticks: { color: "#ffffff" },
+                  grid: { color: "#333" }
+                },
+                x: {
+                  ticks: { color: "#ffffff" },
+                  grid: { color: "#333" }
+                }
+              },
+              plugins: {
+                legend: {
+                  labels: { color: "#ffffff" }
+                }
+              }
+            }
+          });
+          canvas.classList.add("renderizado");
+        }
+      }
     });
   });
 
-  // Fechar modais pelo botão
+  // === Fechar modais ===
   document.querySelectorAll('.close-modal').forEach(btn => {
     btn.addEventListener('click', () => {
-      const modal = btn.closest('.modal');
+      const modalId = btn.dataset.close;
+      const modal = document.getElementById(`modal-${modalId}`);
       if (modal) modal.classList.add('hidden');
     });
   });
 
-  // Fechar modal clicando fora do conteúdo
-  document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.add('hidden');
+  // === Alternância de tema claro/escuro ===
+  const themeToggle = document.querySelector('.toggle-theme');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem(
+        'theme',
+        document.body.classList.contains('light-mode') ? 'light' : 'dark'
+      );
     });
-  });
 
-  // Busca de Plays
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+    }
+  }
+
+  // === Busca dinâmica de plays ===
   const searchInput = document.getElementById('search');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       const termo = searchInput.value.toLowerCase();
       document.querySelectorAll('#plays .card').forEach(card => {
-        card.style.display = card.textContent.toLowerCase().includes(termo) ? '' : 'none';
+        const conteudo = card.textContent.toLowerCase();
+        card.style.display = conteudo.includes(termo) ? '' : 'none';
       });
     });
   }
 
-  // Carregar detalhes “Por Dentro” dinamicamente
+  // === Conteúdo Por Dentro via fetch ===
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', () => {
       const play = btn.dataset.play;
@@ -52,23 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
   });
-
-  // Toggle de tema claro/escuro
-  const themeToggle = document.querySelector('.toggle-theme');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      localStorage.setItem(
-        'theme',
-        document.body.classList.contains('light-mode') ? 'light' : 'dark'
-      );
-    });
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') document.body.classList.add('light-mode');
-  }
 });
 
-// Função SSE para executar testes e mostrar progresso/log
+// === Execução de testes com logs e progresso ===
 function startTest(playId) {
   const progressContainer = document.getElementById('progress-container');
   const fill = document.getElementById('progress-fill');
