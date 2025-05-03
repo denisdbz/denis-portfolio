@@ -351,3 +351,17 @@ body.light-mode {
   font-size: 1.2em;
   text-shadow: 0 0 4px #00ffc3;
 }
+
+
+
+@keyframes pulse-neon {
+  0%   { transform: scale(1); text-shadow: 0 0 6px #00ffc3; }
+  50%  { transform: scale(1.1); text-shadow: 0 0 12px #00ffc3, 0 0 20px #00ffc3; }
+  100% { transform: scale(1); text-shadow: 0 0 6px #00ffc3; }
+}
+
+.contact-links i {
+  font-size: 1.2em;
+  animation: pulse-neon 2s infinite;
+  transition: transform 0.3s ease;
+}
