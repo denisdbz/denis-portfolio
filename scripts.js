@@ -111,3 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saved === 'light') document.body.classList.add('light-mode');
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const typeTarget = document.getElementById('typewriter');
+  if (typeTarget) {
+    typeTarget.textContent = 'QA • Pentest • DevSecOps';
+  }
+});

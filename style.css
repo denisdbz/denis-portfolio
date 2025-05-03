@@ -279,3 +279,25 @@ body.light-mode {
   background-color: #00e6b0;
   box-shadow: 0 0 8px #00e6b0, 0 0 12px #00e6b0;
 }
+
+
+.typing {
+  font-size: 1.2em;
+  color: #00ffc3;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00ffc3;
+  width: 0;
+  animation:
+    typing 4s steps(30, end) forwards,
+    blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 22ch; } /* ajuste conforme o conteúdo */
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
