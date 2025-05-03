@@ -1,47 +1,49 @@
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, stream_with_context
 from flask_cors import CORS
 import subprocess
-import os
+import time
 
 app = Flask(__name__)
-CORS(app)
-
-PLAYS_PERMITIDOS = ['play-01']
+CORS(app, origins=["https://denisdbz.github.io"])  # Libera apenas o GitHub Pages
 
 @app.route('/')
 def home():
-    return jsonify({"status": "API rodando!"})
+    return 'API do Portfólio Técnico do Denis — Online.'
 
 @app.route('/stream/<play_id>')
-def stream_logs(play_id):
-    if play_id not in PLAYS_PERMITIDOS:
-        return jsonify({'erro': 'Play inválido ou não autorizado.'}), 403
+def stream(play_id):
+    def generate():
+        yield f'data: {{"log":"Iniciando teste...\n", "progress":0}}\n\n'
+        try:
+            # Executa o script correspondente
+            process = subprocess.Popen(
+                ['./run.sh', play_id],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True
+            )
 
-    script_path = f"./plays/{play_id}-nmap-recon/run.sh"
-    if not os.path.exists(script_path):
-        return jsonify({'erro': 'Script não encontrado'}), 404
+            progress = 10
+            for line in iter(process.stdout.readline, ''):
+                if line:
+                    time.sleep(0.3)
+                    progress = min(progress + 3, 95)
+                    payload = {
+                        "log": line.rstrip(),
+                        "progress": progress
+                    }
+                    yield f'data: {payload.__str__()}\n\n'
 
-    def gerar_saida():
-        processo = subprocess.Popen(
-            ["bash", script_path],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            universal_newlines=True,
-            bufsize=1
-        )
+            process.stdout.close()
+            process.wait()
+            yield 'event: end\ndata: {}\n\n'
 
-        progresso = 0
-        for linha in processo.stdout:
-            progresso = min(100, progresso + 5)  # Simulação de progresso
-            payload = {
-                "log": linha.strip(),
-                "progress": progresso
-            }
-            yield f"data: {jsonify(payload).get_data(as_text=True)}\n\n"
+        except Exception as e:
+            erro = f'[ERRO] {str(e)}\n'
+            yield f'data: {{"log":"{erro}", "progress":0}}\n\n'
+            yield 'event: end\ndata: {}\n\n'
 
-        yield "event: end\ndata: done\n\n"
-
-    return Response(gerar_saida(), mimetype='text/event-stream')
+    return Response(stream_with_context(generate()), content_type='text/event-stream')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True)
