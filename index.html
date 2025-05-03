@@ -6,45 +6,61 @@
   <title>Denis Oliveira — Portfólio Profissional</title>
   <link rel="stylesheet" href="style.css"/>
   <script src="scripts.js" defer></script>
-  <script src="konami.js" defer></script>
 </head>
 <body class="neon-dark">
 
-<header class="hero">
-  <div class="logo-box">
-    <img src="assets/img/logo-animado-denis.png" alt="Logo Denis QA Pentest" class="logo-animado"/>
-    <h1 class="hero-title">Denis | QA & Pentest</h1>
-  </div>
-  <p class="subtitle">QA • Pentest • DevSecOps</p>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <ul>
+      <li><button class="link" data-modal="sobre">Sobre</button></li>
+      <li><button class="link" data-modal="ajuda">Ajuda</button></li>
+      <li><button class="link" data-modal="news">News</button></li>
+      <li><button class="link" data-modal="por-dentro">Plays</button></li>
+      <li><button class="toggle-theme">☀️/🌙</button></li>
+    </ul>
+  </nav>
 
-  <div class="contact-links">
-    <a href="https://linkedin.com/in/denisdbz" target="_blank">LinkedIn</a>
-    <a href="mailto:denis@example.com">E-mail</a>
-    <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
-    <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
-  </div>
-</header>
+  <!-- HERO / CABEÇALHO -->
+  <header class="hero">
+    <div class="logo-title">
+      <img
+        src="assets/img/logo-animado-denis.png"
+        alt="Logo Denis | QA & Pentest"
+        class="logo-inline"
+      />
+      <div class="logo-text">
+        <h1>Denis | QA & Pentest</h1>
+        <p>QA • Pentest • DevSecOps</p>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a href="https://linkedin.com/in/denisdbz" target="_blank">LinkedIn</a>
+      <a href="mailto:denis@example.com">E-mail</a>
+      <a href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+      <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
+    </div>
+  </header>
 
-<main class="container">
-  <div class="hero-texto">
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container">
     <h2>Denis Oliveira — Portfólio Profissional</h2>
-    <p class="intro">Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
-  </div>
+    <p>Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
+    <div class="underline"></div>
 
+    <!-- BUSCA DE PLAYS -->
+    <input id="search" type="text" placeholder="Buscar plays…" class="search"/>
 
-    <!-- Busca de plays -->
-    <input type="text" id="search-input" placeholder="Buscar plays..." />
-
-    <!-- Grid de cards -->
-  <section id="plays" class="cards">
-      <!-- Replicar este bloco para cada Play -->
+<!-- GRID DE CARTÕES DOS PLAYS -->
+    <section id="plays" class="cards">
+      <!-- EXEMPLO DE CARTÃO: replique para cada play -->
       <div class="card">
         <h3>Play 01 — Nmap Recon</h3>
         <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-        <a class="btn" href="plays/play-01-nmap-recon/">▶️ Ver o Play</a>
+        <a class="btn neon-btn" href="plays/play-01-nmap-recon/index.html">▶️ Ver o Play</a>
         <button class="btn btn-por-dentro" data-play="01">Por Dentro</button>
       </div>
-        <div class="card" title="Play 02 — Hydra DVWA">
+
+ <div class="card" title="Play 02 — Hydra DVWA">
         <h3>Play 02 — Hydra DVWA</h3>
         <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
         <a class="btn" href="plays/play-02-hydra-dvwa/">▶️ Ver o Play</a>
@@ -192,35 +208,23 @@
       </div>
     </section>
 
-  <!-- ======================================
-       FORMULÁRIO DE FEEDBACK NO FINAL DA PÁGINA
-       ====================================== -->
-  <div class="feedback-container">
-    <h3>Gostou? Deixe um feedback!</h3>
-    <form id="feedback-form">
-      <input type="email" id="fb-email" placeholder="Seu e-mail" required/>
-      <textarea id="fb-msg" placeholder="Sua mensagem" required></textarea>
-      <button type="submit" class="btn">Enviar</button>
-    </form>
-  </div>
+    <!-- CONTAINER GLOBAL DE PROGRESSO E LOGS -->
+    <div id="progress-container" class="hidden">
+      <div class="progress-bar">
+        <div id="progress-fill" class="fill"></div>
+      </div>
+      <pre id="output-box" class="output-box"></pre>
+    </div>
+  </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
-    <em>Portfólio Técnico • QA • Pentest • DevSecOps</em>
-  </footer>
-</main>
-
-  <!-- Modal “Sobre” -->
+  <!-- MODAIS -->
   <div id="modal-sobre" class="modal hidden">
     <div class="modal-content">
       <button class="close-modal" data-close="sobre">&times;</button>
       <h2>Sobre Mim</h2>
       <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps.</p>
-      <p>Apaixonado por construir pipelines seguras, integrar qualidade desde o CI/CD e fomentar a cultura DevOps em times ágeis.</p>
       <canvas id="sobre-chart" width="400" height="200"></canvas>
-      <hr/>
-      <ul>
+      <ul class="timeline">
         <li><strong>2011:</strong> Suporte técnico e infraestrutura.</li>
         <li><strong>2014:</strong> QA Manual.</li>
         <li><strong>2016:</strong> Automação de Testes.</li>
@@ -231,56 +235,30 @@
     </div>
   </div>
 
-  <!-- Modal “Ajuda” -->
   <div id="modal-ajuda" class="modal hidden">
     <div class="modal-content">
       <button class="close-modal" data-close="ajuda">&times;</button>
       <h2>Central de Ajuda</h2>
-      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps.</p>
-      <ul>
-        <li><strong>Ver o Play:</strong> Executa o teste real.</li>
-        <li><strong>Por Dentro:</strong> Mostra documentação explicativa.</li>
-      </ul>
+      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps. Navegue pelos cards e use “Por Dentro” ou “Ver o Play” para explorar cada teste.</p>
     </div>
   </div>
 
-  <!-- Modal “News” -->
   <div id="modal-news" class="modal hidden">
     <div class="modal-content">
       <button class="close-modal" data-close="news">&times;</button>
       <h2>Últimas Notícias</h2>
-      <div id="news-list">Carregando...</div>
+      <div id="news-list" class="news-grid">
+        <p class="loading">Carregando...</p>
+      </div>
     </div>
   </div>
 
-  <!-- Modal “Plays” -->
-  <div id="modal-plays" class="modal hidden">
+  <div id="modal-por-dentro" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal" data-close="plays">&times;</button>
-      <h2>Todos os Plays</h2>
-      <!-- Aqui você poderia listar de novo ou encaminhar de outra forma -->
-      <p>Use a grade na própria página para navegar.</p>
+      <button class="close-modal" data-close="por-dentro">&times;</button>
+      <div id="modal-play-content"></div>
     </div>
   </div>
 
-  
-<!-- Easter Egg: modal de senha -->
-<div id="easter-modal" class="modal hidden">
-  <div class="modal-content">
-    <button class="close-modal" data-close="easter-modal">&times;</button>
-    <h2>💡 Insira a senha secreta</h2>
-    <input id="easter-key" type="password" placeholder="Senha" />
-    <!-- Mensagem de erro, inicialmente oculta -->
-    <p id="easter-erro" class="error hidden">Senha incorreta 😅</p>
-    <button id="easter-submit" class="btn">OK</button>
-  </div>
-</div>
-
-<!-- Easter Egg: galeria de vídeo -->
-<div id="easter-gallery" class="hidden"></div>
-
-<!-- Seus scripts (konami.js por último) -->
-<script src="scripts.js"></script>
-<script src="konami.js"></script>
 </body>
 </html>
