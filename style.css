@@ -322,3 +322,32 @@ body.light-mode {
   color: #000;
   box-shadow: 0 0 10px #00ffc3, 0 0 20px #00ffc3;
 }
+
+
+.contact-links {
+  margin-top: 1.5em;
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  font-weight: bold;
+  color: #00ffc3;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.contact-links a:hover {
+  transform: scale(1.1);
+  text-shadow: 0 0 6px #00ffc3;
+}
+
+.contact-links i {
+  font-size: 1.2em;
+  text-shadow: 0 0 4px #00ffc3;
+}
