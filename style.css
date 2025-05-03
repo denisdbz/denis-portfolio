@@ -1,17 +1,10 @@
-K:root
-
-/* ===== Pulsar Neon ===== */
-@keyframes neon-pulse {
-  0%, 100% { text-shadow: 
-      0 0 5px var(--neon-color),
-      0 0 10px var(--neon-color),
-      0 0 20px var(--neon-color),
-      0 0 30px var(--neon-color); }
-  50% { text-shadow:
-      0 0 10px var(--neon-color),
-      0 0 20px var(--neon-color),
-      0 0 30px var(--neon-color),
-      0 0 40px var(--neon-color); }
+:root {
+  --neon-color: #00ffe0;
+  --bg-dark: #141414;
+  --text-light: #e0e0e0;
+  --btn-bg: #00ff9f;
+  --btn-hover: #00cc7f;
+>>>>>>> 1a6a434 (easter-v11)
 }
 
 /* ===== Neon pulsante no logo e no texto do hero ===== */
@@ -68,12 +61,20 @@ K:root
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 /* ===== Corpo principal ===== */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #0a0a0a;
   color: #e0e0e0;
   line-height: 1.6;
+=======
+/* ===== Corpo ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+>>>>>>> 1a6a434 (easter-v11)
   overflow-x: hidden;
 }
 body.light-mode {
@@ -90,6 +91,7 @@ body.light-mode {
 .navbar ul {
   list-style: none;
 }
+<<<<<<< HEAD
 .navbar ul li {
   display: inline-block;
   margin: 0 15px;
@@ -101,6 +103,22 @@ body.light-mode {
   font-size: 1rem;
   background: none;
   border: none;
+=======
+.navbar li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+.navbar a {
+  color: var(--btn-bg);
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar button {
+  background: none;
+  border: none;
+  color: var(--btn-bg);
+  font-size: 1rem;
+>>>>>>> 1a6a434 (easter-v11)
   cursor: pointer;
 }
 
@@ -110,24 +128,40 @@ body.light-mode {
   padding: 2rem 1rem;
 }
 .logo-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
 }
 .logo-animado {
+<<<<<<< HEAD
   width: 60px;
 }
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
+=======
+  width: 80px;
+  animation: neon-pulse 2s infinite alternate;
+  filter: drop-shadow(0 0 8px var(--neon-color));
+}
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--neon-color);
+  text-shadow:
+    0 0 8px var(--neon-color),
+    0 0 16px var(--neon-color),
+    0 0 24px rgba(0,255,224,0.6);
+  animation: neon-pulse 2s infinite alternate;
+>>>>>>> 1a6a434 (easter-v11)
 }
 
 /* ===== Subtítulo digitado ===== */
 .subtitle {
-  margin-top: 0.5rem;
+  margin-top: .5rem;
   font-style: italic;
   font-size: 1.2rem;
+<<<<<<< HEAD
 }
 
 /* ===== Links abaixo do Hero ===== */
@@ -174,13 +208,34 @@ body.light-mode {
   border: none;
   border-top: 2px solid var(--neon-color);
   width: 50%;
+=======
+  color: var(--neon-color);
+  text-shadow:
+    0 0 4px var(--neon-color),
+    0 0 8px var(--neon-color);
+  animation: neon-pulse 3s infinite alternate;
+}
+
+/* ===== Busca ===== */
+#search-input {
+  display: block;
+  margin: 1rem auto 2rem;
+  padding: .7rem;
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid var(--btn-bg);
+  border-radius: 5px;
+  background: #0a0a0a;
+  color: var(--text-light);
+>>>>>>> 1a6a434 (easter-v11)
 }
 
 /* ===== Cards de Plays ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
   gap: 2rem;
+<<<<<<< HEAD
 }
 .card {
   background: #111;
@@ -194,10 +249,29 @@ body.light-mode {
 }
 .card h3 {
   margin-bottom: 1rem;
+=======
+  padding: 1rem 0;
+}
+.card {
+  background: #111;
+  border: 2px solid var(--btn-bg);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform .3s, box-shadow .3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px var(--btn-bg);
+}
+.card h3 {
+  margin-bottom: .5rem;
+  color: var(--neon-color);
+>>>>>>> 1a6a434 (easter-v11)
 }
 .card p {
   margin-bottom: 1rem;
 }
+<<<<<<< HEAD
 
 /* ===== Botões ===== */
 .btn {
@@ -207,8 +281,17 @@ body.light-mode {
   background: var(--neon-color);
   color: #0a0a0a;
   text-decoration: none;
+=======
+.btn {
+  display: inline-block;
+  padding: .6rem 1.2rem;
+  background: var(--btn-bg);
+  color: #111;
+>>>>>>> 1a6a434 (easter-v11)
   font-weight: bold;
+  text-decoration: none;
   border-radius: 5px;
+<<<<<<< HEAD
   transition: background 0.3s;
 }
 .btn:hover {
@@ -221,6 +304,54 @@ body.light-mode {
 }
 .btn-por-dentro:hover {
   background: #666;
+=======
+  transition: background .3s, box-shadow .3s;
+}
+.btn:hover {
+  background: var(--btn-hover);
+  box-shadow: 0 0 8px var(--btn-bg);
+}
+
+/* botão “Por Dentro” — mesma aparência, mas cor diferente */
+.btn-por-dentro {
+  background: #00bfa5;
+}
+.btn-por-dentro:hover {
+  background: #009e87;
+}
+
+/* ===== Formulário de Feedback ===== */
+.feedback-container {
+  padding: 2rem 1rem;
+  background: #111;
+  border-top: 2px solid var(--btn-bg);
+  text-align: center;
+}
+.feedback-container h3 {
+  margin-bottom: 1rem;
+  color: var(--neon-color);
+  text-shadow: 0 0 6px var(--neon-color);
+}
+.feedback-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.feedback-container input,
+.feedback-container textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: .7rem;
+  border: 2px solid var(--btn-bg);
+  border-radius: 5px;
+  background: #0a0a0a;
+  color: var(--text-light);
+}
+.feedback-container button {
+  width: auto;
+  background: var(--btn-bg);
+>>>>>>> 1a6a434 (easter-v11)
 }
 
 /* ===== Footer ===== */
@@ -228,6 +359,7 @@ footer {
   text-align: center;
   padding: 1.5rem 0 2rem;
   background: #111;
+<<<<<<< HEAD
   margin-top: 3rem;
 }
 footer p,
@@ -242,6 +374,17 @@ footer em {
 }
 
 /* ===== Modal ===== */
+=======
+  color: var(--btn-bg);
+  border-top: 1px solid var(--btn-bg);
+}
+footer p,
+footer em {
+  margin: .2rem 0;
+}
+
+/* ===== Modal (genérico) ===== */
+>>>>>>> 1a6a434 (easter-v11)
 .modal {
   position: fixed;
   top: 0; left: 0;
@@ -249,7 +392,11 @@ footer em {
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
+<<<<<<< HEAD
   align-items: center;
+=======
+  padding: 1rem;
+>>>>>>> 1a6a434 (easter-v11)
   z-index: 10000;
 }
 
@@ -276,8 +423,9 @@ footer em {
 
 
 .modal.hidden {
-  display: none !important;
+  display: none;
 }
+<<<<<<< HEAD
 
 
 /* ===== Barra de Progresso (Play) ===== */
@@ -406,6 +554,69 @@ button:disabled {
   font-size: 1.4rem;
   color: white;
   cursor: pointer;
+=======
+.modal-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 16px var(--btn-bg);
+}
+.modal-content .close-modal {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--btn-bg);
+  cursor: pointer;
+}
+
+/* ===== Easter Egg Video ===== */
+#easter-gallery {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 11000;
+}
+#easter-gallery.hidden {
+  display: none;
+}
+
+#easter-gallery video {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: 4px solid var(--neon-color);
+  border-radius: 8px;
+  box-shadow: 0 0 20px var(--neon-color);
+}
+
+/* ===== Neon Pulse Keyframes ===== */
+@keyframes neon-pulse {
+  from {
+    text-shadow:
+      0 0 4px var(--neon-color),
+      0 0 8px var(--neon-color),
+      0 0 16px rgba(0,255,224,0.4);
+  }
+
+  to {
+    text-shadow:
+      0 0 12px var(--neon-color),
+      0 0 24px var(--neon-color),
+      0 0 36px rgba(0,255,224,0.8);
+  }
+>>>>>>> 1a6a434 (easter-v11)
 }
 
 /* Container de imagens */
@@ -421,6 +632,7 @@ button:disabled {
   border-radius: 4px;
 }
 
+<<<<<<< HEAD
 /* Garantir que o vídeo fique acima das imagens */
 #easter-video {
   display: block;
@@ -450,3 +662,5 @@ button:disabled {
   border-radius: 8px;
   box-shadow: 0 0 16px var(--neon-color);
 }
+=======
+>>>>>>> 1a6a434 (easter-v11)
