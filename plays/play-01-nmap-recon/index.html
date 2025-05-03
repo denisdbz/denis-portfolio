@@ -3,20 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 01 — Nmap Recon ✅ Ativo</title>
+  <title>Play 01 — Nmap Recon</title>
   <link rel="stylesheet" href="../../style.css" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    #output {
+      width: 80%;
+      height: 200px;
+      margin: 20px auto;
+      background: black;
+      color: #00ffcc;
+      border: 2px solid #00ffcc;
+      padding: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow-y: scroll;
+    }
+
+    .barra-progresso {
+      width: 80%;
+      height: 10px;
+      background: #222;
+      border-radius: 5px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .progresso {
+      height: 100%;
+      width: 0%;
+      background: limegreen;
+      transition: width 0.3s ease;
+    }
+  </style>
 </head>
 <body class="neon-dark">
   <div class="container">
-    <h1><img src="../../assets/img/play-icon.svg" class="icon"/> Play 01 — Nmap Recon <span class="ativo">✅ Ativo</span></h1>
+    <h1><img src="../../assets/img/icon.svg" alt="" width="30"> Play 01 — Nmap Recon <span class="badge ativo">✅ Ativo</span></h1>
     <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-    <button class="btn neon-btn" onclick="executarTeste()">▶️ Executar Teste</button>
-    <a href="../../index.html" class="btn neon-btn">← Voltar</a>
 
-    <pre id="output" class="output-box">Aguardando início...</pre>
-    <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+    <div class="buttons">
+      <button class="btn neon-btn" onclick="executarTeste()">▶️ Executar Teste</button>
+      <a href="../../index.html" class="btn neon-btn">← Voltar</a>
+    </div>
+
+    <div id="output">Clique em "Executar Teste" para iniciar...</div>
+
+    <div class="barra-progresso">
+      <div class="progresso" id="progress-fill"></div>
+    </div>
   </div>
+
   <script src="runScript.js"></script>
 </body>
 </html>
