@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 01 — Nmap Recon</title>
   <link rel="stylesheet" href="../../style.css"/>
+  <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
 
-  <!-- Navbar idêntica à home -->
+  <!-- Navbar -->
   <nav class="navbar">
     <ul>
       <li><a href="../../index.html">Home</a></li>
@@ -17,10 +18,10 @@
     </ul>
   </nav>
 
-  <!-- Header menor -->
+  <!-- Header Menor e Ajustado -->
   <header class="hero" style="padding:1rem 0;">
     <div class="logo-box">
-      <img src="../../assets/img/logo-animado-denis.png" alt="Logo" class="logo-animado"/>
+      <img src="../../assets/img/logo-animado-denis.png" alt="Logo" class="logo-animado" style="width:60px;height:auto;"/>
       <span class="logo-text">Play 01 — Nmap Recon</span>
     </div>
   </header>
@@ -37,18 +38,20 @@
       <a class="btn" href="../../index.html">← Voltar</a>
     </div>
 
-    <!-- Progress bar e logs -->
-    <div id="barra" class="progress-bar hidden">
+    <!-- Barra de Progresso -->
+    <div id="barra" class="progress-bar">
       <div id="barra-fill"></div>
     </div>
+
+    <!-- Logs em tempo real -->
     <pre id="logs" class="output-box"></pre>
+
   </main>
 
-  <footer>
+  <footer style="text-align:center; padding:1rem;">
     <p>© 2025 Denis Oliveira — Todos os direitos reservados.</p>
     <p><em>Portfólio Técnico • QA • Pentest • DevSecOps</em></p>
   </footer>
 
-  <script src="../../scripts.js"></script>
 </body>
 </html>
