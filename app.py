@@ -1,34 +1,37 @@
 from flask import Flask, Response, stream_with_context
 from flask_cors import CORS
 import subprocess
-import os
 
 app = Flask(__name__)
-CORS(app, origins="*", supports_credentials=True)
+CORS(app, origins="*", supports_credentials=True)  # CORS liberado para todos
 
-def run_script(script_path):
-    process = subprocess.Popen(
-        ["/bin/bash", script_path],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True,
-        bufsize=1
-    )
-    for line in process.stdout:
-        yield f"data: {line.strip()}\n\n"
-    process.stdout.close()
-    process.wait()
-
-@app.route("/")
+@app.route('/')
 def home():
-    return "API do Portfólio Técnico (stream de testes)."
+    return 'API de Testes Técnicos — Online'
 
-@app.route("/stream/<play_id>")
-def stream(play_id):
-    script_path = os.path.join("automated-tests", "plays", play_id, "run.sh")
-    if not os.path.isfile(script_path):
-        return Response(f"data: [ERRO] Script não encontrado: {script_path}\n\n", mimetype="text/event-stream")
-    return Response(stream_with_context(run_script(script_path)), mimetype="text/event-stream")
+@app.route('/stream/play-01')
+def stream_play_01():
+    def generate():
+        yield 'Iniciando teste...\n'
+        yield 'Executando Nmap no alvo...\n'
 
-if __name__ == "__main__":
-    app.run(debug=True)
+        try:
+            process = subprocess.Popen(
+                ['./automated-tests/plays/play-01-nmap-recon/run.sh'],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                universal_newlines=True,
+                bufsize=1
+            )
+            for line in process.stdout:
+                yield line
+            process.wait()
+        except Exception as e:
+            yield f'[ERRO] {str(e)}\n'
+
+        yield '✔️ Teste finalizado com sucesso.\n'
+
+    return Response(stream_with_context(generate()), mimetype='text/event-stream')
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
