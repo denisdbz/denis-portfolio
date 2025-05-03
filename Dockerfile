@@ -1,14 +1,17 @@
 FROM python:3.10-slim
 
+# Instala dependências essenciais e o nmap
+RUN apt-get update && apt-get install -y \
+    nmap \
+    curl \
+    bash \
+ && apt-get clean
+
 WORKDIR /app
 
-COPY . .
-
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Garantir permissão de execução do script do Play 01
-RUN chmod +x plays/play-01-nmap-recon/run.sh
-
-EXPOSE 5000
+COPY . .
 
 CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
