@@ -1,10 +1,8 @@
+
 #!/bin/bash
 
-echo "Iniciando teste..."
-sleep 1
 echo "Executando Nmap no alvo..."
-
-nmap scanme.nmap.org -F -T4 -oN resultado.txt
-
+sleep 1
+nmap -sT -F scanme.nmap.org -oN resultado.txt 2>&1
 echo "Relatório gerado em resultado.txt"
 cat resultado.txt

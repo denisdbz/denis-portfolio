@@ -1,44 +1,32 @@
-function executarTeste() {
-  const playId = 'play-01-nmap-recon'; // usado no endpoint backend
-  const progressContainer = document.getElementById('progress-container');
-  const progressFill = document.getElementById('progress-fill');
+
+async function executarTeste() {
   const outputBox = document.getElementById('output-box');
+  const progressFill = document.getElementById('progress-fill');
+  outputBox.textContent = "Iniciando teste...\n";
+  progressFill.style.width = '10%';
 
-  if (!progressContainer || !progressFill || !outputBox) return;
+  try {
+    const res = await fetch("https://SEU_NGROK_ENDPOINT/run/play-01-nmap-recon");
+    if (!res.ok) throw new Error("Falha ao executar teste");
 
-  // Resetar visual
-  progressContainer.classList.remove('hidden');
-  progressFill.style.width = '0%';
-  outputBox.textContent = 'Iniciando teste...\n';
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder("utf-8");
 
-  const evt = new EventSource(`https://web-production-c891.up.railway.app/stream/${playId}`);
-
-  evt.onmessage = (event) => {
-    try {
-      const data = JSON.parse(event.data);
-
-      if (data.progress !== undefined) {
-        progressFill.style.width = `${data.progress}%`;
-      }
-
-      if (data.log !== undefined) {
-        outputBox.textContent += data.log + '\n';
-        outputBox.scrollTop = outputBox.scrollHeight;
-      }
-
-    } catch (err) {
-      outputBox.textContent += '\n[ERRO] Falha ao interpretar mensagem do servidor.\n';
-      console.error(err);
+    progressFill.style.width = '25%';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value);
+      outputBox.textContent += chunk;
+      outputBox.scrollTop = outputBox.scrollHeight;
+      progressFill.style.width = '75%';
     }
-  };
 
-  evt.addEventListener('end', () => {
-    outputBox.textContent += '\n✔️ Teste finalizado com sucesso.\n';
-    evt.close();
-  });
+    outputBox.textContent += "\n✔️ Teste finalizado com sucesso.";
+    progressFill.style.width = '100%';
 
-  evt.onerror = (err) => {
-    outputBox.textContent += '\n[ERRO] Falha de conexão com servidor.\n';
-    evt.close();
-  };
+  } catch (err) {
+    outputBox.textContent += `\n[ERRO] ${err.message}`;
+    progressFill.style.width = '0%';
+  }
 }
