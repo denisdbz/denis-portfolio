@@ -1,33 +1,34 @@
-from flask import Flask, Response, stream_with_context, request
+from flask import Flask, Response, stream_with_context
 from flask_cors import CORS
 import subprocess
+import os
 
 app = Flask(__name__)
-CORS(app)  # Libera todas as origens (temporário, cuidado em produção)
+CORS(app, origins="*", supports_credentials=True)
 
-@app.route('/')
-def index():
-    return 'API online. Use /stream/<play_id> para execuções.'
+def run_script(script_path):
+    process = subprocess.Popen(
+        ["/bin/bash", script_path],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1
+    )
+    for line in process.stdout:
+        yield f"data: {line.strip()}\n\n"
+    process.stdout.close()
+    process.wait()
 
-@app.route('/stream/<play_id>')
-def stream_logs(play_id):
-    def generate():
-        process = subprocess.Popen(
-            ['./automated-tests/plays/play-01-nmap-recon/run.sh'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            universal_newlines=True,
-            bufsize=1
-        )
+@app.route("/")
+def home():
+    return "API do Portfólio Técnico (stream de testes)."
 
-        progress = 0
-        for line in process.stdout:
-            progress = min(progress + 5, 100)
-            yield f'data: {{"log": "{line.strip()}", "progress": {progress}}}\n\n'
+@app.route("/stream/<play_id>")
+def stream(play_id):
+    script_path = os.path.join("automated-tests", "plays", play_id, "run.sh")
+    if not os.path.isfile(script_path):
+        return Response(f"data: [ERRO] Script não encontrado: {script_path}\n\n", mimetype="text/event-stream")
+    return Response(stream_with_context(run_script(script_path)), mimetype="text/event-stream")
 
-        yield 'event: end\ndata: {}\n\n'
-
-    return Response(stream_with_context(generate()), mimetype='text/event-stream')
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
