@@ -5,31 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 02 — Hydra DVWA</title>
   <link rel="stylesheet" href="../../style.css"/>
+  <script src="../../scripts.js" defer></script>
+  <script src="runScript.js" defer></script>
 </head>
 <body class="neon-dark">
-
   <nav class="navbar">
     <ul>
-      <li><a href="../../index.html">Home</a></li>
-      <li><a href="../../sobre.html">Sobre</a></li>
-      <li><a href="../../news.html">News</a></li>
+      <li><a href="../../index.html">← Voltar</a></li>
     </ul>
   </nav>
 
-  <header class="hero">
-    <div class="logo-box">
-      <img src="../../assets/img/logo-animado-denis.png" alt="Logo" class="logo-animado"/>
-      <span class="logo-text">Play 02 — Hydra DVWA</span>
-    </div>
-  </header>
-
   <main class="container">
-    <h1>Play 02 — Hydra DVWA</h1>
-    <p class="intro">Explora senhas fracas via ataque de força-bruta com Hydra.</p>
-  </main>
+    <div class="intro">
+      <h1>Play 02 — Hydra DVWA</h1>
+      <p>Este teste realiza um ataque de força bruta com Hydra contra a aplicação DVWA.</p>
+    </div>
 
-  <script src="../../scripts.js"></script>
-  <script src="../../simulate-run.js"></script>
-  <script src="../../assets/play-loader.js"></script>
+    <input type="text" id="target-input" placeholder="Digite o IP ou domínio do alvo" />
+
+    <button class="btn neon-btn" onclick="executarTeste()">🚀 Executar Teste</button>
+    <div id="progress-container" class="progress-container hidden">
+      <div id="progress-fill" class="progress-fill"></div>
+    </div>
+
+    <pre id="output-box" class="output-box">Aguardando execução...</pre>
+  </main>
 </body>
 </html>
