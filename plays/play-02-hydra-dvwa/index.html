@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 02 — Hydra DVWA</title>
-  <link rel="stylesheet" href="../../style.css"/>
-  <script src="runScript.js" defer></script>
+  <link rel="stylesheet" href="../../style.css" />
 </head>
 <body class="neon-dark">
   <div class="container">
-    <h1>Play 02 — Hydra DVWA</h1>
+    <h1>🚀 Play 02 — Hydra DVWA</h1>
     <p>Teste de força bruta via Hydra na aplicação DVWA.</p>
-    <input type="text" id="target" placeholder="Digite o IP da DVWA" style="padding:0.5rem; width:80%; margin-bottom:1rem;">
-    <button class="btn neon-btn" onclick="executarTeste()"><i class="fas fa-play"></i> Executar Teste</button>
-    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
-    <div id="progress-container" class="progress-container hidden">
-      <div id="progress-fill" class="progress-fill"></div>
+
+    <input id="ipInput" type="text" placeholder="Digite o IP da DVWA" />
+
+    <div class="button-box">
+      <button class="btn neon-btn" onclick="executarTeste()">🚀 Executar Teste</button>
+      <a href="../../index.html" class="btn neon-btn">← Voltar</a>
     </div>
-    <pre id="output-box" class="output-box">Aguardando execução...</pre>
+
+    <pre id="output" class="terminal">Aguardando execução...</pre>
+    <div id="progresso" class="progresso-barra"></div>
   </div>
+
+  <script src="runScript.js"></script>
 </body>
 </html>
