@@ -1,40 +1,35 @@
 function executarTeste() {
-  const ip = document.getElementById("alvoInput").value.trim();
+  const ip = document.getElementById("ipInput").value;
   if (!ip) {
-    alert("Por favor, informe um IP ou domínio válido.");
+    alert("Por favor, insira um IP válido.");
     return;
   }
 
-  const log = document.getElementById("logTerminal");
-  const barra = document.getElementById("progresso");
-  log.innerText = "Iniciando teste...\n";
-  barra.style.width = "10%";
+  const logs = document.getElementById("logs");
+  const progressBar = document.getElementById("progressBar");
+  logs.textContent = "";
+  progressBar.style.width = "0%";
 
-  fetch("https://denis-play-backend.fly.dev/run/play-02-hydra-dvwa", {
+  fetch(`https://denis-play-backend.fly.dev/run/play-02-hydra-dvwa`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ip })
-  })
-  .then(() => {
-    barra.style.width = "40%";
-    const evt = new EventSource("https://denis-play-backend.fly.dev/stream/play-02");
-
-    evt.onmessage = function (event) {
-      log.innerText += event.data + "\n";
-      log.scrollTop = log.scrollHeight;
-      barra.style.width = "70%";
-
-      if (event.data.includes("Teste finalizado")) {
-        barra.style.width = "100%";
-        evt.close();
-      }
-    };
-
-    evt.onerror = function () {
-      log.innerText += "\n[ERRO] Conexão encerrada.";
-      evt.close();
-    };
   });
+
+  const eventSource = new EventSource(`https://denis-play-backend.fly.dev/stream/play-02-hydra-dvwa`);
+  let progress = 0;
+
+  eventSource.onmessage = function(event) {
+    logs.textContent += event.data + "\\n";
+    logs.scrollTop = logs.scrollHeight;
+    if (progress < 95) progress += 5;
+    progressBar.style.width = progress + "%";
+  };
+
+  eventSource.onerror = function() {
+    progressBar.style.width = "100%";
+    eventSource.close();
+  };
 }
 
 function voltar() {

@@ -3,27 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 02 — Hydra + DVWA</title>
+  <title>Play 02 — Hydra DVWA</title>
   <link rel="stylesheet" href="../../style.css" />
 </head>
 <body class="neon-dark">
   <div class="container">
-    <h1>Play 02 — Hydra + DVWA</h1>
-    <p>Este teste realiza um ataque de força bruta simulando acesso à aplicação DVWA.</p>
-    
-    <label for="alvoInput">Informe o IP ou domínio do alvo (DVWA):</label>
-    <input type="text" id="alvoInput" placeholder="Ex: 127.0.0.1" />
+    <h1>Play 02 — Hydra Brute Force no DVWA</h1>
+    <p>Este teste executa um ataque de força bruta usando Hydra contra o login do DVWA. A DVWA deve estar rodando localmente (porta 8081).</p>
+
+    <label for="ipInput">Digite o IP de destino:</label>
+    <input type="text" id="ipInput" placeholder="ex: 192.168.0.105">
 
     <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
-    <button class="btn neon-btn-secondary" onclick="voltar()">Voltar</button>
+    <div class="progress-bar" id="progressBar"></div>
 
-    <div class="progress-bar">
-      <div class="progress-bar-fill" id="progresso"></div>
-    </div>
+    <pre id="logs" class="log-box"></pre>
 
-    <pre id="logTerminal" class="terminal-log"></pre>
+    <button class="btn neon-btn-outline" onclick="voltar()">← Voltar</button>
   </div>
-
   <script src="runScript.js"></script>
 </body>
 </html>
