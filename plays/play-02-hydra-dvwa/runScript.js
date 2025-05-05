@@ -1,34 +1,34 @@
 async function executarTeste() {
-  const alvo = document.getElementById("alvo").value.trim();
-  const logEl = document.getElementById("log");
-  const progressBar = document.getElementById("progressBar");
+  const output = document.getElementById("output");
+  const barra = document.getElementById("progresso");
+  const input = document.getElementById("input-dvwa");
 
-  if (!alvo) {
-    logEl.textContent = "⚠️ Por favor, informe o IP ou domínio da DVWA.";
+  const ip = input.value.trim();
+  if (!ip) {
+    output.textContent = "⚠️ Por favor, digite o IP ou domínio da DVWA.";
     return;
   }
 
-  logEl.textContent = "⏳ Iniciando teste...\n";
-  progressBar.style.width = "5%";
+  output.textContent = "Iniciando execução...\n";
+  barra.style.width = "5%";
 
   try {
-    const res = await fetch("https://denis-play-backend.fly.dev/run/play-02-hydra-dvwa", {
+    const resposta = await fetch("https://denisplayback.loca.lt/run/play-02-hydra-dvwa", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ alvo })
+      body: JSON.stringify({ alvo: ip }),
     });
 
-    progressBar.style.width = "30%";
-    const data = await res.json();
+    barra.style.width = "50%";
 
-    if (data.output) {
-      progressBar.style.width = "80%";
-      logEl.textContent += data.output.replace(/\n/g, "\n");
-      progressBar.style.width = "100%";
-    } else {
-      logEl.textContent += "❌ Erro ao executar o teste.\n";
-    }
-  } catch (err) {
-    logEl.textContent += "❌ Falha na comunicação com o servidor.\n";
+    if (!resposta.ok) throw new Error(`Erro HTTP: ${resposta.status}`);
+
+    const dados = await resposta.json();
+    barra.style.width = "100%";
+    output.textContent += "\n✅ Resultado:\n\n" + dados.saida;
+
+  } catch (erro) {
+    output.textContent += "\n❌ Erro ao executar o teste: " + erro.message;
+    barra.style.width = "0";
   }
 }
