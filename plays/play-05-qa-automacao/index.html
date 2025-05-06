@@ -3,33 +3,24 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 05 — QA Automação</title>
+  <title>Play 05 — Qa Automacao</title>
   <link rel="stylesheet" href="../../style.css"/>
+  <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
-
-  <nav class="navbar">
-    <ul>
-      <li><a href="../../index.html">Home</a></li>
-      <li><a href="../../sobre.html">Sobre</a></li>
-      <li><a href="../../news.html">News</a></li>
-    </ul>
-  </nav>
-
-  <header class="hero">
-    <div class="logo-box">
-      <img src="../../assets/img/logo-animado-denis.png" alt="Logo" class="logo-animado"/>
-      <span class="logo-text">Play 05 — QA Automação</span>
+  <div class="container" style="text-align: center;">
+    <h1>Play 05 — Qa Automacao</h1>
+    <p>Execução automatizada de testes com Cypress.</p>
+    <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+    <br /><br />
+    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
+    <br /><br />
+    <div id="progress-container" class="hidden">
+      <div class="progress-bar">
+        <div class="fill" id="progress-bar-fill"></div>
+      </div>
+      <div class="output-box" id="output-log">Iniciando teste...</div>
     </div>
-  </header>
-
-  <main class="container">
-    <h1>Play 05 — QA Automação</h1>
-    <p class="intro">Execução automatizada de testes de interface com Cypress.</p>
-  </main>
-
-  <script src="../../scripts.js"></script>
-  <script src="../../simulate-run.js"></script>
-  <script src="../../assets/play-loader.js"></script>
+  </div>
 </body>
 </html>

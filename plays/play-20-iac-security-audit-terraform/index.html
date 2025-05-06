@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 20 — IaC Security Audit (Terraform)</title>
-  <link rel="stylesheet" href="../../style.css" />
+  <title>Play 20 — Iac Security Audit Terraform</title>
+  <link rel="stylesheet" href="../../style.css"/>
   <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
-  <div class="container">
-    <h1>Play 20 — IaC Security Audit (Terraform)</h1>
-    <p>Auditoria de infraestrutura como código com Checkov.</p>
+  <div class="container" style="text-align: center;">
+    <h1>Play 20 — Iac Security Audit Terraform</h1>
+    <p>Verificação de segurança em IaC com Terraform.</p>
     <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
-
+    <br /><br />
+    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
+    <br /><br />
     <div id="progress-container" class="hidden">
       <div class="progress-bar">
-        <div id="progress-fill" class="fill"></div>
+        <div class="fill" id="progress-bar-fill"></div>
       </div>
-      <pre id="output-box" class="output-box"></pre>
-    </div>
-
-    <div style="text-align: center; margin-top: 2em;">
-      <a href="../../index.html" class="btn neon-btn">← Voltar</a>
+      <div class="output-box" id="output-log">Iniciando teste...</div>
     </div>
   </div>
 </body>
