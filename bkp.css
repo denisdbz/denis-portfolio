@@ -341,27 +341,3 @@ body.light-mode {
   .modal-content { padding: 1rem; width: 95%; }
   .search { width: 100%; padding: 0.5rem; }
 }
-
-/* ===== Botões internos dos modais "Por Dentro" ===== */
-.btn-box {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-.btn-box .btn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  background: var(--neon-color);
-  color: #000;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color);
-  transition: background 0.3s, box-shadow 0.3s;
-}
-.btn-box .btn:hover {
-  background: #66fff1;
-  box-shadow: 0 0 8px #66fff1, 0 0 16px #66fff1;
-}
