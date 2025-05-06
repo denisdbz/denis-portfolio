@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // SSE para executar testes reais
 function executarTeste() {
-const evt = new EventSource('https://527e-2804-388-c3d2-3100-3c8f-801a-637b-3e18.ngrok-free.app/stream/play-01-nmap-recon');
+  const evt = new EventSource('https://527e-2804-388-c3d2-3100-3c8f-801a-637b-3e18.ngrok-free.app/stream/play-01-nmap-recon');
 
   const progressContainer = document.getElementById('progress-container');
   const progressFill = document.getElementById('progress-fill');
@@ -90,3 +90,40 @@ const evt = new EventSource('https://527e-2804-388-c3d2-3100-3c8f-801a-637b-3e18
     outputBox.textContent += '\n✔️ Teste finalizado com sucesso.';
   });
 }
+
+
+// Gráfico do modal "Sobre"
+document.addEventListener('DOMContentLoaded', () => {
+  const ctx = document.getElementById('sobre-chart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Suporte', 'QA Manual', 'Automação', 'Pentest', 'DevSecOps', 'Cloud Security'],
+        datasets: [{
+          label: 'Experiência por Área (em anos)',
+          data: [3, 2, 2, 2, 2, 1],
+          backgroundColor: '#00ffc3',
+          borderColor: '#00ffc3',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { labels: { color: '#fff' } }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { color: '#fff' },
+            grid: { color: '#444' }
+          },
+          x: {
+            ticks: { color: '#fff' },
+            grid: { color: '#444' }
+          }
+        }
+      }
+    });
+  }
+});
