@@ -3,7 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-modal]').forEach(btn => {
     btn.addEventListener('click', () => {
       const modal = document.getElementById(`modal-${btn.dataset.modal}`);
-      if (modal) modal.classList.remove('hidden');
+      if (modal) {
+        modal.classList.remove('hidden');
+        if (btn.dataset.modal === 'sobre') {
+          inicializarGraficoSobre(); // inicializa o gráfico ao abrir o modal "Sobre"
+        }
+      }
     });
   });
 
@@ -92,10 +97,10 @@ function executarTeste() {
 }
 
 
-// Gráfico do modal "Sobre"
-document.addEventListener('DOMContentLoaded', () => {
+// Função para inicializar gráfico no modal "Sobre"
+function inicializarGraficoSobre() {
   const ctx = document.getElementById('sobre-chart');
-  if (ctx) {
+  if (ctx && typeof Chart !== 'undefined') {
     new Chart(ctx, {
       type: 'bar',
       data: {
@@ -126,4 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
+}
