@@ -342,32 +342,26 @@ body.light-mode {
   .search { width: 100%; padding: 0.5rem; }
 }
 
-/* ===== Elementos de progresso e logs ===== */
-.progress-bar {
-  width: 100%;
-  background-color: #333;
-  border-radius: 1em;
-  margin: 2em 0 1em;
-  height: 1.5em;
-  overflow: hidden;
+/* ===== Botões internos dos modais "Por Dentro" ===== */
+.btn-box {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
-.fill {
-  height: 100%;
-  width: 0;
-  background-color: #00ffc3;
-  border-radius: 1em;
-  transition: width 0.4s ease;
+.btn-box .btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background: var(--neon-color);
+  color: #000;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color);
+  transition: background 0.3s, box-shadow 0.3s;
 }
-.output-box {
-  background-color: #111;
-  color: #00ffc3;
-  border: 1px solid #00ffc3;
-  padding: 1em;
-  height: 200px;
-  overflow-y: scroll;
-  font-family: monospace;
-  white-space: pre-wrap;
-}
-.hidden {
-  display: none;
+.btn-box .btn:hover {
+  background: #66fff1;
+  box-shadow: 0 0 8px #66fff1, 0 0 16px #66fff1;
 }
