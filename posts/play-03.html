@@ -1,29 +1,26 @@
 <h1>Por Dentro do Play 03 — SQLMap DVWA</h1>
 
-<p>Neste Play, demonstramos como o <strong>SQLMap</strong> pode automatizar a detecção e exploração de vulnerabilidades de SQL Injection no DVWA.</p>
+<p>SQLMap automatiza exploração de SQL Injection.</p>
 
 <h2>Objetivos</h2>
 <ul>
-  <li>Identificar falhas de SQL Injection em aplicações web.</li>
-  <li>Explorar banco de dados vulnerável automaticamente.</li>
+<li>Detectar SQLi</li>
+<li>Explorar banco vulnerável</li>
 </ul>
 
 <h2>Comandos Utilizados</h2>
 <ul>
-  <li><code>sqlmap -u "http://192.168.0.1/vulnerabilities/sqli/?id=1&Submit=Submit#" --batch --dbs</code> — Detectar e listar bancos de dados disponíveis.</li>
-  <li><code>sqlmap -u "http://192.168.0.1/vulnerabilities/sqli/?id=1&Submit=Submit#" --batch --tables -D dvwa</code> — Listar tabelas do banco vulnerável.</li>
+<li>sqlmap -u <url> --dbs</li>
 </ul>
 
 <h2>Resultados Esperados</h2>
 <ul>
-  <li>Lista de bancos de dados, tabelas e colunas.</li>
-  <li>Exportação de dados sensíveis do sistema.</li>
-  <li>Relatório automatizado de vulnerabilidades detectadas.</li>
+<li>Listar bancos e tabelas</li>
 </ul>
 
 <hr class="separator">
 
 <div class="btn-box">
-  <a class="btn" href="../plays/play-03-sqlmap-dvwa/" target="_blank">▶️ Ir ao Play</a>
-  <a class="btn" href="../index.html">← Voltar à Home</a>
+  <a class="btn" href="/denis-portfolio/plays/play-03-sqlmap-dvwa/" target="_blank">▶️ Ir ao Play</a>
+  <a class="btn" href="/denis-portfolio/index.html">← Voltar à Home</a>
 </div>
