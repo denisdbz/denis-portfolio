@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', () => {
       const play = btn.dataset.play;
-      fetch(`plays/${play}/details.html`)
+fetch(`posts/play-${play}.html`)
         .then(res => res.text())
         .then(html => {
           document.getElementById('modal-play-content').innerHTML = html;
