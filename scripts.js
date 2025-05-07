@@ -16,7 +16,7 @@ function iniciarStream() {
   const playName     = pathSegments[pathSegments.length - 2];
 
   // seu túnel LocalTunnel apontando para o backend
-  const baseURL = 'https://denis-play-backend.loca.lt';
+  const baseURL = 'https://a268-177-86-39-143.ngrok-free.app';
 
   // abre um EventSource dinâmico para o play correto
   const evt = new EventSource(`${baseURL}/stream/${playName}`);
