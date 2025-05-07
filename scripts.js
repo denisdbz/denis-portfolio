@@ -13,7 +13,7 @@ function iniciarStream() {
 
   // Substitua aqui pela URL fixa do seu ngrok atual
   const baseURL = 'https://135d-177-86-39-143.ngrok-free.app';
-  const evt = new EventSource(`${baseURL}/stream/${playName}`);
+const evt = new EventSource("https://8a55-177-86-39-143.ngrok-free.app/stream/play-01-nmap-recon");
 
   evt.onmessage = function (event) {
     outputBox.textContent += event.data + '\n';
