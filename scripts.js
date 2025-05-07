@@ -32,3 +32,8 @@ function iniciarStream() {
     outputBox.textContent += '\n❌ Erro ao conectar ao servidor.';
   };
 }
+
+// Compatibilidade com HTMLs antigos
+function executarTeste() {
+  iniciarStream();
+}
