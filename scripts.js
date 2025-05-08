@@ -21,28 +21,13 @@ function iniciarStream() {
   const baseURL = 'https://4d2c-177-86-39-143.ngrok-free.app';
 
   // abre um EventSource dinâmico para o play correto
-  const evt = new EventSource(`${baseURL}/stream/${playName}`);
-
-  evt.onmessage = event => {
-    outputBox.textContent += event.data + '\n';
-    outputBox.scrollTop = outputBox.scrollHeight;
-
-    // simples lógica de progresso (ajuste ao seu critério)
-    if (event.data.match(/SUCESSO|Teste finalizado/)) {
-      progressFill.style.width = '100%';
-      setTimeout(() => evt.close(), 1500);
-    } else {
-      // avança a barra 15% a cada mensagem
-      let pct = parseInt(progressFill.style.width) + 15;
-      progressFill.style.width = Math.min(pct, 95) + '%';
-    }
-  };
-
-  evt.onerror = () => {
-    evt.close();
-    outputBox.textContent += '\n❌ Erro ao conectar ao servidor.';
-  };
-}
+- // abre um EventSource dinâmico para o play correto
+- const evt = new EventSource(`${baseURL}/stream/${playName}`);
++ // extrai só o número do play, ex: "play-01-nmap-recon" → 1
++ const m = playName.match(/^play-(\d{2})/);
++ const id = m ? parseInt(m[1], 10) : playName;
++ // a rota do backend (veja app.py)
++ const evt = new EventSource(`${baseURL}/api/play/${id}/stream`);
 
 // manter compatibilidade com onclick antigos
 function executarTeste() {
