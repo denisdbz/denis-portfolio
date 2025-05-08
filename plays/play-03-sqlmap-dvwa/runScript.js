@@ -1,20 +1,16 @@
-async function executarTeste() {
-  const logs = document.getElementById("logs");
-  const progress = document.querySelector(".progress");
-  logs.innerText = "Iniciando teste...\n";
-  progress.style.width = "5%";
+function executarTeste() {
+  const logs = document.getElementById('logs') || document.getElementById('output-log') || document.getElementById('output-box');
+  const barra = document.querySelector('.barra-preenchida') || document.getElementById('progress-bar-fill') || document.getElementById('progress-fill');
+  logs.textContent = '';
+  barra.style.width = '0%';
 
-  const evt = new EventSource("https://denis-play-backend.fly.dev/stream/play-03-sqlmap-dvwa");
-
-  evt.onmessage = function(event) {
-    logs.innerText += event.data + "\n";
+  const source = new EventSource('/stream/play-01');
+  source.onmessage = function(event) {
+    logs.textContent += event.data + '\n';
     logs.scrollTop = logs.scrollHeight;
-
-    if (event.data.includes("Iniciando")) progress.style.width = "20%";
-    else if (event.data.includes("sqlmap")) progress.style.width = "60%";
-    else if (event.data.includes("SUCESSO") || event.data.includes("relatório")) progress.style.width = "100%";
+    barra.style.width = Math.min(100, logs.textContent.length / 5) + '%';
   };
-
-  const res = await fetch("https://denis-play-backend.fly.dev/run/play-03-sqlmap-dvwa");
-  if (!res.ok) logs.innerText += "\n❌ Erro ao iniciar teste.";
+  source.onerror = function() {
+    source.close();
+  };
 }
