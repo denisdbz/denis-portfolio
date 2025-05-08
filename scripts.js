@@ -18,8 +18,7 @@ function iniciarStream() {
   const playName = m ? `play-${m[1]}` : slug;
 
   // seu túnel LocalTunnel apontando para o backend
-  const baseURL = 'https://4d2c-177-86-39-143.ngrok-free.app';
-
+const baseURL = 'https://mellow-commitment-production.up.railway.app';
   // abre um EventSource dinâmico para o play correto
 - // abre um EventSource dinâmico para o play correto
 - const evt = new EventSource(`${baseURL}/stream/${playName}`);

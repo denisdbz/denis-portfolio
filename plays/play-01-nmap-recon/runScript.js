@@ -1,5 +1,4 @@
-const baseURL = 'https://4d2c-177-86-39-143.ngrok-free.app';
-
+const baseURL = 'https://mellow-commitment-production.up.railway.app';
 function executarTeste() {
   document.getElementById('progress-container').style.display = 'flex';
   const logs  = document.getElementById('output-box');
