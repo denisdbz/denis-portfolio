@@ -16,22 +16,19 @@
     <br/><br/>
     <a class="btn neon-btn" href="../../index.html">← Voltar</a>
     <br/><br/>
-    <!-- área de progresso e logs, inicialmente oculta -->
-    <div id="progress-container" class="hidden" 
-         style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
-      <div class="progress-bar" style="width: 100%; background: #333; height: 12px; border-radius: 6px; overflow: hidden;">
-        <div id="progress-fill" class="fill" 
-             style="width: 0%; height: 100%; background: #11ffdd; transition: width 0.2s;"></div>
+    <!-- Removi a classe hidden e deixei o style padrão como none: -->
+    <div id="progress-container" style="display: none; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
+      <div class="progress-bar">
+        <div class="fill" id="progress-bar-fill"></div>
       </div>
       <br/>
-      <pre id="output-box" class="output-box" 
-           style="width: 100%; max-height: 300px; background: #111; color: #11ffdd; padding: 16px; overflow-y: auto; border: 1px solid #11ffdd;">
-Iniciando teste...
-      </pre>
+      <pre id="output-box" class="output-box"></pre>
     </div>
   </div>
 
-  <!-- script específico deste play, dispara o SSE em /api/play/1/stream -->
+  <!-- 1) Script geral de navegação e utilitários: -->
+  <script src="../../scripts.js" defer></script>
+  <!-- 2) Script deste play, carregará o EventSource e exibirá a UI: -->
   <script src="runScript.js" defer></script>
 </body>
 </html>
