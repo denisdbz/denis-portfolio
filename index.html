@@ -4,12 +4,24 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denis Oliveira — Portfólio Profissional</title>
+
+  <!-- resolve paths relativos -->
+  <base href="/denis-portfolio/">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- Chart.js PARA O GRÁFICO “Sobre” -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
+  <!-- seu script principal -->
   <script src="scripts.js" defer></script>
-<!-- Font Awesome para ícones -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-
+  <!-- Font Awesome para ícones -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 </head>
 <body class="neon-dark">
 
@@ -235,35 +247,34 @@
     </div>
   </main>
 
-  <!-- MODAIS -->
-  <div id="modal-sobre" class="modal hidden">
-    <div class="modal-content">
-      <button class="close-modal" data-close="sobre">&times;</button>
-      <h2>Sobre Mim</h2>
-      <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps.</p>
-<!-- Gráfico (dentro do modal) -->
-<canvas id="sobre-chart" style="max-width: 600px; height: 300px; margin: 2em auto; display: block;"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<base href="/denis-portfolio/">
-      <ul class="timeline">
-        <li><strong>2011:</strong> Suporte técnico e infraestrutura.</li>
-        <li><strong>2014:</strong> QA Manual.</li>
-        <li><strong>2016:</strong> Automação de Testes.</li>
-        <li><strong>2018:</strong> Pentest Web/Mobile.</li>
-        <li><strong>2020:</strong> DevSecOps.</li>
-        <li><strong>2024:</strong> Cloud Security.</li>
-      </ul>
+<!-- MODAL “Sobre” -->
+<div id="modal-sobre" class="modal hidden">
+  <div class="modal-content">
+    <button class="close-modal">&times;</button>
+    <h2>Sobre Mim</h2>
+    <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps.</p>
 
-<div style="text-align: center; margin-top: 2em;">
-  <a href="assets/curriculo-denis.pdf" download class="btn-download neon-btn">
-    📄 Baixar Currículo
-  </a>
-</div>
+    <!-- Gráfico (Chart.js já está importado no <head>) -->
+    <canvas id="sobre-chart"
+            style="max-width:600px; height:300px; margin:2em auto; display:block;">
+    </canvas>
 
+    <ul class="timeline">
+      <li><strong>2011:</strong> Suporte técnico e infraestrutura.</li>
+      <li><strong>2014:</strong> QA Manual.</li>
+      <li><strong>2016:</strong> Automação de Testes.</li>
+      <li><strong>2018:</strong> Pentest Web/Mobile.</li>
+      <li><strong>2020:</strong> DevSecOps.</li>
+      <li><strong>2024:</strong> Cloud Security.</li>
+    </ul>
+
+    <div style="text-align: center; margin-top: 2em;">
+      <a href="assets/curriculo-denis.pdf" download class="btn-download neon-btn">
+        📄 Baixar Currículo
+      </a>
     </div>
   </div>
-
-
+</div>
 
   <div id="modal-ajuda" class="modal hidden">
     <div class="modal-content">
