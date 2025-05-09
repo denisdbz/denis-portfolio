@@ -43,33 +43,28 @@ function executarTeste() {
   };
 }
 
-// --------------------------------------------------------------------------
-// CONFIGURAÇÃO DE MODAIS
+// scripts.js (trecho de modais)
 document.addEventListener('DOMContentLoaded', () => {
-  const modais = [
-    { btnId: 'sobre-btn', modalId: 'sobre-modal' },
-    { btnId: 'ajuda-btn', modalId: 'ajuda-modal' },
-    { btnId: 'news-btn',  modalId: 'news-modal' }
-  ];
+  // Para cada botão que tiver data-modal="X"
+  document.querySelectorAll('button[data-modal]').forEach(btn => {
+    const modalName = btn.dataset.modal;                     // e.g. "sobre"
+    const modal = document.getElementById(`modal-${modalName}`); // busca #modal-sobre
+    if (!modal) return;
 
-  modais.forEach(({ btnId, modalId }) => {
-    const botao  = document.getElementById(btnId);
-    const janela = document.getElementById(modalId);
-    if (!botao || !janela) return;
+    const closeBtn = modal.querySelector('.close-modal');     // fecha pelo botão X
 
-    const fechar = janela.querySelector('.modal-close');
-    // botão de abrir
-    botao.addEventListener('click', () => janela.classList.remove('hidden'));
-    // botão de fechar
-    if (fechar) {
-      fechar.addEventListener('click', () => janela.classList.add('hidden'));
+    // abrir ao clicar
+    btn.addEventListener('click', () => modal.classList.remove('hidden'));
+    // fechar ao clicar no X
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
     }
     // fechar ao clicar fora do conteúdo
-    janela.addEventListener('click', e => {
-      if (e.target === janela) {
-        janela.classList.add('hidden');
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
       }
     });
   });
 });
-// --------------------------------------------------------------------------
+
