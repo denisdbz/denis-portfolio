@@ -3,35 +3,31 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 04 — Jmeter Loadtest</title>
+  <title>Play 04 — JMeter Loadtest</title>
   <link rel="stylesheet" href="../../style.css"/>
 </head>
 <body class="neon-dark">
   <div class="container" style="text-align: center;">
-    <h1>Play 04 — Jmeter Loadtest</h1>
+    <h1>Play 04 — JMeter Loadtest</h1>
     <p>Teste de carga com JMeter usando um plano pré-configurado.</p>
     <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
     <br /><br />
     <a class="btn neon-btn" href="../../index.html">← Voltar</a>
-
-<!-- cole logo após o botão Voltar -->
-<div id="progress-container" style="display:flex; flex-direction:column; align-items:center; max-width:600px; margin:0 auto;">
-  <div class="progress-bar">
-    <div class="barra-preenchida" id="progress-bar-fill"></div>
-  </div>
-  <br/>
-  <div class="output-box" id="output-log">Iniciando teste...</div>
-</div>
-
     <br /><br />
-    <div id="progress-container" class="hidden" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
+
+    <!-- ÚNICO CONTAINER DE PROGRESSO E LOG -->
+    <div id="progress-container" class="hidden" style="flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
       <div class="progress-bar">
-        <div class="fill" id="progress-bar-fill"></div>
+        <!-- deve ter exatamente este ID -->
+        <div id="progress-bar-fill" class="fill"></div>
       </div>
       <br />
-      <div class="output-box" id="output-log">Iniciando teste...</div>
+      <!-- deve ter exatamente este ID -->
+      <pre id="output-log" class="output-box">Iniciando teste...</pre>
     </div>
   </div>
+
+  <!-- script global que gerencia Stream, barra e logs -->
   <script src="../../scripts.js" defer></script>
 </body>
 </html>
