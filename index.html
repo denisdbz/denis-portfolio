@@ -1,284 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Denis Oliveira — Portfólio Profissional</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="scripts.js" defer></script>
-  <!-- Font Awesome para ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="neon-dark">
-
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <ul>
-      <li><button class="link" data-modal="sobre">Sobre</button></li>
-      <li><button class="link" data-modal="ajuda">Ajuda</button></li>
-      <li><button class="link" data-modal="news">News</button></li>
-      <li><button class="link" data-modal="por-dentro">Plays</button></li>
-      <li><button class="toggle-theme">☀️/🌙</button></li>
-    </ul>
-  </nav>
-
-  <!-- HERO / CABEÇALHO -->
-  <header class="hero">
-    <div class="logo-title">
-      <img src="assets/img/logo-animado-denis.png"
-           alt="Logo Denis | QA & Pentest"
-           class="logo-inline"/>
-      <div class="logo-text">
-        <h1>Denis | QA & Pentest</h1>
-        <p class="subtitulo typing" id="typewriter"></p>
-        <a href="assets/curriculo-denis.pdf" download
-           class="btn-download neon-btn">
-          📄 Baixar Currículo
-        </a>
-      </div>
-    </div>
-    <div class="contact-links">
-      <a href="https://linkedin.com/in/denisdbz" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-      <a href="mailto:denis@example.com">
-        <i class="fas fa-envelope"></i> E-mail
-      </a>
-      <a href="https://wa.me/5511999999999" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp
-      </a>
-      <a href="https://github.com/denisdbz" target="_blank">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-    </div>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li id="sobre-btn" class="nav-item">Sobre</li>
+        <li id="ajuda-btn" class="nav-item">Ajuda</li>
+        <li id="news-btn" class="nav-item">News</li>
+        <li class="nav-item"><a href="plays/index.html">Plays</a></li>
+        <li id="theme-toggle" class="nav-item">🌙</li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="container">
-    <h2>Denis Oliveira — Portfólio Profissional</h2>
-    <p>Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento
-       <strong>testes automatizados</strong>, <strong>pentests</strong> e desafios técnicos reais.</p>
-    <div class="underline"></div>
-
-    <!-- BUSCA DE PLAYS -->
-    <input id="search" type="text" placeholder="Buscar plays…" class="search"/>
-
-    <!-- GRID DE CARTÕES DOS PLAYS -->
-    <section id="plays" class="cards">
-      <!-- Play 01 -->
-      <div class="card">
-        <h3>Play 01 — Nmap Recon</h3>
-        <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
-        <a class="btn neon-btn" href="plays/play-01-nmap-recon/index.html">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="01">Por Dentro</button>
-      </div>
-      <!-- Play 02 -->
-      <div class="card">
-        <h3>Play 02 — Hydra DVWA</h3>
-        <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
-        <a class="btn" href="plays/play-02-hydra-dvwa/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="02">Por Dentro</button>
-      </div>
-      <!-- Play 03 -->
-      <div class="card">
-        <h3>Play 03 — SQLMap DVWA</h3>
-        <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
-        <a class="btn" href="plays/play-03-sqlmap-dvwa/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="03">Por Dentro</button>
-      </div>
-      <!-- Play 04 -->
-      <div class="card">
-        <h3>Play 04 — JMeter LoadTest</h3>
-        <p>Executa testes de carga e simula múltiplos usuários.</p>
-        <a class="btn" href="plays/play-04-jmeter-loadtest/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="04">Por Dentro</button>
-      </div>
-      <!-- Play 05 -->
-      <div class="card">
-        <h3>Play 05 — QA Automação</h3>
-        <p>Automatiza casos de teste usando Selenium/Webdriver.</p>
-        <a class="btn" href="plays/play-05-qa-automacao/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="05">Por Dentro</button>
-      </div>
-      <!-- Play 06 -->
-      <div class="card">
-        <h3>Play 06 — Carga Bash</h3>
-        <p>Simula carga com múltiplas requisições em loop via shell script.</p>
-        <a class="btn" href="plays/play-06-carga-bash/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="06">Por Dentro</button>
-      </div>
-      <!-- Play 07 -->
-      <div class="card">
-        <h3>Play 07 — Testes Mobile</h3>
-        <p>Execução de testes automatizados em aplicativos Android usando Appium.</p>
-        <a class="btn" href="plays/play-07-mobile-tests/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="07">Por Dentro</button>
-      </div>
-      <!-- Play 08 -->
-      <div class="card">
-        <h3>Play 08 — Nikto Scan</h3>
-        <p>Escaneamento de vulnerabilidades web usando Nikto.</p>
-        <a class="btn" href="plays/play-08-nikto-scan/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="08">Por Dentro</button>
-      </div>
-      <!-- Play 09 -->
-      <div class="card">
-        <h3>Play 09 — k6 LoadTest</h3>
-        <p>Testes de performance de APIs com o K6.</p>
-        <a class="btn" href="plays/play-09-k6-loadtest/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="09">Por Dentro</button>
-      </div>
-      <!-- Play 10 -->
-      <div class="card">
-        <h3>Play 10 — API Validation</h3>
-        <p>Validação de endpoints e contratos RESTful APIs.</p>
-        <a class="btn" href="plays/play-10-api-validation/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="10">Por Dentro</button>
-      </div>
-      <!-- Play 11 -->
-      <div class="card">
-        <h3>Play 11 — XSS Scanner</h3>
-        <p>Detecção de vulnerabilidades de Cross-Site Scripting (XSS).</p>
-        <a class="btn" href="plays/play-11-xss-scanner/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="11">Por Dentro</button>
-      </div>
-      <!-- Play 12 -->
-      <div class="card">
-        <h3>Play 12 — CSRF Checker</h3>
-        <p>Verificação de falhas de proteção contra CSRF.</p>
-        <a class="btn" href="plays/play-12-csrf-checker/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="12">Por Dentro</button>
-      </div>
-      <!-- Play 13 -->
-      <div class="card">
-        <h3>Play 13 — API Fuzzing</h3>
-        <p>Geração de cargas de dados randômicos para testes de APIs.</p>
-        <a class="btn" href="plays/play-13-api-fuzzing/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="13">Por Dentro</button>
-      </div>
-      <!-- Play 14 -->
-      <div class="card">
-        <h3>Play 14 — Dependency CVE Audit</h3>
-        <p>Auditoria de dependências para identificar vulnerabilidades conhecidas.</p>
-        <a class="btn" href="plays/play-14-dependency-cve-audit/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="14">Por Dentro</button>
-      </div>
-      <!-- Play 15 -->
-      <div class="card">
-        <h3>Play 15 — SSL/TLS Health Check</h3>
-        <p>Validação de certificados SSL/TLS e análise de segurança HTTPS.</p>
-        <a class="btn" href="plays/play-15-ssl-tls-health-check/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="15">Por Dentro</button>
-      </div>
-      <!-- Play 16 -->
-      <div class="card">
-        <h3>Play 16 — Docker Vulnerability Scan</h3>
-        <p>Varredura de imagens Docker à procura de CVEs com Trivy.</p>
-        <a class="btn" href="plays/play-16-docker-vulnerability-scan/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="16">Por Dentro</button>
-      </div>
-      <!-- Play 17 -->
-      <div class="card">
-        <h3>Play 17 — Kubernetes Config Audit</h3>
-        <p>Verificação de configurações inseguras em clusters Kubernetes com kube-bench.</p>
-        <a class="btn" href="plays/play-17-kubernetes-config-audit/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="17">Por Dentro</button>
-      </div>
-      <!-- Play 18 -->
-      <div class="card">
-        <h3>Play 18 — OWASP ZAP Automated Scan</h3>
-        <p>Scanner automatizado de vulnerabilidades web com OWASP ZAP.</p>
-        <a class="btn" href="plays/play-18-owasp-zap-automated-scan/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="18">Por Dentro</button>
-      </div>
-      <!-- Play 19 -->
-      <div class="card">
-        <h3>Play 19 — Static Analysis Python (Bandit)</h3>
-        <p>Análise estática de código Python em busca de falhas comuns com Bandit.</p>
-        <a class="btn" href="plays/play-19-static-analysis-python-bandit/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="19">Por Dentro</button>
-      </div>
-      <!-- Play 20 -->
-      <div class="card">
-        <h3>Play 20 — IaC Security Audit (Terraform)</h3>
-        <p>Auditoria de segurança em templates Terraform com Checkov.</p>
-        <a class="btn" href="plays/play-20-iac-security-audit-terraform/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="20">Por Dentro</button>
-      </div>
-      <!-- Play 21 -->
-      <div class="card">
-        <h3>Play 21 — JWT Token Penetration Test</h3>
-        <p>Teste de manipulação e validação de tokens JWT em APIs.</p>
-        <a class="btn" href="plays/play-21-jwt-token-penetration-test/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="21">Por Dentro</button>
-      </div>
-      <!-- Play 22 -->
-      <div class="card">
-        <h3>Play 22 — Dependency Supply Chain Check</h3>
-        <p>Inspeção de dependências NPM/PyPI contra ataques de supply-chain.</p>
-        <a class="btn" href="plays/play-22-dependency-supply-chain-check/">▶️ Ver o Play</a>
-        <button class="btn btn-por-dentro" data-play="22">Por Dentro</button>
-      </div>
-    </section>
-
-    <!-- CONTAINER GLOBAL DE PROGRESSO E LOGS -->
-    <div id="progress-container" class="hidden">
-      <div class="progress-bar">
-        <div id="progress-fill" class="fill"></div>
-      </div>
-      <pre id="output-box" class="output-box"></pre>
-    </div>
-  </main>
-
-  <!-- MODAIS -->
-  <div id="modal-sobre" class="modal hidden">
+  <!-- Modais -->
+  <div id="sobre-modal" class="modal hidden">
     <div class="modal-content">
-      <button class="close-modal" data-close="sobre">&times;</button>
+      <button class="modal-close">&times;</button>
       <h2>Sobre Mim</h2>
       <p>Engenheiro de Qualidade e Segurança da Informação com +12 anos de experiência em QA, Pentest, Automação de Testes e DevSecOps.</p>
-      <!-- Gráfico (dentro do modal) -->
-      <canvas id="sobre-chart" style="max-width:600px; height:300px; margin:2em auto; display:block;"></canvas>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <ul class="timeline">
-        <li><strong>2011:</strong> Suporte técnico e infraestrutura.</li>
-        <li><strong>2014:</strong> QA Manual.</li>
-        <li><strong>2016:</strong> Automação de Testes.</li>
-        <li><strong>2018:</strong> Pentest Web/Mobile.</li>
-        <li><strong>2020:</strong> DevSecOps.</li>
-        <li><strong>2024:</strong> Cloud Security.</li>
+      <ul>
+        <li><strong>2011</strong>: Suporte técnico e infraestrutura.</li>
+        <li><strong>2014</strong>: QA Manual.</li>
+        <li><strong>2016</strong>: Automação de Testes.</li>
+        <li><strong>2018</strong>: Pentest Web/Mobile.</li>
+        <li><strong>2020</strong>: DevSecOps.</li>
       </ul>
-      <div style="text-align:center; margin-top:2em;">
-        <a href="assets/curriculo-denis.pdf" download class="btn-download neon-btn">
-          📄 Baixar Currículo
-        </a>
+    </div>
+  </div>
+
+  <div id="ajuda-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2>Ajuda</h2>
+      <p>Use o campo de busca para filtrar plays e clique em “Ver o Play” ou “Por Dentro” para explorar cada experiência.</p>
+    </div>
+  </div>
+
+  <div id="news-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2>News</h2>
+      <p>Em breve você encontrará aqui artigos, novidades e meus últimos project updates!</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Denis | QA &amp; Pentest</h1>
+      <a class="btn primary" href="Denis-Oliveira-CV.pdf" download>📄 Baixar Currículo</a>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/denisdbz" target="_blank">LinkedIn</a> |
+        <a href="mailto:denis@exemplo.com">E-mail</a> |
+        <a href="https://github.com/denisdbz" target="_blank">GitHub</a>
       </div>
-    </div>
-  </div>
+      <p>Apaixonado por Qualidade de Software e Segurança da Informação. Aqui apresento <strong>testes automatizados</strong>, <strong>pentests</strong> e <strong>desafios técnicos reais</strong>.</p>
+    </section>
 
-  <div id="modal-ajuda" class="modal hidden">
-    <div class="modal-content">
-      <button class="close-modal" data-close="ajuda">&times;</button>
-      <h2>Central de Ajuda</h2>
-      <p>Este portfólio apresenta plays reais de QA, Pentest e DevSecOps. Navegue pelos cards e use “Por Dentro” ou “Ver o Play” para explorar cada teste.</p>
-    </div>
-  </div>
+    <!-- Busca + Grid de Plays -->
+    <section class="plays-section">
+      <input type="text" id="search-input" placeholder="Buscar plays…" />
 
-  <div id="modal-news" class="modal hidden">
-    <div class="modal-content">
-      <button class="close-modal" data-close="news">&times;</button>
-      <h2>Últimas Notícias</h2>
-      <div id="news-list" class="news-grid">
-        <p class="loading">Carregando...</p>
+      <div class="plays-grid">
+        <!-- Play 01 -->
+        <div class="play-card">
+          <h2>Play 01 — Nmap Recon</h2>
+          <p>Varredura de portas e serviços para reconhecer hosts na rede.</p>
+          <div class="play-card-buttons">
+            <a class="btn" href="plays/play-01-nmap-recon/index.html">Ver o Play</a>
+            <a class="btn secondary" href="plays/play-01-nmap-recon/index.html">Por Dentro</a>
+          </div>
+        </div>
+
+        <!-- Play 02 -->
+        <div class="play-card">
+          <h2>Play 02 — Hydra DVWA</h2>
+          <p>Explora senhas fracas via ataque de força-bruta com Hydra.</p>
+          <div class="play-card-buttons">
+            <a class="btn" href="plays/play-02-hydra-dvwa/index.html">Ver o Play</a>
+            <a class="btn secondary" href="plays/play-02-hydra-dvwa/index.html">Por Dentro</a>
+          </div>
+        </div>
+
+        <!-- Play 03 -->
+        <div class="play-card">
+          <h2>Play 03 — SQLMap DVWA</h2>
+          <p>Identifica vulnerabilidades de SQL Injection e gera relatório.</p>
+          <div class="play-card-buttons">
+            <a class="btn" href="plays/play-03-sqlmap-dvwa/index.html">Ver o Play</a>
+            <a class="btn secondary" href="plays/play-03-sqlmap-dvwa/index.html">Por Dentro</a>
+          </div>
+        </div>
+
+        <!-- Play 04 -->
+        <div class="play-card">
+          <h2>Play 04 — JMeter LoadTest</h2>
+          <p>Executa testes de carga e simula múltiplos usuários.</p>
+          <div class="play-card-buttons">
+            <a class="btn" href="plays/play-04-jmeter-loadtest/index.html">Ver o Play</a>
+            <a class="btn secondary" href="plays/play-04-jmeter-loadtest/index.html">Por Dentro</a>
+          </div>
+        </div>
+
+        <!-- Continue adicionando os cards dos demais plays -->
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <div id="modal-por-dentro" class="modal hidden">
-    <div class="modal-content">
-      <button class="close-modal" data-close="por-dentro">&times;</button>
-      <div id="modal-play-content"></div>
-    </div>
-  </div>
-
+  <script src="scripts.js"></script>
 </body>
 </html>

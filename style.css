@@ -1,68 +1,170 @@
+/* ==========================================================================
+   VARIÁVEIS DE AMBIENTE
+   ========================================================================== */
 :root {
-  --neon-color: #00ffe0;
+  --background: #111;
+  --text: #e0f7fa;
+  --accent: #00ffc8;
+  --card-bg: #1a1a1a;
+  --border-color: #333;
+  --modal-bg: #222;
+  --modal-close-color: #fff;
 }
 
+/* ==========================================================================
+   RESETS E ESTILOS GLOBAIS
+   ========================================================================== */
 * {
-  margin: 0; padding: 0; box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #141414; color: #e0e0e0; line-height: 1.6; overflow-x: hidden;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.5;
 }
-body.light-mode {
-  background: #f4f4f4; color: #333;
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-/* ===== Navbar ===== */
-.navbar { background: #111; padding: 1rem; }
-.navbar ul { list-style: none; display: flex; gap: 1rem; }
-.navbar .link,
-.toggle-theme { background: none; border: none; color: #e0e0e0; cursor: pointer; }
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+header {
+  background: #000;
+}
+header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+header nav ul .nav-item {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+header nav ul .nav-item:last-child {
+  margin-left: auto;
+}
 
-/* ===== Hero ===== */
-/* ... seu CSS de hero permanece igual ... */
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  text-align: center;
+  padding: 2rem 0;
+}
+.hero h1 {
+  margin: 0 0 1rem;
+  font-size: 2.5rem;
+}
+.hero .btn {
+  margin-bottom: 1rem;
+}
+.social-links {
+  margin: 0.5rem 0 1rem;
+}
+.social-links a {
+  margin: 0 0.5rem;
+ }
 
-/* ===== Cards ===== */
-/* ... seu CSS de cards permanece igual ... */
+/* ==========================================================================
+   PLAYS GRID
+   ========================================================================== */
+.plays-section {
+  margin-top: 2rem;
+}
+#search-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: #222;
+  color: var(--text);
+}
+.plays-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.play-card {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+.play-card h2 {
+  margin-top: 0;
+}
+.play-card-buttons {
+  margin-top: 0.75rem;
+}
+.play-card-buttons .btn {
+  margin-right: 0.5rem;
+}
 
-/* ===== Modais ===== */
+/* ==========================================================================
+   MODAL
+   ========================================================================== */
+.hidden {
+  display: none !important;
+}
 .modal {
-  position: fixed; top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
-  display:flex; align-items:center; justify-content:center;
-  z-index:100; animation: fadeIn 0.3s ease-out;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.modal.hidden { display: none; }
 .modal-content {
-  background: #111; padding:1.5rem; border-radius:0.5rem;
-  max-width:90%; max-height:90%; overflow-y:auto; position:relative;
-  box-shadow:0 0 10px rgba(0,255,224,0.5), inset 0 0 5px rgba(0,255,224,0.2);
+  background: var(--modal-bg);
+  padding: 1.5rem;
+  border-radius: 6px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  color: var(--text);
+  overflow-y: auto;
+  max-height: 80vh;
 }
-.close-modal {
-  position:absolute; top:0.5rem; right:0.5rem;
-  font-size:1.5rem; background:none; border:none; color:#e0e0e0; cursor:pointer;
-}
-
-/* ===== Execução de Testes ===== */
-#progress-container.hidden { display: none; }
-.progress-bar { width:100%; background:#333; height:.75rem; border-radius:.375rem; overflow:hidden; margin-bottom:.5rem; }
-.progress-bar .fill { width:0%; height:100%; background: var(--neon-color); transition: width .3s ease; }
-.output-box {
-  background:#111; color: var(--neon-color); border:1px solid var(--neon-color);
-  padding:1em; width:80%; margin:1.5em auto; max-height:300px; overflow-y:auto;
-  font-family:monospace; font-size:.9em; white-space:pre-wrap;
-}
-
-/* ===== Botões ===== */
-.neon-btn {
-  padding:10px 20px; color:#000; background-color:#00ffc8;
-  border:none; border-radius:8px; font-weight:bold; cursor:pointer;
-  box-shadow:0 0 6px #00ffc8, 0 0 10px #00ffc8; transition: all .3s ease;
-}
-.neon-btn:hover {
-  background-color:#00e6b0; box-shadow:0 0 8px #00e6b0, 0 0 12px #00e6b0;
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--modal-close-color);
+  cursor: pointer;
 }
 
-/* ===== Outros estilos (busca, timeline, responsivo etc) ===== */
-/* ... permaneçam como estavam no seu style.css original ... */
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.btn.primary {
+  background: var(--accent);
+}
+
