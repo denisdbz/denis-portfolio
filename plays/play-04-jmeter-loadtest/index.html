@@ -13,20 +13,13 @@
     <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
     <br/><br/>
     <a class="btn neon-btn" href="../../index.html">← Voltar</a>
-    <br/><br/>
 
-    <!-- --- ÚNICO container de progresso e log --- -->
-    <div
-      id="progress-container"
-      class="hidden"
-      style="display:flex;flex-direction:column;align-items:center;max-width:600px;margin:0 auto;"
-    >
+    <!-- ÚNICO container de progresso e log -->
+    <div id="progress-container" class="hidden" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 1.5em auto 0;">
       <div class="progress-bar">
-        <!-- script procura primeiro por .barra-preenchida -->
-        <div id="progress-bar-fill" class="barra-preenchida"></div>
+        <div class="fill" id="progress-bar-fill"></div>
       </div>
       <br/>
-      <!-- script procura por #output-log -->
       <pre id="output-log" class="output-box">Iniciando teste...</pre>
     </div>
   </div>
