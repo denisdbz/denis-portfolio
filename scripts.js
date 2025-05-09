@@ -3,7 +3,7 @@
 // URL do seu back-end no Railway
 const baseURL = 'https://mellow-commitment-production.up.railway.app';
 
-// Executa o play real via EventSource
+// Função que dispara o play real via EventSource
 function executarTeste() {
   const match = window.location.pathname.match(/play-(\d+)/);
   const playNum = match ? match[1] : '1';
@@ -35,7 +35,7 @@ function executarTeste() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 1) Toggle de tema claro/escuro ──────────────────────────────────
+  // 1) Toggle de tema claro/escuro
   const themeToggle = document.querySelector('.toggle-theme');
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
@@ -43,75 +43,82 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 2) Instanciar gráfico do “Sobre” em escopo externo ─────────────
-  let sobreChart = null;
-  const chartCanvas = document.getElementById('sobre-chart');
-  if (chartCanvas && window.Chart) {
-    const ctx = chartCanvas.getContext('2d');
-    sobreChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['QA', 'Pentest', 'Automação', 'DevSecOps'],
-        datasets: [{
-          label: 'Anos de Experiência',
-          data: [5, 4, 4, 3],
-          backgroundColor: 'rgba(0,255,224,0.5)',
-          borderColor: 'rgba(0,255,224,1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: { y: { beginAtZero: true } }
-      }
-    });
-  }
-
-  // ── 3) Busca dinâmica de Plays ─────────────────────────────────────
+  // 2) Busca dinâmica de Plays
   const searchInput = document.getElementById('search');
   const playsSection = document.getElementById('plays');
   if (searchInput && playsSection) {
     searchInput.addEventListener('input', () => {
       const term = searchInput.value.toLowerCase();
       playsSection.querySelectorAll('.card').forEach(card => {
-        const txt = (card.querySelector('h3').textContent +
-                     card.querySelector('p').textContent).toLowerCase();
+        const txt = (
+          card.querySelector('h3').textContent +
+          card.querySelector('p').textContent
+        ).toLowerCase();
         card.style.display = txt.includes(term) ? '' : 'none';
       });
     });
   }
 
-  // ── 4) Configuração de todos os modais (abrir/fechar + ESC + resize) ─
+  // 3) Configuração de todos os modais + inicialização “lazy” do gráfico
+  let sobreChart = null;
   document.querySelectorAll('button[data-modal]').forEach(btn => {
-    const name  = btn.dataset.modal;
+    const name = btn.dataset.modal;                       // "sobre","ajuda","news"
     const modal = document.getElementById(`modal-${name}`);
     if (!modal) return;
 
-    // abrir e, se for "sobre", dar resize no chart
+    // Ao clicar, abre modal
     btn.addEventListener('click', () => {
       modal.classList.remove('hidden');
-      if (name === 'sobre' && sobreChart) sobreChart.resize();
+
+      // Se for o modal “Sobre”, inicializa (ou redimensiona) o Chart
+      if (name === 'sobre') {
+        const canvas = document.getElementById('sobre-chart');
+        if (canvas && window.Chart) {
+          const ctx = canvas.getContext('2d');
+          if (!sobreChart) {
+            sobreChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['QA', 'Pentest', 'Automação', 'DevSecOps'],
+                datasets: [{
+                  label: 'Anos de Experiência',
+                  data: [5, 4, 4, 3],
+                  backgroundColor: 'rgba(0,255,224,0.5)',
+                  borderColor: 'rgba(0,255,224,1)',
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true } }
+              }
+            });
+          } else {
+            sobreChart.resize();
+          }
+        }
+      }
     });
 
-    // fechar no "×"
+    // Fechar no “×”
     modal.querySelectorAll('.close-modal').forEach(x =>
       x.addEventListener('click', () => modal.classList.add('hidden'))
     );
-    // fechar clicando fora (overlay)
+    // Fechar clicando fora do conteúdo
     modal.addEventListener('click', e => {
       if (e.target === modal) modal.classList.add('hidden');
     });
   });
 
-  // ESC fecha qualquer modal aberto
+  // 4) ESC fecha qualquer modal aberto
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       document.querySelectorAll('.modal:not(.hidden)')
-              .forEach(m => m.classList.add('hidden'));
+        .forEach(m => m.classList.add('hidden'));
     }
   });
 
-  // ── 5) Carregar notícias "ao vivo" no modal News ────────────────────
+  // 5) Carregar notícias “ao vivo” no modal News
   const NEWS_API_KEY = 'KTeKQv1H4PHbtVhF_fwXVLvA178RVJ6z13A_KqgZuYuxLGp3';
   const newsList = document.getElementById('news-list');
   if (newsList) {
@@ -127,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
           card.className = 'news-card';
           card.innerHTML = `
             <h3>${item.title}</h3>
-            <p>${item.description||''}</p>
+            <p>${item.description || ''}</p>
             <a href="${item.url}" target="_blank">Ler mais →</a>`;
           newsList.appendChild(card);
         });
@@ -138,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // ── 6) Modal “Por Dentro”: iframe com a página do play ──────────────
+  // 6) Modal “Por Dentro”: iframe com a página do play
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', () => {
       const card     = btn.closest('.card');
@@ -146,9 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const modal    = document.getElementById('modal-por-dentro');
       const target   = document.getElementById('modal-play-content');
 
-      target.innerHTML = `<iframe 
-        src="${playLink}" 
-        style="width:100%;height:80vh;border:none;"></iframe>`;
+      target.innerHTML = `
+        <iframe 
+          src="${playLink}" 
+          style="width:100%;height:80vh;border:none;">
+        </iframe>`;
       modal.classList.remove('hidden');
     });
   });
