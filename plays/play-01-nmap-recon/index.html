@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 01 — Nmap Recon</title>
   <link rel="stylesheet" href="../../style.css"/>
-  <!-- script global que controla layout, extração de slug e helper functions -->
 </head>
 <body class="neon-dark">
   <div class="container" style="text-align: center;">
@@ -15,17 +14,23 @@
     <br/><br/>
     <a class="btn neon-btn" href="../../index.html">← Voltar</a>
     <br/><br/>
-    <!-- Removi a classe hidden e deixei o style padrão como none: -->
-    <div id="progress-container" style="display: none; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
+    <!-- Container de progresso e logs, começa oculto -->
+    <div id="progress-container"
+         style="display: none; flex-direction: column;
+                align-items: center; max-width: 600px; margin: 0 auto;">
       <div class="progress-bar">
-        <div class="fill" id="progress-bar-fill"></div>
+        <!-- note que, para seguir o padrão do play 02, a classe aqui é "barra-preenchida" -->
+        <div class="barra-preenchida"></div>
       </div>
       <br/>
-      <pre id="output-box" class="output-box"></pre>
+      <!-- idem, usamos <pre id="logs"> conforme play 02 -->
+      <pre id="logs" class="output-box"></pre>
     </div>
   </div>
 
-  <!-- 1) Script geral de navegação e utilitários: -->
+  <!-- runScript.js (esse é o script específico de cada play, que abre o EventSource) -->
+  <script src="runScript.js" defer></script>
+  <!-- scripts.js: utilitários gerais (navegação, extrai slug e executa o fluxo de evento) -->
   <script src="../../scripts.js" defer></script>
 </body>
 </html>
