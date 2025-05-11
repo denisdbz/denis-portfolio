@@ -15,7 +15,6 @@ function executarTeste() {
     console.error('Elementos de log não encontrados');
     return;
   }
-
   logs.textContent = '';
   barra.style.width = '0%';
   container.classList.remove('hidden');
@@ -30,7 +29,7 @@ function executarTeste() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Toggle tema claro/escuro
+  // ── 1) Toggle tema claro/escuro ────────────────────────────────
   const themeToggle = document.querySelector('.toggle-theme');
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2) Busca dinâmica de Plays
+  // ── 2) Busca dinâmica de Plays ─────────────────────────────────
   const searchInput = document.getElementById('search');
   const playsSection = document.getElementById('plays');
   if (searchInput && playsSection) {
@@ -55,31 +54,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3) “Por Dentro”: carrega cada post estático via iframe e adiciona botões
+  // ── 3) “Por Dentro”: carrega post estático via iframe + botões ───
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const link    = btn.closest('.card').querySelector('a.btn').href;
-      const slug    = link.split('/')[1];               // ex: play-01-nmap-recon
-      const postUrl = `posts/${slug}.html`;
-      const tool    = slug.split('-')[2] || 'ferramenta'; // ex: 'nmap'
+
+      // href relativo ex: "plays/play-01-nmap-recon/index.html"
+      const href = btn.closest('.card').querySelector('a.btn').getAttribute('href');
+
+      // converte em "posts/play-01-nmap-recon.html"
+      const postUrl = href
+        .replace(/^plays\//, 'posts/')
+        .replace(/\/index\.html$/, '.html');
+
+      // extrai slug e ferramenta para curiosidade
+      const slug = postUrl.split('/').pop().replace('.html','');
+      const tool = slug.split('-')[2] || 'ferramenta';
 
       const modal  = document.getElementById('modal-por-dentro');
       const target = document.getElementById('modal-post-content');
+
       target.innerHTML = `
         <div class="post-modal-container">
           <div class="post-modal-actions">
             <button class="btn neon-btn" id="go-to-play-btn">▶️ Ir ao Play</button>
             <button class="btn neon-btn" id="back-home-btn">⏪ Voltar à Home</button>
           </div>
-          <iframe src="${postUrl}" 
+          <iframe src="${postUrl}"
                   style="width:100%; height:70vh; border:none;"
                   title="${slug}"></iframe>
           <div class="post-modal-footer">
             <p class="curiosity">
-              🧠 Curiosidade: quer se aprofundar? Explore a documentação oficial de
-              <a href="https://www.google.com/search?q=${tool}+documentation" 
-                 target="_blank" 
+              🧠 Curiosidade: quer se aprofundar? Consulte a documentação oficial de
+              <a href="https://www.google.com/search?q=${tool}+documentation"
+                 target="_blank"
                  class="resource-link">${tool.toUpperCase()}</a>.
             </p>
           </div>
@@ -87,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       document.getElementById('go-to-play-btn')
-        .addEventListener('click', () => window.location.href = link);
+        .addEventListener('click', () => window.location.href = href);
       document.getElementById('back-home-btn')
         .addEventListener('click', () => {
           modal.classList.add('hidden');
@@ -98,10 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4) Configuração de modais (abrir/fechar + gráfico Sobre + ESC)
+  // ── 4) Modais Gerais (Sobre/Ajuda/News) + Lazy-init do Gráfico ───
   let sobreChart = null;
   document.querySelectorAll('button[data-modal]').forEach(btn => {
-    const name  = btn.dataset.modal;
+    const name  = btn.dataset.modal;                     // "sobre","ajuda","news"
     const modal = document.getElementById(`modal-${name}`);
     if (!modal) return;
 
@@ -123,10 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 borderWidth: 1
               }]
             },
-            options: {
-              responsive: true,
-              scales: { y: { beginAtZero: true } }
-            }
+            options: { responsive: true, scales: { y: { beginAtZero: true } } }
           });
         } else {
           sobreChart.resize();
@@ -155,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5) Carregar notícias via proxy no seu back-end
+  // ── 5) Notícias via proxy  ───────────────────────────────────────
   const newsList = document.getElementById('news-list');
   if (newsList) {
     fetch(`${baseURL}/api/news`)
