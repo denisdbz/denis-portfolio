@@ -30,7 +30,7 @@ function executarTeste() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 1) Toggle tema claro/escuro ────────────────────────────────────
+  // 1) Toggle tema claro/escuro
   const themeToggle = document.querySelector('.toggle-theme');
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 2) Busca dinâmica de Plays ────────────────────────────────────
+  // 2) Busca dinâmica de Plays
   const searchInput = document.getElementById('search');
   const playsSection = document.getElementById('plays');
   if (searchInput && playsSection) {
@@ -55,17 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 3) “Por Dentro”: carrega cada post estático via iframe e adiciona botões ──
+  // 3) “Por Dentro”: carrega cada post estático via iframe e adiciona botões
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-      // Pega href do link “Ver o Play”
       const link    = btn.closest('.card').querySelector('a.btn').href;
       const slug    = link.split('/')[1];               // ex: play-01-nmap-recon
       const postUrl = `posts/${slug}.html`;
       const tool    = slug.split('-')[2] || 'ferramenta'; // ex: 'nmap'
 
-      // Monta a interface do modal
       const modal  = document.getElementById('modal-por-dentro');
       const target = document.getElementById('modal-post-content');
       target.innerHTML = `
@@ -88,31 +86,27 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Botão "Ir ao Play"
-      document.getElementById('go-to-play-btn').addEventListener('click', () => {
-        window.location.href = link;
-      });
-      // Botão "Voltar à Home"
-      document.getElementById('back-home-btn').addEventListener('click', () => {
-        modal.classList.add('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      document.getElementById('go-to-play-btn')
+        .addEventListener('click', () => window.location.href = link);
+      document.getElementById('back-home-btn')
+        .addEventListener('click', () => {
+          modal.classList.add('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
       modal.classList.remove('hidden');
     });
   });
 
-  // ── 4) Configuração de modais (abrir/fechar + gráfico Sobre + ESC) ──
+  // 4) Configuração de modais (abrir/fechar + gráfico Sobre + ESC)
   let sobreChart = null;
   document.querySelectorAll('button[data-modal]').forEach(btn => {
-    const name  = btn.dataset.modal;               // ex: "sobre","ajuda","news"
+    const name  = btn.dataset.modal;
     const modal = document.getElementById(`modal-${name}`);
     if (!modal) return;
 
-    // abrir modal
     btn.addEventListener('click', () => {
       modal.classList.remove('hidden');
-      // lazy init do gráfico “Sobre”
       if (name === 'sobre' && window.Chart) {
         const canvas = document.getElementById('sobre-chart');
         const ctx    = canvas.getContext('2d');
@@ -143,11 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // fechar no “×”
   document.querySelectorAll('.close-modal').forEach(btn =>
-    btn.addEventListener('click', () => {
-      btn.closest('.modal').classList.add('hidden');
-    })
+    btn.addEventListener('click', () =>
+      btn.closest('.modal').classList.add('hidden')
+    )
   );
-  // fechar clicando fora do conteúdo
+  // fechar clicando fora
   document.querySelectorAll('.modal').forEach(modal =>
     modal.addEventListener('click', e => {
       if (e.target === modal) modal.classList.add('hidden');
@@ -161,23 +155,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── 5) Carregar notícias “ao vivo” no modal News ──────────────────────
-  const NEWS_API_KEY = 'KTeKQv1H4PHbtVhF_fwXVLvA178RVJ6z13A_KqgZuYuxLGp3';
-  const newsList     = document.getElementById('news-list');
+  // 5) Carregar notícias via proxy no seu back-end
+  const newsList = document.getElementById('news-list');
   if (newsList) {
-    fetch(`https://api.currentsapi.services/v1/latest-news?apiKey=${NEWS_API_KEY}`)
+    fetch(`${baseURL}/api/news`)
       .then(res => {
         if (!res.ok) throw new Error(res.statusText);
         return res.json();
       })
       .then(json => {
         newsList.innerHTML = '';
-        (json.news || []).slice(0, 6).forEach(item => {
+        (json.news || []).slice(0,6).forEach(item => {
           const card = document.createElement('div');
           card.className = 'news-card';
           card.innerHTML = `
             <h3>${item.title}</h3>
-            <p>${item.description || ''}</p>
+            <p>${item.description||''}</p>
             <a href="${item.url}" target="_blank">Ler mais →</a>`;
           newsList.appendChild(card);
         });
