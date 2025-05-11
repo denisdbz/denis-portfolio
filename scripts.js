@@ -60,13 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ─── 3) Eventos “Por Dentro” ─────────────────────────────────
-  document.querySelectorAll('.btn-por-dentro').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      openModalPorDentro(btn.getAttribute('data-play-id'));
-    });
+// === Eventos “Por Dentro” corrigidos ===
+document.querySelectorAll('.btn-por-dentro').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    // busca tanto data-play-id quanto data-play
+    const playId = btn.dataset.playId || btn.dataset.play;
+    if (!playId) {
+      console.error('Play ID não encontrado no botão Por Dentro', btn);
+      return;
+    }
+    openModalPorDentro(playId);
   });
+});
 
   // ─── 4) Modal: abrir da navbar, fechar “×”, fora e Esc ────────
   let sobreChart = null;
