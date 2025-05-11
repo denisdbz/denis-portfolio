@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <title>play-08-nikto-scan — Detalhes</title>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body class="neon-dark">
+  <article>
+    <h1>Play 08 Nikto Scan</h1>
+    <p>Este Play executa o comando <code>echo "[INFO] Play 08 – Nikto Scan"</code>, permitindo avaliar aspectos específicos de segurança.</p>
+    <h2>Script <code>run.sh</code></h2>
+    <pre><code>#!/usr/bin/env bash
+echo "[INFO] Play 08 – Nikto Scan"
+TARGET=${1:-testphp.vulnweb.com}
+nikto -host "$TARGET"
+</code></pre>
+  </article>
+</body>
+</html>

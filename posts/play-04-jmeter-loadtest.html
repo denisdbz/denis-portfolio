@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <title>play-04-jmeter-loadtest — Detalhes</title>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body class="neon-dark">
+  <article>
+    <h1>Play 04 Jmeter Loadtest</h1>
+    <p>Este Play executa o comando <code>echo "[*] Iniciando teste de carga com JMeter..."</code>, permitindo avaliar aspectos específicos de segurança.</p>
+    <h2>Script <code>run.sh</code></h2>
+    <pre><code>#!/bin/bash
+echo "[*] Iniciando teste de carga com JMeter..."
+jmeter -n -t teste-carga.jmx -l resultados.jtl
+echo "[✓] Teste com JMeter finalizado. Logs salvos em resultados.jtl."
+</code></pre>
+  </article>
+</body>
+</html>

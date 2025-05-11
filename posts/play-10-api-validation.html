@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <title>play-10-api-validation — Detalhes</title>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body class="neon-dark">
+  <article>
+    <h1>Play 10 Api Validation</h1>
+    <p>Este Play executa o comando <code>echo "[INFO] Iniciando Play 10 — API Validation"</code>, permitindo avaliar aspectos específicos de segurança.</p>
+    <h2>Script <code>run.sh</code></h2>
+    <pre><code>#!/bin/bash
+echo "[INFO] Iniciando Play 10 — API Validation"
+
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/health)
+if [ "$STATUS" -eq 200 ]; then
+  echo "[SUCESSO] API retornou 200 OK."
+else
+  echo "[ERRO] API retornou código $STATUS."
+fi
+</code></pre>
+  </article>
+</body>
+</html>

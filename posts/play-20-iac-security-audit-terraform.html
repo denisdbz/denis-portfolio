@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <title>play-20-iac-security-audit-terraform — Detalhes</title>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body class="neon-dark">
+  <article>
+    <h1>Play 20 Iac Security Audit Terraform</h1>
+    <p>Este Play executa o comando <code>set -euo pipefail</code>, permitindo avaliar aspectos específicos de segurança.</p>
+    <h2>Script <code>run.sh</code></h2>
+    <pre><code>#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="${1:-.}"
+echo "[INFO] Iniciando Play 20 — IaC Security Audit (Terraform)"
+checkov -d "$DIR"
+echo "[SUCESSO] Auditoria Terraform concluída."
+</code></pre>
+  </article>
+</body>
+</html>
