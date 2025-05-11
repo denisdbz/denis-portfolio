@@ -1,5 +1,18 @@
-version: '3'
+version: '3.8'
+
 services:
+  backend:
+    build:
+      context: ../denis-play-backend
+      dockerfile: Dockerfile
+    container_name: play-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - dvwa
+    networks:
+      - appnet
+
   dvwa:
     image: vulnerables/web-dvwa
     container_name: dvwa
@@ -9,9 +22,18 @@ services:
       - MYSQL_PASS=dvwa
     depends_on:
       - db
+    networks:
+      - appnet
+
   db:
     image: mysql:5.7
     container_name: dvwa-db
     environment:
-      MYSQL_ROOT_PASSWORD: dvwa
-      MYSQL_DATABASE: dvwa
+      - MYSQL_ROOT_PASSWORD=dvwa
+      - MYSQL_DATABASE=dvwa
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
