@@ -1,5 +1,6 @@
 // scripts.js
 
+
 // URL do seu backend
 const baseURL = 'https://mellow-commitment-production.up.railway.app';
 
