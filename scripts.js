@@ -51,8 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       // 3.1) pega href e monta postUrl
 const href = btn.closest('.card').querySelector('a.btn').href;
-const slug = href.split('/').pop().replace('.html', '');
-const tool = slug.split('-')[2] || slug;  // ✅ DEFINIDO ANTES DE USAR
+const slug = href.split('/').slice(-2, -1)[0];
+const tool = slug.split('-')[2] || slug;
+const postUrl = `${window.location.origin}/denis-portfolio/posts/${slug}.html`;
 
 const modal  = document.getElementById('modal-por-dentro');
 const target = document.getElementById('modal-post-content');
