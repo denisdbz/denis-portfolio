@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3) Modal “Por Dentro”
+  // 3) Modal “Por Dentro” com marca-d’água da ferramenta
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
@@ -59,35 +59,39 @@ document.addEventListener('DOMContentLoaded', () => {
       const modal  = document.getElementById('modal-por-dentro');
       const target = document.getElementById('modal-post-content');
 
-target.innerHTML = `
-  <div class="post-modal-container" style="--tool-logo-url: url('assets/img/tools/${tool}.png')">
-    <div class="post-modal-actions">
-      <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
-      <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
-    </div>
-    <iframe
-      src="${postUrl}"
-      style="width:100%; height:calc(100vh - 160px); border:none;"
-      title="${slug}">
-    </iframe>
-    <div class="post-modal-footer">
-      <p class="curiosity">
-        🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
-        <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
-          Explore a documentação oficial →
-        </a>
-      </p>
-    </div>
-  </div>
-`;
+      target.innerHTML = `
+        <div class="post-modal-container">
+          <div class="post-modal-actions">
+            <button id="go-play" class="btn neon-btn">&#9654; Ir ao Play</button>
+            <button id="go-home" class="btn neon-btn">&#9194; Voltar à Home</button>
+          </div>
+          <iframe
+            src="${postUrl}"
+            style="width:100%; height:calc(100vh - 160px); border:none;"
+            title="${slug}">
+          </iframe>
+          <div class="post-modal-footer">
+            <p class="curiosity">
+              🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
+              <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
+                Explore a documentação oficial →
+              </a>
+            </p>
+          </div>
+        </div>
+      `;
 
+      // Aplica o logo no fundo via CSS
       const container = modal.querySelector('.post-modal-container');
       if (container) {
-        container.style.setProperty('--tool-logo-url', `url('assets/img/tools/${tool}.png')`);
+        container.style.setProperty('--tool-logo-url',
+          `url('assets/img/tools/${tool}.png')`
+        );
       }
 
       document.getElementById('go-play')
         .addEventListener('click', () => window.location.href = href);
+
       document.getElementById('go-home')
         .addEventListener('click', () => {
           modal.classList.add('hidden');
