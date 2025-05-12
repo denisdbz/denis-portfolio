@@ -52,33 +52,33 @@ document.addEventListener('DOMContentLoaded', () => {
       // 3.1) pega href e monta postUrl
 const href = btn.closest('.card').querySelector('a.btn').href;
 const slug = href.split('/').pop().replace('.html', '');
-const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
-const postUrl = `${basePath}/posts/${slug}.html`;
+const tool = slug.split('-')[2] || slug;  // ✅ DEFINIDO ANTES DE USAR
 
-      // 3.2) injeta HTML do modal
-      const modal  = document.getElementById('modal-por-dentro');
-      const target = document.getElementById('modal-post-content');
-      target.innerHTML = `
-        <div class="post-modal-container">
-          <div class="post-modal-actions">
-            <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
-            <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
-          </div>
-          <iframe
-            src="${postUrl}"
-            style="width:100%; height:calc(100vh - 160px); border:none;"
-            title="${slug}">
-          </iframe>
-          <div class="post-modal-footer">
-            <p class="curiosity">
-              🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
-              <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
-                Explore a documentação oficial →
-              </a>
-            </p>
-          </div>
-        </div>
-      `;  // <- ACRÉSCIMO da crase e ponto‐e‐vírgula
+const modal  = document.getElementById('modal-por-dentro');
+const target = document.getElementById('modal-post-content');
+
+target.innerHTML = `
+  <div class="post-modal-container">
+    <div class="post-modal-actions">
+      <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+      <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+    </div>
+    <iframe
+      src="posts/${slug}.html"
+      style="width:100%; height:calc(100vh - 160px); border:none;"
+      title="${slug}">
+    </iframe>
+    <div class="post-modal-footer">
+      <p class="curiosity">
+        🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
+        <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
+          Explore a documentação oficial →
+        </a>
+      </p>
+    </div>
+  </div>
+`;
+        // <- ACRÉSCIMO da crase e ponto‐e‐vírgula
 
       // 3.3) aplica watermark
       const container = modal.querySelector('.post-modal-container');
