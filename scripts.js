@@ -1,6 +1,5 @@
 // scripts.js
 
-
 // URL do seu backend
 const baseURL = 'https://mellow-commitment-production.up.railway.app';
 
@@ -31,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.querySelector('.toggle-theme');
   themeToggle?.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
-    themeToggle.textContent = document.body.classList.contains('light-mode') ? 'ðŸŒ™' : 'â˜€ï¸';
+    themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
   });
 
-  // 2) Busca dinÃ¢mica de Plays
+  // 2) Busca dinâmica de Plays
   const search = document.getElementById('search');
   const plays  = document.getElementById('plays');
   if (search && plays) {
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3) Modal â€œPor Dentroâ€
+  // 3) Modal “Por Dentro”
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
@@ -63,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
       target.innerHTML = `
         <div class="post-modal-container">
           <div class="post-modal-actions">
-            <button id="go-play" class="btn neon-btn">â–¶ï¸ Ir ao Play</button>
-            <button id="go-home" class="btn neon-btn">âª Voltar Ã  Home</button>
+            <button id="go-play" class="btn neon-btn">&#9654; Ir ao Play</button>
+            <button id="go-home" class="btn neon-btn">&#9194; Voltar à Home</button>
           </div>
           <iframe
             src="${postUrl}"
@@ -73,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </iframe>
           <div class="post-modal-footer">
             <p class="curiosity">
-              ðŸ§  Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
+              🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
               <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
-                Explore a documentaÃ§Ã£o oficial â†’
+                Explore a documentação oficial →
               </a>
             </p>
           </div>
@@ -115,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'bar',
             data: {
               labels: ['2011','2014','2016','2018','2020','2024'],
-              datasets: [{ label: 'Anos de ExperiÃªncia', data: [1,3,5,7,9,12] }]
+              datasets: [{ label: 'Anos de Experiência', data: [1,3,5,7,9,12] }]
             },
             options: { responsive: true, scales: { y: { beginAtZero: true } } }
           });
@@ -126,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5) Fechamento de modais (Ã—, overlay, esc)
+  // 5) Fechamento de modais (×, overlay, esc)
   document.querySelectorAll('.close-modal').forEach(x =>
     x.addEventListener('click', () => x.closest('.modal').classList.add('hidden'))
   );
@@ -139,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 6) NotÃ­cias
+  // 6) Notícias
   const newsList = document.getElementById('news-list');
   if (newsList) {
     fetch(`${baseURL}/api/news`)
@@ -150,13 +149,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const card = document.createElement('div');
           card.className = 'news-card';
           card.innerHTML = `<h3>${item.title}</h3><p>${item.description||''}</p>
-                            <a href="${item.url}" target="_blank">Ler mais â†’</a>`;
+                            <a href="${item.url}" target="_blank">Ler mais →</a>`;
           newsList.appendChild(card);
         });
       })
       .catch(err => {
         console.error(err);
-        newsList.innerHTML = `<p>Erro ao carregar notÃ­cias: ${err}</p>`;
+        newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
       });
   }
 });

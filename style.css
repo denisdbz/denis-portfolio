@@ -1,3 +1,4 @@
+
 :root {
   --neon-color: #00ffe0;
 }
@@ -224,7 +225,7 @@ body.light-mode {
   box-shadow: 0 0 8px #00e6b0, 0 0 12px #00e6b0;
 }
 
-/* ===== Botão de Download ===== */
+/* ===== Download Currículo ===== */
 .btn-download {
   display: inline-block;
   margin-top: 1em;
@@ -244,7 +245,7 @@ body.light-mode {
   box-shadow: 0 0 10px #00ffc3, 0 0 20px #00ffc3;
 }
 
-/* ===== Links de Contato ===== */
+/* ===== Contatos ===== */
 .contact-links {
   margin-top: 1.5em;
   display: flex;
@@ -271,6 +272,39 @@ body.light-mode {
   animation: pulse-neon 2s infinite;
 }
 
+/* ===== Marca-d’água ===== */
+.post-modal-container {
+  position: relative;
+  background-color: #111;
+  padding: 1.5em;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.post-modal-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: var(--tool-logo-url, none);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.post-modal-container iframe,
+.post-modal-container .post-modal-actions,
+.post-modal-container .post-modal-footer {
+  position: relative;
+  z-index: 2;
+}
+
 /* ===== Animações ===== */
 @keyframes pulseLogo {
   0%,100% {transform: scale(1); filter: drop-shadow(0 0 4px var(--neon-color));}
@@ -287,84 +321,8 @@ body.light-mode {
   50%   {transform: scale(1.1); text-shadow: 0 0 12px #00ffc3,0 0 20px #00ffc3;}
   100%  {transform: scale(1); text-shadow: 0 0 6px #00ffc3;}
 }
-@keyframes typing { from { width: 0; } to { width: 22ch; } }
-@keyframes blink  { 50% { border-color: transparent; } }
-
-/* ===== Efeito digitando ===== */
-.typing {
-  font-size: 1.2em;
-  color: #00ffc3;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #00ffc3;
-  width: 0;
-  animation: typing 4s steps(30,end) forwards, blink 0.7s step-end infinite;
-}
 
 /* ===== Responsivo ===== */
 @media (max-width: 768px) {
-  /* … mesmas regras que já tinha … */
-}
-
-.post-modal-container {
-  position: relative;
-  background-color: #111;
-  padding: 1.5em;
-  border-radius: 0.5em;
-  overflow: hidden;
-}
-
-<<<<<<< HEAD
-/* Antes do conteúdo, desenha o logo */
-.post-modal-container::before {
-=======
-/* Marca-d’água como overlay acima do iframe */
-.post-modal-container {
-  position: relative;
-  /* …o resto já existente… */
-}
-
-/* Desabilita o ::before antigo, se ainda existir */
-.post-modal-container::before {
-  display: none;
-}
-
-/* Novo pseudo-elemento ::after */
-.post-modal-container::after {
->>>>>>> ca20fcb (Ajusta watermark: usa ::after com z-index para aparecer sobre o iframe)
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60%;
-  height: 60%;
-  transform: translate(-50%, -50%);
-<<<<<<< HEAD
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  background-image: var(--tool-logo-url, none);
-  opacity: 0.08;
-  pointer-events: none;
-=======
-  background-image: var(--tool-logo-url, none);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 1; /* fica acima do iframe (z-index:0) e abaixo dos botões (z-index:2) */
-}
-
-/* Garante a ordem de camadas: iframe atrás, botões na frente */
-.post-modal-container iframe {
-  position: relative;
-  z-index: 0;
-}
-
-.post-modal-container .post-modal-actions,
-.post-modal-container .post-modal-footer {
-  position: relative;
-  z-index: 2;
->>>>>>> ca20fcb (Ajusta watermark: usa ::after com z-index para aparecer sobre o iframe)
+  /* Adapte conforme necessário */
 }
