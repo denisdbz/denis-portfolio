@@ -61,28 +61,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const slug = postUrl.split('/').pop().replace('.html','');
       const tool = slug.split('-')[2] || slug;
 
-      const modal  = document.getElementById('modal-por-dentro');
-      const target = document.getElementById('modal-play-content');
-      target.innerHTML = `
-        <div class="post-modal-actions">
-          <button class="btn neon-btn" id="go-play">▶️ Ir ao Play</button>
-          <button class="btn neon-btn" id="go-home">⏪ Voltar à Home</button>
-        </div>
-        <iframe 
-          src="${postUrl}" 
-          style="width:100%; height:calc(100vh - 160px); border:none;"
-          title="${slug}">
-        </iframe>
-        <div class="post-modal-footer">
-          <p class="curiosity">
-            🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
-            <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
-              Explore a documentação oficial →
-            </a>
-          </p>
-        </div>
-      `;
+const modal  = document.getElementById('modal-por-dentro');
+const target = document.getElementById('modal-post-content');
+target.innerHTML = `
+  <div class="post-modal-actions">
+    <button class="btn neon-btn" id="go-play">▶️ Ir ao Play</button>
+    <button class="btn neon-btn" id="go-home">⏪ Voltar à Home</button>
+  </div>
 
+  <iframe 
+    src="${postUrl}" 
+    style="width:100%; height:calc(100vh - 160px); border:none;"
+    title="${slug}">
+  </iframe>
+
+  <div class="post-modal-footer">
+    <p class="curiosity">
+      🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
+      <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
+        Explore a documentação oficial →
+      </a>
+    </p>
+  </div>
+`;  // ⬅️ fecha o template literal aqui
       document.getElementById('go-play')
         .addEventListener('click', () => window.location.href = href);
       document.getElementById('go-home')
