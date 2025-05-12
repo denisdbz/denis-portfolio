@@ -1,16 +1,17 @@
-// scripts.js
+k// scripts.js
 
-// 0) URL do backend
+// URL do seu backend
 const baseURL = 'https://mellow-commitment-production.up.railway.app';
 
-// 1) Função de streaming SSE
+// Dispara o play real via SSE
 function executarTeste() {
   const m = window.location.pathname.match(/play-(\d+)/);
   const num = m ? m[1] : '1';
   const logs = document.getElementById('output-box') || document.getElementById('logs');
   const bar  = document.getElementById('progress-fill') || document.querySelector('.barra-preenchida');
   const cont = document.getElementById('progress-container');
-  if (!logs || !bar || !cont) return console.error('Elementos de log/barra não encontrados');
+  if (!logs || !bar || !cont) return console.error('Log elements missing');
+
   logs.textContent = '';
   bar.style.width = '0%';
   cont.classList.remove('hidden');
@@ -25,42 +26,36 @@ function executarTeste() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 2.1) Toggle tema claro/escuro
-  const themeBtn = document.querySelector('.toggle-theme');
-  themeBtn?.addEventListener('click', () => {
+  // ── 1) Toggle tema claro/escuro ────────────────────────────────────
+  const themeToggle = document.querySelector('.toggle-theme');
+  themeToggle?.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
-    themeBtn.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+    themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
   });
 
-  // 2.2) Busca dinâmica de Plays
+  // ── 2) Busca dinâmica de Plays ────────────────────────────────────
   const search = document.getElementById('search');
   const plays  = document.getElementById('plays');
   if (search && plays) {
     search.addEventListener('input', () => {
-      const t = search.value.toLowerCase();
-      plays.querySelectorAll('.card').forEach(c => {
-        c.style.display = c.innerText.toLowerCase().includes(t) ? '' : 'none';
+      const term = search.value.toLowerCase();
+      plays.querySelectorAll('.card').forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(term) ? '' : 'none';
       });
     });
   }
 
-  // 3) Modal “Por Dentro” com <iframe>, botões e watermark
+  // ── 3) Modal “Por Dentro” com <iframe>, botões e watermark ───────
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-
-      // href do "Ver o Play"
-      const href = btn.closest('.card')
-                      .querySelector('a.btn')
-                      .getAttribute('href');
-      // monta URL do post: posts/slug.html
-      const postUrl = href.replace(/^plays\//, 'posts/')
-                          .replace(/\/index\.html$/, '.html');
-      // extrai slug e ferramenta
-      const slug = postUrl.split('/').pop().replace('.html', '');
+      // 3.1) pega href e monta postUrl
+      const href = btn.closest('.card').querySelector('a.btn').href;
+      const slug = href.split('/').pop().replace(/\.html$/, '');
+      const postUrl = href.replace(/^.*\/([^/]+)$/, 'posts/$1.html');
       const tool = slug.split('-')[2] || slug;
 
-      // injeta HTML do modal
+      // 3.2) injeta HTML do modal
       const modal  = document.getElementById('modal-por-dentro');
       const target = document.getElementById('modal-post-content');
       target.innerHTML = `
@@ -83,16 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </p>
           </div>
         </div>
-      `;
+      `;  // <- ACRÉSCIMO da crase e ponto‐e‐vírgula
 
-      // aplica watermark no container correto
+      // 3.3) aplica watermark
       const container = modal.querySelector('.post-modal-container');
       container.style.setProperty(
         '--tool-logo-url',
         `url('assets/img/tools/${tool}.png')`
       );
 
-      // listeners dos botões
+      // 3.4) botões internos
       document.getElementById('go-play')
         .addEventListener('click', () => window.location.href = href);
       document.getElementById('go-home')
@@ -105,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4) Modais “Sobre”/“Ajuda”/“News” + Chart.js lazy-init
+  // ── 4) Modais “Sobre”/“Ajuda”/“News” + Chart.js ────────────────────
   let sobreChart = null;
   document.querySelectorAll('button[data-modal]').forEach(btn => {
     const name = btn.dataset.modal;
@@ -114,20 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       M.classList.remove('hidden');
       if (name === 'sobre' && window.Chart) {
-        const c   = document.getElementById('sobre-chart');
+        const c = document.getElementById('sobre-chart');
         const ctx = c.getContext('2d');
         if (!sobreChart) {
           sobreChart = new Chart(ctx, {
             type: 'bar',
             data: {
               labels: ['2011','2014','2016','2018','2020','2024'],
-              datasets: [{
-                label: 'Anos de Experiência',
-                data: [1,3,5,7,9,12],
-                backgroundColor: 'rgba(0,255,224,0.7)',
-                borderColor:     'rgba(0,255,224,1)',
-                borderWidth: 1
-              }]
+              datasets: [{ label: 'Anos de Experiência', data: [1,3,5,7,9,12] }]
             },
             options: { responsive: true, scales: { y: { beginAtZero: true } } }
           });
@@ -138,25 +127,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5) Fechamento de modais (×, clique fora e ESC)
-  document.querySelectorAll('.close-modal').forEach(btn =>
-    btn.addEventListener('click', () =>
-      btn.closest('.modal').classList.add('hidden')
-    )
+  // ── 5) Fechamento de modais (×, overlay e ESC) ─────────────────────
+  document.querySelectorAll('.close-modal').forEach(x =>
+    x.addEventListener('click', () => x.closest('.modal').classList.add('hidden'))
   );
   document.querySelectorAll('.modal').forEach(M =>
-    M.addEventListener('click', e => {
-      if (e.target === M) M.classList.add('hidden');
-    })
+    M.addEventListener('click', e => e.target === M && M.classList.add('hidden'))
   );
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-      document.querySelectorAll('.modal:not(.hidden)')
-              .forEach(m => m.classList.add('hidden'));
+      document.querySelectorAll('.modal:not(.hidden)').forEach(m => m.classList.add('hidden'));
     }
   });
 
-  // 6) Notícias via proxy (/api/news)
+  // ── 6) Notícias via proxy (/api/news) ───────────────────────────────
   const newsList = document.getElementById('news-list');
   if (newsList) {
     fetch(`${baseURL}/api/news`)
@@ -166,10 +150,8 @@ document.addEventListener('DOMContentLoaded', () => {
         (json.news || []).slice(0,6).forEach(item => {
           const card = document.createElement('div');
           card.className = 'news-card';
-          card.innerHTML = `
-            <h3>${item.title}</h3>
-            <p>${item.description||''}</p>
-            <a href="${item.url}" target="_blank">Ler mais →</a>`;
+          card.innerHTML = `<h3>${item.title}</h3><p>${item.description||''}</p>
+                            <a href="${item.url}" target="_blank">Ler mais →</a>`;
           newsList.appendChild(card);
         });
       })
@@ -178,4 +160,5 @@ document.addEventListener('DOMContentLoaded', () => {
         newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
       });
   }
-});  // fecha DOMContentLoaded
+});
+
