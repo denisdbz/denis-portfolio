@@ -53,19 +53,22 @@ document.querySelectorAll('.btn-por-dentro').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
 
-    // 1) Pego o href do “Ver o Play”
-    const href = btn.closest('.card')
-                    .querySelector('a.btn')
-                    .getAttribute('href');
-    // 2) Converto para posts/slug.html
+    // 1) href do “Ver o Play”
+    const href = btn
+      .closest('.card')
+      .querySelector('a.btn')
+      .getAttribute('href');
+
+    // 2) monta URL do post: posts/slug.html
     const postUrl = href
       .replace(/^plays\//, 'posts/')
       .replace(/\/index\.html$/, '.html');
-    // 3) Extraio o slug e a ferramenta
+
+    // 3) extrai slug e nome da ferramenta
     const slug = postUrl.split('/').pop().replace('.html','');
     const tool = slug.split('-')[2] || slug;  // ex: "nmap"
 
-    // 4) Monte o HTML do modal
+    // 4) injeta o HTML do modal
     const modal  = document.getElementById('modal-por-dentro');
     const target = document.getElementById('modal-post-content');
     target.innerHTML = `
@@ -92,14 +95,17 @@ document.querySelectorAll('.btn-por-dentro').forEach(btn => {
       </div>
     `;
 
-    // 5) Defino a marca-d’água via variável CSS
-    const container = document.querySelector('.post-modal-container');
+    // ←=== AQUI É QUE MUDAMOS: busca o container **dentro** do modal
+-   const container = document.querySelector('.post-modal-container');
++   const container = modal.querySelector('.post-modal-container');
+
+    // 5) aplica a variável CSS para o watermark
     container.style.setProperty(
       '--tool-logo-url',
       `url('assets/img/tools/${tool}.png')`
     );
 
-    // 6) Adiciono listeners aos botões
+    // 6) listeners dos botões
     document.getElementById('go-play')
       .addEventListener('click', () => window.location.href = href);
     document.getElementById('go-home')
@@ -108,7 +114,7 @@ document.querySelectorAll('.btn-por-dentro').forEach(btn => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-    // 7) Exibo o modal
+    // 7) exibe o modal
     modal.classList.remove('hidden');
   });
 });
