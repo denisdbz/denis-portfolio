@@ -65,7 +65,7 @@ target.innerHTML = `
       <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
     </div>
     <iframe
-      src="posts/${slug}.html"
+      src="${postUrl}"
       style="width:100%; height:calc(100vh - 160px); border:none;"
       title="${slug}">
     </iframe>
@@ -79,6 +79,15 @@ target.innerHTML = `
     </div>
   </div>
 `;
+
+// Aplica o logo como marca-d'água ao fundo do modal
+const container = modal.querySelector('.post-modal-container');
+if (container) {
+  container.style.setProperty(
+    '--tool-logo-url',
+    `url('assets/img/tools/${tool}.png')`
+  );
+}
         // <- ACRÉSCIMO da crase e ponto‐e‐vírgula
 
       // 3.3) aplica watermark
