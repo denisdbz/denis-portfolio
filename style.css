@@ -330,31 +330,3 @@ body.light-mode {
   opacity: 0.08;
   pointer-events: none;
 }
-
-/* ---------------------------
-   Marca-d'água do logo da ferramenta
-   --------------------------- */
-.post-modal-container {
-  position: relative;
-  background-color: #111;
-  padding: 1.5em;
-  border-radius: 0.5em;
-  overflow: hidden;
-}
-
-.post-modal-container::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60%;
-  height: 60%;
-  transform: translate(-50%, -50%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  /* esta variável deve ter sido atribuída via JS */
-  background-image: var(--tool-logo-url, none);
-  opacity: 0.08;
-  pointer-events: none;
-}
