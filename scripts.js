@@ -24,7 +24,6 @@ function executarTeste() {
   es.onerror = () => es.close();
 }
 
-// 2) DOMContentLoaded: inicializações gerais
 document.addEventListener('DOMContentLoaded', () => {
   // 2.1) Toggle tema claro/escuro
   const themeBtn = document.querySelector('.toggle-theme');
@@ -45,23 +44,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3) Modal “Por Dentro” via <iframe> + botões + watermark
+  // 3) Modal “Por Dentro” com <iframe>, botões e watermark
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
 
-      // href relativo do “Ver o Play”
+      // href do "Ver o Play"
       const href = btn.closest('.card')
                       .querySelector('a.btn')
                       .getAttribute('href');
       // monta URL do post: posts/slug.html
-      const postUrl = href.replace(/^plays\//,'posts/')
-                          .replace(/\/index\.html$/,'.html');
+      const postUrl = href.replace(/^plays\//, 'posts/')
+                          .replace(/\/index\.html$/, '.html');
       // extrai slug e ferramenta
-      const slug = postUrl.split('/').pop().replace('.html','');
+      const slug = postUrl.split('/').pop().replace('.html', '');
       const tool = slug.split('-')[2] || slug;
 
-      // injeta estrutura do modal
+      // injeta HTML do modal
       const modal  = document.getElementById('modal-por-dentro');
       const target = document.getElementById('modal-post-content');
       target.innerHTML = `
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // watermark: define a variável CSS no container correto
+      // aplica watermark no container correto
       const container = modal.querySelector('.post-modal-container');
       container.style.setProperty(
         '--tool-logo-url',
@@ -139,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5) Fechamento de modais (×, overlay e ESC)
-  document.querySelectorAll('.close-modal').forEach(b =>
-    b.addEventListener('click', () =>
-      b.closest('.modal').classList.add('hidden')
+  // 5) Fechamento de modais (×, clique fora e ESC)
+  document.querySelectorAll('.close-modal').forEach(btn =>
+    btn.addEventListener('click', () =>
+      btn.closest('.modal').classList.add('hidden')
     )
   );
   document.querySelectorAll('.modal').forEach(M =>
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 6) Carregar notícias via proxy no back-end
+  // 6) Notícias via proxy (/api/news)
   const newsList = document.getElementById('news-list');
   if (newsList) {
     fetch(`${baseURL}/api/news`)
@@ -179,4 +178,4 @@ document.addEventListener('DOMContentLoaded', () => {
         newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
       });
   }
-});
+});  // fecha DOMContentLoaded
