@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', e => {
       e.preventDefault();
       // 3.1) pega href e monta postUrl
-      const href = btn.closest('.card').querySelector('a.btn').href;
-      const slug = href.split('/').pop().replace(/\.html$/, '');
-      const postUrl = href.replace(/^.*\/([^/]+)$/, 'posts/$1.html');
-      const tool = slug.split('-')[2] || slug;
+const href = btn.closest('.card').querySelector('a.btn').href;
+const slug = href.split('/').pop().replace('.html', '');
+const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+const postUrl = `${basePath}/posts/${slug}.html`;
 
       // 3.2) injeta HTML do modal
       const modal  = document.getElementById('modal-por-dentro');
