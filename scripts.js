@@ -26,14 +26,14 @@ function executarTeste() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // ── 1) Toggle tema claro/escuro ────────────────────────────────────
+  // 1) Toggle tema claro/escuro
   const themeToggle = document.querySelector('.toggle-theme');
   themeToggle?.addEventListener('click', () => {
     document.body.classList.toggle('light-mode');
-    themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+    themeToggle.textContent = document.body.classList.contains('light-mode') ? 'ðŸŒ™' : 'â˜€ï¸';
   });
 
-  // ── 2) Busca dinâmica de Plays ────────────────────────────────────
+  // 2) Busca dinÃ¢mica de Plays
   const search = document.getElementById('search');
   const plays  = document.getElementById('plays');
   if (search && plays) {
@@ -45,63 +45,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 3) Modal “Por Dentro” com <iframe>, botões e watermark ───────
+  // 3) Modal â€œPor Dentroâ€
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-      // 3.1) pega href e monta postUrl
-const href = btn.closest('.card').querySelector('a.btn').href;
-const parts = href.replace(/\/index\.html$/, '').split('/');
-const slug = parts[parts.length - 1];
-const tool = slug.split('-')[2] || slug;
-const postUrl = `${window.location.origin}/denis-portfolio/posts/${slug}.html`;
 
-const modal  = document.getElementById('modal-por-dentro');
-const target = document.getElementById('modal-post-content');
+      const href = btn.closest('.card').querySelector('a.btn').href;
+      const parts = href.replace(/\/index\.html$/, '').split('/');
+      const slug = parts[parts.length - 1];
+      const tool = slug.split('-')[2] || slug;
+      const postUrl = `${window.location.origin}/denis-portfolio/posts/${slug}.html`;
 
-target.innerHTML = `
-  <div class="post-modal-container">
-    <div class="post-modal-actions">
-      <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
-      <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
-    </div>
-    <iframe
-      src="${postUrl}"
-      style="width:100%; height:calc(100vh - 160px); border:none;"
-      title="${slug}">
-    </iframe>
-    <div class="post-modal-footer">
-      <p class="curiosity">
-        🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
-        <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
-          Explore a documentação oficial →
-        </a>
-      </p>
-    </div>
-  </div>
-`;
+      const modal  = document.getElementById('modal-por-dentro');
+      const target = document.getElementById('modal-post-content');
 
-// Aplica o logo como marca-d'água ao fundo do modal
-const container = modal.querySelector('.post-modal-container');
-if (container) {
-  container.style.setProperty(
-    '--tool-logo-url',
-    `url('assets/img/tools/${tool}.png')`
-  );
-}
+      target.innerHTML = `
+        <div class="post-modal-container">
+          <div class="post-modal-actions">
+            <button id="go-play" class="btn neon-btn">â–¶ï¸ Ir ao Play</button>
+            <button id="go-home" class="btn neon-btn">âª Voltar Ã  Home</button>
+          </div>
+          <iframe
+            src="${postUrl}"
+            style="width:100%; height:calc(100vh - 160px); border:none;"
+            title="${slug}">
+          </iframe>
+          <div class="post-modal-footer">
+            <p class="curiosity">
+              ðŸ§  Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
+              <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
+                Explore a documentaÃ§Ã£o oficial â†’
+              </a>
+            </p>
+          </div>
+        </div>
+      `;
 
-// Botões internos
-document.getElementById('go-play')
-  .addEventListener('click', () => window.location.href = href);
-document.getElementById('go-home')
-  .addEventListener('click', () => {
-    modal.classList.add('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+      const container = modal.querySelector('.post-modal-container');
+      if (container) {
+        container.style.setProperty('--tool-logo-url', `url('assets/img/tools/${tool}.png')`);
+      }
+
+      document.getElementById('go-play')
+        .addEventListener('click', () => window.location.href = href);
+      document.getElementById('go-home')
+        .addEventListener('click', () => {
+          modal.classList.add('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+      modal.classList.remove('hidden');
+    });
   });
 
-modal.classList.remove('hidden');
-
-  // ── 4) Modais “Sobre”/“Ajuda”/“News” + Chart.js ────────────────────
+  // 4) Modais Sobre, Ajuda e News
   let sobreChart = null;
   document.querySelectorAll('button[data-modal]').forEach(btn => {
     const name = btn.dataset.modal;
@@ -117,7 +114,7 @@ modal.classList.remove('hidden');
             type: 'bar',
             data: {
               labels: ['2011','2014','2016','2018','2020','2024'],
-              datasets: [{ label: 'Anos de Experiência', data: [1,3,5,7,9,12] }]
+              datasets: [{ label: 'Anos de ExperiÃªncia', data: [1,3,5,7,9,12] }]
             },
             options: { responsive: true, scales: { y: { beginAtZero: true } } }
           });
@@ -128,7 +125,7 @@ modal.classList.remove('hidden');
     });
   });
 
-  // ── 5) Fechamento de modais (×, overlay e ESC) ─────────────────────
+  // 5) Fechamento de modais (Ã—, overlay, esc)
   document.querySelectorAll('.close-modal').forEach(x =>
     x.addEventListener('click', () => x.closest('.modal').classList.add('hidden'))
   );
@@ -141,7 +138,7 @@ modal.classList.remove('hidden');
     }
   });
 
-  // ── 6) Notícias via proxy (/api/news) ───────────────────────────────
+  // 6) NotÃ­cias
   const newsList = document.getElementById('news-list');
   if (newsList) {
     fetch(`${baseURL}/api/news`)
@@ -152,14 +149,13 @@ modal.classList.remove('hidden');
           const card = document.createElement('div');
           card.className = 'news-card';
           card.innerHTML = `<h3>${item.title}</h3><p>${item.description||''}</p>
-                            <a href="${item.url}" target="_blank">Ler mais →</a>`;
+                            <a href="${item.url}" target="_blank">Ler mais â†’</a>`;
           newsList.appendChild(card);
         });
       })
       .catch(err => {
         console.error(err);
-        newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
+        newsList.innerHTML = `<p>Erro ao carregar notÃ­cias: ${err}</p>`;
       });
   }
 });
-
