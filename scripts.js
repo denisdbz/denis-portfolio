@@ -89,27 +89,17 @@ if (container) {
     `url('assets/img/tools/${tool}.png')`
   );
 }
-        // <- ACRÉSCIMO da crase e ponto‐e‐vírgula
 
-      // 3.3) aplica watermark
-      const container = modal.querySelector('.post-modal-container');
-      container.style.setProperty(
-        '--tool-logo-url',
-        `url('assets/img/tools/${tool}.png')`
-      );
-
-      // 3.4) botões internos
-      document.getElementById('go-play')
-        .addEventListener('click', () => window.location.href = href);
-      document.getElementById('go-home')
-        .addEventListener('click', () => {
-          modal.classList.add('hidden');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-      modal.classList.remove('hidden');
-    });
+// Botões internos
+document.getElementById('go-play')
+  .addEventListener('click', () => window.location.href = href);
+document.getElementById('go-home')
+  .addEventListener('click', () => {
+    modal.classList.add('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+modal.classList.remove('hidden');
 
   // ── 4) Modais “Sobre”/“Ajuda”/“News” + Chart.js ────────────────────
   let sobreChart = null;
