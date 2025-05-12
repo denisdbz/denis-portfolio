@@ -314,8 +314,24 @@ body.light-mode {
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 /* Antes do conteúdo, desenha o logo */
 .post-modal-container::before {
+=======
+/* Marca-d’água como overlay acima do iframe */
+.post-modal-container {
+  position: relative;
+  /* …o resto já existente… */
+}
+
+/* Desabilita o ::before antigo, se ainda existir */
+.post-modal-container::before {
+  display: none;
+}
+
+/* Novo pseudo-elemento ::after */
+.post-modal-container::after {
+>>>>>>> ca20fcb (Ajusta watermark: usa ::after com z-index para aparecer sobre o iframe)
   content: "";
   position: absolute;
   top: 50%;
@@ -323,10 +339,32 @@ body.light-mode {
   width: 60%;
   height: 60%;
   transform: translate(-50%, -50%);
+<<<<<<< HEAD
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   background-image: var(--tool-logo-url, none);
   opacity: 0.08;
   pointer-events: none;
+=======
+  background-image: var(--tool-logo-url, none);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1; /* fica acima do iframe (z-index:0) e abaixo dos botões (z-index:2) */
+}
+
+/* Garante a ordem de camadas: iframe atrás, botões na frente */
+.post-modal-container iframe {
+  position: relative;
+  z-index: 0;
+}
+
+.post-modal-container .post-modal-actions,
+.post-modal-container .post-modal-footer {
+  position: relative;
+  z-index: 2;
+>>>>>>> ca20fcb (Ajusta watermark: usa ::after com z-index para aparecer sobre o iframe)
 }
