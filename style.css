@@ -293,10 +293,9 @@ body.light-mode {
   background-position: center;
   background-size: contain;
   background-image: var(--tool-logo-url, none);
-  opacity: 0.08;
+opacity: 0.2;
   pointer-events: none;
-  z-index: 1;
-}
+z-index: 0;}
 
 .post-modal-container iframe,
 .post-modal-container .post-modal-actions,
