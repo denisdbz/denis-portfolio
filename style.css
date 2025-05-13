@@ -272,15 +272,15 @@ body.light-mode {
   animation: pulse-neon 2s infinite;
 }
 
-/* ===== Marca-d’água ===== */
 .post-modal-container {
   position: relative;
   background-color: #111;
   padding: 1.5em;
   border-radius: 0.5em;
+  overflow: hidden;
   max-height: 90vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-modal-container::after {
@@ -323,8 +323,7 @@ body.light-mode {
 }
 
 .post-modal-container iframe {
+  flex: 1;
   width: 100%;
-  height: 100%;
   border: none;
-  display: block;
 }
