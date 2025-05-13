@@ -284,24 +284,17 @@ body.light-mode {
 .post-modal-container::after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60%;
-  height: 60%;
-  transform: translate(-50%, -50%);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
   background-image: var(--tool-logo-url, none);
-opacity: 0.2;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  opacity: 0.25; /* era 0.08 ou 0.2 */
   pointer-events: none;
-z-index: 0;}
-
-.post-modal-container iframe,
-.post-modal-container .post-modal-actions,
-.post-modal-container .post-modal-footer {
-  position: relative;
-  z-index: 2;
+  z-index: 3; /* acima do fundo, abaixo do texto */
 }
 
 /* ===== Animações ===== */
