@@ -298,7 +298,6 @@ body.light-mode {
   z-index: 3;
 }
 
-
 /* ===== Animações ===== */
 @keyframes pulseLogo {
   0%,100% {transform: scale(1); filter: drop-shadow(0 0 4px var(--neon-color));}
