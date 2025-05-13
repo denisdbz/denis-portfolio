@@ -284,19 +284,20 @@ body.light-mode {
 .post-modal-container::after {
   content: "";
   position: absolute;
-  top: 0.8rem;
-  right: 0.8rem;
-  width: 70px;
-  height: 70px;
+  top: 1rem;
+  right: 1.2rem;
+  width: 100px;
+  height: 100px;
   background-image: var(--tool-logo-url, none);
   background-repeat: no-repeat;
   background-position: top right;
   background-size: contain;
-  opacity: 0.08;
-  filter: grayscale(100%) contrast(120%);
+  opacity: 0.12;
+  filter: contrast(150%) brightness(140%) drop-shadow(0 0 2px var(--neon-color));
   pointer-events: none;
   z-index: 3;
 }
+
 
 /* ===== Animações ===== */
 @keyframes pulseLogo {
