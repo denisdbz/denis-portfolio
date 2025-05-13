@@ -65,11 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <button id="go-play" class="btn neon-btn">&#9654; Ir ao Play</button>
             <button id="go-home" class="btn neon-btn">&#9194; Voltar à Home</button>
           </div>
-          <iframe
-            src="${postUrl}"
-            style="width:100%; height:calc(100vh - 160px); border:none;"
-            title="${slug}">
-          </iframe>
+<iframe
+  src="${postUrl}"
+  title="${slug}">
+</iframe>
           <div class="post-modal-footer">
             <p class="curiosity">
               🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 

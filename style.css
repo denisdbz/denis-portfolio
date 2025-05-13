@@ -324,8 +324,7 @@ body.light-mode {
 
 .post-modal-container iframe {
   width: 100%;
-  height: auto;
+  height: 100%;
   border: none;
   display: block;
-  overflow: hidden;
 }
