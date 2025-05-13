@@ -1,7 +1,9 @@
 // scripts.js
 
 // URL do seu backend
-const baseURL = 'https://mellow-commitment-production.up.railway.app';
+if (typeof baseURL === 'undefined') {
+  var baseURL = 'https://mellow-commitment-production.up.railway.app';
+}
 
 // Dispara o play real via SSE
 function executarTeste() {
