@@ -278,7 +278,9 @@ body.light-mode {
   background-color: #111;
   padding: 1.5em;
   border-radius: 0.5em;
-  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .post-modal-container::after {
@@ -318,4 +320,12 @@ body.light-mode {
 /* ===== Responsivo ===== */
 @media (max-width: 768px) {
   /* Adapte conforme necessário */
+}
+
+.post-modal-container iframe {
+  width: 100%;
+  height: auto;
+  border: none;
+  display: block;
+  overflow: hidden;
 }
