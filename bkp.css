@@ -284,17 +284,17 @@ body.light-mode {
 .post-modal-container::after {
   content: "";
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 64px;
-  height: 64px;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
   background-image: var(--tool-logo-url, none);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: top right;
   background-size: contain;
-  opacity: 0.15;
+  opacity: 0.25; /* era 0.08 ou 0.2 */
   pointer-events: none;
-  z-index: 2;
+  z-index: 3; /* acima do fundo, abaixo do texto */
 }
 
 /* ===== Animações ===== */
