@@ -1,6 +1,8 @@
 // scripts.js
 
+
 // URL do seu backend
+
 if (typeof baseURL === 'undefined') {
   var baseURL = 'https://mellow-commitment-production.up.railway.app';
 }
