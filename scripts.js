@@ -165,9 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
           newsList.appendChild(card);
         });
       })
-      .catch(err => {
-        console.error(err);
-        newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
-      });
+    .catch(err => {
+      console.error(err);
+      newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
+    });
   }
-});
+}); // ← fecha o DOMContentLoaded
