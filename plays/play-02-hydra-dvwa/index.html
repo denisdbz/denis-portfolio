@@ -10,7 +10,17 @@
   <div class="container" style="text-align: center;">
     <h1>Play 02 — Hydra Dvwa</h1>
     <p>Teste de força bruta contra login do DVWA com Hydra.</p>
-    <button class="btn neon-btn" onclick="executarTeste()" onclick="executarTeste()">Executar Teste</button>
+    
+<div id="progress-container" class="hidden">
+  <div class="progress-bar">
+    <div id="progress-fill" class="fill"></div>
+  </div>
+</div>
+
+<pre id="output-box" class="output-box"></pre>
+
+
+<button class="btn neon-btn" onclick="executarTeste()" onclick="executarTeste()">Executar Teste</button>
     <br /><br />
     <a class="btn neon-btn" href="../../index.html">← Voltar</a>
     <br /><br />
