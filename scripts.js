@@ -35,13 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
   });
 
-  // 7) Executar teste via botão global
-  const btn = document.getElementById('btn-executar');
-  if (btn) {
-    btn.addEventListener('click', executarTeste);
-  }
-});
-
   // 2) Busca dinâmica de Plays
   const search = document.getElementById('search');
   const plays  = document.getElementById('plays');
@@ -170,4 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
       newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
     });
   }
-); // ← fecha o DOMContentLoaded
+
+  // 7) Executar teste via botão global
+  const btn = document.getElementById('btn-executar');
+  if (btn) {
+    btn.addEventListener('click', executarTeste);
+  }
+});
