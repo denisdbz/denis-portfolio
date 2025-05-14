@@ -170,4 +170,4 @@ document.addEventListener('DOMContentLoaded', () => {
       newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
     });
   }
-}); // ← fecha o DOMContentLoaded
+); // ← fecha o DOMContentLoaded
