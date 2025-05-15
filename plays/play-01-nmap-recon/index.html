@@ -4,44 +4,26 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 01 — Nmap Recon</title>
-
-  <!-- CSS global (GitHub Pages) -->
-  <link rel="stylesheet" href="/denis-portfolio/style.css"/>
-
-  <!-- Base URL para o SSE -->
-  <script>
-    window.BASE_URL = 'https://mellow-commitment-production.up.railway.app';
-  </script>
-
-  <!-- Script único -->
-  <script src="/denis-portfolio/scripts.js" defer></script>
+  <link rel="stylesheet" href="../../style.css"/>
 </head>
 <body class="neon-dark">
-  <header class="hero">
-    <div class="logo-box">
-      <img src="/denis-portfolio/assets/img/logo-animado-denis.svg" alt="Logo Denis | QA & Pentest"/>
-    </div>
+  <div class="container" style="text-align: center;">
     <h1>Play 01 — Nmap Recon</h1>
-    <p>Este teste realiza uma varredura de portas em um host de exemplo.</p>
-    <div class="hero-actions">
-      <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
-      <button class="toggle-theme">🌙</button>
-    </div>
-  </header>
+    <p>Executa testes reais com foco em nmap-recon.</p>
 
-  <main class="container" style="text-align:center;">
-    <!-- Barra de progresso (inicialmente oculta pelo JS) -->
-    <div id="progress-container" class="barra-container hidden">
-      <div id="progress-fill" class="barra-preenchida"></div>
+    <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+
+    <!-- Barra de progresso -->
+    <div id="progress-container" class="progress-bar">
+      <div id="progress-fill" class="fill"></div>
     </div>
 
-    <!-- Logs de execução -->
-    <pre id="output-box" class="logs"></pre>
+    <!-- Saída dos logs -->
+    <pre id="output-box" class="output-box"></pre>
 
-    <!-- Botão voltar -->
-    <div style="margin-top:2rem;">
-      <a href="/denis-portfolio/index.html" class="btn neon-btn">← Voltar</a>
-    </div>
-  </main>
+    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
+  </div>
+
+  <script src="../../scripts.js" defer></script>
 </body>
 </html>
