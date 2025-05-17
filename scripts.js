@@ -5,19 +5,58 @@ if (typeof baseURL === 'undefined') {
   var baseURL = 'https://mellow-commitment-production.up.railway.app';
 }
 
+// Garante que os elementos de log e progresso existam, criando fallback se necessário
+function _ensureLogElements() {
+  let cont = document.getElementById('progress-container');
+  if (!cont) {
+    cont = document.createElement('div');
+    cont.id = 'progress-container';
+    cont.classList.add('progress-container');
+    // Container de barra de progresso
+    const barra = document.createElement('div');
+    barra.classList.add('barra');
+    const bar = document.createElement('div');
+    bar.id = 'progress-fill';
+    bar.classList.add('barra-preenchida');
+    barra.appendChild(bar);
+    cont.appendChild(barra);
+    // Container de logs
+    const logs = document.createElement('pre');
+    logs.id = 'output-box';
+    logs.classList.add('logs');
+    cont.appendChild(logs);
+    document.body.appendChild(cont);
+  }
+  return {
+    cont: document.getElementById('progress-container'),
+    bar: document.getElementById('progress-fill'),
+    logs: document.getElementById('output-box')
+  };
+}
+
 // Dispara o play real via SSE
 function executarTeste() {
   const m = window.location.pathname.match(/play-(\d+)/);
   const num = m ? m[1] : '1';
-  const logs = document.getElementById('output-box') || document.getElementById('logs');
-  const bar  = document.getElementById('progress-fill') || document.querySelector('.barra-preenchida');
-  const cont = document.getElementById('progress-container');
-  if (!logs || !bar || !cont) return console.error('Log elements missing');
+  // Tenta obter elementos existentes
+  let logs = document.getElementById('output-box') || document.getElementById('logs');
+  let bar  = document.getElementById('progress-fill') || document.querySelector('.barra-preenchida');
+  let cont = document.getElementById('progress-container');
 
+  // Se algum estiver faltando, cria fallback
+  if (!logs || !bar || !cont) {
+    const els = _ensureLogElements();
+    cont = els.cont;
+    bar  = els.bar;
+    logs = els.logs;
+  }
+
+  // Inicia limpeza e exibição
   logs.textContent = '';
   bar.style.width = '0%';
   cont.classList.remove('hidden');
 
+  // Abre EventSource e atualiza UI
   const es = new EventSource(`${baseURL}/api/play/${num}/stream`);
   es.onmessage = e => {
     logs.textContent += e.data + '\n';
@@ -51,26 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.btn-por-dentro').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-
       const href = btn.closest('.card').querySelector('a.btn').href;
       const parts = href.replace(/\/index\.html$/, '').split('/');
       const slug = parts[parts.length - 1];
       const tool = slug.split('-')[2] || slug;
       const postUrl = `${window.location.origin}/denis-portfolio/posts/${slug}.html`;
-
       const modal  = document.getElementById('modal-por-dentro');
       const target = document.getElementById('modal-post-content');
-
       target.innerHTML = `
         <div class="post-modal-container">
           <div class="post-modal-actions">
             <button id="go-play" class="btn neon-btn">&#9654; Ir ao Play</button>
             <button id="go-home" class="btn neon-btn">&#9194; Voltar à Home</button>
           </div>
-<iframe
-  src="${postUrl}"
-  title="${slug}">
-</iframe>
+          <iframe src="${postUrl}" title="${slug}"></iframe>
           <div class="post-modal-footer">
             <p class="curiosity">
               🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
@@ -81,24 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
-
-      // Aplica o logo no fundo via CSS
       const container = modal.querySelector('.post-modal-container');
-      if (container) {
-        container.style.setProperty('--tool-logo-url',
-          `url('assets/img/tools/${tool}.png')`
-        );
-      }
-
-      document.getElementById('go-play')
-        .addEventListener('click', () => window.location.href = href);
-
-      document.getElementById('go-home')
-        .addEventListener('click', () => {
-          modal.classList.add('hidden');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
+      container?.style.setProperty('--tool-logo-url', `url('assets/img/tools/${tool}.png')`);
+      document.getElementById('go-play')?.addEventListener('click', () => window.location.href = href);
+      document.getElementById('go-home')?.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
       modal.classList.remove('hidden');
     });
   });
@@ -130,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5) Fechamento de modais (×, overlay, esc)
+  // 5) Fechamento de modais
   document.querySelectorAll('.close-modal').forEach(x =>
     x.addEventListener('click', () => x.closest('.modal').classList.add('hidden'))
   );
@@ -158,15 +180,13 @@ document.addEventListener('DOMContentLoaded', () => {
           newsList.appendChild(card);
         });
       })
-    .catch(err => {
-      console.error(err);
-      newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
-    });
+      .catch(err => {
+        console.error(err);
+        newsList.innerHTML = `<p>Erro ao carregar notícias: ${err}</p>`;
+      });
   }
 
   // 7) Executar teste via botão global
   const btn = document.getElementById('btn-executar');
-  if (btn) {
-    btn.addEventListener('click', executarTeste);
-  }
+  btn?.addEventListener('click', executarTeste);
 });
