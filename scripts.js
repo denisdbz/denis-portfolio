@@ -6,6 +6,7 @@ if (typeof baseURL === 'undefined') {
 }
 
 // Dispara o play real via SSE
+
 function executarTeste() {
   const m = window.location.pathname.match(/play-(\d+)/);
   const num = m ? m[1] : '1';
