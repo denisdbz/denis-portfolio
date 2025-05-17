@@ -1,116 +1,109 @@
 // scripts.js
 
-// URL do seu backend (fallback para produção)
-if (typeof baseURL === 'undefined') {
-  var baseURL = 'https://mellow-commitment-production.up.railway.app';
-}
+// URL do seu backend (caso já não esteja definida)
+var baseURL = typeof baseURL !== 'undefined' ? baseURL : 'https://mellow-commitment-production.up.railway.app';
 
 // Dispara o play real via SSE
-
 function executarTeste() {
-  const m = window.location.pathname.match(/play-(\d+)/);
-  const num = m ? m[1] : '1';
+  var m   = window.location.pathname.match(/play-(\d+)/);
+  var num = m ? m[1] : '1';
 
-  // Busca o container de logs: tenta vários seletores para compatibilidade
-  const logs = document.getElementById('output-box') \
-             || document.getElementById('logs') \
-             || document.getElementById('output') \
-             || document.querySelector('pre');
-  // Busca a barra de progresso
-  const bar  = document.getElementById('progress-fill') \
-             || document.querySelector('.barra-preenchida') \
-             || document.querySelector('.progress-fill');
-  // Container da barra (se faltar, usa elemento pai da barra)
-  const cont = document.getElementById('progress-container') \
-             || (bar && bar.parentElement) \
-             || logs && logs.parentElement;
-
+  var logs = document.getElementById('output-box') || document.getElementById('logs');
+  var bar  = document.getElementById('progress-fill') || document.querySelector('.barra-preenchida');
+  var cont = document.getElementById('progress-container');
   if (!logs || !bar || !cont) {
-    console.error('Log elements missing', { logs, bar, cont });
+    console.error('Log elements missing');
     return;
   }
 
-  // Reset visual
-  if (logs) logs.textContent = '';
-  if (bar) bar.style.width = '0%';
-  if (cont) cont.classList.remove('hidden');
+  logs.textContent = '';
+  bar.style.width  = '0%';
+  cont.classList.remove('hidden');
 
-  // Inicia SSE
-  const es = new EventSource(`${baseURL}/api/play/${num}/stream`);
-  es.onmessage = e => {
-    if (logs) {
-      logs.textContent += e.data + '\n';
-      logs.scrollTop = logs.scrollHeight;
-    }
-    if (bar) bar.style.width = Math.min(100, (logs.textContent.length || 0) / 5) + '%';
+  var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
+  es.onmessage = function(e) {
+    logs.textContent += e.data + '\n';
+    logs.scrollTop = logs.scrollHeight;
+    bar.style.width = Math.min(100, logs.textContent.length / 5) + '%';
   };
-  es.onerror = () => es.close();
+  es.onerror = function() {
+    es.close();
+  };
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // resto do script permanece inalterado...
-
+document.addEventListener('DOMContentLoaded', function() {
   // 1) Toggle tema claro/escuro
-  const themeToggle = document.querySelector('.toggle-theme');
-  themeToggle?.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-    themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
-  });
+  var themeToggle = document.querySelector('.toggle-theme');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      document.body.classList.toggle('light-mode');
+      themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+    });
+  }
 
   // 2) Busca dinâmica de Plays
-  const search = document.getElementById('search');
-  const plays  = document.getElementById('plays');
+  var search = document.getElementById('search');
+  var plays  = document.getElementById('plays');
   if (search && plays) {
-    search.addEventListener('input', () => {
-      const term = search.value.toLowerCase();
-      plays.querySelectorAll('.card').forEach(card => {
+    search.addEventListener('input', function() {
+      var term = search.value.toLowerCase();
+      plays.querySelectorAll('.card').forEach(function(card) {
         card.style.display = card.innerText.toLowerCase().includes(term) ? '' : 'none';
       });
     });
   }
 
-  // 3) Modal “Por Dentro” com marca-d’água da ferramenta
-  document.querySelectorAll('.btn-por-dentro').forEach(btn => {
-    btn.addEventListener('click', e => {
+  // 3) Modal “Por Dentro” com marca-d’água
+  document.querySelectorAll('.btn-por-dentro').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
       e.preventDefault();
 
-      const href = btn.closest('.card').querySelector('a.btn').href;
-      const parts = href.replace(/\/index\.html$/, '').split('/');
-      const slug = parts[parts.length - 1];
-      const tool = slug.split('-')[2] || slug;
-      const postUrl = `${window.location.origin}/denis-portfolio/posts/${slug}.html`;
+      var card = btn.closest('.card');
+      var link = card ? card.querySelector('a.btn') : null;
+      if (!link) return;
 
-      const modal  = document.getElementById('modal-por-dentro');
-      const target = document.getElementById('modal-post-content');
+      var href   = link.href;
+      var parts  = href.replace(/\/index\.html$/, '').split('/');
+      var slug   = parts[parts.length - 1];
+      var tool   = slug.split('-')[2] || slug;
+      var postUrl= window.location.origin + '/denis-portfolio/posts/' + slug + '.html';
+
+      var modal  = document.getElementById('modal-por-dentro');
+      var target = document.getElementById('modal-post-content');
       if (!modal || !target) return;
 
-      target.innerHTML = `
-        <div class="post-modal-container">
-          <div class="post-modal-actions">
-            <button id="go-play" class="btn neon-btn">&#9654; Ir ao Play</button>
-            <button id="go-home" class="btn neon-btn">&#9194; Voltar à Home</button>
-          </div>
-          <iframe src="${postUrl}" title="${slug}"></iframe>
-          <div class="post-modal-footer">
-            <p class="curiosity">
-              🧠 Quer se aprofundar em <strong>${tool.toUpperCase()}</strong>? 
-              <a href="https://www.google.com/search?q=${tool}+documentation" target="_blank">
-                Explore a documentação oficial →
-              </a>
-            </p>
-          </div>
-        </div>
-      `;
+      target.innerHTML = ''
+        + '<div class="post-modal-container">'
+        +   '<div class="post-modal-actions">'
+        +     '<button id="go-play" class="btn neon-btn">&#9654; Ir ao Play</button>'
+        +     '<button id="go-home" class="btn neon-btn">&#9194; Voltar à Home</button>'
+        +   '</div>'
+        +   '<iframe src="' + postUrl + '" title="' + slug + '"></iframe>'
+        +   '<div class="post-modal-footer">'
+        +     '<p class="curiosity">'
+        +       '🧠 Quer se aprofundar em <strong>' + tool.toUpperCase() + '</strong>? '
+        +       '<a href="https://www.google.com/search?q=' + tool + '+documentation" target="_blank">'
+        +         'Explore a documentação oficial →'
+        +       '</a>'
+        +     '</p>'
+        +   '</div>'
+        + '</div>';
 
-      const container = modal.querySelector('.post-modal-container');
+      var container = modal.querySelector('.post-modal-container');
       if (container) {
-        container.style.setProperty('--tool-logo-url',
-          `url('assets/img/tools/${tool}.png')`
+        container.style.setProperty(
+          '--tool-logo-url',
+          "url('assets/img/tools/" + tool + ".png')"
         );
       }
 
-      document.getElementById('go-play')?.addEventListener('click', () => window.location.href = href);
-      document.getElementById('go-home')?.addEventListener('click', () => {
+      var goPlay = document.getElementById('go-play');
+      if (goPlay) goPlay.addEventListener('click', function() {
+        window.location.href = href;
+      });
+
+      var goHome = document.getElementById('go-home');
+      if (goHome) goHome.addEventListener('click', function() {
         modal.classList.add('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
@@ -119,32 +112,82 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4) Modais Sobre, Ajuda e News (continua inalterado)
-  let sobreChart = null;
-  document.querySelectorAll('button[data-modal]').forEach(btn => {
-    const name = btn.dataset.modal;
-    const M    = document.getElementById(`modal-${name}`);
+  // 4) Modais Sobre, Ajuda e News
+  var sobreChart = null;
+  document.querySelectorAll('button[data-modal]').forEach(function(btn) {
+    var name = btn.dataset.modal;
+    var M    = document.getElementById('modal-' + name);
     if (!M) return;
-    btn.addEventListener('click', () => {
+
+    btn.addEventListener('click', function() {
       M.classList.remove('hidden');
       if (name === 'sobre' && window.Chart) {
-        const c = document.getElementById('sobre-chart');
-        const ctx = c.getContext('2d');
-        if (!sobreChart) {
-          sobreChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ['2011','2014','2016','2018','2020','2024'],
-              datasets: [{ label: 'Anos de Experiência', data: [1,3,5,7,9,12] }]
-            },
-            options: { responsive: true, scales: { y: { beginAtZero: true } } }
-          });
-        } else {
-          sobreChart.resize();
+        var c   = document.getElementById('sobre-chart');
+        if (c && c.getContext) {
+          var ctx = c.getContext('2d');
+          if (!sobreChart) {
+            sobreChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['2011','2014','2016','2018','2020','2024'],
+                datasets: [{ label: 'Anos de Experiência', data: [1,3,5,7,9,12] }]
+              },
+              options: { responsive: true, scales: { y: { beginAtZero: true } } }
+            });
+          } else {
+            sobreChart.resize();
+          }
         }
       }
     });
   });
 
-  // 5) Fechamento de modais e 6) Notícias e 7) Botão global permanecem igual...
+  // 5) Fechamento de modais
+  document.querySelectorAll('.close-modal').forEach(function(x) {
+    x.addEventListener('click', function() {
+      var modal = x.closest('.modal');
+      if (modal) modal.classList.add('hidden');
+    });
+  });
+  document.querySelectorAll('.modal').forEach(function(M) {
+    M.addEventListener('click', function(e) {
+      if (e.target === M) M.classList.add('hidden');
+    });
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal:not(.hidden)').forEach(function(m) {
+        m.classList.add('hidden');
+      });
+    }
+  });
+
+  // 6) Notícias via API
+  var newsList = document.getElementById('news-list');
+  if (newsList) {
+    fetch(baseURL + '/api/news')
+      .then(function(r) { return r.ok ? r.json() : Promise.reject(r.statusText); })
+      .then(function(json) {
+        newsList.innerHTML = '';
+        (json.news || []).slice(0,6).forEach(function(item) {
+          var card = document.createElement('div');
+          card.className = 'news-card';
+          card.innerHTML = ''
+            + '<h3>' + item.title + '</h3>'
+            + '<p>' + (item.description||'') + '</p>'
+            + '<a href="' + item.url + '" target="_blank">Ler mais →</a>';
+          newsList.appendChild(card);
+        });
+      })
+      .catch(function(err) {
+        console.error(err);
+        newsList.innerHTML = '<p>Erro ao carregar notícias: ' + err + '</p>';
+      });
+  }
+
+  // 7) Botão global “Executar Teste”
+  var btnExec = document.getElementById('btn-executar');
+  if (btnExec) {
+    btnExec.addEventListener('click', executarTeste);
+  }
 });
