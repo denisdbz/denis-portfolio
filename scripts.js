@@ -162,14 +162,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Função global definida fora do DOMContentLoaded
+// === Função de execução SSE ===
 function executarTeste() {
   var m = window.location.pathname.match(/play-(\d+)/);
   var num = m ? m[1] : '1';
 
   var logs = document.getElementById('output-box') || document.getElementById('logs');
-  var bar = document.getElementById('progress-fill') || document.querySelector('.barra-preenchida');
+  var bar  = document.getElementById('progress-fill') || document.querySelector('.barra-preenchida');
   var cont = document.getElementById('progress-container');
+  var done = document.getElementById('final-msg');
   if (!logs || !bar || !cont) {
     console.error('Log elements missing');
     return;
@@ -178,6 +179,7 @@ function executarTeste() {
   logs.textContent = '';
   bar.style.width = '0%';
   cont.classList.remove('hidden');
+  if (done) done.classList.add('hidden');
 
   var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
   es.onmessage = function (e) {
@@ -187,10 +189,11 @@ function executarTeste() {
     const progress = Math.min(100, logs.textContent.length / 5);
     bar.style.width = progress + '%';
 
-    // Forçar 100% ao final
-    const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|Teste concluído/i.test(e.data.trim());
+    const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|fim do teste|Testes simulados concluídos/i.test(e.data.trim());
     if (finalizado) {
       bar.style.width = '100%';
+      if (done) done.classList.remove('hidden');
+      es.close(); // fecha conexão SSE ao final
     }
   };
 }
