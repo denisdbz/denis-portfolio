@@ -176,24 +176,25 @@ function executarTeste() {
     return;
   }
 
-  logs.textContent = '';
-  bar.style.width = '0%';
-  cont.classList.remove('hidden');
-  if (done) done.classList.add('hidden');
+logs.textContent = '';
+bar.style.width = '0%';
+cont.classList.remove('hidden');
 
-  var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
-  es.onmessage = function (e) {
-    logs.textContent += e.data + '\n';
-    logs.scrollTop = logs.scrollHeight;
+var done = document.getElementById('final-msg');
+if (done) done.classList.add('hidden');
 
-    const progress = Math.min(100, logs.textContent.length / 5);
-    bar.style.width = progress + '%';
+var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
+es.onmessage = function (e) {
+  logs.textContent += e.data + '\n';
+  logs.scrollTop = logs.scrollHeight;
 
-    const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|fim do teste|Testes simulados concluídos/i.test(e.data.trim());
-    if (finalizado) {
-      bar.style.width = '100%';
-      if (done) done.classList.remove('hidden');
-      es.close(); // fecha conexão SSE ao final
-    }
-  };
-}
+  const progress = Math.min(100, logs.textContent.length / 5);
+  bar.style.width = progress + '%';
+
+  const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|fim do teste|Testes simulados concluídos/i.test(e.data.trim());
+  if (finalizado) {
+    bar.style.width = '100%';
+    if (done) done.classList.remove('hidden');
+    alert('✔️ Execução concluída com sucesso!');
+  }
+};
