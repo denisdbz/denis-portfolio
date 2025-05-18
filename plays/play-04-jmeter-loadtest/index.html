@@ -4,26 +4,34 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 04 — JMeter Loadtest</title>
+
+  <!-- Estilo padrão do portfólio -->
   <link rel="stylesheet" href="../../style.css"/>
+
+  <!-- Script central -->
+  <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
   <div class="container" style="text-align: center;">
     <h1>Play 04 — JMeter Loadtest</h1>
     <p>Teste de carga com JMeter usando um plano pré-configurado.</p>
-    <button class="btn neon-btn" onclick="executarTeste()" onclick="executarTeste()">Executar Teste</button>
+
+    <!-- Botão de execução -->
+    <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
     <br/><br/>
+
+    <!-- Botão de voltar -->
     <a class="btn neon-btn" href="../../index.html">← Voltar</a>
 
-    <!-- ÚNICO container de progresso e log -->
-    <div id="progress-container" class="hidden" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 1.5em auto 0;">
+    <!-- Barra de progresso -->
+    <div id="progress-container" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 1.5em auto 0;">
       <div class="progress-bar">
-        <div class="fill" id="progress-bar-fill"></div>
+        <div class="fill" id="progress-fill"></div>
       </div>
-      <br/>
-      <pre id="output-log" class="output-box">Iniciando teste...</pre>
     </div>
-  </div>
 
-  <script src="../../scripts.js" defer></script>
+    <!-- Terminal de logs -->
+    <pre id="output-box" class="output-box">Aguardando início...</pre>
+  </div>
 </body>
 </html>
