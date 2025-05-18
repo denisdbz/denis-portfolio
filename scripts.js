@@ -180,7 +180,6 @@ logs.textContent = '';
 bar.style.width = '0%';
 cont.classList.remove('hidden');
 
-var done = document.getElementById('final-msg');
 if (done) done.classList.add('hidden');
 
 var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
