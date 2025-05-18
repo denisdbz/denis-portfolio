@@ -21,15 +21,19 @@ function executarTeste() {
   cont.classList.remove('hidden');
 
   var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
-  es.onmessage = function(e) {
-    logs.textContent += e.data + '\n';
-    logs.scrollTop = logs.scrollHeight;
-    bar.style.width = Math.min(100, logs.textContent.length / 5) + '%';
-  };
-  es.onerror = function() {
-    es.close();
-  };
-}
+es.onmessage = function(e) {
+  logs.textContent += e.data + '\n';
+  logs.scrollTop = logs.scrollHeight;
+
+  const progress = Math.min(100, logs.textContent.length / 5);
+  bar.style.width = progress + '%';
+
+  // Forçar 100% ao final, com detecção mais tolerante
+  const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|Teste concluído/i.test(e.data.trim());
+  if (finalizado) {
+    bar.style.width = '100%';
+  }
+};
 
 document.addEventListener('DOMContentLoaded', function() {
   // 1) Toggle tema claro/escuro
