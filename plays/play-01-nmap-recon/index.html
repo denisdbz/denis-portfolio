@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 01 — Nmap Recon</title>
   <link rel="stylesheet" href="../../style.css"/>
+  <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
   <div class="container" style="text-align: center;">
     <h1>Play 01 — Nmap Recon</h1>
     <p>Executa testes reais com foco em nmap-recon.</p>
 
-    <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+    <button id="btn-executar" class="btn neon-btn">Executar Teste</button>
 
     <!-- Barra de progresso -->
-    <div id="progress-container" class="progress-bar">
+    <div id="progress-container" class="progress-bar hidden">
       <div id="progress-fill" class="fill"></div>
     </div>
 
     <!-- Saída dos logs -->
-<pre id="output-box" class="output-box"></pre>
+    <pre id="output-box" class="output-box"></pre>
 
-<p id="final-msg" class="finalizado-msg hidden">✔️ Execução concluída!</p>
+    <!-- Mensagem de conclusão -->
+    <p id="final-msg" class="finalizado-msg hidden">✔️ Execução concluída!</p>
 
-<a class="btn neon-btn" href="../../index.html">← Voltar</a>
+    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
   </div>
-
-  <script src="../../scripts.js" defer></script>
 </body>
 </html>
