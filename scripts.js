@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // === Função de execução SSE ===
+// === Função de execução SSE ===
 function executarTeste() {
   var m = window.location.pathname.match(/play-(\d+)/);
   var num = m ? m[1] : '1';
@@ -176,24 +177,25 @@ function executarTeste() {
     return;
   }
 
-logs.textContent = '';
-bar.style.width = '0%';
-cont.classList.remove('hidden');
+  logs.textContent = '';
+  bar.style.width = '0%';
+  cont.classList.remove('hidden');
 
-if (done) done.classList.add('hidden');
+  if (done) done.classList.add('hidden');
 
-var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
-es.onmessage = function (e) {
-  logs.textContent += e.data + '\n';
-  logs.scrollTop = logs.scrollHeight;
+  var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
+  es.onmessage = function (e) {
+    logs.textContent += e.data + '\n';
+    logs.scrollTop = logs.scrollHeight;
 
-  const progress = Math.min(100, logs.textContent.length / 5);
-  bar.style.width = progress + '%';
+    const progress = Math.min(100, logs.textContent.length / 5);
+    bar.style.width = progress + '%';
 
-  const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|fim do teste|Testes simulados concluídos/i.test(e.data.trim());
-  if (finalizado) {
-    bar.style.width = '100%';
-    if (done) done.classList.remove('hidden');
-    alert('✔️ Execução concluída com sucesso!');
-  }
-};
+    const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|fim do teste|Testes simulados concluídos/i.test(e.data.trim());
+    if (finalizado) {
+      bar.style.width = '100%';
+      if (done) done.classList.remove('hidden');
+      alert('✔️ Execução concluída com sucesso!');
+    }
+  };
+} // ← ESTA CHAVE FALTAVA
