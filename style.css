@@ -327,3 +327,6 @@ body.light-mode {
   width: 100%;
   border: none;
 }
+
+
+fix(scripts): corrige erro de sintaxe no fechamento do DOMContentLoaded
