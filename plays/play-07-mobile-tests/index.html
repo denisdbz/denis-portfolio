@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Play 07 — Testes Mobile</title>
-  <link rel="stylesheet" href="../../style.css" />
+
+  <link rel="stylesheet" href="../../style.css"/>
+
+  <script>
+    window.BASE_URL = 'https://mellow-commitment-production.up.railway.app';
+  </script>
+  <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
-  <div class="container">
+  <div class="container" style="text-align: center;">
     <h1>Play 07 — Testes Mobile</h1>
-    <p>Executa testes Android automatizados com Appium.</p>
-    <button class="btn neon-btn" onclick="executarTeste()" onclick="executarTeste()">Executar Teste</button>
+    <p>Testes Android automatizados com Appium.</p>
 
-    <div id="progress-container" class="hidden">
+    <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+    <br/><br/>
+
+    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
+
+    <div id="progress-container" class="hidden" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 1.5em auto 0;">
       <div class="progress-bar">
-        <div id="progress-fill" class="fill"></div>
+        <div class="fill" id="progress-fill"></div>
       </div>
-      <pre id="output-box" class="output-box"></pre>
     </div>
 
-    <div style="text-align: center; margin-top: 2em;">
-      <a href="../../index.html" class="btn neon-btn">← Voltar</a>
-    </div>
+    <pre id="output-box" class="output-box">Aguardando início...</pre>
   </div>
-  <script src="../../scripts.js" defer></script>
-  <script src="/denis-portfolio/scripts.js" defer></script>
-  <script src="/denis-portfolio/scripts.js" defer></script>
 </body>
 </html>
