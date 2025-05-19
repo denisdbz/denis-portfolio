@@ -4,7 +4,6 @@
 var baseURL = typeof baseURL !== 'undefined' ? baseURL : 'https://mellow-commitment-production.up.railway.app';
 
 document.addEventListener('DOMContentLoaded', function () {
-
   // 1) Toggle tema claro/escuro
   var themeToggle = document.querySelector('.toggle-theme');
   if (themeToggle) {
@@ -163,7 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // === Função de execução SSE ===
-// === Função de execução SSE ===
 function executarTeste() {
   var m = window.location.pathname.match(/play-(\d+)/);
   var num = m ? m[1] : '1';
@@ -198,4 +196,4 @@ function executarTeste() {
       alert('✔️ Execução concluída com sucesso!');
     }
   };
-} // ← ESTA CHAVE FALTAVA
+} // <-- Correção aplicada aqui
