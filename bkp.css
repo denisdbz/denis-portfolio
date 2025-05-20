@@ -272,29 +272,32 @@ body.light-mode {
   animation: pulse-neon 2s infinite;
 }
 
-/* ===== Marca-d’água ===== */
 .post-modal-container {
   position: relative;
   background-color: #111;
   padding: 1.5em;
   border-radius: 0.5em;
   overflow: hidden;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-modal-container::after {
   content: "";
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 80px;
-  height: 80px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
   background-image: var(--tool-logo-url, none);
   background-repeat: no-repeat;
-  background-position: top right;
   background-size: contain;
-  opacity: 0.25; /* era 0.08 ou 0.2 */
+  opacity: 0.07;
+  filter: brightness(150%) contrast(140%);
   pointer-events: none;
-  z-index: 3; /* acima do fundo, abaixo do texto */
+  z-index: 0;
 }
 
 /* ===== Animações ===== */
@@ -318,3 +321,12 @@ body.light-mode {
 @media (max-width: 768px) {
   /* Adapte conforme necessário */
 }
+
+.post-modal-container iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+
+fix(scripts): corrige erro de sintaxe no fechamento do DOMContentLoaded
