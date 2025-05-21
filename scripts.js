@@ -32,52 +32,74 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.btn-por-dentro').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
+      // pega o ID do play
       var id = btn.getAttribute('data-play-id');
+      // mapeamento completo até o 22
       var posts = {
-        '1':'play-01-nmap-recon','2':'play-02-hydra-dvwa',
-        // … complete até 22 …
-        '22':'play-22-dependency-supply-chain-check'
+        '1':  'play-01-nmap-recon',
+        '2':  'play-02-hydra-dvwa',
+        '3':  'play-03-sqlmap-dvwa',
+        '4':  'play-04-jmeter-loadtest',
+        '5':  'play-05-qa-automacao',
+        '6':  'play-06-carga-bash',
+        '7':  'play-07-testes-mobile',
+        '8':  'play-08-nikto-scan',
+        '9':  'play-09-k6-loadtest',
+        '10': 'play-10-api-validation',
+        '11': 'play-11-xss-scanner',
+        '12': 'play-12-csrf-checker',
+        '13': 'play-13-api-fuzzing',
+        '14': 'play-14-dependency-cve-audit',
+        '15': 'play-15-ssl-tls-health-check',
+        '16': 'play-16-docker-vulnerability-scan',
+        '17': 'play-17-kubernetes-config-audit',
+        '18': 'play-18-owasp-zap-automated-scan',
+        '19': 'play-19-static-analysis-python-bandit',
+        '20': 'play-20-iac-security-audit-terraform',
+        '21': 'play-21-jwt-token-penetration-test',
+        '22': 'play-22-dependency-supply-chain-check'
       };
       var slug = posts[id];
-      if (!slug) return;
+      if (!slug) return;  // não faz nada se não existir
 
-      var href  = window.location.origin + '/denis-portfolio/plays/' + slug + '/index.html';
-      var modal = document.getElementById('modal-por-dentro');
-      var container = modal.querySelector('.modal-content');
+      // montagem das URLs
+      var playHref = 'plays/' + slug + '/index.html';
+      var postUrl  = 'posts/' + slug + '.html';
 
-      container.innerHTML = `
-        <button class="close-modal" data-close="por-dentro">&times;</button>
-        <div class="post-modal-container">
-          <div class="post-modal-content">
-            <div class="post-modal-actions">
-              <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
-              <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
-            </div>
-            <iframe src="${href}" frameborder="0" style="width:100%; height:400px;"></iframe>
-            <div class="post-modal-footer">
-              <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2].toUpperCase()}</strong>?
-                <a href="https://www.google.com/search?q=${slug}" target="_blank">
-                  Explore a documentação oficial →
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>`;
+      // monta o modal
+      var modal  = document.getElementById('modal-por-dentro');
+      var body   = modal.querySelector('.modal-content');
+      body.innerHTML = `
+        <button class="close-modal" aria-label="Fechar">×</button>
+        <div class="post-modal-actions">
+          <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+          <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+        </div>
+        <iframe src="${postUrl}" frameborder="0" style="width:100%; height:400px;"></iframe>
+        <div class="post-modal-footer">
+          <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2].toUpperCase()}</strong>?
+            <a href="https://www.google.com/search?q=${slug.split('-')[2]}" target="_blank">
+              Explore a documentação oficial →
+            </a>
+          </p>
+        </div>
+      `;
 
-      // watermark
-      var wc = modal.querySelector('.post-modal-container');
-      wc.style.setProperty('--tool-logo-url',
-        `url('assets/img/tools/${slug.split('-')[2]}.png')`);
+      // aplica watermark centralizado
+      body.style.setProperty('--tool-logo-url',
+        `url('assets/img/tools/${slug.split('-')[2]}.png')`
+      );
 
-      document.getElementById('go-play').onclick = function () {
-        window.location = href;
-      };
-      document.getElementById('go-home').onclick = function () {
+      // vincula botões internos
+      body.querySelector('#go-play').onclick = () => window.location.href = playHref;
+      body.querySelector('#go-home').onclick = () => {
         modal.classList.add('hidden');
         window.scrollTo({ top:0, behavior:'smooth' });
       };
+      // vincula o “×”
+      body.querySelector('.close-modal').onclick = () => modal.classList.add('hidden');
 
-      // re-liga fechamento
+      // exibe o modal
       modal.classList.remove('hidden');
     });
   });
