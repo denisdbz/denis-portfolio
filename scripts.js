@@ -32,9 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.btn-por-dentro').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      // pega o ID do play
       var id = btn.getAttribute('data-play-id');
-      // mapeamento completo até o 22
       var posts = {
         '1':  'play-01-nmap-recon',
         '2':  'play-02-hydra-dvwa',
@@ -60,46 +58,39 @@ document.addEventListener('DOMContentLoaded', function () {
         '22': 'play-22-dependency-supply-chain-check'
       };
       var slug = posts[id];
-      if (!slug) return;  // não faz nada se não existir
-
-      // montagem das URLs
+      if (!slug) return;
       var playHref = 'plays/' + slug + '/index.html';
       var postUrl  = 'posts/' + slug + '.html';
+      var modal   = document.getElementById('modal-por-dentro');
+      var content = modal.querySelector('.modal-content');
 
-      // monta o modal
-      var modal  = document.getElementById('modal-por-dentro');
-      var body   = modal.querySelector('.modal-content');
-      body.innerHTML = `
+      // Recria o innerHTML envolvendo toda a área do post em .post-modal-container
+      content.innerHTML = `
         <button class="close-modal" aria-label="Fechar">×</button>
-        <div class="post-modal-actions">
-          <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
-          <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
-        </div>
-        <iframe src="${postUrl}" frameborder="0" style="width:100%; height:400px;"></iframe>
-        <div class="post-modal-footer">
-          <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2].toUpperCase()}</strong>?
-            <a href="https://www.google.com/search?q=${slug.split('-')[2]}" target="_blank">
-              Explore a documentação oficial →
-            </a>
-          </p>
+        <div class="post-modal-container" style="--tool-logo-url:url('assets/img/tools/${slug.split('-')[2]}.png')">
+          <div class="post-modal-actions">
+            <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+            <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+          </div>
+          <iframe src="${postUrl}" frameborder="0" style="width:100%; height:400px;"></iframe>
+          <div class="post-modal-footer">
+            <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2].toUpperCase()}</strong>? 
+              <a href="https://www.google.com/search?q=${slug.split('-')[2]}" target="_blank">
+                Explore a documentação oficial →
+              </a>
+            </p>
+          </div>
         </div>
       `;
 
-      // aplica watermark centralizado
-      body.style.setProperty('--tool-logo-url',
-        `url('assets/img/tools/${slug.split('-')[2]}.png')`
-      );
-
-      // vincula botões internos
-      body.querySelector('#go-play').onclick = () => window.location.href = playHref;
-      body.querySelector('#go-home').onclick = () => {
+      // botões internos
+      content.querySelector('#go-play').onclick = () => window.location = playHref;
+      content.querySelector('#go-home').onclick = () => {
         modal.classList.add('hidden');
-        window.scrollTo({ top:0, behavior:'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       };
-      // vincula o “×”
-      body.querySelector('.close-modal').onclick = () => modal.classList.add('hidden');
+      content.querySelector('.close-modal').onclick = () => modal.classList.add('hidden');
 
-      // exibe o modal
       modal.classList.remove('hidden');
     });
   });
