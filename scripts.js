@@ -1,7 +1,9 @@
 // scripts.js
 
 // URL do seu backend (caso já não esteja definida)
-var baseURL = typeof baseURL !== 'undefined' ? baseURL : 'https://mellow-commitment-production.up.railway.app';
+var baseURL = typeof baseURL !== 'undefined'
+  ? baseURL
+  : 'https://mellow-commitment-production.up.railway.app';
 
 document.addEventListener('DOMContentLoaded', function () {
   // 1) Toggle tema claro/escuro
@@ -9,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
       document.body.classList.toggle('light-mode');
-      themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+      themeToggle.textContent = document.body.classList.contains('light-mode')
+        ? '🌙'
+        : '☀️';
     });
   }
 
@@ -20,25 +24,25 @@ document.addEventListener('DOMContentLoaded', function () {
     search.addEventListener('input', function () {
       var term = search.value.toLowerCase();
       plays.querySelectorAll('.card').forEach(function (card) {
-        card.style.display = card.innerText.toLowerCase().includes(term) ? '' : 'none';
+        card.style.display =
+          card.innerText.toLowerCase().includes(term) ? '' : 'none';
       });
     });
   }
 
-  // 3) Modal “Por Dentro” com marca-d’água
+  // 3) Modal “Por Dentro” com iframe
   document.querySelectorAll('.btn-por-dentro').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-
       var card = btn.closest('.card');
       var link = card ? card.querySelector('a.btn') : null;
       if (!link) return;
-
       var href = link.href;
       var parts = href.replace(/\/index\.html$/, '').split('/');
       var slug = parts[parts.length - 1];
       var tool = slug.split('-')[2] || slug;
-      var postUrl = window.location.origin + '/denis-portfolio/posts/' + slug + '.html';
+      var postUrl =
+        window.location.origin + '/denis-portfolio/posts/' + slug + '.html';
 
       var modal = document.getElementById('modal-por-dentro');
       var target = document.getElementById('modal-post-content');
@@ -61,57 +65,68 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
         </div>`;
 
+      // aplica logo de fundo no modal
       var container = modal.querySelector('.post-modal-container');
       if (container) {
-        container.style.setProperty('--tool-logo-url', `url('assets/img/tools/${tool}.png')`);
+        container.style.setProperty(
+          '--tool-logo-url',
+          `url('assets/img/tools/${tool}.png')`
+        );
       }
 
-      var goPlay = document.getElementById('go-play');
-      if (goPlay) goPlay.addEventListener('click', function () {
-        window.location.href = href;
-      });
-
-      var goHome = document.getElementById('go-home');
-      if (goHome) goHome.addEventListener('click', function () {
-        modal.classList.add('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      // botões internos do modal
+      document
+        .getElementById('go-play')
+        .addEventListener('click', () => (window.location.href = href));
+      document
+        .getElementById('go-home')
+        .addEventListener('click', function () {
+          modal.classList.add('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
       modal.classList.remove('hidden');
     });
   });
 
-  // 4) Modais Sobre, Ajuda e News
+  // 4) Abre modais da navbar (Sobre/Ajuda/News)
   var sobreChart = null;
   document.querySelectorAll('button[data-modal]').forEach(function (btn) {
     var name = btn.dataset.modal;
     var M = document.getElementById('modal-' + name);
     if (!M) return;
-
     btn.addEventListener('click', function () {
       M.classList.remove('hidden');
-      if (name === 'sobre' && window.Chart) {
+      if (
+        name === 'sobre' &&
+        window.Chart &&
+        !sobreChart
+      ) {
         var c = document.getElementById('sobre-chart');
         if (c && c.getContext) {
           var ctx = c.getContext('2d');
-          if (!sobreChart) {
-            sobreChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: ['2011', '2014', '2016', '2018', '2020', '2024'],
-                datasets: [{ label: 'Anos de Experiência', data: [1, 3, 5, 7, 9, 12] }]
-              },
-              options: { responsive: true, scales: { y: { beginAtZero: true } } }
-            });
-          } else {
-            sobreChart.resize();
-          }
+          sobreChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['2011', '2014', '2016', '2018', '2020', '2024'],
+              datasets: [
+                {
+                  label: 'Anos de Experiência',
+                  data: [1, 3, 5, 7, 9, 12]
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              scales: { y: { beginAtZero: true } }
+            }
+          });
         }
       }
     });
   });
 
-  // 5) Fechamento de modais
+  // 5) Fechar modais por ×, clique fora e ESC
   document.querySelectorAll('.close-modal').forEach(function (x) {
     x.addEventListener('click', function () {
       var modal = x.closest('.modal');
@@ -135,7 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var newsList = document.getElementById('news-list');
   if (newsList) {
     fetch(baseURL + '/api/news')
-      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.statusText); })
+      .then(function (r) {
+        return r.ok ? r.json() : Promise.reject(r.statusText);
+      })
       .then(function (json) {
         newsList.innerHTML = '';
         (json.news || []).slice(0, 6).forEach(function (item) {
@@ -150,7 +167,8 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .catch(function (err) {
         console.error(err);
-        newsList.innerHTML = '<p>Erro ao carregar notícias: ' + err + '</p>';
+        newsList.innerHTML =
+          '<p>Erro ao carregar notícias: ' + err + '</p>';
       });
   }
 
@@ -163,38 +181,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // === Função de execução SSE ===
 function executarTeste() {
+  // extrai número do play
   var m = window.location.pathname.match(/play-(\d+)/);
   var num = m ? m[1] : '1';
 
-  var logs = document.getElementById('output-box') || document.getElementById('logs');
-  var bar  = document.getElementById('progress-fill') || document.querySelector('.barra-preenchida');
+  // os _ids_ agora batem com o que tem no HTML
+  var logs =
+    document.getElementById('output-log') ||
+    document.getElementById('output-box') ||
+    document.getElementById('logs');
+  var bar =
+    document.getElementById('progress-bar-fill') ||
+    document.getElementById('progress-fill') ||
+    document.querySelector('.barra-preenchida');
   var cont = document.getElementById('progress-container');
-  var done = document.getElementById('final-msg');
+  var done = document.getElementById('final-msg'); // opcional, se você tiver
+
   if (!logs || !bar || !cont) {
     console.error('Log elements missing');
     return;
   }
 
+  // reset visual
   logs.textContent = '';
   bar.style.width = '0%';
   cont.classList.remove('hidden');
-
   if (done) done.classList.add('hidden');
 
   var es = new EventSource(baseURL + '/api/play/' + num + '/stream');
-es.onmessage = function (e) {
-  logs.textContent += e.data + '\n';
-  logs.scrollTop = logs.scrollHeight;
+  es.onmessage = function (e) {
+    logs.textContent += e.data + '\n';
+    logs.scrollTop = logs.scrollHeight;
 
-  const progress = Math.min(100, logs.textContent.length / 5);
-  bar.style.width = progress + '%';
+    var prog = Math.min(100, logs.textContent.length / 5);
+    bar.style.width = prog + '%';
 
-  const finalizado = /\[✓\]|\[✔️\]|finalizado com sucesso|fim do teste|Testes simulados concluídos/i.test(e.data.trim());
-  if (finalizado) {
-    bar.style.width = '100%';
-    if (done) done.classList.remove('hidden');
-    es.close(); // <- impede que receba mais mensagens após o fim
-    alert('✔️ Execução concluída com sucesso!');
-  }
-};
-} // <-- Correção aplicada aqui
+    // detecta fim
+    if (
+      /\[✓\]|\[✔️\]|finalizado com sucesso|fim do teste/i.test(
+        e.data.trim()
+      )
+    ) {
+      bar.style.width = '100%';
+      if (done) done.classList.remove('hidden');
+      es.close();
+    }
+  };
+}
