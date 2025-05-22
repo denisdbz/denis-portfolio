@@ -358,3 +358,24 @@ body.light-mode {
   border-radius: 1rem;
   box-shadow: 0 0 16px var(--neon-color);
 }
+
+/* Centralização adicional para post modal */
+.centered {
+  text-align: center;
+}
+
+/* Evita que imagem de fundo do modal sobreponha conteúdo */
+.post-modal-content {
+  z-index: 1;
+  position: relative;
+  background: transparent;
+  padding: 1rem;
+}
+
+/* Corrige a borda e rolagem mal posicionada */
+.post-modal-container {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--neon-color);
+  box-shadow: 0 0 20px var(--neon-color);
+}
