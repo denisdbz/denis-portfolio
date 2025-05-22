@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="../style.css"/>
-  <title>Play 02 — Hydra DVWA</title>
-</head>
-<body class="neon-dark">
-  <div class="post-modal-centered">
-    <h1>Play 02 — Hydra DVWA</h1>
-    <p>Este post apresenta detalhes técnicos do teste automatizado Play 02 — Hydra DVWA.</p>
-    <div class="post-modal-footer-btns">
-      <a class="btn neon-btn" href="../plays/play-01-nmap-recon/index.html">▶ Ir ao Play</a>
-      <a class="btn neon-btn" href="../index.html">🏠 Voltar à Home</a>
+
+<div class="modal-post">
+  <div class="post-modal-container scrollable">
+    <div class="post-modal-header">
+      <button id="go-play" class="btn neon-btn">▶ Ir ao Play</button>
+      <button id="go-home" class="btn neon-btn">🔙 Voltar à Home</button>
     </div>
-    <p class="curiosity">🧠 Quer se aprofundar em <strong>HYDRA DVWA</strong>?
-    <a href="https://www.google.com/search?q=Hydra DVWA+documentation" target="_blank">Explore a documentação oficial →</a></p>
+    <div class="post-modal-content">
+      <h1>Play 02 Hydra DVWA</h1>
+      <p>Este Play testa força bruta com Hydra contra login do DVWA.</p>
+      <h2>Script <code>run.sh</code></h2>
+      <pre><code>#!/bin/bash
+hydra -L users.txt -P passwords.txt dvwa http-post-form "/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed"</code></pre>
+    </div>
+    <div class="post-modal-footer">
+      <p class="curiosity">🧠 Quer se aprofundar em <strong>HYDRA</strong>? <a href="https://www.google.com/search?q=hydra+documentation" target="_blank">Explore a documentação oficial →</a></p>
+    </div>
   </div>
-</body>
-</html>
+</div>
