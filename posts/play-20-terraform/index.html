@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>IaC Audit Terraform</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="neon-dark">
+  <div class="post-modal-container" style="--tool-logo-url: url('../assets/img/tools/terraform.png')">
+    <div class="post-modal-content">
+
+      <div class="post-modal-actions">
+        <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+        <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+      </div>
+
+      <h1 style="text-align: center;">IaC Audit Terraform</h1>
+
+      <p style="text-align: center;">Audita código Terraform.</p>
+
+      <h2>Sobre a ferramenta</h2>
+      <p><strong>Terraform</strong> é uma ferramenta amplamente utilizada para automações ou validações relacionadas à segurança, devops ou QA, com aplicabilidade em auditorias e testes manuais ou automatizados.</p>
+
+      <h2>Objetivo deste Play</h2>
+      <p>O script automatiza o seguinte comando:<br/><code>checkov -d ./infra</code></p>
+
+      <div class="post-modal-footer">
+        <p>🧠 Quer se aprofundar em <strong>TERRAFORM</strong>? 
+          <a href="https://www.checkov.io" target="_blank">Explore a documentação oficial →</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('go-play').onclick = function () {
+      window.location.href = "../plays/play-20-terraform/index.html";
+    };
+    document.getElementById('go-home').onclick = function () {
+      window.parent.document.getElementById('modal-por-dentro').classList.add('hidden');
+    };
+  </script>
+</body>
+</html>

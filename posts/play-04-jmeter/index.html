@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>JMeter Loadtest</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="neon-dark">
+  <div class="post-modal-container" style="--tool-logo-url: url('../assets/img/tools/jmeter.png')">
+    <div class="post-modal-content">
+
+      <div class="post-modal-actions">
+        <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+        <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+      </div>
+
+      <h1 style="text-align: center;">JMeter Loadtest</h1>
+
+      <p style="text-align: center;">Simula carga com plano JMeter.</p>
+
+      <h2>Sobre a ferramenta</h2>
+      <p><strong>JMeter</strong> é uma ferramenta amplamente utilizada para automações ou validações relacionadas à segurança, devops ou QA, com aplicabilidade em auditorias e testes manuais ou automatizados.</p>
+
+      <h2>Objetivo deste Play</h2>
+      <p>O script automatiza o seguinte comando:<br/><code>jmeter -n -t teste-carga.jmx -l resultados.jtl</code></p>
+
+      <div class="post-modal-footer">
+        <p>🧠 Quer se aprofundar em <strong>JMETER</strong>? 
+          <a href="https://jmeter.apache.org" target="_blank">Explore a documentação oficial →</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('go-play').onclick = function () {
+      window.location.href = "../plays/play-04-jmeter/index.html";
+    };
+    document.getElementById('go-home').onclick = function () {
+      window.parent.document.getElementById('modal-por-dentro').classList.add('hidden');
+    };
+  </script>
+</body>
+</html>
