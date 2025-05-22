@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var slug = posts[id];
       if (!slug) return;
 
-      var href  = window.location.origin + '/denis-portfolio/posts/' + slug + '.html';
+var href  = window.location.origin + '/denis-portfolio/posts/' + slug + '/index.html';
       var modal = document.getElementById('modal-por-dentro');
       var container = modal.querySelector('.modal-content');
 
