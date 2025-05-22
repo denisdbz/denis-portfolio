@@ -298,3 +298,31 @@ body.light-mode {
   100% { box-shadow: 0 0 4px var(--neon-color); }
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Adições ao final do style.css */
+
+iframe {
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+/* Força escopo dos posts internos */
+.post-iframe-wrapper {
+  background: transparent;
+  color: inherit;
+  padding: 2rem;
+  font-size: 1rem;
+}
+
+/* Corrige o logo por trás do conteúdo */
+.post-modal-container::after {
+  z-index: -1; /* atrás do conteúdo agora */
+  opacity: 0.15;
+}
+
+/* Clareia links em caso de herança */
+.post-modal-content a {
+  color: var(--neon-color);
+  text-decoration: underline;
+}
