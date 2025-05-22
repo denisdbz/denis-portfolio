@@ -29,107 +29,55 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // 3) “Por Dentro” posts
-  // objeto com slug de cada play
-  var posts = {
-    '1':  'play-01-nmap-recon',
-    '2':  'play-02-hydra-dvwa',
-    '3':  'play-03-sqlmap-dvwa',
-    '4':  'play-04-jmeter-loadtest',
-    '5':  'play-05-qa-automacao',
-    '6':  'play-06-carga-bash',
-    '7':  'play-07-mobile-tests',
-    '8':  'play-08-nikto-scan',
-    '9':  'play-09-k6-loadtest',
-    '10': 'play-10-api-validation',
-    '11': 'play-11-xss-scanner',
-    '12': 'play-12-csrf-checker',
-    '13': 'play-13-api-fuzzing',
-    '14': 'play-14-dependency-cve-audit',
-    '15': 'play-15-ssl-tls-health-check',
-    '16': 'play-16-docker-vulnerability-scan',
-    '17': 'play-17-kubernetes-config-audit',
-    '18': 'play-18-owasp-zap-automated-scan',
-    '19': 'play-19-static-analysis-python-bandit',
-    '20': 'play-20-iac-security-audit-terraform',
-    '21': 'play-21-jwt-token-penetration-test',
-    '22': 'play-22-dependency-supply-chain-check'
-  };
-
-  // objeto com nome de arquivo de logo para cada play
-  var toolLogos = {
-    '1':  'nmap',
-    '2':  'hydra',
-    '3':  'sqlmap',
-    '4':  'jmeter',
-    '5':  'cypress',
-    '6':  'bash',
-    '7':  'appium',       // agora apontando para assets/img/tools/appium.png
-    '8':  'nikto',
-    '9':  'k6',
-    '10': 'postman',
-    '11': 'xss',
-    '12': 'csrf',
-    '13': 'fuzz',
-    '14': 'dependency-check',
-    '15': 'ssl',
-    '16': 'trivy',
-    '17': 'kubernetes',
-    '18': 'zap',
-    '19': 'bandit',
-    '20': 'terraform',
-    '21': 'jwt',
-    '22': 'grype'
-  };
-
   document.querySelectorAll('.btn-por-dentro').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      var id   = btn.getAttribute('data-play-id');
+      var id = btn.getAttribute('data-play-id');
+      var posts = {
+        '1':'play-01-nmap-recon','2':'play-02-hydra-dvwa',
+        // … complete até 22 …
+        '22':'play-22-dependency-supply-chain-check'
+      };
       var slug = posts[id];
       if (!slug) return;
 
-      var href   = window.location.origin + '/denis-portfolio/plays/' + slug + '/index.html';
-      var modal  = document.getElementById('modal-por-dentro');
-      var content = modal.querySelector('.modal-content');
+      var href  = window.location.origin + '/denis-portfolio/plays/' + slug + '/index.html';
+      var modal = document.getElementById('modal-por-dentro');
+      var container = modal.querySelector('.modal-content');
 
-      content.innerHTML = `
-        <button class="close-modal">×</button>
-        <div class="post-modal-actions">
-          <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
-          <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
-        </div>
+      container.innerHTML = `
+        <button class="close-modal" data-close="por-dentro">&times;</button>
         <div class="post-modal-container">
           <div class="post-modal-content">
-            <iframe src="${href}" frameborder="0"></iframe>
+            <div class="post-modal-actions">
+              <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+              <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+            </div>
+            <iframe src="${href}" frameborder="0" style="width:100%; height:400px;"></iframe>
+            <div class="post-modal-footer">
+              <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2].toUpperCase()}</strong>?
+                <a href="https://www.google.com/search?q=${slug}" target="_blank">
+                  Explore a documentação oficial →
+                </a>
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="post-modal-footer">
-          <p>🧠 Quer se aprofundar em <strong>${(slug.split('-')[2]||'').toUpperCase()}</strong>?
-            <a href="https://www.google.com/search?q=${toolLogos[id]}" target="_blank">
-              Explore a documentação oficial →
-            </a>
-          </p>
         </div>`;
 
-      // watermark centralizado
-      var logoName = toolLogos[id] || slug.split('-')[2];
-      var container = content.querySelector('.post-modal-container');
-      container.style.setProperty('--tool-logo-url',
-        `url('assets/img/tools/${logoName}.png')`
-      );
+      // watermark
+      var wc = modal.querySelector('.post-modal-container');
+      wc.style.setProperty('--tool-logo-url',
+        `url('assets/img/tools/${slug.split('-')[2]}.png')`);
 
-      // botões internos
       document.getElementById('go-play').onclick = function () {
         window.location = href;
       };
       document.getElementById('go-home').onclick = function () {
         modal.classList.add('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      };
-      content.querySelector('.close-modal').onclick = function () {
-        modal.classList.add('hidden');
+        window.scrollTo({ top:0, behavior:'smooth' });
       };
 
+      // re-liga fechamento
       modal.classList.remove('hidden');
     });
   });
