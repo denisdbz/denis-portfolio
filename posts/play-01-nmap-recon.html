@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <title>play-01-nmap-recon — Detalhes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Play 01 — Nmap Recon</title>
   <link rel="stylesheet" href="../style.css"/>
 </head>
 <body class="neon-dark">
-  <article>
-    <h1>Play 01 Nmap Recon</h1>
-    <p>Este Play executa o comando <code>nmap</code>, realizando uma varredura completa de portas no host alvo.</p>
-    <h2>Script <code>run.sh</code></h2>
-    <pre><code>#!/bin/bash
-
+  <div class="post-modal-container">
+    <div class="post-modal-content">
+      <h1>Play 01 — Nmap Recon</h1>
+      <p>Este Play executa o comando <code>nmap</code> para realizar uma varredura em portas TCP no alvo 127.0.0.1.</p>
+      <h2>Script <code>run.sh</code></h2>
+      <pre><code>#!/bin/bash
 echo "[*] Iniciando varredura Nmap..."
-nmap -sT -Pn -T4 -p- 127.0.0.1
-echo "[✓] Varredura finalizada."
-</code></pre>
-  </article>
+nmap -sT -p- -T4 -oG - 127.0.0.1
+echo "[✓] Varredura finalizada."</code></pre>
+    </div>
+    <div class="post-modal-actions">
+      <button id="go-play" class="btn neon-btn">▶ Ir ao Play</button>
+      <button id="go-home" class="btn neon-btn">🔙 Voltar à Home</button>
+    </div>
+    <div class="post-modal-footer">
+      <p class="curiosity">
+        🧠 Quer se aprofundar em <strong>NMAP</strong>?
+        <a href="https://nmap.org/book/man.html" target="_blank">
+          Explore a documentação oficial →
+        </a>
+      </p>
+    </div>
+  </div>
 </body>
 </html>
