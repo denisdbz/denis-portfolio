@@ -1,28 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <title>play-01-nmap-recon — Detalhes</title>
-  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body class="neon-dark">
-  <article>
-
-    <h1>Play 01 Nmap Recon</h1>
-    <p>Este Play executa o comando <code>echo "[*] Iniciando varredura Nmap..."</code>, permitindo avaliar aspectos específicos de segurança.</p>
-    <h2>Script <code>run.sh</code></h2>
-    <pre><code>#!/bin/bash
+  <div class="post-modal-container">
+    <div class="post-modal-content">
+      <h1 style="text-align: center;">Play 01 — Nmap Recon</h1>
+      <p style="text-align: center;">
+        Este Play executa o comando <code>nmap</code> para varredura de portas e detecção de serviços.
+      </p>
+      <h2>Script <code>run.sh</code></h2>
+      <pre><code>#!/bin/bash
 
 echo "[*] Iniciando varredura Nmap..."
 nmap -sT -Pn -T4 -p- 127.0.0.1
 echo "[✓] Varredura finalizada."
-
 </code></pre>
-
-  </article>
-
+      <div style="text-align: center; margin-top: 2em;">
+        <a class="btn neon-btn" href="../../index.html">⏪ Voltar à Home</a>
+      </div>
+    </div>
+  </div>
 </body>
-
 </html>
-)
