@@ -326,3 +326,9 @@ iframe {
   color: var(--neon-color);
   text-decoration: underline;
 }
+
+.post-modal-content {
+  color: #e0e0e0; /* cor clara como no restante do projeto */
+  font-size: 1rem;
+  line-height: 1.6;
+}
