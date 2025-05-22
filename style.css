@@ -298,3 +298,36 @@ body.light-mode {
   100% { box-shadow: 0 0 4px var(--neon-color); }
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+
+/* ===== Ajustes do Modal de Post ===== */
+.post-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.post-modal-content h1 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.post-modal-content p {
+  margin: 1rem 0;
+  max-width: 90%;
+  line-height: 1.5;
+}
+
+.post-modal-actions {
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.post-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.post-modal-content::-webkit-scrollbar-thumb {
+  background: var(--neon-color);
+  border-radius: 3px;
+}

