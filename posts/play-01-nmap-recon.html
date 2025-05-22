@@ -1,29 +1,57 @@
-	<div class="post-modal-content">
-  <h1 style="text-align:center;">Play 01 — Nmap Recon</h1>
-  <p style="text-align:center;">Executa testes reais com foco em <code>nmap-recon</code>.</p>
-  
-  <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Play 01 — Nmap Recon</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="neon-dark">
+  <div class="post-modal-container" style="--tool-logo-url: url('../assets/img/tools/nmap.png')">
+    <div class="post-modal-content">
 
-  <div id="progress-container" class="progress-bar">
-    <div id="progress-fill" class="fill"></div>
+      <div class="post-modal-actions">
+        <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+        <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+      </div>
+
+      <h1 style="text-align: center;">Play 01 — Nmap Recon</h1>
+
+      <p style="text-align: center;">
+        Este Play executa uma varredura real com <code>nmap</code>, buscando identificar portas abertas e serviços no alvo definido.
+      </p>
+
+      <h2>Sobre a ferramenta</h2>
+      <p>
+        O <strong>Nmap</strong> (Network Mapper) é uma ferramenta de código aberto usada para auditoria de segurança e descoberta de redes. 
+        Ele permite mapear hosts ativos, detectar serviços, versões, sistemas operacionais e aplicar técnicas de fingerprinting.
+      </p>
+
+      <h2>Objetivo deste Play</h2>
+      <p>
+        O script automatiza o comando:
+        <br/>
+        <code>nmap -sT -Pn -T4 -p- 127.0.0.1</code>
+        <br/>
+        Ele realiza uma varredura completa em todas as portas TCP do host local, ignorando detecção de ping (<code>-Pn</code>) e utilizando threads otimizadas (<code>-T4</code>).
+      </p>
+
+      <div class="post-modal-footer">
+        <p>🧠 Quer se aprofundar em <strong>NMAP</strong>?
+          <a href="https://nmap.org/book/man.html" target="_blank">Explore a documentação oficial →</a>
+        </p>
+      </div>
+
+    </div>
   </div>
 
-  <pre id="output-box" class="output-box"></pre>
-  <p id="final-msg" class="finalizado-msg hidden">✔️ Execução concluída!</p>
-
-  <p>
-    <strong>Descrição:</strong> Este teste executa uma varredura completa de portas usando o Nmap. Ele detecta serviços abertos, banners e é útil para análise de superfície de ataque.
-  </p>
-
-  <h2>Script <code>run.sh</code></h2>
-  <pre><code>#!/bin/bash
-echo "[*] Iniciando varredura Nmap..."
-nmap -sT -Pn -T4 -p- 127.0.0.1
-echo "[✓] Varredura finalizada."
-</code></pre>
-
-  <div style="text-align:center; margin-top:1.5rem;">
-    <a href="../../index.html" class="btn neon-btn">⏪ Voltar à Home</a>
-  </div>
-</div>
+  <script>
+    document.getElementById('go-play').onclick = function () {
+      window.location.href = "../plays/play-01-nmap-recon/index.html";
+    };
+    document.getElementById('go-home').onclick = function () {
+      window.parent.document.getElementById('modal-por-dentro').classList.add('hidden');
+    };
+  </script>
+</body>
+</html>
 
