@@ -331,3 +331,30 @@ body.light-mode {
   background: var(--neon-color);
   border-radius: 3px;
 }
+
+/* ===== Ajustes Específicos para Posts Técnicos ===== */
+.post-modal-content article {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+.post-modal-content h1,
+.post-modal-content h2 {
+  color: var(--neon-color);
+  margin-bottom: 1rem;
+}
+.post-modal-content pre {
+  text-align: left;
+  background: #111;
+  color: var(--neon-color);
+  border: 1px solid var(--neon-color);
+  padding: 1rem;
+  font-family: monospace;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+.post-modal-container {
+  border-radius: 1rem;
+  box-shadow: 0 0 16px var(--neon-color);
+}

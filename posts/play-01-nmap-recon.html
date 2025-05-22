@@ -1,21 +1,34 @@
-
-<div class="modal-post">
-  <div class="post-modal-container scrollable">
-    <div class="post-modal-header">
-      <button id="go-play" class="btn neon-btn">▶ Ir ao Play</button>
-      <button id="go-home" class="btn neon-btn">🔙 Voltar à Home</button>
-    </div>
-    <div class="post-modal-content">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Play 01 — Nmap Recon</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="neon-dark">
+  <div class="post-modal-content">
+    <article>
       <h1>Play 01 Nmap Recon</h1>
-      <p>Este Play executa o comando <code>echo "[*] Iniciando varredura Nmap..."</code>, permitindo avaliar aspectos específicos de segurança.</p>
+      <p>
+        Este Play executa o comando
+        <code>echo "[*] Iniciando varredura Nmap..."</code>, permitindo avaliar aspectos específicos de segurança.
+      </p>
+
       <h2>Script <code>run.sh</code></h2>
       <pre><code>#!/bin/bash
+
 echo "[*] Iniciando varredura Nmap..."
 nmap -sT -Pn -T4 -p- 127.0.0.1
-echo "[✓] Varredura finalizada."</code></pre>
-    </div>
+echo "[✓] Varredura finalizada."
+      </code></pre>
+    </article>
+
     <div class="post-modal-footer">
-      <p class="curiosity">🧠 Quer se aprofundar em <strong>NMAP</strong>? <a href="https://www.google.com/search?q=nmap+documentation" target="_blank">Explore a documentação oficial →</a></p>
+      <p class="curiosity">
+        🧠 Quer se aprofundar em <strong>NMAP</strong>?
+        <a href="https://nmap.org/book/man-briefoptions.html" target="_blank">Explore a documentação oficial →</a>
+      </p>
     </div>
   </div>
-</div>
+</body>
+</html>
