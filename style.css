@@ -1,4 +1,3 @@
-
 :root {
   --neon-color: #00ffe0;
 }
@@ -171,14 +170,41 @@ body.light-mode {
 
 /* ===== “Por Dentro” ===== */
 .post-modal-container {
+  background-color: #111;
+  border-radius: 1rem;
+  padding: 1rem;
   flex: 1;
-  overflow: hidden; /* tira a scroll extra */
+  overflow: hidden;
   position: relative;
 }
-.post-modal-container > .post-modal-content {
+.post-modal-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background-image: var(--tool-logo-url, none);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}
+.post-modal-content {
+  position: relative;
+  z-index: 1;
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.6;
   height: 100%;
-  overflow-y: auto; /* SCROLL INTERNO */
+  overflow-y: auto;
   padding-right: 1rem;
+}
+.post-modal-content a {
+  color: var(--neon-color);
+  text-decoration: underline;
 }
 .post-modal-actions {
   margin-bottom: 1rem;
@@ -191,23 +217,6 @@ body.light-mode {
 .post-modal-footer {
   margin-top: 1rem;
 }
-/* watermark centralizado */
-.post-modal-container::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  height: 120px;
-  background-image: var(--tool-logo-url, none);
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.1;
-  pointer-events: none;
-  z-index: 0; /* atrás de tudo, mas não sobrepõe o conteúdo */
-}
-
 
 /* ===== Execução SSE ===== */
 #progress-container.hidden {
@@ -234,7 +243,7 @@ body.light-mode {
   padding: 1rem;
   font-family: monospace;
   font-size: .9rem;
-  white-space: pre-wrap;  
+  white-space: pre-wrap;
   max-height: 300px;
   overflow-y: auto;
   margin-bottom: 1rem;
@@ -300,46 +309,15 @@ body.light-mode {
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Adições ao final do style.css */
-
 iframe {
   border: none;
   background: transparent;
   padding: 0;
 }
 
-/* Força escopo dos posts internos */
 .post-iframe-wrapper {
   background: transparent;
   color: inherit;
   padding: 2rem;
   font-size: 1rem;
-}
-
-/* Corrige o logo por trás do conteúdo */
-.post-modal-container::after {
-  z-index: -1; /* atrás do conteúdo agora */
-  opacity: 0.15;
-}
-
-
-.post-modal-container {
-  background-color: #111; /* reforça o fundo escuro real */
-  border-radius: 1rem;
-  padding: 1rem;
-}
-
-
-.post-modal-content {
-  position: relative;        /* Garante que fique acima do ::after */
-  z-index: 1;
-  background: transparent;   /* Garante que não aplique cor opaca */
-  color: #e0e0e0;            /* Cor clara como no restante do projeto */
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.post-modal-content a {
-  color: var(--neon-color);
-  text-decoration: underline;
 }
