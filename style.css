@@ -321,3 +321,39 @@ iframe {
   padding: 2rem;
   font-size: 1rem;
 }
+
+/* ========== AJUSTE PARA PADRONIZAR MODAIS COMO OS CARDS ========== */
+.post-modal-container {
+  background: #1e1e1e; /* mesmo fundo do card */
+  border: 2px solid var(--neon-color);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 255, 224, 0.2);
+}
+
+.post-modal-content {
+  color: #e0e0e0;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Clareia links no conteúdo */
+.post-modal-content a {
+  color: var(--neon-color);
+  text-decoration: underline;
+}
+
+/* Botões de ação dentro do modal */
+.post-modal-actions .btn {
+  border-radius: 0.5rem;
+  font-weight: bold;
+  box-shadow: 0 0 6px var(--neon-color);
+}
+
+.post-modal-actions .btn:hover {
+  background: #66fff1;
+  color: #000;
+}
