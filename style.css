@@ -197,21 +197,17 @@ body.light-mode {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  width: 100px;
-  height: 100px;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
   background-image: var(--tool-logo-url, none);
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.07; /* ← Mais suave, visível porém não ofusca */
+  opacity: 0.1;
   pointer-events: none;
-  z-index: -1;  /* ← Fica atrás do conteúdo agora */
+  z-index: 0; /* atrás de tudo, mas não sobrepõe o conteúdo */
 }
 
-.post-modal-content {
-  position: relative; /* ← Garante que conteúdo fique acima do ::after */
-  z-index: 1;
-}
 
 /* ===== Execução SSE ===== */
 #progress-container.hidden {
@@ -326,25 +322,24 @@ iframe {
   opacity: 0.15;
 }
 
-/* Clareia links em caso de herança */
-.post-modal-content a {
-  color: var(--neon-color);
-  text-decoration: underline;
-}
-
-.post-modal-content {
-  color: #e0e0e0; /* cor clara como no restante do projeto */
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.post-modal-content {
-  position: relative;
-  z-index: 1;
-}
 
 .post-modal-container {
   background-color: #111; /* reforça o fundo escuro real */
   border-radius: 1rem;
   padding: 1rem;
+}
+
+
+.post-modal-content {
+  position: relative;        /* Garante que fique acima do ::after */
+  z-index: 1;
+  background: transparent;   /* Garante que não aplique cor opaca */
+  color: #e0e0e0;            /* Cor clara como no restante do projeto */
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.post-modal-content a {
+  color: var(--neon-color);
+  text-decoration: underline;
 }
