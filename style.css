@@ -357,3 +357,57 @@ iframe {
   background: #66fff1;
   color: #000;
 }
+
+/* === Correção: Modal Por Dentro === */
+.post-modal-container {
+  position: relative;
+  background: #1e1e1e; /* Igual aos cards */
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 12px var(--neon-color);
+  border: 2px solid var(--neon-color);
+  z-index: 1;
+}
+
+.post-modal-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  background-image: var(--tool-logo-url, none);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.05; /* Bem discreta */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-modal-content {
+  position: relative;
+  z-index: 1;
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-y: auto;
+  max-height: 65vh;
+}
+
+.post-modal-content a {
+  color: var(--neon-color);
+  text-decoration: underline;
+}
+
+.post-modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.post-modal-actions .btn {
+  flex: 1;
+  font-weight: bold;
+}
