@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 3) “Por Dentro” posts
+// 3) “Por Dentro” posts
 document.querySelectorAll('.btn-por-dentro').forEach(function (btn) {
   btn.addEventListener('click', function (e) {
     e.preventDefault();
@@ -63,30 +63,71 @@ document.querySelectorAll('.btn-por-dentro').forEach(function (btn) {
     var slug = posts[id];
     if (!slug) return;
 
-    var href = `posts/${slug}/index.html`; // Caminho direto
+    var href = `posts/${slug}/index.html`;
     var modal = document.getElementById('modal-por-dentro');
     var container = modal.querySelector('.modal-content');
 
+    // injeta TODO o HTML padrão de um modal
     container.innerHTML = `
-      <button class="close-modal" data-close="por-dentro">&times;</button>
-      <div class="post-modal-container">
-        <div class="post-modal-content">
-          <div class="post-modal-actions">
-            <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
-            <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
-          </div>
-          <div class="post-iframe-wrapper">
-            <iframe src="${href}" style="width:100%; height:400px;"></iframe>
-          </div>
-          <div class="post-modal-footer">
-            <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2]?.toUpperCase() || 'FERRAMENTA'}</strong>?
-              <a href="https://www.google.com/search?q=${slug}" target="_blank">
-                Explore a documentação oficial →
-              </a>
-            </p>
-          </div>
+      <button class="close-modal" data-close>&times;</button>
+      <div class="post-modal-content">
+        <div class="post-modal-actions">
+          <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+          <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
         </div>
-      </div>`;
+        <div class="post-iframe-wrapper">
+          <iframe src="${href}" style="width:100%; height:100%;"></iframe>
+        </div>
+        <div class="post-modal-footer">
+          <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2]?.toUpperCase() || 'FERRAMENTA'}</strong>?
+            <a href="https://www.google.com/search?q=${slug}" target="_blank">
+              Explore a documentação oficial →
+            </a>
+          </p>
+        </div>
+      </div>
+    `;
+
+    // mostra o modal
+    modal.classList.remove('hidden');
+
+    // fechar ao clicar no ×
+    container.querySelector('[data-close]').addEventListener('click', function () {
+      modal.classList.add('hidden');
+    });
+
+    // ir ao play em nova aba
+    container.querySelector('#go-play').addEventListener('click', function () {
+      window.open(href, '_blank');
+    });
+
+    // voltar para home (fecha modal)
+    container.querySelector('#go-home').addEventListener('click', function () {
+      modal.classList.add('hidden');
+    });
+  });
+});
+
+// dentro do listener de .btn-por-dentro, substitua o container.innerHTML por:
+container.innerHTML = `
+  <button class="close-modal" data-close="por-dentro">&times;</button>
+  <div class="post-modal-content">
+    <div class="post-modal-actions">
+      <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
+      <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
+    </div>
+    <div class="post-iframe-wrapper">
+      <iframe src="${href}" style="width:100%; height:100%;"></iframe>
+    </div>
+    <div class="post-modal-footer">
+      <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2]?.toUpperCase() || 'FERRAMENTA'}</strong>?
+        <a href="https://www.google.com/search?q=${slug}" target="_blank">
+          Explore a documentação oficial →
+        </a>
+      </p>
+    </div>
+  </div>
+`;
 
     // Marca d'água
     var wc = modal.querySelector('.post-modal-container');

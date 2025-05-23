@@ -132,7 +132,7 @@ body.light-mode {
   background: #66fff1;
 }
 
-/* ===== Modais ===== */
+/* ===== Modais (unificado) ===== */
 .modal {
   position: fixed;
   inset: 0;
@@ -146,6 +146,7 @@ body.light-mode {
 .modal.hidden {
   display: none;
 }
+/* este é o container de TODOS os modais agora */
 .modal-content {
   background: #111;
   padding: 1.5rem;
@@ -156,6 +157,9 @@ body.light-mode {
   display: flex;
   flex-direction: column;
   position: relative;
+  /* se quiser borda neon em TODOS os modais, descomente: */
+  /* border: 2px solid var(--neon-color);
+     box-shadow: 0 0 12px var(--neon-color); */
 }
 .close-modal {
   position: absolute;
@@ -168,39 +172,14 @@ body.light-mode {
   cursor: pointer;
 }
 
-/* ===== Modal Por Dentro (Posts) ===== */
-.post-modal-container {
-  position: relative;
-  background: #1e1e1e;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  border: 2px solid var(--neon-color);
-  box-shadow: 0 0 12px var(--neon-color);
-  z-index: 1;
-}
-.post-modal-container::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120px;
-  height: 120px;
-  transform: translate(-50%, -50%);
-  background-image: var(--tool-logo-url, none);
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 0;
-}
+/* conteúdo interno dos posts */
 .post-modal-content {
-  position: relative;
-  z-index: 1;
+  /* scroll interno */
+  max-height: 65vh;
+  overflow-y: auto;
   color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.6;
-  max-height: 65vh;
-  overflow-y: auto;
 }
 .post-modal-content a {
   color: var(--neon-color);
@@ -304,11 +283,6 @@ body.light-mode {
   0%,100% {transform: scale(1); filter: drop-shadow(0 0 4px var(--neon-color));}
   50% {transform: scale(1.05); filter: drop-shadow(0 0 12px var(--neon-color));}
 }
-@keyframes neonBorder {
-  0%   { box-shadow: 0 0 4px var(--neon-color); }
-  50%  { box-shadow: 0 0 12px var(--neon-color); }
-  100% { box-shadow: 0 0 4px var(--neon-color); }
-}
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -321,8 +295,7 @@ iframe {
 }
 
 .post-iframe-wrapper {
-  background: transparent;
-  color: inherit;
-  padding: 2rem;
-  font-size: 1rem;
+  padding: 2rem 0;
+  width: 100%;
+  height: 400px;
 }
