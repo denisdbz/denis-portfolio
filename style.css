@@ -332,3 +332,14 @@ iframe {
   font-size: 1rem;
   line-height: 1.6;
 }
+
+.post-modal-content {
+  position: relative;
+  z-index: 1;
+}
+
+.post-modal-container {
+  background-color: #111; /* reforça o fundo escuro real */
+  border-radius: 1rem;
+  padding: 1rem;
+}
