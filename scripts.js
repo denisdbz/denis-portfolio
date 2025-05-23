@@ -5,11 +5,11 @@ var baseURL = typeof baseURL !== 'undefined'
   ? baseURL
   : 'https://mellow-commitment-production.up.railway.app';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   // 1) Tema claro/escuro
   var themeToggle = document.querySelector('.toggle-theme');
   if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
+    themeToggle.addEventListener('click', function() {
       document.body.classList.toggle('light-mode');
       themeToggle.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
     });
@@ -19,20 +19,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var search = document.getElementById('search');
   var plays  = document.getElementById('plays');
   if (search && plays) {
-    search.addEventListener('input', function () {
+    search.addEventListener('input', function() {
       var term = search.value.toLowerCase();
-      plays.querySelectorAll('.card').forEach(function (card) {
-        card.style.display =
-          card.innerText.toLowerCase().includes(term)
-            ? ''
-            : 'none';
+      plays.querySelectorAll('.card').forEach(function(card) {
+        card.style.display = card.innerText.toLowerCase().includes(term) ? '' : 'none';
       });
     });
   }
 
   // 3) “Por Dentro” posts
-  document.querySelectorAll('.btn-por-dentro').forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
+  document.querySelectorAll('.btn-por-dentro').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
       e.preventDefault();
       var id = btn.getAttribute('data-play-id');
       var posts = {
@@ -62,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var slug = posts[id];
       if (!slug) return;
 
-      var href  = `posts/${slug}/index.html`;
+      var href  = 'posts/' + slug + '/index.html';
       var modal = document.getElementById('modal-por-dentro');
       var container = modal.querySelector('.modal-content');
 
@@ -73,7 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
             <button id="go-play" class="btn neon-btn">▶️ Ir ao Play</button>
             <button id="go-home" class="btn neon-btn">⏪ Voltar à Home</button>
           </div>
-          <iframe class="post-modal-iframe" src="${href}"></iframe>
+          <div class="post-iframe-wrapper">
+            <iframe src="${href}" style="width:100%; height:100%;"></iframe>
+          </div>
           <div class="post-modal-footer">
             <p>🧠 Quer se aprofundar em <strong>${slug.split('-')[2].toUpperCase()}</strong>?
               <a href="https://www.google.com/search?q=${slug}" target="_blank">
@@ -84,28 +83,32 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
 
-      // exibe
+      // exibe o modal
       modal.classList.remove('hidden');
-      // fechar ao clicar no ×
-      container.querySelector('[data-close]').addEventListener('click', function () {
+
+      // fecha ao clicar no ×
+      container.querySelector('[data-close]').addEventListener('click', function() {
         modal.classList.add('hidden');
       });
-      // ações dos botões
-      container.querySelector('#go-play').addEventListener('click', function () {
+
+      // ir ao play em nova aba
+      container.querySelector('#go-play').addEventListener('click', function() {
         window.open(href, '_blank');
       });
-      container.querySelector('#go-home').addEventListener('click', function () {
+
+      // volta pra home (fecha modal)
+      container.querySelector('#go-home').addEventListener('click', function() {
         modal.classList.add('hidden');
       });
     });
   });
 
   // 4) Outros modais (Sobre/Ajuda/News)
-  document.querySelectorAll('button[data-modal]').forEach(function (btn) {
+  document.querySelectorAll('button[data-modal]').forEach(function(btn) {
     var name = btn.dataset.modal;
     var M    = document.getElementById('modal-' + name);
     if (!M) return;
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function() {
       M.classList.remove('hidden');
       if (name === 'sobre' && window.Chart) {
         var canvas = document.getElementById('sobre-chart');
@@ -115,28 +118,28 @@ document.addEventListener('DOMContentLoaded', function () {
           type: 'bar',
           data: {
             labels: ['2011','2014','2016','2018','2020','2024'],
-            datasets: [{ label:'Anos de XP', data:[1,3,5,7,9,12], backgroundColor:'#00ffe0' }]
+            datasets: [{ label: 'Anos de XP', data: [1,3,5,7,9,12], backgroundColor: '#00ffe0' }]
           },
-          options: { responsive:true, scales:{ y:{ beginAtZero:true } } }
+          options: { responsive: true, scales: { y: { beginAtZero: true } } }
         });
       }
     });
   });
 
   // 5) Fechamento de modais
-  document.querySelectorAll('.close-modal').forEach(function (x) {
-    x.addEventListener('click', function () {
+  document.querySelectorAll('.close-modal').forEach(function(x) {
+    x.addEventListener('click', function() {
       x.closest('.modal').classList.add('hidden');
     });
   });
-  document.querySelectorAll('.modal').forEach(function (M) {
-    M.addEventListener('click', function (e) {
+  document.querySelectorAll('.modal').forEach(function(M) {
+    M.addEventListener('click', function(e) {
       if (e.target === M) M.classList.add('hidden');
     });
   });
-  document.addEventListener('keydown', function (e) {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      document.querySelectorAll('.modal:not(.hidden)').forEach(function (m) {
+      document.querySelectorAll('.modal:not(.hidden)').forEach(function(m) {
         m.classList.add('hidden');
       });
     }
