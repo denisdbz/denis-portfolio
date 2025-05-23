@@ -1,43 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <title>Nmap Recon</title>
-  <link rel="stylesheet" href="../style.css" />
-</head>
-<body class="neon-dark">
-  <div class="post-modal-container" style="--tool-logo-url: url('../assets/img/tools/nmap.png')">
-    <div class="post-modal-content">
+<h1>Por Dentro do Play 03 — SQLMap DVWA</h1>
 
-      <div class="post-modal-actions">
-      </div>
+<p>Neste Play, demonstramos como o <strong>SQLMap</strong> pode automatizar a detecção e exploração de vulnerabilidades de SQL Injection no DVWA.</p>
 
-      <h1 style="text-align: center;">Nmap Recon</h1>
+<h2>Objetivos</h2>
+<ul>
+  <li>Identificar falhas de SQL Injection em aplicações web.</li>
+  <li>Explorar banco de dados vulnerável automaticamente.</li>
+</ul>
 
-      <p style="text-align: center;">Executa uma varredura real com Nmap.</p>
+<h2>Comandos Utilizados</h2>
+<ul>
+  <li><code>sqlmap -u "http://192.168.0.1/vulnerabilities/sqli/?id=1&Submit=Submit#" --batch --dbs</code> — Detectar e listar bancos de dados disponíveis.</li>
+  <li><code>sqlmap -u "http://192.168.0.1/vulnerabilities/sqli/?id=1&Submit=Submit#" --batch --tables -D dvwa</code> — Listar tabelas do banco vulnerável.</li>
+</ul>
 
-      <h2>Sobre a ferramenta</h2>
-      <p><strong>Nmap</strong> é uma ferramenta amplamente utilizada para automações ou validações relacionadas à segurança, devops ou QA, com aplicabilidade em auditorias e testes manuais ou automatizados.</p>
+<h2>Resultados Esperados</h2>
+<ul>
+  <li>Lista de bancos de dados, tabelas e colunas.</li>
+  <li>Exportação de dados sensíveis do sistema.</li>
+  <li>Relatório automatizado de vulnerabilidades detectadas.</li>
+</ul>
 
-      <h2>Objetivo deste Play</h2>
-      <p>O script automatiza o seguinte comando:<br/><code>nmap -sT -Pn -T4 -p- 127.0.0.1</code></p>
+<hr class="separator">
 
-      <div class="post-modal-footer">
-        <p>🧠 Quer se aprofundar em <strong>NMAP</strong>? 
-          <a href="https://nmap.org/book/man.html" target="_blank">Explore a documentação oficial →</a>
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('go-play').onclick = function () {
-      window.location.href = "../plays/play-01-nmap/index.html";
-    };
-    document.getElementById('go-home').onclick = function () {
-      window.parent.document.getElementById('modal-por-dentro').classList.add('hidden');
-    };
-  </script>
-</body>
-</html>
+<div class="btn-box">
+  <a class="btn" href="../plays/play-03-sqlmap-dvwa/" target="_blank">▶️ Ir ao Play</a>
+  <a class="btn" href="../index.html">← Voltar à Home</a>
+</div>
