@@ -156,7 +156,7 @@ body.light-mode {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-y: auto; /* scroll único no modal */
+  overflow-y: auto; /* scroll único no próprio modal */
 }
 .close-modal {
   position: absolute;
@@ -171,9 +171,9 @@ body.light-mode {
 
 /* ===== Conteúdo interno dos “Por Dentro” ===== */
 .post-modal-content {
-  overflow: visible;       /* remove scroll interno */
-  background: transparent;  /* retira camada escura extra */
-  color: #e0e0e0;
+  overflow: visible;       /* remove scroll interno adicional */
+  background: transparent;  /* deixa o fundo do modal-content aparecer */
+  color: #e0e0e0;           /* texto em branco */
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -195,11 +195,6 @@ body.light-mode {
 }
 .post-modal-footer {
   margin-top: 1rem;
-}
-
-/* forçar fundo branco no iframe */
-.post-iframe-wrapper iframe {
-  background: #fff;
 }
 
 /* ===== Execução SSE ===== */
@@ -284,7 +279,7 @@ body.light-mode {
 /* ===== Animações ===== */
 @keyframes pulseLogo {
   0%,100% { transform: scale(1); filter: drop-shadow(0 0 4px var(--neon-color)); }
-  50%    { transform: scale(1.05); filter: drop-shadow(0 0 12px var(--neon-color)); }
+  50%    { transform: scale(1.05); filter: drop-shadow(0 0 12px var(--neon‐color)); }
 }
 @keyframes fadeIn {
   from { opacity: 0; }

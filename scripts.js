@@ -90,16 +90,16 @@ document.addEventListener('DOMContentLoaded', function() {
         var doc = iframeEl.contentDocument || iframeEl.contentWindow.document;
         if (!doc) return;
         doc.body.classList.remove('neon-dark');
-        doc.body.classList.add('light-mode');
+        // força fundo transparente e texto branco
         var styleEl = doc.createElement('style');
         styleEl.textContent = `
-          body { background: #fff !important; color: #000 !important; }
+          body { background: transparent !important; color: #e0e0e0 !important; }
           a { color: var(--neon-color) !important; }
         `;
         doc.head.appendChild(styleEl);
       });
 
-      // exibe o modal
+      // exibe o modal e bloqueia scroll de fundo
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
 
