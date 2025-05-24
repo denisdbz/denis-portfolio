@@ -171,14 +171,14 @@ body.light-mode {
 
 /* ===== Conteúdo interno dos “Por Dentro” ===== */
 .post-modal-content {
-  position: relative;        /* para exibir o logo via pseudo-elemento */
-  overflow: visible;         
-  background: transparent;   
-  color: #e0e0e0;            
+  position: relative;
+  overflow: visible;
+  background: transparent;
+  color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.6;
 }
-/* pseudo-elemento que mostra o logo de fundo */
+/* intensidade aumentada da marca-d’água de 0.08 para 0.2 */
 .post-modal-content::before {
   content: "";
   position: absolute;
@@ -189,7 +189,7 @@ body.light-mode {
   background-image: var(--tool-logo-url);
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.08;
+  opacity: 0.2;
   pointer-events: none;
 }
 
