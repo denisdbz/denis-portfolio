@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var modal = document.getElementById('modal-por-dentro');
       var container = modal.querySelector('.modal-content');
 
+      // injeta o HTML do modal
       container.innerHTML = `
         <button class="close-modal" data-close>&times;</button>
         <div class="post-modal-content">
@@ -83,22 +84,36 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
 
-      // exibe o modal
-      modal.classList.remove('hidden');
-
-      // fecha ao clicar no ×
-      container.querySelector('[data-close]').addEventListener('click', function() {
-        modal.classList.add('hidden');
+      // remove tema escuro do post assim que o iframe carregar
+      var iframeEl = container.querySelector('iframe');
+      iframeEl.addEventListener('load', function() {
+        var doc = iframeEl.contentDocument || iframeEl.contentWindow.document;
+        if (!doc) return;
+        doc.body.classList.remove('neon-dark');
+        doc.body.classList.add('light-mode');
+        var styleEl = doc.createElement('style');
+        styleEl.textContent = `
+          body { background: #fff !important; color: #000 !important; }
+          a { color: var(--neon-color) !important; }
+        `;
+        doc.head.appendChild(styleEl);
       });
 
-      // ir ao play em nova aba
+      // exibe o modal
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      // handlers de fechamento e botões
+      container.querySelector('[data-close]').addEventListener('click', function() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
       container.querySelector('#go-play').addEventListener('click', function() {
         window.open(href, '_blank');
       });
-
-      // volta pra home (fecha modal)
       container.querySelector('#go-home').addEventListener('click', function() {
         modal.classList.add('hidden');
+        document.body.style.overflow = '';
       });
     });
   });
@@ -110,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!M) return;
     btn.addEventListener('click', function() {
       M.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
       if (name === 'sobre' && window.Chart) {
         var canvas = document.getElementById('sobre-chart');
         if (canvas.chartInstance) canvas.chartInstance.destroy();
@@ -118,23 +134,27 @@ document.addEventListener('DOMContentLoaded', function() {
           type: 'bar',
           data: {
             labels: ['2011','2014','2016','2018','2020','2024'],
-            datasets: [{ label: 'Anos de XP', data: [1,3,5,7,9,12], backgroundColor: '#00ffe0' }]
+            datasets: [{ label:'Anos de XP', data:[1,3,5,7,9,12], backgroundColor:'#00ffe0' }]
           },
-          options: { responsive: true, scales: { y: { beginAtZero: true } } }
+          options: { responsive:true, scales:{ y:{ beginAtZero:true } } }
         });
       }
     });
   });
 
-  // 5) Fechamento de modais
+  // 5) Fechamento geral de modais
   document.querySelectorAll('.close-modal').forEach(function(x) {
     x.addEventListener('click', function() {
       x.closest('.modal').classList.add('hidden');
+      document.body.style.overflow = '';
     });
   });
   document.querySelectorAll('.modal').forEach(function(M) {
     M.addEventListener('click', function(e) {
-      if (e.target === M) M.classList.add('hidden');
+      if (e.target === M) {
+        M.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
     });
   });
   document.addEventListener('keydown', function(e) {
@@ -142,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.modal:not(.hidden)').forEach(function(m) {
         m.classList.add('hidden');
       });
+      document.body.style.overflow = '';
     }
   });
 });

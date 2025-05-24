@@ -156,7 +156,7 @@ body.light-mode {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-y: auto; /* habilita scroll no próprio modal */
+  overflow-y: auto; /* scroll único no modal */
 }
 .close-modal {
   position: absolute;
@@ -171,7 +171,7 @@ body.light-mode {
 
 /* ===== Conteúdo interno dos “Por Dentro” ===== */
 .post-modal-content {
-  overflow: visible;       /* remove scroll interno duplicado */
+  overflow: visible;       /* remove scroll interno */
   background: transparent;  /* retira camada escura extra */
   color: #e0e0e0;
   font-size: 1rem;
@@ -188,13 +188,18 @@ body.light-mode {
   font-weight: bold;
 }
 .post-iframe-wrapper {
-  flex: 1;          /* ocupa o espaço restante */
-  min-height: 0;    /* necessário para o scroll funcionar */
+  flex: 1;       
+  min-height: 0; 
   background: transparent;
   padding: 2rem 0;
 }
 .post-modal-footer {
   margin-top: 1rem;
+}
+
+/* forçar fundo branco no iframe */
+.post-iframe-wrapper iframe {
+  background: #fff;
 }
 
 /* ===== Execução SSE ===== */
