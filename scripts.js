@@ -84,13 +84,21 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
 
-      // remove tema escuro do post assim que o iframe carregar
+      // remove rodapé estático do post e aplica tema claro ao iframe
       var iframeEl = container.querySelector('iframe');
       iframeEl.addEventListener('load', function() {
         var doc = iframeEl.contentDocument || iframeEl.contentWindow.document;
         if (!doc) return;
+
+        // remover qualquer <p> estático com “Quer se aprofundar...”
+        doc.querySelectorAll('p').forEach(function(p) {
+          if (p.textContent.includes('Quer se aprofundar em'))
+            p.remove();
+        });
+
+        // força o restante do post a herdar tema claro e texto branco
         doc.body.classList.remove('neon-dark');
-        // força fundo transparente e texto branco
+        doc.body.classList.add('light-mode');
         var styleEl = doc.createElement('style');
         styleEl.textContent = `
           body { background: transparent !important; color: #e0e0e0 !important; }
@@ -99,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         doc.head.appendChild(styleEl);
       });
 
-      // exibe o modal e bloqueia scroll de fundo
+      // exibe o modal e trava scroll de fundo
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
 
