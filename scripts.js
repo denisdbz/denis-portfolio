@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
       var slug = posts[id];
       if (!slug) return;
 
-      var href  = 'posts/' + slug + '/index.html';
-      var modal = document.getElementById('modal-por-dentro');
+      var href   = 'posts/' + slug + '/index.html';
+      var modal  = document.getElementById('modal-por-dentro');
       var container = modal.querySelector('.modal-content');
 
       // injeta o HTML do modal
@@ -84,21 +84,26 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
 
-      // remove rodapé estático do post e aplica tema claro ao iframe
+      // adiciona o logo como marca d’água
+      container.style.setProperty(
+        '--tool-logo-url',
+        `url('assets/img/tools/${slug.split('-')[2]}.png')`
+      );
+
+      // remove rodapé estático e aplica tema claro ao iframe
       var iframeEl = container.querySelector('iframe');
       iframeEl.addEventListener('load', function() {
         var doc = iframeEl.contentDocument || iframeEl.contentWindow.document;
         if (!doc) return;
 
-        // remover qualquer <p> estático com “Quer se aprofundar...”
         doc.querySelectorAll('p').forEach(function(p) {
           if (p.textContent.includes('Quer se aprofundar em'))
             p.remove();
         });
 
-        // força o restante do post a herdar tema claro e texto branco
         doc.body.classList.remove('neon-dark');
         doc.body.classList.add('light-mode');
+
         var styleEl = doc.createElement('style');
         styleEl.textContent = `
           body { background: transparent !important; color: #e0e0e0 !important; }

@@ -156,7 +156,7 @@ body.light-mode {
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow-y: auto; /* scroll único no próprio modal */
+  overflow-y: auto;
 }
 .close-modal {
   position: absolute;
@@ -171,12 +171,28 @@ body.light-mode {
 
 /* ===== Conteúdo interno dos “Por Dentro” ===== */
 .post-modal-content {
-  overflow: visible;       /* remove scroll interno adicional */
-  background: transparent;  /* deixa o fundo do modal-content aparecer */
-  color: #e0e0e0;           /* texto em branco */
+  position: relative;        /* para exibir o logo via pseudo-elemento */
+  overflow: visible;         
+  background: transparent;   
+  color: #e0e0e0;            
   font-size: 1rem;
   line-height: 1.6;
 }
+/* pseudo-elemento que mostra o logo de fundo */
+.post-modal-content::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 80px;
+  height: 80px;
+  background-image: var(--tool-logo-url);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
 .post-modal-actions {
   display: flex;
   justify-content: space-between;
@@ -188,8 +204,8 @@ body.light-mode {
   font-weight: bold;
 }
 .post-iframe-wrapper {
-  flex: 1;       
-  min-height: 0; 
+  flex: 1;
+  min-height: 0;
   background: transparent;
   padding: 2rem 0;
 }
@@ -279,7 +295,7 @@ body.light-mode {
 /* ===== Animações ===== */
 @keyframes pulseLogo {
   0%,100% { transform: scale(1); filter: drop-shadow(0 0 4px var(--neon-color)); }
-  50%    { transform: scale(1.05); filter: drop-shadow(0 0 12px var(--neon‐color)); }
+  50%    { transform: scale(1.05); filter: drop-shadow(0 0 12px var(--neon-color)); }
 }
 @keyframes fadeIn {
   from { opacity: 0; }
