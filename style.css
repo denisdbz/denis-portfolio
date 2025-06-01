@@ -447,3 +447,19 @@ iframe {
     color: var(--neon-color);
   }
 }
+
+#hamburger-btn {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--neon-color);
+  cursor: pointer;
+  display: none;
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 768px) {
+  #hamburger-btn {
+    display: block;
+  }
+}
