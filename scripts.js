@@ -6,15 +6,15 @@ var baseURL = typeof baseURL !== 'undefined'
   : 'https://mellow-commitment-production.up.railway.app';
 
 document.addEventListener("DOMContentLoaded", () => {
+  // 1) Menu Hamburguer (mobile)
   const hamburgerBtn = document.getElementById("hamburger-btn");
-  const navLinks = document.getElementById("navbar-links");
+  const navLinks = document.getElementById("nav-links");
 
   if (hamburgerBtn && navLinks) {
     hamburgerBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+      navLinks.classList.toggle("show");
     });
   }
-});
 
   // 2) Busca dinâmica
   var search = document.getElementById('search');
@@ -179,9 +179,4 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = '';
     }
   });
-});
-
-// Toggle menu hamburguer
-document.getElementById("menu-toggle").addEventListener("click", () => {
-  document.getElementById("nav-links").classList.toggle("show");
 });
