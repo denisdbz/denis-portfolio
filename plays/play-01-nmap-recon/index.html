@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 01 — Nmap Recon</title>
+  <title>Play 02 — Hydra Dvwa</title>
   <link rel="stylesheet" href="../../style.css"/>
 </head>
 <body class="neon-dark">
-  <div class="container" style="text-align: center; padding: 2rem;">
+  <div class="container" style="text-align: center;">
     <h1>Play 01 — Nmap Recon</h1>
     <p>Executa testes reais com foco em <code>nmap-recon</code>.</p>
-
-    <div style="border: 1px solid #0fc; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-      <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
-    </div>
-
+    <button class="btn neon-btn" onclick="executarTeste()" onclick="executarTeste()">Executar Teste</button>
+    <br /><br />
     <a class="btn neon-btn" href="../../index.html">← Voltar</a>
+    <br /><br />
+    <div id="progress-container" class="hidden" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
+      <div class="progress-bar">
+        <div class="fill" id="progress-bar-fill"></div>
+      </div>
+      <br />
+      <div class="output-box" id="output-log">Iniciando teste...</div>
+    </div>
   </div>
   <script src="../../scripts.js" defer></script>
+  <script src="/denis-portfolio/scripts.js" defer></script>
+  <script src="/denis-portfolio/scripts.js" defer></script>
 </body>
 </html>
