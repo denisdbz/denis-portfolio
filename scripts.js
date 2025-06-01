@@ -179,3 +179,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Toggle menu hamburguer
+document.getElementById("menu-toggle").addEventListener("click", () => {
+  document.getElementById("nav-links").classList.toggle("show");
+});
