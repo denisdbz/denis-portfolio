@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 04 — JMeter Loadtest</title>
-
-  <!-- Estilo padrão do portfólio -->
-  <link rel="stylesheet" href="../../style.css"/>
-
-  <!-- Script central -->
-  <script src="../../scripts.js" defer></script>
+  <title>Play 04 — JMeter LoadTest</title>
+  <link rel="stylesheet" href="../../style.css" />
 </head>
 <body class="neon-dark">
-  <div class="container" style="text-align: center;">
-    <h1>Play 04 — JMeter Loadtest</h1>
-    <p>Teste de carga com JMeter usando um plano pré-configurado.</p>
+  <main class="play-container">
+    <h1>Play 04 — JMeter LoadTest</h1>
+    <h2>Simulação de Carga com JMeter</h2>
+    <p>Executa um teste de carga usando plano .jmx com JMeter.</p>
 
-    <!-- Botão de execução -->
     <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
-    <br/><br/>
+    <a href="../../index.html" class="btn btn-voltar neon-btn">← Voltar</a>
 
-    <!-- Botão de voltar -->
-    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
-
-    <!-- Barra de progresso -->
-    <div id="progress-container" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 1.5em auto 0;">
-      <div class="progress-bar">
-        <div class="fill" id="progress-fill"></div>
-      </div>
+    <div id="progress-container" class="hidden">
+      <div class="progress-bar"><div id="progress-fill" class="fill"></div></div>
+      <pre id="output-box" class="output-box"></pre>
     </div>
+  </main>
 
-    <!-- Terminal de logs -->
-    <pre id="output-box" class="output-box">Aguardando início...</pre>
-  </div>
+  <script>
+    function executarTeste() {
+      const progressContainer = document.getElementById('progress-container');
+      const outputBox = document.getElementById('output-box');
+      const fill = document.getElementById('progress-fill');
+
+      progressContainer.classList.remove('hidden');
+      outputBox.textContent = '⌛ Enviando requisição ao backend...\n';
+      fill.style.width = '10%';
+
+      fetch('http://localhost:8080/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ play: 'play-04-jmeter-loadtest' })
+      })
+      .then(response => response.json())
+      .then(data => {
+        fill.style.width = '100%';
+        if (data.output) {
+          outputBox.textContent = data.output;
+        } else if (data.error) {
+          outputBox.textContent = '[ERRO]\n' + data.error;
+        } else {
+          outputBox.textContent = '[ERRO] Resposta inesperada do servidor.';
+        }
+      })
+      .catch(err => {
+        fill.style.width = '100%';
+        outputBox.textContent = '[ERRO] Falha ao conectar com o backend:\n' + err;
+      });
+    }
+  </script>
 </body>
 </html>

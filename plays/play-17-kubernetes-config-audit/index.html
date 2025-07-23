@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 17 — Kubernetes Config Audit</title>
-  <link rel="stylesheet" href="../../style.css"/>
+  <title>Play 17 — Kubernetes config audit</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
-  <div class="container" style="text-align: center;">
-    <h1>Play 17 — Kubernetes Config Audit</h1>
-    <p>Auditoria de configuração do Kubernetes.</p>
-    <button class="btn neon-btn" onclick="executarTeste()" onclick="executarTeste()">Executar Teste</button>
-    <br /><br />
-    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
-    <br /><br />
-    <div id="progress-container" class="hidden" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 0 auto;">
-      <div class="progress-bar">
-        <div class="fill" id="progress-bar-fill"></div>
-      </div>
-      <br />
-      <div class="output-box" id="output-log">Iniciando teste...</div>
+  <main class="play-container">
+    <h1>Play 17 — Kubernetes config audit</h1>
+    <p>[Descrição para Kubernetes config audit]</p>
+
+    <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
+    <a href="../../index.html" class="btn btn-voltar neon-btn">← Voltar</a>
+
+    <div id="progress-container" class="hidden">
+      <div class="progress-bar"><div id="progress-fill" class="fill"></div></div>
+      <pre id="output-box" class="output-box"></pre>
     </div>
-  </div>
-  <script src="../../scripts.js" defer></script>
-  <script src="/denis-portfolio/scripts.js" defer></script>
-  <script src="/denis-portfolio/scripts.js" defer></script>
+  </main>
 </body>
 </html>

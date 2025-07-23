@@ -1,34 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Play 06 — Carga Bash</title>
-
-  <link rel="stylesheet" href="../../style.css"/>
-
-  <script>
-    window.BASE_URL = 'https://mellow-commitment-production.up.railway.app';
-  </script>
+  <title>Play 06 — Carga bash</title>
+  <link rel="stylesheet" href="../../style.css" />
   <script src="../../scripts.js" defer></script>
 </head>
 <body class="neon-dark">
-  <div class="container" style="text-align: center;">
-    <h1>Play 06 — Carga Bash</h1>
-    <p>Simulação de carga com shell script.</p>
+  <main class="play-container">
+    <h1>Play 06 — Carga bash</h1>
+    <p>[Descrição para Carga bash]</p>
 
     <button class="btn neon-btn" onclick="executarTeste()">Executar Teste</button>
-    <br/><br/>
+    <a href="../../index.html" class="btn btn-voltar neon-btn">← Voltar</a>
 
-    <a class="btn neon-btn" href="../../index.html">← Voltar</a>
-
-    <div id="progress-container" class="hidden" style="display: flex; flex-direction: column; align-items: center; max-width: 600px; margin: 1.5em auto 0;">
-      <div class="progress-bar">
-        <div class="fill" id="progress-fill"></div>
-      </div>
+    <div id="progress-container" class="hidden">
+      <div class="progress-bar"><div id="progress-fill" class="fill"></div></div>
+      <pre id="output-box" class="output-box"></pre>
     </div>
-
-    <pre id="output-box" class="output-box">Aguardando início...</pre>
-  </div>
+  </main>
 </body>
 </html>
